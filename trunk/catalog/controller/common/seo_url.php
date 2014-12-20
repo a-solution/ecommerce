@@ -9,7 +9,14 @@ class ControllerCommonSeoUrl extends Controller {
             "product/manufacturer"  => "Thuong-Hieu",
             "account/voucher"       => "The-Qua-Tang",
             "affiliate/account"     => "Thanh-Vien",
-            "product/special"       => "Khuyen-Mai"
+            "product/special"       => "Khuyen-Mai",
+            
+            "account/account"       => "QuanLy/Tai-Khoan",
+            "account/order"         => "QuanLy/Don-Hang",
+            "account/wishlist"      => "QuanLy/San-Pham-Yeu-Thich",
+            "account/newsletter"    => "QuanLy/Tin-Tuc",
+            
+            "account/login"         => "Quan-Ly/Dang-Nhap"
         );
         
         private function getRwUrl($url){
@@ -44,9 +51,12 @@ class ControllerCommonSeoUrl extends Controller {
 				array_pop($parts);
 			}
 
-                        if(count($parts) > 0 && $this->getUrl($parts[0])){
-                            $this->request->get['route'] = $this->getUrl($parts[0]);
-                            return new Action($this->request->get['route']);
+                        if(count($parts) > 0){
+                            $urlString = implode("/", $parts);
+                            if($this->getUrl($urlString)){
+                                $this->request->get['route'] = $this->getUrl($urlString);
+                                return new Action($this->request->get['route']);    
+                            } 
                         }
                         
 			foreach ($parts as $part) {
