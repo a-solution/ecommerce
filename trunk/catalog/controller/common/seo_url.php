@@ -1,11 +1,40 @@
 <?php
 class ControllerCommonSeoUrl extends Controller {
+        
+        private $custom_mappings = Array(
+            "information/contact"   => "Gioi-thieu",
+            "account/return/add"    => "Tra-Hang",
+            "information/sitemap"   => "So-Do",
+            
+            "product/manufacturer"  => "Thuong-Hieu",
+            "account/voucher"       => "The-Qua-Tang",
+            "affiliate/account"     => "Thanh-Vien",
+            "product/special"       => "Khuyen-Mai"
+        );
+        
+        private function getRwUrl($url){
+            if(isset($this->custom_mappings[$url])){
+               return $this->custom_mappings[$url]; 
+            }
+            return '';
+        }
+    
+        private function getUrl($rwUrl){
+            foreach($this->custom_mappings as $k => $v) {
+                if($v == $rwUrl){
+                    return $k;
+                }
+            }
+            return '';
+        }
+        
 	public function index() {
+            
 		// Add rewrite to url class
 		if ($this->config->get('config_seo_url')) {
 			$this->url->addRewrite($this);
 		}
-
+                
 		// Decode URL
 		if (isset($this->request->get['_route_'])) {
 			$parts = explode('/', $this->request->get['_route_']);
@@ -15,6 +44,11 @@ class ControllerCommonSeoUrl extends Controller {
 				array_pop($parts);
 			}
 
+                        if(count($parts) > 0 && $this->getUrl($parts[0])){
+                            $this->request->get['route'] = $this->getUrl($parts[0]);
+                            return new Action($this->request->get['route']);
+                        }
+                        
 			foreach ($parts as $part) {
 				$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "url_alias WHERE keyword = '" . $this->db->escape($part) . "'");
 
@@ -66,6 +100,7 @@ class ControllerCommonSeoUrl extends Controller {
 	}
 
 	public function rewrite($link) {
+            
 		$url_info = parse_url(str_replace('&amp;', '&', $link));
 
 		$url = '';
@@ -100,8 +135,12 @@ class ControllerCommonSeoUrl extends Controller {
 					}
 
 					unset($data[$key]);
-				} elseif ($key == 'route' && $value == 'common/home') {
+				} 
+                                elseif ($key == 'route' && $value == 'common/home') {
 					$url = '/';
+				}
+				elseif ($key == 'route' && $this->getRwUrl($value)) {
+					$url = "/".($this->getRwUrl($value));
 				}
 			}
 		}
