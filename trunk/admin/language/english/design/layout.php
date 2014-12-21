@@ -13,6 +13,10 @@ $_['text_content_bottom'] = 'Content Bottom';
 $_['text_column_left']    = 'Column Left';
 $_['text_column_right']   = 'Column Right';
 
+//customize 20-Dec-14
+$_['text_content_intro']  = 'Content Intro';
+$_['text_content_aside']  = 'Content Aside';
+
 // Column
 $_['column_name']         = 'Layout Name';
 $_['column_action']       = 'Action';

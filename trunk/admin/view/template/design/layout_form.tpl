@@ -116,6 +116,17 @@
                     <?php } else { ?>
                     <option value="column_right"><?php echo $text_column_right; ?></option>
                     <?php } ?>
+                    
+                    <?php if ($layout_module['position'] == 'content_intro') { ?>
+                    <option value="content_intro" selected="selected"><?php echo $text_content_intro; ?></option>
+                    <?php } else { ?>
+                    <option value="content_intro"><?php echo $text_content_intro; ?></option>
+                    <?php } ?>
+                    <?php if ($layout_module['position'] == 'content_aside') { ?>
+                    <option value="content_aside" selected="selected"><?php echo $text_content_aside; ?></option>
+                    <?php } else { ?>
+                    <option value="content_aside"><?php echo $text_content_aside; ?></option>
+                    <?php } ?>
                   </select></td>
                 <td class="text-right"><input type="text" name="layout_module[<?php echo $module_row; ?>][sort_order]" value="<?php echo $layout_module['sort_order']; ?>" placeholder="<?php echo $entry_sort_order; ?>" class="form-control" /></td>
                 <td class="text-left"><button type="button" onclick="$('#module-row<?php echo $module_row; ?>').remove();" data-toggle="tooltip" title="<?php echo $button_remove; ?>" class="btn btn-danger"><i class="fa fa-minus-circle"></i></button></td>
