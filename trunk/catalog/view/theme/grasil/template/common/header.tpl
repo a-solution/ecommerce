@@ -80,10 +80,10 @@
             <a href="<?php echo $home; ?>" class="logo"></a>
         </div>
       </div>
-      <div class="col-sm-5">
+      <div class="col-sm-5 con-search">
           <?php echo $search; ?>
       </div>
-      <div class="col-sm-4">
+      <div class="col-sm-4 con-cart">
           <?php echo $cart; ?>
       </div>
     </div>

@@ -10,6 +10,19 @@
     }
 }
 @media (max-width: 767px) {
+    .intro .slideshow {
+        padding-right:0;
+    }
+    .intro .flexslider {        
+        margin-right: 15px;
+    }
+    header .con-search, header .con-cart {
+        padding-left: 15px;
+    }
+    #search {
+        padding: 0;
+    }
+
     #menu {
         border-radius: 4px;
     }
