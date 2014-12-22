@@ -378,9 +378,13 @@ class ControllerCheckoutCart extends Controller {
 					}
 
 					array_multisort($sort_order, SORT_ASC, $total_data);
-				}
-
+				}                                                                
 				$json['total'] = sprintf($this->language->get('text_items'), $this->cart->countProducts() + (isset($this->session->data['vouchers']) ? count($this->session->data['vouchers']) : 0), $this->currency->format($total));
+                                
+                                //Customize
+                                $json['count'] = $this->cart->countProducts() + (isset($this->session->data['vouchers']) ? count($this->session->data['vouchers']) : 0);
+                                $json['money'] = $this->currency->format($total);
+                                
 			} else {
 				$json['redirect'] = str_replace('&amp;', '&', $this->url->link('product/product', 'product_id=' . $this->request->post['product_id']));
 			}
