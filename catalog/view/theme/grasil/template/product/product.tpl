@@ -474,7 +474,8 @@ $('#button-cart').on('click', function() {
 			if (json['success']) {
 				$('.breadcrumb').after('<div class="alert alert-success">' + json['success'] + '<button type="button" class="close" data-dismiss="alert">&times;</button></div>');
 				
-				$('#cart-total').html(json['total']);
+				//$('#cart-total').html(json['total']);
+                                $('.mybag').html(json['count']);
 				
 				$('html, body').animate({ scrollTop: 0 }, 'slow');
 				

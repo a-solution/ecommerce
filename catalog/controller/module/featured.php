@@ -42,10 +42,19 @@ class ControllerModuleFeatured extends Controller {
 				}
 
 				if ((float)$product_info['special']) {
-					$special = $this->currency->format($this->tax->calculate($product_info['special'], $product_info['tax_class_id'], $this->config->get('config_tax')));
+                                    $special = $this->currency->format($this->tax->calculate($product_info['special'], $product_info['tax_class_id'], $this->config->get('config_tax')));
+                                    //Customisze
+                                    if($price) {
+                                        $saleoff = (1 - $special/$price) * 100;
+                                        $saleoff = round($saleoff);
+                                    }
+                                    else {
+                                        $saleoff = false;
+                                    }
 				} else {
-					$special = false;
-				}
+                                    $special = false;
+                                    $saleoff = false;
+				}                                                                
 
 				if ($this->config->get('config_tax')) {
 					$tax = $this->currency->format((float)$product_info['special'] ? $product_info['special'] : $product_info['price']);
@@ -66,6 +75,7 @@ class ControllerModuleFeatured extends Controller {
 					'description' => utf8_substr(strip_tags(html_entity_decode($product_info['description'], ENT_QUOTES, 'UTF-8')), 0, $this->config->get('config_product_description_length')) . '..',
 					'price'       => $price,
 					'special'     => $special,
+                                        'saleoff'     => $saleoff,
 					'tax'         => $tax,
 					'rating'      => $rating,
 					'href'        => $this->url->link('product/product', 'product_id=' . $product_info['product_id'])

@@ -17,6 +17,12 @@
           <?php } ?>
           <?php } ?>
         </div>
+        <?php } else { ?>
+        <div class="rating">
+          <?php for ($i = 1; $i <= 5; $i++) { ?>
+          <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
+          <?php } ?>
+        </div>
         <?php } ?>
         <?php if ($product['price']) { ?>
         <p class="price">
@@ -24,11 +30,8 @@
           <?php echo $product['price']; ?>
           <?php } else { ?>
           <span class="price-new"><?php echo $product['special']; ?></span> <span class="price-old"><?php echo $product['price']; ?></span>
-        <span class="saleoff">20%</span>
-          <?php } ?>
-          <?php //if ($product['tax']) { ?>
-          <!--span class="price-tax"><?php echo $text_tax; ?> <?php echo $product['tax']; ?></span-->
-          <?php //} ?>
+          <span class="saleoff"><?php echo $product['saleoff']; ?>%</span>
+          <?php } ?>          
         </p>
         <?php } ?>
       </div>
