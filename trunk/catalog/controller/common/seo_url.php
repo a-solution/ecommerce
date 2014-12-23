@@ -2,21 +2,22 @@
 class ControllerCommonSeoUrl extends Controller {
         
         private $custom_mappings = Array(
-            "information/contact"   => "Gioi-thieu",
-            "account/return/add"    => "Tra-Hang",
-            "information/sitemap"   => "So-Do",
+            "information/contact"   => "lien-he",
+            "account/return/add"    => "tra-hang",
+            "information/sitemap"   => "so-do",
             
-            "product/manufacturer"  => "Thuong-Hieu",
-            "account/voucher"       => "The-Qua-Tang",
-            "affiliate/account"     => "Thanh-Vien",
-            "product/special"       => "Khuyen-Mai",
+            "product/manufacturer"  => "thuong-hieu",
+            "account/voucher"       => "the-qua-tang",
+            "affiliate/account"     => "thanh-vien",
+            "product/special"       => "khuyen-mai",
             
-            "account/account"       => "QuanLy/Tai-Khoan",
-            "account/order"         => "QuanLy/Don-Hang",
-            "account/wishlist"      => "QuanLy/San-Pham-Yeu-Thich",
-            "account/newsletter"    => "QuanLy/Tin-Tuc",
+            "account/account"       => "tai-khoan",
+            "account/order"         => "don-hang",
+            "account/wishlist"      => "danh-sach-yeu-thich",
+            "account/newsletter"    => "ban-tin",
             
-            "account/login"         => "Quan-Ly/Dang-Nhap"
+            "account/login"         => "dang-nhap",
+            "account/register"       => "dang-ky",
         );
         
         private function getRwUrl($url){

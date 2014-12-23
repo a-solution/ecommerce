@@ -74,23 +74,29 @@
             </div>
         </div>
     </nav>    
-<header>
-  <div class="container">
-    <div class="row">
-      <div class="col-sm-3">
-        <div id="logo">
-            <a href="<?php echo $home; ?>" class="logo"></a>
+    <header>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3 col-xs-12">
+                    <div id="logo">
+                        <a href="<?php echo $home; ?>" class="logo"></a>
+                    </div>
+                </div>
+                <div class="col-sm-5 col-xs-12 con-search">
+                    <?php echo $search; ?>
+                </div>
+                <div class="col-sm-2 col-xs-6 con-wishlist">
+                    <a href="<?php echo $wishlist; ?>" id="wishlist-total" title="<?php echo $text_wishlist; ?>">
+                        <i class="fa fa-heart"></i>
+                        <span class="hidden-sm"><?php echo $text_wishlist; ?></span>
+                    </a>
+                </div>
+                <div class="col-sm-2 col-xs-6 con-cart">
+                    <?php echo $cart; ?>
+                </div>
+            </div>
         </div>
-      </div>
-      <div class="col-sm-5 con-search">
-          <?php echo $search; ?>
-      </div>
-      <div class="col-sm-4 con-cart">
-          <?php echo $cart; ?>
-      </div>
-    </div>
-  </div>
-</header>
+    </header>
 <?php if ($categories) { ?>
 <div class="container">
   <nav id="menu" class="navbar">
