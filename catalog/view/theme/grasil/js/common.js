@@ -7,12 +7,11 @@ var cart = {
             data: 'product_id=' + product_id + '&quantity=' + (typeof (quantity) != 'undefined' ? quantity : 1),
             dataType: 'json',
             beforeSend: function () {
-                $('#cart > mybag').button('loading');
+                $('#cart .mybag').addClass('spin');
             },
             success: function (json) {
                 $('.alert, .text-danger').remove();
-
-                $('#cart > mybag').button('reset');
+                $('#cart .mybag').removeClass('spin');
 
                 if (json['redirect']) {
                     location = json['redirect'];
@@ -21,11 +20,11 @@ var cart = {
                 if (json['success']) {
                     $('#content').parent().before('<div class="alert alert-success"><i class="fa fa-check-circle"></i> ' + json['success'] + '<button type="button" class="close" data-dismiss="alert">&times;</button></div>');
 
-                    $('.mybag').html(json['count']);                    
+                    $('.mybag').html(json['count']);
 
                     $('html, body').animate({scrollTop: 0}, 'slow');
 
-                    $('#cart > ul').load('index.php?route=common/cart/info ul li');
+                    $("#cart > ul").load('index.php?route=common/cart/info ul li');
                 }
             }
         });
