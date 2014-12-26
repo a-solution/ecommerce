@@ -20,7 +20,7 @@ var cart = {
                 if (json['success']) {
                     $('#content').parent().before('<div class="alert alert-success"><i class="fa fa-check-circle"></i> ' + json['success'] + '<button type="button" class="close" data-dismiss="alert">&times;</button></div>');
 
-                    $('.mybag').html(json['count']);
+                    $('#cart .mybag').html(json['count']);
 
                     $('html, body').animate({scrollTop: 0}, 'slow');
 
@@ -36,12 +36,12 @@ var cart = {
             data: 'key=' + key + '&quantity=' + (typeof (quantity) != 'undefined' ? quantity : 1),
             dataType: 'json',
             beforeSend: function () {
-                $('#cart > button').button('loading');
+                $('#cart .mybag').addClass('spin');
             },
             success: function (json) {
-                $('#cart > button').button('reset');
+                $('#cart .mybag').removeClass('spin');
 
-                $('#cart-total').html(json['total']);
+                $('#cart .mybag').html(json['count']);
 
                 if (getURLVar('route') == 'checkout/cart' || getURLVar('route') == 'checkout/checkout') {
                     location = 'index.php?route=checkout/cart';
@@ -58,12 +58,12 @@ var cart = {
             data: 'key=' + key,
             dataType: 'json',
             beforeSend: function () {
-                $('#cart > button').button('loading');
+                $('#cart .mybag').addClass('spin');
             },
             success: function (json) {
-                $('#cart > button').button('reset');
-
-                $('#cart-total').html(json['total']);
+                $('#cart .mybag').removeClass('spin');
+                $('#cart .mybag').html(json['count']);
+                $(".alert").remove();
 
                 if (getURLVar('route') == 'checkout/cart' || getURLVar('route') == 'checkout/checkout') {
                     location = 'index.php?route=checkout/cart';
