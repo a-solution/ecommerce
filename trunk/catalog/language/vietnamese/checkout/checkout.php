@@ -1,25 +1,25 @@
 <?php
 // Heading
-$_['heading_title']                  = 'Checkout';
+$_['heading_title']                  = 'Thanh toán';
 
 // Text
-$_['text_cart']                      = 'Shopping Cart';
-$_['text_checkout_option']           = 'Step 1: Checkout Options';
-$_['text_checkout_account']          = 'Step 2: Account &amp; Billing Details';
-$_['text_checkout_payment_address']  = 'Step 2: Billing Details';
-$_['text_checkout_shipping_address'] = 'Step 3: Delivery Details';
-$_['text_checkout_shipping_method']  = 'Step 4: Delivery Method';
-$_['text_checkout_payment_method']   = 'Step 5: Payment Method';
-$_['text_checkout_confirm']          = 'Step 6: Confirm Order';
+$_['text_cart']                      = 'Giỏ hàng của bạn';
+$_['text_checkout_option']           = 'Bước 1: Xác nhận tài khoản';
+$_['text_checkout_account']          = 'Bước 2: Tạo tài khoản &amp; Thông tin thanh toán';
+$_['text_checkout_payment_address']  = 'Bước 2: Thông tin thanh toán';
+$_['text_checkout_shipping_address'] = 'Bước 3: Thông tin giao hàng';
+$_['text_checkout_shipping_method']  = 'Bước 4: Cách thức thức giao hàng';
+$_['text_checkout_payment_method']   = 'Bước 5: Cách thức thanh toán';
+$_['text_checkout_confirm']          = 'Bước 6: Xác nhận đơn hàng của bạn';
 $_['text_modify']                    = 'Modify &raquo;';
-$_['text_new_customer']              = 'New Customer';
-$_['text_returning_customer']        = 'Returning Customer';
-$_['text_checkout']                  = 'Checkout Options:';
-$_['text_i_am_returning_customer']   = 'I am a returning customer';
-$_['text_register']                  = 'Register Account';
-$_['text_guest']                     = 'Guest Checkout';
+$_['text_new_customer']              = 'Bạn là khách hàng mới?';
+$_['text_returning_customer']        = 'Đăng nhập';
+$_['text_checkout']                  = 'Có 2 sự lựa chọn:';
+$_['text_i_am_returning_customer']   = 'Bạn đã là khách hàng của chúng tôi';
+$_['text_register']                  = 'Đăng ký mới';
+$_['text_guest']                     = 'Khách';
 $_['text_register_account']          = 'By creating an account you will be able to shop faster, be up to date on an order\'s status, and keep track of the orders you have previously made.';
-$_['text_forgotten']                 = 'Forgotten Password';
+$_['text_forgotten']                 = 'Bạn đã quên mật khẩu?';
 $_['text_your_details']              = 'Your Personal Details';
 $_['text_your_address']              = 'Your Address';
 $_['text_your_password']             = 'Your Password';
@@ -49,9 +49,9 @@ $_['column_total']                   = 'Total';
 
 // Entry
 $_['entry_email_address']            = 'E-Mail Address';
-$_['entry_email']                    = 'E-Mail';
-$_['entry_password']                 = 'Password';
-$_['entry_confirm']                  = 'Password Confirm';
+$_['entry_email']                    = 'Địa chỉ email';
+$_['entry_password']                 = 'Mật khẩu';
+$_['entry_confirm']                  = 'Nhập lại mật khẩu';
 $_['entry_firstname']                = 'First Name';
 $_['entry_lastname']                 = 'Last Name';
 $_['entry_telephone']                = 'Telephone';

@@ -1,16 +1,16 @@
 <?php
 // Heading
-$_['heading_title']    = 'Shopping Cart';
+$_['heading_title']    = 'Giỏ hàng của bạn';
 
 // Text
-$_['text_success']     = 'Success: You have added <a href="%s">%s</a> to your <a href="%s">shopping cart</a>!';
-$_['text_remove']      = 'Success: You have modified your shopping cart!';
+$_['text_success']     = 'Bạn vừa thêm sàn phẩm <a href="%s">%s</a> vào <a href="%s">giỏ hàng của bạn</a>!';
+$_['text_remove']      = 'Cập nhật giỏ hàng thành công!';
 $_['text_login']       = 'Attention: You must <a href="%s">login</a> or <a href="%s">create an account</a> to view prices!';
 $_['text_items']       = '%s item(s) - %s';
 $_['text_points']      = 'Reward Points: %s';
 $_['text_next']        = 'What would you like to do next?';
 $_['text_next_choice'] = 'Choose if you have a discount code or reward points you want to use or would like to estimate your delivery cost.';
-$_['text_empty']       = 'Your shopping cart is empty!';
+$_['text_empty']       = 'Không có sản phẩm nào trong giỏ hàng';
 $_['text_day']         = 'day';
 $_['text_week']        = 'week';
 $_['text_semi_month']  = 'half-month';
