@@ -978,3 +978,10 @@ header .con-wishlist {
 .btn-primary:hover {    
     background: #000;
 }
+
+/*Social & Support*/
+.social-sec {
+    position: fixed;
+    right: 10px;
+    top: 190px;    
+}
