@@ -43,7 +43,7 @@
   </div>
 </footer>
 <!--Social & Support-->
-<div class="social-sec">
+<div class="social-sec hidden-xs">
     <div class="fb-like" data-href="http://localhost/asaca" data-layout="box_count" data-action="like" data-show-faces="true" data-share="true"></div>
     <div id="fb-root"></div>
     <script>(function(d, s, id) {

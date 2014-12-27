@@ -98,7 +98,7 @@
             <div class="image"><a href="<?php echo $product['href']; ?>"><img src="<?php echo $product['thumb']; ?>" alt="<?php echo $product['name']; ?>" title="<?php echo $product['name']; ?>" class="img-responsive" /></a></div>
             <div>
               <div class="caption">
-                <h4><a href="<?php echo $product['href']; ?>"><?php echo $product['name']; ?></a></h4>                
+                <h4><a href="<?php echo $product['href']; ?>"><?php echo $product['name']; ?></a></h4>                                
                 <?php if ($product['rating']) { ?>
                 <div class="rating">
                   <?php for ($i = 1; $i <= 5; $i++) { ?>
@@ -124,6 +124,7 @@
                   <span class="price-new"><?php echo $product['special']; ?></span> <span class="price-old"><?php echo $product['price']; ?></span>
                   <?php } ?>                  
                 </p>
+                <p class="desc"><?php echo $product['description']; ?></p>
                 <?php } ?>
               </div>
               <div class="button-group">
