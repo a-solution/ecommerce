@@ -1,52 +1,52 @@
 <?php
 // Text
-$_['text_search']                             = 'Search';
-$_['text_brand']                              = 'Brand';
-$_['text_manufacturer']                       = 'Brand:';
-$_['text_model']                              = 'Product Code:';
-$_['text_reward']                             = 'Reward Points:';
-$_['text_points']                             = 'Price in reward points:';
-$_['text_stock']                              = 'Availability:';
-$_['text_instock']                            = 'In Stock';
-$_['text_tax']                                = 'Ex Tax:';
-$_['text_discount']                           = ' or more ';
-$_['text_option']                             = 'Available Options';
-$_['text_minimum']                            = 'This product has a minimum quantity of %s';
-$_['text_reviews']                            = '%s reviews';
-$_['text_write']                              = 'Write a review';
-$_['text_login']                              = 'Please <a href="%s">login</a> or <a href="%s">register</a> to review';
-$_['text_no_reviews']                         = 'There are no reviews for this product.';
-$_['text_note']                               = '<span class="text-danger">Note:</span> HTML is not translated!';
-$_['text_success']                            = 'Thank you for your review. It has been submitted to the webmaster for approval.';
+$_['text_search']                             = 'Tìm kiếm';
+$_['text_brand']                              = 'Nhãn hiệu';
+$_['text_manufacturer']                       = 'Nhãn hiệu:';
+$_['text_model']                              = 'Mã:';
+$_['text_reward']                             = 'Điểm thưởng:';
+$_['text_points']                             = 'Giá có điểm thưởng:';
+$_['text_stock']                              = 'Còn hàng:';
+$_['text_instock']                            = 'Trong kho';
+$_['text_tax']                                = 'Thuế:';
+$_['text_discount']                           = ' hoặc thêm ';
+$_['text_option']                             = 'Lựa chọn';
+$_['text_minimum']                            = 'Sản phẩm này có số lượng tối thiểu là %s';
+$_['text_reviews']                            = '%s đánh giá';
+$_['text_write']                              = 'Viết đánh giá của bạn';
+$_['text_login']                              = 'Vui lòng <a href="%s">Đăng nhập</a> hoặc <a href="%s">đăng ký</a> để đánh giá';
+$_['text_no_reviews']                         = 'Không có đánh giá nào cho sản phẩm này.';
+$_['text_note']                               = '<span class="text-danger">Ghi chú:</span> Mã HTML sẽ không được thể hiện!';
+$_['text_success']                            = 'Cảm ơn bạn đã đánh giá. Đánh giá của bạn đã được gửi đến ban quản trị và đang chờ duyệt.';
 $_['text_related']                            = 'Sản phẩn liên quan';
-$_['text_tags']                               = 'Tags:';
-$_['text_error']                              = 'Product not found!';
-$_['text_payment_recurring']                    = 'Payment Profiles';
-$_['text_trial_description']                  = '%s every %d %s(s) for %d payment(s) then';
-$_['text_payment_description']                = '%s every %d %s(s) for %d payment(s)';
-$_['text_payment_until_canceled_description'] = '%s every %d %s(s) until canceled';
-$_['text_day']                                = 'day';
-$_['text_week']                               = 'week';
-$_['text_semi_month']                         = 'half-month';
-$_['text_month']                              = 'month';
-$_['text_year']                               = 'year';
+$_['text_tags']                               = 'Thẻ:';
+$_['text_error']                              = 'Không tìm thấy sản phẩm nào!';
+$_['text_payment_recurring']                    = 'Danh mục thanh toán';
+$_['text_trial_description']                  = '%s mỗi %d %s(s) cho %d thanh toán sau đó';
+$_['text_payment_description']                = '%s mỗi %d %s(s) cho %d thanh toán';
+$_['text_payment_until_canceled_description'] = '%s mỗi %d %s(s) cho đến khi được hủy';
+$_['text_day']                                = 'ngày';
+$_['text_week']                               = 'tuần';
+$_['text_semi_month']                         = 'nửa tháng';
+$_['text_month']                              = 'tháng';
+$_['text_year']                               = 'năm';
 
 // Entry
 $_['entry_qty']                               = 'Số lượng';
-$_['entry_name']                              = 'Your Name';
-$_['entry_review']                            = 'Your Review';
-$_['entry_rating']                            = 'Rating';
-$_['entry_good']                              = 'Good';
-$_['entry_bad']                               = 'Bad';
-$_['entry_captcha']                           = 'Enter the code in the box below';
+$_['entry_name']                              = 'Tên của bạn';
+$_['entry_review']                            = 'Đánh giá của bạn';
+$_['entry_rating']                            = 'Xếp hạng';
+$_['entry_good']                              = 'Tốt';
+$_['entry_bad']                               = 'Xấu';
+$_['entry_captcha']                           = 'Điền mã xác minh vào ô bên dưới';
 
 // Tabs
-$_['tab_description']                         = 'Description';
-$_['tab_attribute']                           = 'Specification';
-$_['tab_review']                              = 'Reviews (%s)';
+$_['tab_description']                         = 'Mô tả';
+$_['tab_attribute']                           = 'Thông số';
+$_['tab_review']                              = 'Đánh giá (%s)';
 
 // Error
-$_['error_name']                              = 'Warning: Review Name must be between 3 and 25 characters!';
-$_['error_text']                              = 'Warning: Review Text must be between 25 and 1000 characters!';
-$_['error_rating']                            = 'Warning: Please select a review rating!';
-$_['error_captcha']                           = 'Warning: Verification code does not match the image!';
+$_['error_name']                              = 'Chú ý: Tên phải có từ 3 đến 25 ký tự!';
+$_['error_text']                              = 'Chú ý: Đánh giá phải từ 25 đến 1000 ký tự!';
+$_['error_rating']                            = 'Chú ý: phải chọn xếp hạng!';
+$_['error_captcha']                           = 'Chú ý: Mã xác minh phải đúng với hình!';
