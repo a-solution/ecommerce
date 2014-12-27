@@ -1,6 +1,6 @@
 <div id="cart">    
     <div data-toggle="dropdown" data-loading-text="<?php echo $text_loading; ?>" class="mycart">
-        <span class="mylabel"><?php echo $text_mycart; ?></span>
+        <span class="mylabel hidden-sm"><?php echo $text_mycart; ?></span>
         <span class="mybag"><?php echo $text_number_of_items; ?></span>            
     </div>    
     <ul class="dropdown-menu pull-right" id="mini-cart">
