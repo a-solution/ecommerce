@@ -1,21 +1,21 @@
 <?php
 // Heading
-$_['heading_title']                = 'Account Login';
+$_['heading_title']                = 'Tài khoản đăng nhập';
 
 // Text
-$_['text_account']                 = 'Account';
-$_['text_login']                   = 'Login';
-$_['text_new_customer']            = 'New Customer';
-$_['text_register']                = 'Register Account';
-$_['text_register_account']        = 'By creating an account you will be able to shop faster, be up to date on an order\'s status, and keep track of the orders you have previously made.';
-$_['text_returning_customer']      = 'Returning Customer';
-$_['text_i_am_returning_customer'] = 'I am a returning customer';
-$_['text_forgotten']               = 'Forgotten Password';
+$_['text_account']                 = 'Tài khoản';
+$_['text_login']                   = 'Đăng nhập';
+$_['text_new_customer']            = 'Khách hàng mới';
+$_['text_register']                = 'Đăng ký tài khoản';
+$_['text_register_account']        = 'Đăng ký một tài khoản, bạn có thể thao tác mua hàng nhanh hơn. Bạn sẽ được cập nhật thông tin đơn hàng và có thể theo dõi đơn hàng của bạn.';
+$_['text_returning_customer']      = 'Khách hàng đã có tài khoản';
+$_['text_i_am_returning_customer'] = 'Tôi đã có tài khoản';
+$_['text_forgotten']               = 'Quên mật khẩu';
 
 // Entry
-$_['entry_email']                  = 'E-Mail Address';
-$_['entry_password']               = 'Password';
+$_['entry_email']                  = 'Địa chỉ email';
+$_['entry_password']               = 'Mật khẩu';
 
 // Error
-$_['error_login']                  = 'Warning: No match for E-Mail Address and/or Password.';
-$_['error_approved']               = 'Warning: Your account requires approval before you can login.';
+$_['error_login']                  = 'Chú ý: Email hay mật khẩu không đúng.';
+$_['error_approved']               = 'Chú ý: Tài khoản của bạn cần được duyệt để có thể đăng nhập.';

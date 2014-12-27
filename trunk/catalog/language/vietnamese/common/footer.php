@@ -11,7 +11,7 @@ $_['text_voucher']      = 'Phiếu quà tặng';
 $_['text_affiliate']    = 'Đại lý';
 $_['text_special']      = 'Đặt biệt';
 $_['text_account']      = 'Tài khoản';
-$_['text_order']        = 'Lịch sử đặt hàng';
+$_['text_order']        = 'Lịch sử đơn hàng';
 $_['text_wishlist']     = 'Danh sách yêu thích';
 $_['text_newsletter']   = 'Bản tin';
 $_['text_powered']      = 'Bản quyền của <a href="http://www.asaca.vn">ASACA</a><br /> %s &copy; %s';

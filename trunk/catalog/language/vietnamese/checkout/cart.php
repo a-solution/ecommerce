@@ -6,7 +6,7 @@ $_['heading_title']    = 'Giỏ hàng của bạn';
 $_['text_success']     = 'Bạn vừa thêm sàn phẩm <a href="%s">%s</a> vào <a href="%s">giỏ hàng của bạn</a>!';
 $_['text_remove']      = 'Cập nhật giỏ hàng thành công!';
 $_['text_login']       = 'Attention: You must <a href="%s">login</a> or <a href="%s">create an account</a> to view prices!';
-$_['text_items']       = '%s item(s) - %s';
+$_['text_items']       = '%s sản phẩm - %s';
 $_['text_points']      = 'Reward Points: %s';
 $_['text_next']        = 'What would you like to do next?';
 $_['text_next_choice'] = 'Choose if you have a discount code or reward points you want to use or would like to estimate your delivery cost.';
