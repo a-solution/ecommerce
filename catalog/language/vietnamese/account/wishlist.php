@@ -1,21 +1,21 @@
 <?php
 // Heading
-$_['heading_title'] = 'My Wish List';
+$_['heading_title'] = 'Danh sách yêu thích';
 
 // Text
-$_['text_account']  = 'Account';
-$_['text_instock']  = 'In Stock';
-$_['text_wishlist'] = 'Wish List (%s)';
-$_['text_login']    = 'You must <a href="%s">login</a> or <a href="%s">create an account</a> to save <a href="%s">%s</a> to your <a href="%s">wish list</a>!';
-$_['text_success']  = 'Success: You have added <a href="%s">%s</a> to your <a href="%s">wish list</a>!';
-$_['text_exists']   = '<a href="%s">%s</a> is already in your <a href="%s">wish list</a>!';
-$_['text_remove']   = 'Success: You have modified your wish list!';
-$_['text_empty']    = 'Your wish list is empty.';
+$_['text_account']  = 'Tài khoản';
+$_['text_instock']  = 'Trong kho';
+$_['text_wishlist'] = 'Danh sách yêu thích (%s)';
+$_['text_login']    = 'Bạn phải <a href="%s">đăng nhập</a> hay <a href="%s">tạo một tài khoản</a> để lưu <a href="%s">%s</a> vào <a href="%s">danh sách yêu thích</a>!';
+$_['text_success']  = 'Bạn đã thêm <a href="%s">%s</a> vào <a href="%s">danh sách yêu thích</a> thành công!';
+$_['text_exists']   = '<a href="%s">%s</a> đã có trong <a href="%s">danh sách yêu thích</a>!';
+$_['text_remove']   = 'Bạn đạ cập nhật danh sách yêu thích thành công!';
+$_['text_empty']    = 'Danh sách yêu thích của bạn không có sản phẩm nào.';
 
 // Column
-$_['column_image']  = 'Image';
-$_['column_name']   = 'Product Name';
-$_['column_model']  = 'Model';
-$_['column_stock']  = 'Stock';
-$_['column_price']  = 'Unit Price';
-$_['column_action'] = 'Action';
+$_['column_image']  = 'Hình';
+$_['column_name']   = 'Tên sản phẩm';
+$_['column_model']  = 'Chủng loại';
+$_['column_stock']  = 'Còn hàng';
+$_['column_price']  = 'Giá';
+$_['column_action'] = 'Thao tác';

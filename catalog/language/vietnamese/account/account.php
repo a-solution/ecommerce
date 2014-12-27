@@ -1,21 +1,21 @@
 <?php
 // Heading
-$_['heading_title']      = 'My Account';
+$_['heading_title']      = 'Tài khoản';
 
 // Text
-$_['text_account']       = 'Account';
-$_['text_my_account']    = 'My Account';
-$_['text_my_orders']     = 'My Orders';
-$_['text_my_newsletter'] = 'Newsletter';
-$_['text_edit']          = 'Edit your account information';
-$_['text_password']      = 'Change your password';
-$_['text_address']       = 'Modify your address book entries';
-$_['text_wishlist']      = 'Modify your wish list';
-$_['text_order']         = 'View your order history';
-$_['text_download']      = 'Downloads';
-$_['text_reward']        = 'Your Reward Points';
-$_['text_return']        = 'View your return requests';
-$_['text_transaction']   = 'Your Transactions';
-$_['text_newsletter']    = 'Subscribe / unsubscribe to newsletter';
-$_['text_recurring']     = 'Recurring payments';
-$_['text_transactions']  = 'Transactions';
+$_['text_account']       = 'Tài khoản';
+$_['text_my_account']    = 'Tài khoản';
+$_['text_my_orders']     = 'Đơn hàng';
+$_['text_my_newsletter'] = 'Bản tin';
+$_['text_edit']          = 'Sửa thông tin tài khoản';
+$_['text_password']      = 'Thay đổi mật khẩu';
+$_['text_address']       = 'Sửa địa chỉ nhận hàng';
+$_['text_wishlist']      = 'Sửa danh sách yêu thích';
+$_['text_order']         = 'Xem lịch sử đơn hàng';
+$_['text_download']      = 'Thông tin tải về';
+$_['text_reward']        = 'Điểm thưởng của bạn';
+$_['text_return']        = 'Xem yêu cầu đổi trả của bạn';
+$_['text_transaction']   = 'Giao dịch của bạn';
+$_['text_newsletter']    = 'Theo dõi / không theo dõi bản tin';
+$_['text_recurring']     = 'Thanh toán định kỳ';
+$_['text_transactions']  = 'Giao dịch';
