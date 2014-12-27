@@ -16,7 +16,7 @@ $_['text_no']               = 'Không';
 $_['text_none']             = ' --- None --- ';
 $_['text_select']           = ' --- Vui lòng chọn --- ';
 $_['text_all_zones']        = 'Tất cả các lĩnh vực';
-$_['text_pagination']       = 'Showing %d to %d of %d (%d Pages)';
+$_['text_pagination']       = 'Đang xem %d đến %d của %d sản phẩm (%d trang)';
 $_['text_loading']          = 'Đang xử lý...';
 
 // Buttons
