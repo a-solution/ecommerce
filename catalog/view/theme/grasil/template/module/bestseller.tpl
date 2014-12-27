@@ -29,6 +29,7 @@
           <?php echo $product['price']; ?>
           <?php } else { ?>
           <span class="price-new"><?php echo $product['special']; ?></span> <span class="price-old"><?php echo $product['price']; ?></span>
+          <span class="saleoff"><?php echo $product['saleoff']; ?>%</span>
           <?php } ?>          
         </p>
         <?php } ?>
