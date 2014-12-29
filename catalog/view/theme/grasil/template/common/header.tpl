@@ -120,7 +120,7 @@
                                         <?php } ?>
                                     </ul>
                                     <?php } ?>
-                                    <div class="extend-pic" style="background: #fff url('<?php echo $category["image"]; ?>')"></div>
+                                    <div class="extend-pic" style="background-image: url('<?php echo $category["image"]; ?>')"></div>
                                     <a href="<?php echo $category['href']; ?>" class="see-all"><?php echo $text_all; ?> <?php echo $category['name']; ?></a>
                                 </div>                                                                
                             </div>                            
