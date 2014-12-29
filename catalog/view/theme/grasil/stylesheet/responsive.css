@@ -22,10 +22,6 @@
     #search {
         padding: 0;
     }
-
-    #menu {
-/*        border-radius: 4px;*/
-    }
     #menu div.dropdown-inner > ul.list-unstyled {
         display: block;
     }
@@ -33,10 +29,15 @@
         margin-left: 0 !important;
         background: #fff !important;
     }
-    #menu .dropdown-menu.extend-pic {
-        min-height: auto;
+    
+    #menu .has-extend-pic .dropdown-menu {
+        min-height: 0;
         padding: 0;
     }
+    #menu .has-extend-pic .dropdown-menu .extend-pic {
+        display: none;        
+    }
+    
     #menu .dropdown-inner {
         display: block;
     }

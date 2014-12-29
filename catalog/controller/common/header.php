@@ -82,6 +82,8 @@ class ControllerCommonHeader extends Controller {
         }
 
         // Menu
+        $this->load->model('tool/image');
+        
         $this->load->model('catalog/category');
 
         $this->load->model('catalog/product');
@@ -147,11 +149,11 @@ class ControllerCommonHeader extends Controller {
                     );
                 }
 
-                // Level 1
+                // Level 1                
                 $data['categories'][] = array(
                     'category_id' => $category['category_id'],
                     'name' => $category['name'],
-                    'image' => $this->model_tool_image->resize($category['image'], $this->config->get('config_image_category_width'), $this->config->get('config_image_category_height')),
+                    'image' => $this->model_tool_image->resize($category['image'], 150, 400),
                     'column' => $category['column'] ? $category['column'] : 1,
                     'children' => $children_data,
                     'href' => $this->url->link('product/category', 'path=' . $category['category_id'])
