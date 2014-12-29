@@ -107,8 +107,8 @@
                     <ul class="nav navbar-nav">
                         <?php foreach ($categories as $category) { ?>
                         <?php if ($category['children']) { ?>
-                        <li class="dropdown" id="sub-cat-<?php echo $category['category_id']; ?>"><a href="<?php echo $category['href']; ?>" class="dropdown-toggle" data-toggle="dropdown"><?php echo $category['name']; ?></a>
-                            <div class="dropdown-menu extend-pic" style="background: #fff url('<?php echo $category["image"]; ?>') no-repeat right bottom;">
+                        <li class="dropdown<?php echo ($category['image']) ? ' has-extend-pic' : '';?>" id="sub-cat-<?php echo $category['category_id']; ?>"><a href="<?php echo $category['href']; ?>" class="dropdown-toggle" data-toggle="dropdown"><?php echo $category['name']; ?></a>
+                            <div class="dropdown-menu extend-pic">
                                 <div class="dropdown-inner">
                                     <?php foreach (array_chunk($category['children'], ceil(count($category['children']) / $category['column'])) as $children) { ?>
                                     <ul class="list-unstyled">
@@ -120,6 +120,7 @@
                                         <?php } ?>
                                     </ul>
                                     <?php } ?>
+                                    <div class="extend-pic" style="background: #fff url('<?php echo $category["image"]; ?>')"></div>
                                     <a href="<?php echo $category['href']; ?>" class="see-all"><?php echo $text_all; ?> <?php echo $category['name']; ?></a>
                                 </div>                                                                
                             </div>                            

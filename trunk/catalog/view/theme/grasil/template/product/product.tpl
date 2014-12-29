@@ -241,9 +241,9 @@
                 </div>
                 <div class="col-sm-3 col-xs-12">
                     <div class="btn-group addto-box">
-                        <button type="button" class="btn btn-default" onclick="wishlist.add('<?php echo $product_id; ?>');"><i class="fa fa-heart"></i> <?php echo $button_wishlist; ?></button>
-                        <button type="button" class="btn btn-default" onclick="compare.add('<?php echo $product_id; ?>');"><i class="fa fa-exchange"></i> <?php echo $button_compare; ?></button>
-                        <button type="button" class="btn btn-default" onclick="$('a[href=\'#tab-review\']').trigger('click'); return false;"><i class="fa fa-comment"></i> <?php echo $text_write; ?></button>
+                        <button type="button" class="btn" onclick="wishlist.add('<?php echo $product_id; ?>');"><i class="fa fa-heart"></i> <?php echo $button_wishlist; ?></button>
+                        <button type="button" class="btn" onclick="compare.add('<?php echo $product_id; ?>');"><i class="fa fa-exchange"></i> <?php echo $button_compare; ?></button>
+                        <button type="button" class="btn" onclick="$('a[href=\'#tab-review\']').trigger('click'); return false;"><i class="fa fa-comment"></i> <?php echo $text_write; ?></button>
                     </div>
                     <?php if ($review_status) { ?>
                     <div class="rating">

@@ -25,11 +25,12 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 a {
-    color: #23a1d1;    
+    color: #313131;
     transition: all linear .2s;
 }
 a:hover {
-    text-decoration: none;    
+    text-decoration:underline;
+    color: #000;
 }
 legend {
     font-size: 18px;
@@ -38,6 +39,9 @@ legend {
 label {
     font-size: 12px;
     font-weight: normal;
+}
+.form-control {
+    height: 32px;
 }
 select.form-control, textarea.form-control, input[type="text"].form-control, input[type="password"].form-control, input[type="datetime"].form-control, input[type="datetime-local"].form-control, input[type="date"].form-control, input[type="month"].form-control, input[type="time"].form-control, input[type="week"].form-control, input[type="number"].form-control, input[type="email"].form-control, input[type="url"].form-control, input[type="search"].form-control, input[type="tel"].form-control, input[type="color"].form-control {
     font-size: 12px;
@@ -48,6 +52,12 @@ select.form-control, textarea.form-control, input[type="text"].form-control, inp
 .input-group .input-group-addon {
     font-size: 12px;
     height: 30px;
+}
+.input-group-btn:last-child > .btn, .input-group-btn:last-child > .btn-group {
+    margin-left: 0;
+}
+.input-group-btn > .btn + .btn {
+    margin-left: 0;
 }
 /* Fix some bootstrap issues */
 span.hidden-xs, span.hidden-sm, span.hidden-md, span.hidden-lg {
@@ -152,9 +162,9 @@ footer h5 {
 .btn {
     padding: 7.5px 12px;
     font-size: 12px;
-    border: 1px solid #cccccc;
-    border-radius: 4px;
-    box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
+    border: none;
+    border-radius: 0;
+    box-shadow:none;
 }
 .btn-xs {
     font-size: 9px;
@@ -179,65 +189,60 @@ footer h5 {
     font-size: 15px;
 }
 .btn-default {
-    color: #777;
-    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
-    background-color: #e7e7e7;
-    background-image: linear-gradient(to bottom, #eeeeee, #dddddd);
-    background-repeat: repeat-x;
-    border-color: #dddddd #dddddd #b3b3b3 #b7b7b7;
+    background: #313131;
+    color: #fff;
+    border-radius: 0;
+    border:none;
 }
+.btn-default:hover, .btn-default:focus, .btn-default:active, .btn-default.active, .open .dropdown-toggle.btn-default {
+    background: #000 !important;
+    border: none;
+    color: #fff;
+}
+
 .btn-primary {
-    color: #ffffff;
-    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-    background-color: #229ac8;
-    background-image: linear-gradient(to bottom, #23a1d1, #1f90bb);
-    background-repeat: repeat-x;
-    border-color: #1f90bb #1f90bb #145e7a;
+    background: #313131 !important;
+    color: #fff;
+    border-radius: 0;
+    border:none;
 }
-.btn-primary:hover, .btn-primary:active, .btn-primary.active, .btn-primary.disabled, .btn-primary[disabled] {
-    background-color: #1f90bb;
-    background-position: 0 -15px;
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .btn-primary.disabled, .btn-primary[disabled], .open .dropdown-toggle.btn-primary {
+    background: #000 !important;
+    border: none;
 }
+
 .btn-warning {
     color: #ffffff;
-    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-    background-color: #faa732;
-    background-image: linear-gradient(to bottom, #fbb450, #f89406);
-    background-repeat: repeat-x;
-    border-color: #f89406 #f89406 #ad6704;
+    text-shadow: none;
+    background: #faa732;
+    border: none;
 }
 .btn-warning:hover, .btn-warning:active, .btn-warning.active, .btn-warning.disabled, .btn-warning[disabled] {
     box-shadow: inset 0 1000px 0 rgba(0, 0, 0, 0.1);
 }
 .btn-danger {
     color: #ffffff;
-    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-    background-color: #da4f49;
-    background-image: linear-gradient(to bottom, #ee5f5b, #bd362f);
-    background-repeat: repeat-x;
-    border-color: #bd362f #bd362f #802420;
+    text-shadow: none;
+    background: #da4f49;
+    border: none;
 }
 .btn-danger:hover, .btn-danger:active, .btn-danger.active, .btn-danger.disabled, .btn-danger[disabled] {
     box-shadow: inset 0 1000px 0 rgba(0, 0, 0, 0.1);
 }
 .btn-success {
     color: #ffffff;
-    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-    background-color: #5bb75b;
-    background-image: linear-gradient(to bottom, #62c462, #51a351);
-    background-repeat: repeat-x;
-    border-color: #51a351 #51a351 #387038;
+    text-shadow: none;
+    background: #5bb75b;
+    border: none;
 }
 .btn-success:hover, .btn-success:active, .btn-success.active, .btn-success.disabled, .btn-success[disabled] {
     box-shadow: inset 0 1000px 0 rgba(0, 0, 0, 0.1);
 }
 .btn-info {
     color: #ffffff;
-    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-    background-color: #df5c39;
-    background-image: linear-gradient(to bottom, #e06342, #dc512c);
-    background-repeat: repeat-x;
-    border-color: #dc512c #dc512c #a2371a;
+    text-shadow: none;
+    background: #df5c39;
+    border: none;
 }
 .btn-info:hover, .btn-info:active, .btn-info.active, .btn-info.disabled, .btn-info[disabled] {
     background-image: none;
@@ -254,13 +259,11 @@ footer h5 {
     background-image: none;
     box-shadow: none;
 }
-.btn-inverse {
+.btn-inverse {    
     color: #ffffff;
-    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-    background-color: #363636;
-    background-image: linear-gradient(to bottom, #444444, #222222);
-    background-repeat: repeat-x;
-    border-color: #222222 #222222 #000000;
+    text-shadow: none;
+    background: #363636;
+    border: none;
 }
 .btn-inverse:hover, .btn-inverse:active, .btn-inverse.active, .btn-inverse.disabled, .btn-inverse[disabled] {
     background-color: #222222;
@@ -496,12 +499,20 @@ header .con-wishlist {
     background-color: rgba(0, 0, 0, 0.6);
 }
 #menu .dropdown-menu {
-    padding: 20px 0 0 10px;
+    padding: 20px 0 20px 10px;
     border-color: #313131;
+    border-radius: 0;
 }
-#menu .dropdown-menu.extend-pic {
-    min-height: 350px;
-    padding-right: 250px;
+#menu .has-extend-pic .dropdown-menu {
+    min-height: 352px;
+    padding-right: 200px;
+}
+#menu .has-extend-pic .dropdown-menu .extend-pic {
+    width: 160px;
+    height: 350px;
+    position: absolute;
+    bottom:0;
+    right: 0;    
 }
 #menu .dropdown-inner {
     display: table;    
@@ -529,24 +540,23 @@ header .con-wishlist {
     padding-left: 15px;
     font-size: 16px;
     font-weight: 700;
-    line-height: 40px;
+    line-height: 50px;
     color: #fff;
     text-shadow: 0 1px 0 rgba(0, 0, 0, 0.2);
 }
 #menu .btn-navbar {
-    font-size: 15px;
+    font-size: 25px;
     font-stretch: expanded;
-    color: #FFF;
-    padding: 2px 18px;
+    color: #fff;   
     float: right;
-    background-color: #229ac8;
-    background-image: linear-gradient(to bottom, #23a1d1, #1f90bb);
-    background-repeat: repeat-x;
-    border-color: #1f90bb #1f90bb #145e7a;
+    background: #313131;
+    margin: 0;
+    padding: 0 20px;
+    line-height: 50px;
 }
 #menu .btn-navbar:hover, #menu .btn-navbar:focus, #menu .btn-navbar:active, #menu .btn-navbar.disabled, #menu .btn-navbar[disabled] {
     color: #ffffff;
-    background-color: #229ac8;
+    background: #000;
 }
 #menu a.see-all {
     position: absolute;
@@ -636,10 +646,10 @@ header .con-wishlist {
     border-color: #999;
     box-shadow: 0 0 15px #ccc;
 }
-.categories .product-thumb {
+.category-info .product-thumb {
     min-height: 420px;
 }
-.categories .img-thumbnail {
+.category-info .img-thumbnail {
     padding:0;
     border: 0;
 }
@@ -733,20 +743,13 @@ header .con-wishlist {
 }
 
 /*caption*/
-.product-thumb h4 {
+.product-thumb .caption {
+    padding: 5px 15px;
+}
+.product-thumb .caption h4 {
     font-size: 1em;
     font-weight: bold;
     margin-bottom: 3px;
-}
-.product-thumb h4 a {
-    color: #999;
-}
-.product-thumb h4 a:hover {
-    color: #313131;
-}
-.product-thumb .caption {
-    padding: 5px 15px;
-/*    min-height: 150px;*/
 }
 .product-list .product-thumb .caption {
     margin-left: 230px;
@@ -892,21 +895,13 @@ header .con-wishlist {
 .basic-info .addto-box {
     
 }
-.basic-info .addto-box button {
-    border:1px solid #eee;
-    border-radius: 0;
-    background: #fff;
+.basic-info .addto-box button {    
     padding: 5px 10px;
     margin-right: 5px;    
     margin-bottom:15px;
-    box-shadow: none;
-    text-shadow: none;
     display: block;
     width: 100%;
     text-align: left;
-}
-.basic-info .addto-box button + button {
-    margin-left: 0 !important;
 }
 .basic-info .addto-box button:hover {
     background: #313131;
@@ -960,16 +955,6 @@ header .con-wishlist {
 }
 .more-info {
     margin-top: 20px;
-}
-
-.btn-primary {    
-    background: #313131;
-    color: #fff;
-    border-radius: 0;
-    border:none;
-}
-.btn-primary:hover {    
-    background: #000;
 }
 
 /*Social & Support*/
