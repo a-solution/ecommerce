@@ -19,27 +19,30 @@
                 <div class="col-sm-12"><img src="<?php echo $thumb; ?>" alt="<?php echo $heading_title; ?>" title="<?php echo $heading_title; ?>" class="img-thumbnail" /></div>
             </div-->      
             <?php } ?>
-            <div class="cat-heading">
-            <h2 data-toggle="dropdown"><?php echo $heading_title; ?> <i class="fa fa-angle-down"></i></h2>            
-            <?php if ($categories) { ?>
-            <div class="dropdown-menu">            
-                <ul class="list-unstyled">
-                    <?php foreach ($categories as $category) { ?>
-                    <li><a href="<?php echo $category['href']; ?>"><?php echo $category['name']; ?></a></li>
+            <div class="row">
+                <div class="col-sm-10 col-xs-8 cat-heading">
+                    <h2 data-toggle="dropdown"><?php echo $heading_title; ?> <i class="fa fa-angle-down"></i></h2>            
+                    <?php if ($categories) { ?>
+                    <div class="dropdown-menu">            
+                        <ul class="list-unstyled">
+                            <?php foreach ($categories as $category) { ?>
+                            <li><a href="<?php echo $category['href']; ?>"><?php echo $category['name']; ?></a></li>
+                            <?php } ?>
+                        </ul>
+                    </div>
                     <?php } ?>
-                </ul>
-            </div>
-            <?php } ?>
+                </div>
+                <div class="col-sm-2 col-xs-4 items-layout">
+                    <div class="btn-group pull-right">
+                        <button type="button" id="list-view" class="btn" data-toggle="tooltip" title="<?php echo $button_list; ?>"><i class="fa fa-th-list"></i></button>
+                        <button type="button" id="grid-view" class="btn" data-toggle="tooltip" title="<?php echo $button_grid; ?>"><i class="fa fa-th"></i></button>
+                    </div>
+                </div>
             </div>
             <?php if ($products) { ?>
             <p><a href="<?php echo $compare; ?>" id="compare-total"><?php echo $text_compare; ?></a></p>
             <div class="row">
-                <div class="col-md-4">
-                    <div class="btn-group">
-                        <button type="button" id="list-view" class="btn btn-default" data-toggle="tooltip" title="<?php echo $button_list; ?>"><i class="fa fa-th-list"></i></button>
-                        <button type="button" id="grid-view" class="btn btn-default" data-toggle="tooltip" title="<?php echo $button_grid; ?>"><i class="fa fa-th"></i></button>
-                    </div>
-                </div>
+
                 <div class="col-md-2 text-right">
                     <label class="control-label" for="input-sort"><?php echo $text_sort; ?></label>
                 </div>

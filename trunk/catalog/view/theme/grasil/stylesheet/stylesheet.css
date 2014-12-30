@@ -42,6 +42,9 @@ label {
 }
 .form-control {
     height: 32px;
+    -webkit-appearance: none;
+    box-shadow: none;
+    border-radius: 0;
 }
 select.form-control, textarea.form-control, input[type="text"].form-control, input[type="password"].form-control, input[type="datetime"].form-control, input[type="datetime-local"].form-control, input[type="date"].form-control, input[type="month"].form-control, input[type="time"].form-control, input[type="week"].form-control, input[type="number"].form-control, input[type="email"].form-control, input[type="url"].form-control, input[type="search"].form-control, input[type="tel"].form-control, input[type="color"].form-control {
     font-size: 12px;
@@ -580,15 +583,23 @@ header .con-wishlist {
     padding: 15px 0;
 }
 #search .input-lg {
-    height: 40px;
-    line-height: 20px;
+    border-color: #ddd !important;
+    border-radius: 0;
+    border-right-style: none;
+    border-right-width: 0;
+    box-shadow: none !important;
+    height: 38px;
     padding: 0 10px;
+    -webkit-appearance: none;
 }
 #search .btn-lg {
+    color: #999;
     font-size: 15px;
     line-height: 18px;
-    padding: 10px 35px;
-    text-shadow: 0 1px 0 #FFF;
+    padding: 9px 12px;
+    background: #fff;
+    border:1px solid #ddd;
+    border-left: none;
 }
 
 /*aisde*/
@@ -999,4 +1010,8 @@ header .con-wishlist {
 }
 .cat-heading .dropdown-menu ul li {
     padding:5px 15px;
+}
+
+.items-layout .btn-group .btn {
+    margin-left: 5px;
 }
