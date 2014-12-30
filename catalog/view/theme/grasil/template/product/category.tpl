@@ -1,8 +1,19 @@
 <?php echo $header; ?>
 <div class="container">
-    <ul class="breadcrumb">
+    <ul class="breadcrumb hidden-xs">
         <?php foreach ($breadcrumbs as $breadcrumb) { ?>
+        <?php if(isset($breadcrumb['child']) && count($breadcrumb['child'])) { ?>
+        <li class="has-sub">
+            <a href="<?php echo $breadcrumb['href']; ?>"><?php echo $breadcrumb['text']; ?> <i class="fa fa-angle-down"></i></a>          
+            <ul class="dropdown-menu list-unstyled">                
+                <?php foreach ($breadcrumb['child'] as $bchild) { ?>
+                <li><a href="<?php echo $bchild['href']; ?>"><?php echo $bchild['text']; ?></a></li>
+                <?php } ?>
+            </ul>            
+        </li>
+        <?php } else { ?>        
         <li><a href="<?php echo $breadcrumb['href']; ?>"><?php echo $breadcrumb['text']; ?></a></li>
+        <?php } ?>
         <?php } ?>
     </ul>
     <div class="row category-info"><?php echo $column_left; ?>
@@ -19,34 +30,30 @@
                 <div class="col-sm-12"><img src="<?php echo $thumb; ?>" alt="<?php echo $heading_title; ?>" title="<?php echo $heading_title; ?>" class="img-thumbnail" /></div>
             </div-->      
             <?php } ?>
-            <div class="row">
-                <div class="col-sm-10 col-xs-8 cat-heading">
-                    <h2 data-toggle="dropdown"><?php echo $heading_title; ?> <i class="fa fa-angle-down"></i></h2>            
-                    <?php if ($categories) { ?>
-                    <div class="dropdown-menu">            
-                        <ul class="list-unstyled">
-                            <?php foreach ($categories as $category) { ?>
-                            <li><a href="<?php echo $category['href']; ?>"><?php echo $category['name']; ?></a></li>
-                            <?php } ?>
-                        </ul>
-                    </div>
-                    <?php } ?>
-                </div>
-                <div class="col-sm-2 col-xs-4 items-layout">
-                    <div class="btn-group pull-right">
+            <div class="row cat-heading">
+                <div class="col-sm-12 col-xs-12">
+                    <h2 data-toggle="dropdown"><?php echo $heading_title; ?></h2>                    
+                </div>                
+            </div>
+            <?php if ($products) { ?>
+            <div class="row filter">
+                <div class="col-sm-12">
+                    <div class="btn-group">
+                        <button type="button" class="btn">Bán chạy <i class="fa fa-long-arrow-down"></i></button>
+                        <button type="button" class="btn">Giá <i class="fa fa-long-arrow-down"></i></button>
+                        <button type="button" class="btn">Mới <i class="fa fa-long-arrow-down"></i></button>
+                        <button type="button" class="btn">Lượt Xem <i class="fa fa-long-arrow-down"></i></button>
                         <button type="button" id="list-view" class="btn" data-toggle="tooltip" title="<?php echo $button_list; ?>"><i class="fa fa-th-list"></i></button>
                         <button type="button" id="grid-view" class="btn" data-toggle="tooltip" title="<?php echo $button_grid; ?>"><i class="fa fa-th"></i></button>
+                        <button type="button" class="btn" id="compare-total"><?php echo $text_compare; ?></button>
                     </div>
                 </div>
             </div>
-            <?php if ($products) { ?>
-            <p><a href="<?php echo $compare; ?>" id="compare-total"><?php echo $text_compare; ?></a></p>
             <div class="row">
-
-                <div class="col-md-2 text-right">
+                <div class="col-md-2">
                     <label class="control-label" for="input-sort"><?php echo $text_sort; ?></label>
                 </div>
-                <div class="col-md-3 text-right">
+                <div class="col-md-2">
                     <select id="input-sort" class="form-control col-sm-3" onchange="location = this.value;">
                         <?php foreach ($sorts as $sorts) { ?>
                         <?php if ($sorts['value'] == $sort . '-' . $order) { ?>
@@ -57,10 +64,10 @@
                         <?php } ?>
                     </select>
                 </div>
-                <div class="col-md-1 text-right">
+                <div class="col-md-2">
                     <label class="control-label" for="input-limit"><?php echo $text_limit; ?></label>
                 </div>
-                <div class="col-md-2 text-right">
+                <div class="col-md-2">
                     <select id="input-limit" class="form-control" onchange="location = this.value;">
                         <?php foreach ($limits as $limits) { ?>
                         <?php if ($limits['value'] == $limit) { ?>

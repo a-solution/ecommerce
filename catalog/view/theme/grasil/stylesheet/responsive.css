@@ -77,4 +77,14 @@
     .product-list .product-thumb .button-group {
         border-left: none;
     }
+    
+    .cat-heading .items-layout .btn-group .btn {
+        margin-right: 5px;
+    }
+    .cat-heading .compare-price {
+        padding: 15px;
+    }
+    .cat-heading .items-layout {
+        padding-right: 10px;
+    }
 }

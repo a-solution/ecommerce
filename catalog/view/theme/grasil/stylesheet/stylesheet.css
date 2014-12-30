@@ -168,6 +168,10 @@ footer h5 {
     border: none;
     border-radius: 0;
     box-shadow:none;
+    background: #f2f2f2;
+}
+.btn:hover {
+    background: #ddd;
 }
 .btn-xs {
     font-size: 9px;
@@ -992,26 +996,43 @@ header .con-wishlist {
     margin-top: 0;
 }
 
+.breadcrumb .has-sub:hover > a {
+    text-decoration: underline;
+}
+.breadcrumb .has-sub:hover .dropdown-menu {
+    display: block;
+    border-radius: 0;
+    margin: 0;
+    left: 18px;
+    box-shadow: none;
+}
+
 /*Category*/
 .cat-heading {
     position: relative;
+    line-height: 32px;
 }
 .cat-heading h2 {
     margin: 0;
 }
-.cat-heading.open > .dropdown-menu, .cat-heading:hover .dropdown-menu  {
+.cat-heading .items-layout .btn-group .btn {
+    margin-right: 5px;
+}
+.cat-heading .compare-price {
+    padding-left: 0;
+}
+.cat-heading .items-layout {
+    padding-right: 0;
+}
+.cat-heading .compare-price a {
     display: block;
-    border-radius: 0;
-    box-shadow: none;
-    margin-top: 0;
+    text-align: center;
+    background: #eee;
 }
-.cat-heading .dropdown-menu ul {
-    margin: 0;
+.filter {
+    margin-top: 15px;
+    margin-bottom: 15px;
 }
-.cat-heading .dropdown-menu ul li {
-    padding:5px 15px;
-}
-
-.items-layout .btn-group .btn {
-    margin-left: 5px;
+.filter .btn-group .btn {
+    margin-right: 10px;
 }
