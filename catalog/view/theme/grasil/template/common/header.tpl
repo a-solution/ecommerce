@@ -41,7 +41,7 @@
         <?php } ?>
         <?php echo $google_analytics; ?>
     </head>
-    <body class="<?php echo $class; ?>">
+    <body class="<?php echo $class; ?>" ontouchstart="">
 
         <nav id="topnav">
             <div class="container">
@@ -77,7 +77,7 @@
         <header>
             <div class="container">
                 <div class="row">
-                    <div class="col-sm-3 col-xs-12">
+                    <div class="col-sm-3 col-xs-12 hidden-xs">
                         <div id="logo">
                             <a href="<?php echo $home; ?>" class="logo"></a>
                         </div>
