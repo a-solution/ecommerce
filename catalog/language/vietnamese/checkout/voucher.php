@@ -1,13 +1,13 @@
 <?php
 // Heading
-$_['heading_title'] = 'Use Gift Voucher';
+$_['heading_title'] = 'Dùng phiếu quà tặng';
 
 // Text
-$_['text_success']  = 'Success: Your gift voucher discount has been applied!';
+$_['text_success']  = 'Phiếu quà tặng của bạn đã được áp dụng thành công!';
 
 // Entry
-$_['entry_voucher'] = 'Enter your gift voucher code here';
+$_['entry_voucher'] = 'Điền mã phiếu quà tặng';
 
 // Error
-$_['error_voucher'] = 'Warning: Gift Voucher is either invalid or the balance has been used up!';
-$_['error_empty']   = 'Warning: Please enter a voucher code!';
+$_['error_voucher'] = 'Chú ý: Phiếu quà tặng có thể không hợp lệ hay số tiền đã được dùng hết!';
+$_['error_empty']   = 'Chú ý: Vui lòng điền mã phiếu quà tặng!';

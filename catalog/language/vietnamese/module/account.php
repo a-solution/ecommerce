@@ -1,21 +1,21 @@
 <?php
 // Heading
-$_['heading_title']    = 'Account';
+$_['heading_title']    = 'Tài khoản';
 
 // Text
-$_['text_register']    = 'Register';
-$_['text_login']       = 'Login';
-$_['text_logout']      = 'Logout';
-$_['text_forgotten']   = 'Forgotten Password';
-$_['text_account']     = 'My Account';
-$_['text_edit']        = 'Edit Account';
-$_['text_password']    = 'Password';
-$_['text_address']     = 'Address Books';
-$_['text_wishlist']    = 'Wish List';
-$_['text_order']       = 'Order History';
-$_['text_download']    = 'Downloads';
-$_['text_reward']      = 'Reward Points';
-$_['text_return']      = 'Returns';
-$_['text_transaction'] = 'Transactions';
-$_['text_newsletter']  = 'Newsletter';
-$_['text_recurring']   = 'Recurring payments';
+$_['text_register']    = 'Đăng ký';
+$_['text_login']       = 'Đăng nhập';
+$_['text_logout']      = 'Đăng xuất';
+$_['text_forgotten']   = 'Quên mật khẩu';
+$_['text_account']     = 'Tài khoản của tôi';
+$_['text_edit']        = 'Cập nhật tài khoản';
+$_['text_password']    = 'Mật khẩu';
+$_['text_address']     = 'Sổ địa chỉ';
+$_['text_wishlist']    = 'Danh sách yêu thích';
+$_['text_order']       = 'Lịch sử đơn hàng';
+$_['text_download']    = 'Thông tin tải về';
+$_['text_reward']      = 'Điểm thưởng';
+$_['text_return']      = 'Đổi trả';
+$_['text_transaction'] = 'Giao dịch';
+$_['text_newsletter']  = 'Bản tin';
+$_['text_recurring']   = 'Thanh toán định kỳ';
