@@ -1,11 +1,11 @@
 <?php
 // Heading
-$_['heading_title']    = 'Newsletter Subscription';
+$_['heading_title']    = 'Theo dõi bản tin';
 
 // Text
-$_['text_account']     = 'Account';
-$_['text_newsletter']  = 'Newsletter';
-$_['text_success']     = 'Success: Your newsletter subscription has been successfully updated!';
+$_['text_account']     = 'Tài khoản';
+$_['text_newsletter']  = 'Bản tin';
+$_['text_success']     = 'Yêu cầu theo dõi bản tin của bạn đã được cập nhật thành công!';
 
 // Entry
-$_['entry_newsletter'] = 'Subscribe';
+$_['entry_newsletter'] = 'Theo dõi';
