@@ -39,25 +39,27 @@
             <div class="row filter">
                 <div class="col-sm-12">
                     <div class="btn-group">
-                        <button type="button" class="btn">Bán chạy <i class="fa fa-long-arrow-down"></i></button>
-                        <button type="button" class="btn">Giá <i class="fa fa-long-arrow-down"></i></button>
-                        <button type="button" class="btn">Mới <i class="fa fa-long-arrow-down"></i></button>
-                        <button type="button" class="btn">Lượt Xem <i class="fa fa-long-arrow-down"></i></button>
-                        <button type="button" id="list-view" class="btn" data-toggle="tooltip" title="<?php echo $button_list; ?>"><i class="fa fa-th-list"></i></button>
-                        <button type="button" id="grid-view" class="btn" data-toggle="tooltip" title="<?php echo $button_grid; ?>"><i class="fa fa-th"></i></button>
-                        <button type="button" class="btn" id="compare-total"><?php echo $text_compare; ?></button>
+                        <?php                            
+                            foreach($newsorts as $newsorts)
+                            {
+                                echo '<button type="button" id="order-'.$newsorts['value'].'" class="btn '.($newsorts['value']==strtolower($sort.'-'.$order)?' sort-active':'').'" href="'.$newsorts['href'].'" onclick="sort.setType(this)">'.$newsorts['text']. ' ' .$newsorts['icon'].' </button>';
+                            }
+                        ?>
+                        <button type="button" id="list-view" class="btn hidden-xs" data-toggle="tooltip" title="<?php echo $button_list; ?>"><i class="fa fa-th-list"></i></button>
+                        <button type="button" id="grid-view" class="btn hidden-xs" data-toggle="tooltip" title="<?php echo $button_grid; ?>"><i class="fa fa-th"></i></button>
+                        <button type="button" class="btn" id="compare-total" onclick="location='<?php echo $compare;?>'"><?php echo $text_compare; ?></button>
                     </div>
                 </div>
             </div>
-            <div class="row">
+            <!--div class="row">
                 <div class="col-md-2">
                     <label class="control-label" for="input-sort"><?php echo $text_sort; ?></label>
                 </div>
                 <div class="col-md-2">
-                    <select id="input-sort" class="form-control col-sm-3" onchange="location = this.value;">
+                    <select id="input-sort" class="form-control col-sm-3" onchange="location = this.value;">                        
                         <?php foreach ($sorts as $sorts) { ?>
                         <?php if ($sorts['value'] == $sort . '-' . $order) { ?>
-                        <option value="<?php echo $sorts['href']; ?>" selected="selected"><?php echo $sorts['text']; ?></option>
+                        <option value="<?php echo $sorts['value']; ?>" selected="selected"><?php echo $sorts['text']; ?></option>
                         <?php } else { ?>
                         <option value="<?php echo $sorts['href']; ?>"><?php echo $sorts['text']; ?></option>
                         <?php } ?>
@@ -78,7 +80,7 @@
                         <?php } ?>
                     </select>
                 </div>
-            </div>
+            </div-->
             <br />
             <div class="row">
                 <?php foreach ($products as $product) { ?>
@@ -132,9 +134,11 @@
             </div>
             <?php } ?>
             <?php if (!$categories && !$products) { ?>
-            <p><?php echo $text_empty; ?></p>
-            <div class="buttons">
-                <div class="pull-right"><a href="<?php echo $continue; ?>" class="btn btn-primary"><?php echo $button_continue; ?></a></div>
+            <div class="empty-data">
+                <p><?php echo $text_empty; ?></p>
+                <div class="buttons">
+                    <div><a href="<?php echo $continue; ?>" class="btn btn-primary"><?php echo $button_continue; ?></a></div>
+                </div>
             </div>
             <?php } ?>
             <?php echo $content_bottom; ?></div>

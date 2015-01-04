@@ -11,10 +11,14 @@ class ControllerModuleCarousel extends Controller {
 
 		$data['limit'] = $setting['limit'];
 		$data['scroll'] = $setting['scroll'];
+                
+                $data['width'] = $setting['width'];
+		$data['height'] = $setting['height'];
 
 		$data['banners'] = array();
 
 		$results = $this->model_design_banner->getBanner($setting['banner_id']);
+                $data['banner_name'] = $this->model_design_banner->getBannerName($setting['banner_id'])['name'];
 
 		foreach ($results as $result) {
 			if (is_file(DIR_IMAGE . $result['image'])) {

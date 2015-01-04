@@ -73,4 +73,10 @@ var cart = {
             }
         });
     }
-}
+};
+
+var sort = {
+    'setType': function(obj) {
+        window.location.href = $(obj).attr('href');
+    }
+};

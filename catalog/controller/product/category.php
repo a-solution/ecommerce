@@ -206,7 +206,7 @@ class ControllerProductCategory extends Controller {
                 'filter_category_id' => $category_id,
                 'filter_filter' => $filter,
                 'sort' => $sort,
-                'order' => $order,
+                'order' => strtoupper($order),
                 'start' => ($page - 1) * $limit,
                 'limit' => $limit
             );
@@ -326,6 +326,64 @@ class ControllerProductCategory extends Controller {
                 'value' => 'p.model-DESC',
                 'href' => $this->url->link('product/category', 'path=' . $this->request->get['path'] . '&sort=p.model&order=DESC' . $url)
             );
+            
+            //Customize
+            $data['newsorts'][] = array(
+                'text' => 'Bán chạy',
+                'value' => 'p.quantity-desc',
+                'icon' =>'<i class="fa fa-long-arrow-down"></i>',
+                'href' => $this->url->link('product/category', 'path=' . $this->request->get['path'] . '&sort=p.quantity&order=desc' . $url)
+            );
+            if($sort == 'p.price' && $order == 'asc')
+            {
+                $data['newsorts'][] = array(
+                    'text' => 'Giá',
+                    'value' => 'p.price-asc',
+                    'icon' =>'<i class="fa fa-long-arrow-up"></i>',
+                    'href' => $this->url->link('product/category', 'path=' . $this->request->get['path'] . '&sort=p.price&order=desc' . $url)
+                );
+            }
+            else
+            {
+                $data['newsorts'][] = array(
+                    'text' => 'Giá',
+                    'value' => 'p.price-desc',
+                    'icon' =>'<i class="fa fa-long-arrow-down"></i>',
+                    'href' => $this->url->link('product/category', 'path=' . $this->request->get['path'] . '&sort=p.price&order=asc' . $url)
+                );
+            }
+            $data['newsorts'][] = array(
+                'text' => 'Xếp hạng',
+                'value' => 'rating-desc',
+                'icon' =>'<i class="fa fa-long-arrow-down"></i>',
+                'href' => $this->url->link('product/category', 'path=' . $this->request->get['path'] . '&sort=rating&order=desc' . $url)
+            );
+            $data['newsorts'][] = array(
+                'text' => 'Mới',
+                'value' => 'p.date_added-desc',
+                'icon' =>'<i class="fa fa-long-arrow-down"></i>',
+                'href' => $this->url->link('product/category', 'path=' . $this->request->get['path'] . '&sort=p.date_added&order=desc' . $url)
+            );
+            
+            
+            if($sort == 'p.viewed' && $order == 'asc')
+            {
+                $data['newsorts'][] = array(
+                    'text' => 'Lượt xem',
+                    'value' => 'p.viewed-asc',
+                    'icon' =>'<i class="fa fa-long-arrow-down"></i>',
+                    'href' => $this->url->link('product/category', 'path=' . $this->request->get['path'] . '&sort=p.viewed&order=desc' . $url)
+                );
+            }
+            else
+            {
+                $data['newsorts'][] = array(
+                    'text' => 'Lượt xem',
+                    'value' => 'p.viewed-desc',
+                    'icon' =>'<i class="fa fa-long-arrow-up"></i>',
+                    'href' => $this->url->link('product/category', 'path=' . $this->request->get['path'] . '&sort=p.viewed&order=asc' . $url)
+                );
+            }
 
             $url = '';
 
@@ -393,7 +451,7 @@ class ControllerProductCategory extends Controller {
 
             $data['results'] = sprintf($this->language->get('text_pagination'), ($product_total) ? (($page - 1) * $limit) + 1 : 0, ((($page - 1) * $limit) > ($product_total - $limit)) ? $product_total : ((($page - 1) * $limit) + $limit), $product_total, ceil($product_total / $limit));
 
-            $data['sort'] = $sort;
+            $data['sort'] = $sort;            
             $data['order'] = $order;
             $data['limit'] = $limit;
 

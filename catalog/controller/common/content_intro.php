@@ -39,6 +39,7 @@ class ControllerCommonContentIntro extends Controller {
 		$data['modules'] = array();		
 		
 		$modules = $this->model_design_layout->getLayoutModules($layout_id, 'content_intro');
+                $modulesAside = $this->model_design_layout->getLayoutModules($layout_id, 'content_aside');
 
 		foreach ($modules as $module) {
 			$part = explode('.', $module['code']);
@@ -54,7 +55,25 @@ class ControllerCommonContentIntro extends Controller {
 					$data['modules'][] = $this->load->controller('module/' . $code, $setting[$part[1]]);
 				} else {
 					$data['modules'][] = $this->load->controller('module/' . $code);
-				}			
+				}
+			}
+		}
+                
+                foreach ($modulesAside as $moduleAside) {
+			$part = explode('.', $moduleAside['code']);
+			
+			if (isset($part[0])) {
+				$code = $part[0];
+			}
+			
+			if ($code && $this->config->get($code . '_status')) { 
+				$setting = $this->config->get($code . '_module');
+				
+				if (isset($part[1]) && isset($setting[$part[1]])) {
+					$data['modulesAside'][] = $this->load->controller('module/' . $code, $setting[$part[1]]);
+				} else {
+					$data['modulesAside'][] = $this->load->controller('module/' . $code);
+				}
 			}
 		}
 
