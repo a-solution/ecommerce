@@ -87,4 +87,11 @@
     .cat-heading .items-layout {
         padding-right: 10px;
     }
+    
+    .filter {        
+        margin-bottom: 0;
+    }
+    .filter .btn-group .btn {
+        margin-bottom: 10px;
+    }
 }

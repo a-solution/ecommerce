@@ -5,4 +5,10 @@ class ModelDesignBanner extends Model {
 
 		return $query->rows;
 	}
+        
+        public function getBannerName($banner_id){
+            $query = $this->db->query("SELECT name FROM " . DB_PREFIX . "banner WHERE banner_id='" . (int)$banner_id . "'");
+
+            return $query->rows[0];
+        }
 }

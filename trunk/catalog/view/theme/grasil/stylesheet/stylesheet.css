@@ -5,11 +5,15 @@
         url("fonts/MyriadPro-Cond.otf") format("opentype"),
         url("fonts/MyriadPro-Cond.woff") format("woff")
 }
+html {
+    background: #313131;
+}
 body {    
     color: #313131;
     font-size: 14px;
     font-family: Arial, MyriadProCondensed, "Open Sans Condensed", 'Open Sans', Helvetica, Arial, sans-serif;    
-    line-height: 20px;    
+    line-height: 20px;
+    background: #fff;
 }
 /* Override the bootstrap defaults */
 /* Headings - Based on body font size*/
@@ -123,13 +127,13 @@ div.required .control-label:before {
 
 /* content */
 #content {
-    min-height: 600px;
+    
 }
 /* footer */
 footer {
     margin-top: 30px;
     padding-top: 30px;
-    background-color: #303030;
+    background-color: #313131;
     border-top: 1px solid #ddd;
     color: #e2e2e2;
 }
@@ -172,6 +176,21 @@ footer h5 {
 }
 .btn:hover {
     background: #ddd;
+}
+.btn.active {
+    background: #000;
+    box-shadow: none;
+    color: #fff;
+}
+.btn.active {
+    background: #000;
+    box-shadow: none;
+    color: #fff;
+}
+.btn.sort-active {
+    background: #cc0000;
+    box-shadow: none;
+    color: #fff;
 }
 .btn-xs {
     font-size: 9px;
@@ -289,6 +308,11 @@ footer h5 {
     text-shadow: 0 1px 0 #FFF;
 }
 /* carousel */
+.carousel .name {
+    margin: 10px 0 10px 15px;
+    font-weight: bold;
+    color: #ccc;
+}
 .carousel-caption {
     color: #FFFFFF;
     text-shadow: 0 1px 0 #000000;
@@ -617,12 +641,16 @@ header .con-wishlist {
 .intro .aside {
     padding-left: 0;
 }
-.intro .aside img {
-    margin-top: 16px;
+.intro .aside ul {
+    margin: 0;
 }
-.intro .aside img:first-child {
+.intro .aside li:first-child {
     margin-top: 0px;
 }
+.intro .aside li {
+    margin-top: 16px;
+}
+
 
 /*override flexslider*/
 .flexslider {
@@ -672,6 +700,7 @@ header .con-wishlist {
 }
 .product-thumb .image {
     text-align: center;
+    padding: 2px;
 }
 .product-thumb .image a {
     display: block;
@@ -1035,4 +1064,8 @@ header .con-wishlist {
 }
 .filter .btn-group .btn {
     margin-right: 10px;
+}
+
+.empty-data {
+    margin: 15px 0;
 }
