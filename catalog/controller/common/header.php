@@ -3,7 +3,7 @@
 class ControllerCommonHeader extends Controller {
 
     public function index() {
-        $data['title'] = $this->document->getTitle();
+        $data['title'] = $this->document->getTitle() . ' | ' . $this->config->get('config_name');
 
         if ($this->request->server['HTTPS']) {
             $server = $this->config->get('config_ssl');
