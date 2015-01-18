@@ -274,6 +274,11 @@ class ModelCatalogCategory extends Model {
 		return $category_description_data;
 	}
 
+        public function getAllCategoryDescriptions() {
+            $query = $this->db->query("SELECT * FROM " . DB_PREFIX . "category_description ORDER BY category_id");
+            return $query->rows;
+	}
+        
 	public function getCategoryFilters($category_id) {
 		$category_filter_data = array();
 
