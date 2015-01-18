@@ -14,9 +14,9 @@ class Controllermodulelistingcategories extends Controller {
         if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validate()) {
             $this->load->model('setting/setting');
 
-            //For now, just support only one instance of ListingCategories module, that's why I'm hard-coded listingcategories_module[0]
-            //$savedDatas = array();
-            //$savedDatas['listingcategories_module[0][parent_category_id]'] = $this->request->post['listingcategories_parent_category_id'];
+            //For now, just support only one instance of ListingCategories module, that's why I'm hard-coded listingcategories_module[0]            
+            $this->request->post['listingcategories_module'] = array();
+            $this->request->post['listingcategories_module']['0'] = ['parent_category_id' => $this->request->post['listingcategories_parent_category_id']];
             
             $this->model_setting_setting->editSetting('listingcategories', $this->request->post);
 
