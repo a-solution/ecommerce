@@ -11,6 +11,19 @@ class ModelCatalogCategory extends Model {
 
 		return $query->rows;
 	}
+        
+        public function getCategoriesDescription($parent_id = null) {
+                if($parent_id){
+                    $query = $this->db->query("SELECT * FROM " . DB_PREFIX . 
+                            "category_description cd LEFT JOIN ".DB_PREFIX.
+                            "category c on (cd.category_id=c.category_id) WHERE c.category_id='".
+                            (int)$parent_id."'");
+                }
+                else{
+                    $query = $this->db->query("SELECT * FROM " . DB_PREFIX . "category_description");
+                }
+		return $query->rows;
+	}
 
 	public function getCategoryFilters($category_id) {
 		$implode = array();
