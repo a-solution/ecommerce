@@ -2,7 +2,7 @@
 
 class ControllerModuleListingcategories extends Controller {
 
-    public function index() {
+    public function index($the_settings) {
         
         $this->load->language('module/listingcategories');
 
@@ -10,7 +10,7 @@ class ControllerModuleListingcategories extends Controller {
         
         $this->load->model('catalog/category');
 
-        $results = $this->model_catalog_category->getCategoriesDescription();
+        $results = $this->model_catalog_category->getCategoriesDescription($the_settings['parent_category_id']);
         
         $data['categories'] = $results;
         

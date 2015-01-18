@@ -180,7 +180,7 @@ class Mail {
 					}
 				}
 
-				fputs($handle, 'EHLO ' . getenv('SERVER_NAME') . "\r\n");
+				fputs($handle, 'EHLO ' . "".getenv('SERVER_NAME') . "\r\n");
 
 				$reply = '';
 
