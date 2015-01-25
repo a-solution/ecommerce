@@ -6,6 +6,11 @@ class ControllerCommonFooter extends Controller {
 		$data['text_information'] = $this->language->get('text_information');
 		$data['text_service'] = $this->language->get('text_service');
 		$data['text_extra'] = $this->language->get('text_extra');
+                $data['text_customer'] = $this->language->get('text_customer');
+                $data['text_paymentmethod'] = $this->language->get('text_paymentmethod');
+                $data['text_shopping_cart'] = $this->language->get('text_shopping_cart');
+                $data['text_faq'] = $this->language->get('text_faq');
+                $data['text_guide'] = $this->language->get('text_guide');
 		$data['text_contact'] = $this->language->get('text_contact');
 		$data['text_return'] = $this->language->get('text_return');
 		$data['text_sitemap'] = $this->language->get('text_sitemap');
@@ -42,6 +47,7 @@ class ControllerCommonFooter extends Controller {
 		$data['order'] = $this->url->link('account/order', '', 'SSL');
 		$data['wishlist'] = $this->url->link('account/wishlist', '', 'SSL');
 		$data['newsletter'] = $this->url->link('account/newsletter', '', 'SSL');
+                $data['shopping_cart'] = $this->url->link('checkout/cart');
 
 		$data['powered'] = sprintf($this->language->get('text_powered'), $this->config->get('config_name'), date('Y', time()));
 
