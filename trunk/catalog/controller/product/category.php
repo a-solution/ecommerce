@@ -271,6 +271,7 @@ class ControllerProductCategory extends Controller {
 
             $data['sorts'] = array();
 
+            /*
             $data['sorts'][] = array(
                 'text' => $this->language->get('text_default'),
                 'value' => 'p.sort_order-ASC',
@@ -326,31 +327,31 @@ class ControllerProductCategory extends Controller {
                 'value' => 'p.model-DESC',
                 'href' => $this->url->link('product/category', 'path=' . $this->request->get['path'] . '&sort=p.model&order=DESC' . $url)
             );
-            
+            */
             //Customize
             $data['newsorts'][] = array(
                 'text' => 'Bán chạy',
-                'value' => 'p.quantity-desc',
+                'value' => 'orders_count-desc',
                 'icon' =>'<i class="fa fa-long-arrow-down"></i>',
-                'href' => $this->url->link('product/category', 'path=' . $this->request->get['path'] . '&sort=p.quantity&order=desc' . $url)
+                'href' => $this->url->link('product/category', 'path=' . $this->request->get['path'] . '&sort=orders_count&order=desc' . $url)
             );
             if($sort == 'p.price' && $order == 'asc')
             {
-                $data['newsorts'][] = array(
-                    'text' => 'Giá',
-                    'value' => 'p.price-asc',
-                    'icon' =>'<i class="fa fa-long-arrow-up"></i>',
-                    'href' => $this->url->link('product/category', 'path=' . $this->request->get['path'] . '&sort=p.price&order=desc' . $url)
-                );
+                    $data['newsorts'][] = array(
+                        'text' => 'Giá',
+                        'value' => 'p.price-asc',
+                        'icon' =>'<i class="fa fa-long-arrow-up"></i>',
+                        'href' => $this->url->link('product/category', 'path=' . $this->request->get['path'] . '&sort=p.price&order=desc' . $url)
+                    );                    
             }
             else
             {
-                $data['newsorts'][] = array(
-                    'text' => 'Giá',
-                    'value' => 'p.price-desc',
-                    'icon' =>'<i class="fa fa-long-arrow-down"></i>',
-                    'href' => $this->url->link('product/category', 'path=' . $this->request->get['path'] . '&sort=p.price&order=asc' . $url)
-                );
+                    $data['newsorts'][] = array(
+                        'text' => 'Giá',
+                        'value' => 'p.price-desc',
+                        'icon' =>'<i class="fa fa-long-arrow-down"></i>',
+                        'href' => $this->url->link('product/category', 'path=' . $this->request->get['path'] . '&sort=p.price&order=asc' . $url)
+                    );                    
             }
             $data['newsorts'][] = array(
                 'text' => 'Xếp hạng',
@@ -368,22 +369,22 @@ class ControllerProductCategory extends Controller {
             
             if($sort == 'p.viewed' && $order == 'asc')
             {
-                $data['newsorts'][] = array(
-                    'text' => 'Lượt xem',
-                    'value' => 'p.viewed-asc',
-                    'icon' =>'<i class="fa fa-long-arrow-down"></i>',
-                    'href' => $this->url->link('product/category', 'path=' . $this->request->get['path'] . '&sort=p.viewed&order=desc' . $url)
-                );
-            }
+                    $data['newsorts'][] = array(
+                        'text' => 'Lượt xem',
+                        'value' => 'p.viewed-asc',
+                        'icon' =>'<i class="fa fa-long-arrow-down"></i>',
+                        'href' => $this->url->link('product/category', 'path=' . $this->request->get['path'] . '&sort=p.viewed&order=desc' . $url)
+                    );                    
+                }
             else
             {
-                $data['newsorts'][] = array(
-                    'text' => 'Lượt xem',
-                    'value' => 'p.viewed-desc',
-                    'icon' =>'<i class="fa fa-long-arrow-up"></i>',
-                    'href' => $this->url->link('product/category', 'path=' . $this->request->get['path'] . '&sort=p.viewed&order=asc' . $url)
-                );
-            }
+                    $data['newsorts'][] = array(
+                        'text' => 'Lượt xem',
+                        'value' => 'p.viewed-desc',
+                        'icon' =>'<i class="fa fa-long-arrow-up"></i>',
+                        'href' => $this->url->link('product/category', 'path=' . $this->request->get['path'] . '&sort=p.viewed&order=asc' . $url)
+                    );
+                }
 
             $url = '';
 
