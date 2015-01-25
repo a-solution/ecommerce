@@ -157,6 +157,7 @@ class ModelCatalogProduct extends Model {
 			'rating',
 			'p.sort_order',
 			'p.date_added',
+                        'p.viewed',
                         'orders_count'
 		);
 
