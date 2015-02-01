@@ -305,9 +305,9 @@ class ModelCatalogProduct extends Model {
                             $lower_amount = (int)$limit - (int)$query->num_rows;
                             $query2 = $this->db->query("SELECT DISTINCT p.product_id, '0' as 'total' FROM `" .DB_PREFIX. "product` p".
                                     ($category_ids == '' ? '' : ' LEFT JOIN `'.DB_PREFIX.'product_to_category` ptc ON (p.product_id = ptc.product_id) ').
-                                    "WHERE p.product_id NOT IN (SELECT product_id FROM `".DB_PREFIX."order_product`) ".
+                                    " WHERE p.product_id NOT IN (SELECT product_id FROM `".DB_PREFIX."order_product`) ".
                                     ($category_ids == '' ? '' : ' AND ptc.category_id IN ('.$category_ids.') ').                                    
-                                    "ORDER BY quantity DESC LIMIT ".$lower_amount);
+                                    " ORDER BY quantity DESC LIMIT ".$lower_amount);
                             $result_set = array_merge($query->rows, $query2->rows);
                         }
                         
