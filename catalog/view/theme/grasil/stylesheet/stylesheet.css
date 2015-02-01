@@ -1164,3 +1164,10 @@ header .con-wishlist {
 .empty-data {
     margin: 15px 0;
 }
+
+/*Live Support*/
+.live-support {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+}
