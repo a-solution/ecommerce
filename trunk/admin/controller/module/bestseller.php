@@ -8,6 +8,8 @@ class ControllerModuleBestSeller extends Controller {
 		$this->document->setTitle($this->language->get('heading_title'));
 
 		$this->load->model('setting/setting');
+                
+                $this->load->model('catalog/category');
 
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validate()) {
 			$this->model_setting_setting->editSetting('bestseller', $this->request->post);
@@ -87,13 +89,16 @@ class ControllerModuleBestSeller extends Controller {
 		
 		foreach ($modules as $key => $module) {
 			$data['bestseller_modules'][] = array(
-				'key'    => $key,
-				'limit'  => $module['limit'],
-				'width'  => $module['width'],
-				'height' => $module['height']
+				'key'           => $key,
+				'limit'         => $module['limit'],
+				'width'         => $module['width'],
+				'height'        => $module['height'],
+                                'category_ids'  => isset($module['category_ids']) ? $module['category_ids'] : ''
 			);
 		}
 		
+                $data['categories'] = $this->getAllCategories();
+                
 		$data['header'] = $this->load->controller('common/header');
 		$data['column_left'] = $this->load->controller('common/column_left');
 		$data['footer'] = $this->load->controller('common/footer');
@@ -116,4 +121,22 @@ class ControllerModuleBestSeller extends Controller {
 
 		return !$this->error;
 	}
+        
+        
+        private function getAllCategories() {
+
+            $data['categories'] = array();
+
+            $results = $this->model_catalog_category->getAllCategoryDescriptions();
+
+            foreach ($results as $result) {
+                $data['categories'][] = array(
+                    'id'               => $result['category_id'],
+                    'name'             => $result['name'],
+                    'language_id'      => $result['language_id']
+                );
+            }   
+
+            return $data['categories'];
+        }        
 }
