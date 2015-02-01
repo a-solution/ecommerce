@@ -19,7 +19,7 @@ class ControllerModuleBestSeller extends Controller {
 
         $data['products'] = array();
 
-        $results = $this->model_catalog_product->getBestSellerProducts($setting['limit']);
+        $results = $this->model_catalog_product->getBestSellerProducts($setting['limit'], isset($setting['category_ids']) ? $setting['category_ids'] : '');
 
         if ($results) {
             foreach ($results as $result) {
