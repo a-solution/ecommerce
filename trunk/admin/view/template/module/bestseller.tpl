@@ -159,6 +159,8 @@ function SelectToAddCategory(module_id, cbb_control_name){
 
 function clickMinusCircleButton(control){
     var parentDiv = $(control).parent().parent();
+    var tmpArr = parentDiv.attr('id').split('_');
+    var module_id = tmpArr[tmpArr.length-1];
     $(control).parent().remove();
     data = $.map($('#'+parentDiv.attr('id')+' input'), function(element) {
 		return $(element).attr('value');
