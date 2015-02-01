@@ -132,8 +132,7 @@ class ControllerModuleBestSeller extends Controller {
             foreach ($results as $result) {
                 $data['categories'][] = array(
                     'id'               => $result['category_id'],
-                    'name'             => $result['name'],
-                    'language_id'      => $result['language_id']
+                    'name'             => $result['name']
                 );
             }   
 
