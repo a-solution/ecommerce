@@ -204,7 +204,16 @@ class ModelCatalogProduct extends Model {
 	}
 
 	public function getProductSpecials($data = array()) {
-		$sql = "SELECT DISTINCT ps.product_id, (SELECT AVG(rating) FROM " . DB_PREFIX . "review r1 WHERE r1.product_id = ps.product_id AND r1.status = '1' GROUP BY r1.product_id) AS rating FROM " . DB_PREFIX . "product_special ps LEFT JOIN " . DB_PREFIX . "product p ON (ps.product_id = p.product_id) LEFT JOIN " . DB_PREFIX . "product_description pd ON (p.product_id = pd.product_id) LEFT JOIN " . DB_PREFIX . "product_to_store p2s ON (p.product_id = p2s.product_id) WHERE p.status = '1' AND p.date_available <= NOW() AND p2s.store_id = '" . (int)$this->config->get('config_store_id') . "' AND ps.customer_group_id = '" . (int)$this->config->get('config_customer_group_id') . "' AND ((ps.date_start = '0000-00-00' OR ps.date_start < NOW()) AND (ps.date_end = '0000-00-00' OR ps.date_end > NOW())) GROUP BY ps.product_id";
+		$sql = "SELECT DISTINCT ps.product_id, (SELECT AVG(rating) FROM " . DB_PREFIX . "review r1 WHERE r1.product_id = ps.product_id AND r1.status = '1' GROUP BY r1.product_id) AS rating "
+                        . " , cd.category_id, cd.name "
+                        . " FROM " . DB_PREFIX . "product_special ps LEFT JOIN " . DB_PREFIX . "product p ON (ps.product_id = p.product_id) LEFT JOIN " . DB_PREFIX . "product_description pd ON (p.product_id = pd.product_id) LEFT JOIN " . DB_PREFIX . "product_to_store p2s ON (p.product_id = p2s.product_id)"
+                        . " LEFT JOIN  ".DB_PREFIX."product_to_category ptc ON (p.product_id = ptc.product_id) "
+                        . " LEFT JOIN  ".DB_PREFIX."category_description cd ON (ptc.category_id = cd.category_id) "
+                        . " WHERE p.status = '1' AND p.date_available <= NOW() AND p2s.store_id = '" . (int)$this->config->get('config_store_id') . "' AND ps.customer_group_id = '" . (int)$this->config->get('config_customer_group_id') . "' AND ((ps.date_start = '0000-00-00' OR ps.date_start < NOW()) AND (ps.date_end = '0000-00-00' OR ps.date_end > NOW())) "
+                        . ($data['category_ids'] == '' ? '' : " AND ptc.category_id IN (".$data['category_ids'].") ");
+                        
+                        //Hieu: Fix bug a product can belong to many categories    
+                        //. " GROUP BY ps.product_id";
 
 		$sort_data = array(
 			'pd.name',
@@ -247,7 +256,10 @@ class ModelCatalogProduct extends Model {
 		$query = $this->db->query($sql);
 
 		foreach ($query->rows as $result) {
-			$product_data[$result['product_id']] = $this->getProduct($result['product_id']);
+                        $theProduct = $this->getProduct($result['product_id']);
+                        $theProduct['category_id'] = $result['category_id'];
+                        $theProduct['category_name'] = $result['name'];                        
+                        array_push($product_data, $theProduct);                        
 		}
 
 		return $product_data;
@@ -298,11 +310,11 @@ class ModelCatalogProduct extends Model {
 			$query = $this->db->query("SELECT op.product_id, SUM(op.quantity) AS total, cd.category_id, cd.name"
                                 ." FROM " . DB_PREFIX . "order_product op LEFT JOIN `" . DB_PREFIX . "order` o ON (op.order_id = o.order_id) LEFT JOIN `" . DB_PREFIX . "product` p ON (op.product_id = p.product_id) LEFT JOIN `" . DB_PREFIX . "product_to_store` p2s ON (p.product_id = p2s.product_id) ".
                                 " LEFT JOIN `".DB_PREFIX. "product_to_category` ptc ON (p.product_id = ptc.product_id) ".
-                                " LEFT JOIN `".DB_PREFIX. "category` c on (c.category_id = ptc.category_id) ".
-                                " LEFT JOIN `".DB_PREFIX. "category_description` cd on (c.category_id = cd.category_id) ".
+                                " LEFT JOIN `".DB_PREFIX. "category_description` cd on (ptc.category_id = cd.category_id) ".
                                 " WHERE o.order_status_id > '0' AND p.status = '1' AND p.date_available <= NOW() AND p2s.store_id = '" . (int)$this->config->get('config_store_id') . "' ".
                                 ($category_ids == '' ? '' : ' AND ptc.category_id IN ('.$category_ids.') ').
-                                " GROUP BY op.product_id ORDER BY total DESC LIMIT " . (int)$limit);
+                                " GROUP BY op.product_id ".
+                                " ORDER BY total DESC LIMIT " . (int)$limit);
 
                         //If 'Best Seller' is not enough, append other products to fullfil the 'limit' quota
                         if((int)$query->num_rows < (int)$limit){
@@ -318,10 +330,11 @@ class ModelCatalogProduct extends Model {
                         }
                         
 			//foreach ($query->rows as $result) {
-                        foreach ($result_set as $result) {
-				$product_data[$result['product_id']] = $this->getProduct($result['product_id']);
-                                $product_data[$result['product_id']]['category_id'] = $result['category_id'];
-                                $product_data[$result['product_id']]['category_name'] = $result['name'];
+                        foreach ($result_set as $result) {                                
+                                $theProduct = $this->getProduct($result['product_id']);
+                                $theProduct['category_id'] = $result['category_id'];
+                                $theProduct['category_name'] = $result['name'];                        
+                                array_push($product_data, $theProduct);                        
 			}
 
 			$this->cache->set($cache_key, $product_data);
