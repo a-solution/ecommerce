@@ -44,8 +44,9 @@
                 <?php $class = 'col-sm-5'; ?>
                 <?php } ?>
                 <div class="<?php echo $class; ?>">                    
-                    <h1><?php echo $heading_title; ?></h1>
-                    <ul class="list-unstyled">
+                    <h1><?php echo $heading_title; ?></h1>                    
+                    <div class="viewed"><span><?php echo $orderred; ?></span> lượt mua | <span><?php echo $viewed; ?></span> lượt xem</div>
+                    <ul class="list-unstyled">                        
                         <?php if ($manufacturer) { ?>
                         <li><?php echo $text_manufacturer; ?> <a href="<?php echo $manufacturers; ?>"><?php echo $manufacturer; ?></a></li>
                         <?php } ?>
@@ -53,8 +54,7 @@
                         <?php if ($reward) { ?>
                         <li><?php echo $text_reward; ?> <?php echo $reward; ?></li>
                         <?php } ?>
-                        <li><?php echo $text_stock; ?> <?php echo $stock; ?></li>
-                    </ul>
+                        <li><?php echo $text_stock; ?> <?php echo $stock; ?></li>                                            </ul>
                     <?php if ($price) { ?>
                     <ul class="list-unstyled price">
                         <?php if (!$special) { ?>
@@ -62,7 +62,7 @@
                             <h2><?php echo $price; ?></h2>
                         </li>
                         <?php } else { ?>
-                        <li class="price-old"><span style="text-decoration: line-through;"><?php echo $price; ?></span></li>
+                            <li class="price-old"><span style="text-decoration: line-through;">Giá cũ: <?php echo $price; ?></span> - Giảm: <?php echo $saleoff ?>%</li>
                         <li class="price-new">
                             <h2><?php echo $special; ?></h2>
                         </li>
@@ -108,8 +108,8 @@
                             <label class="control-label"><?php echo $option['name']; ?></label>
                             <div id="input-option<?php echo $option['product_option_id']; ?>">
                                 <?php foreach ($option['product_option_value'] as $option_value) { ?>
-                                <div class="radio">
-                                    <label>
+                                <div class="radio border">
+                                    <label onclick="selectBorder(this)">
                                         <input type="radio" name="option[<?php echo $option['product_option_id']; ?>]" value="<?php echo $option_value['product_option_value_id']; ?>" />
                                         <?php echo $option_value['name']; ?>
                                         <?php if ($option_value['price']) { ?>
@@ -118,6 +118,7 @@
                                     </label>
                                 </div>
                                 <?php } ?>
+                                <div style="clear: both"></div>
                             </div>
                         </div>
                         <?php } ?>
@@ -144,16 +145,17 @@
                             <label class="control-label"><?php echo $option['name']; ?></label>
                             <div id="input-option<?php echo $option['product_option_id']; ?>">
                                 <?php foreach ($option['product_option_value'] as $option_value) { ?>
-                                <div class="radio">
+                                <div class="radio image">
                                     <label>
-                                        <input type="radio" name="option[<?php echo $option['product_option_id']; ?>]" value="<?php echo $option_value['product_option_value_id']; ?>" />
-                                        <img src="<?php echo $option_value['image']; ?>" alt="<?php echo $option_value['name'] . ($option_value['price'] ? ' ' . $option_value['price_prefix'] . $option_value['price'] : ''); ?>" class="img-thumbnail" /> <?php echo $option_value['name']; ?>
+                                        <input style="display: none" type="radio" name="option[<?php echo $option['product_option_id']; ?>]" value="<?php echo $option_value['product_option_value_id']; ?>" />
+                                        <img onclick="selectItem(this)" src="<?php echo $option_value['image']; ?>" alt="<?php echo $option_value['name'] . ($option_value['price'] ? ' ' . $option_value['price_prefix'] . $option_value['price'] : ''); ?>" class="img-thumbnail" /> <?php //echo $option_value['name']; ?>
                                         <?php if ($option_value['price']) { ?>
                                         (<?php echo $option_value['price_prefix']; ?><?php echo $option_value['price']; ?>)
                                         <?php } ?>
                                     </label>
                                 </div>
                                 <?php } ?>
+                                <div style="clear: both"></div>
                             </div>
                         </div>
                         <?php } ?>
@@ -255,8 +257,8 @@
                             <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
                             <?php } ?>
                             <?php } ?>
-                            <a href="" onclick="$('a[href=\'#tab-review\']').trigger('click'); return false;"><?php echo $reviews; ?></a></p>
-                        <hr>
+                            <a href="" onclick="$('a[href=\'#tab-review\']').trigger('click'); return false;"><?php echo $reviews; ?></a></p>                       
+                        <hr />
                         <!-- AddThis Button BEGIN -->
                         <div class="addthis_toolbox addthis_default_style"><a class="addthis_button_facebook_like" fb:like:layout="button_count"></a><a class="addthis_counter addthis_pill_style"></a></div>
                         <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-515eeaf54693130e"></script> 
@@ -594,4 +596,20 @@ $('#review').delegate('.pagination a', 'click', function(e) {
     });
     });
 //--></script> 
+<script type="text/javascript">
+    function selectItem(obj)
+    {
+        $(obj).parent().parent().parent().find('.radio').each(function(){            
+            $(this).find('.img-thumbnail').removeClass('selected');
+        });
+        $(obj).addClass('selected');
+    }
+    function selectBorder(obj)
+    {
+        $(obj).parent().parent().find('.radio').each(function(){            
+            $(this).find('label').removeClass('selected');
+        });
+        $(obj).addClass('selected');
+    }    
+</script>
 <?php echo $footer; ?>

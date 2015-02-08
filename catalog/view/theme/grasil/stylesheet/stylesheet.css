@@ -148,9 +148,18 @@ footer .newsletter {
     font-size: 1.2em;
     text-transform: uppercase;
 }
+footer .newsletter input {
+    color: #313131;
+    padding: 0 10px;
+    width: 200px;
+    height:30px;
+}
 footer .newsletter a { color: #fff; }
 footer .newsletter .col1 {
     padding-left:30px;    
+}
+footer .newsletter .col3 {
+    padding-left:0px;    
 }
 footer .newsletter .tnl {
     line-height: 30px;
@@ -159,8 +168,13 @@ footer .newsletter .tnl {
 footer .newsletter .bnl {
     line-height: 30px;
     background: #ccc;
-    padding: 7px 15px 7px;
+    padding: 6px 15px 5px;
     color: #000;
+}
+footer .newsletter .bnl:hover {
+    background: #eee;
+    color: #000;
+    cursor: pointer;
 }
 footer .footer-link {
     margin-top: 30px;
@@ -1033,6 +1047,46 @@ header .con-wishlist {
 .basic-info h1 {
     margin-top: 0;
 }
+.basic-info .viewed {
+    font-size: 0.8em;
+    border-bottom: 1px dashed #eee;
+    margin-bottom: 15px;
+}
+.basic-info .viewed span {
+    font-weight: bold;
+}
+.basic-info .radio.image {
+    padding:0px;
+    float: left;
+    margin: 0;
+    margin-right: 5px;
+}
+.basic-info .radio.image .img-thumbnail.selected {
+    border: 2px solid red;
+}
+.basic-info .radio.image .img-thumbnail {
+    border: 2px solid #fff;
+    padding:1px;
+}
+
+.basic-info .radio.border {
+    padding:0px;
+    float: left;
+    margin: 0;
+    margin-right: 5px;
+}
+.basic-info .radio.border input {
+    display: none;
+}
+.basic-info .radio.border label.selected {
+    border: 2px solid red;
+}
+.basic-info .radio.border label {
+    border: 2px solid #eee;
+    padding:1px 10px;
+    color: #313131 !important;
+}
+
 .basic-info .addto-box {
     
 }
@@ -1063,7 +1117,7 @@ header .con-wishlist {
 .basic-info .price-old {
     color: #999;
     font-size: .5em;
-    text-decoration: line-through;    
+/*    text-decoration: line-through;    */
 }
 .basic-info .price-tax {
     color: #999;
