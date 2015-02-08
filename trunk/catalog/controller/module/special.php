@@ -24,7 +24,7 @@ class ControllerModuleSpecial extends Controller {
 			'order' => 'ASC',
 			'start' => 0,
 			'limit' => $setting['limit'],
-                        'category_ids' => $setting['category_ids']
+                        'category_ids' => isset($setting['category_ids']) ? $setting['category_ids'] : ''
 		);
 
 		$results = $this->model_catalog_product->getProductSpecials($filter_data);
