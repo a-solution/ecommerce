@@ -18,6 +18,8 @@ class ControllerModuleBestSeller extends Controller {
         $this->load->model('tool/image');
 
         $data['products'] = array();
+        
+        $data['categories'] = array();
 
         $results = $this->model_catalog_product->getBestSellerProducts($setting['limit'], isset($setting['category_ids']) ? $setting['category_ids'] : '');
 
@@ -61,7 +63,7 @@ class ControllerModuleBestSeller extends Controller {
                     $rating = false;
                 }
 
-                $data['products'][] = array(
+                $theProduct = array(
                     'product_id' => $result['product_id'],
                     'thumb' => $image,
                     'name' => $result['name'],
@@ -72,7 +74,21 @@ class ControllerModuleBestSeller extends Controller {
                     'tax' => $tax,
                     'rating' => $rating,
                     'href' => $this->url->link('product/product', 'product_id=' . $result['product_id']),
+                    'category_id' => $result['category_id'],
+                    'category_name' => $result['category_name'],
                 );
+                
+                $data['products'][] = $theProduct;
+            
+                if(!isset($data['categories'][$theProduct['category_id']])){
+                    $data['categories'][$theProduct['category_id']] = array();
+                    $data['categories'][$theProduct['category_id']]['category_name'] = '';
+                    $data['categories'][$theProduct['category_id']]['category_id'] = '';
+                    $data['categories'][$theProduct['category_id']]['products'] = array();
+                }
+                $data['categories'][$theProduct['category_id']]['category_name'] = $theProduct['category_name'];
+                $data['categories'][$theProduct['category_id']]['category_id'] = $theProduct['category_id'];
+                array_push($data['categories'][$theProduct['category_id']]['products'], $theProduct);
             }
 
             if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/module/bestseller.tpl')) {
