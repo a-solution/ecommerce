@@ -16,12 +16,15 @@ class ControllerModuleSpecial extends Controller {
 		$this->load->model('tool/image');
 
 		$data['products'] = array();
+                
+                $data['categories'] = array();
 
 		$filter_data = array(
 			'sort'  => 'pd.name',
 			'order' => 'ASC',
 			'start' => 0,
-			'limit' => $setting['limit']
+			'limit' => $setting['limit'],
+                        'category_ids' => $setting['category_ids']
 		);
 
 		$results = $this->model_catalog_product->getProductSpecials($filter_data);
@@ -67,7 +70,7 @@ class ControllerModuleSpecial extends Controller {
 					$rating = false;
 				}
 
-				$data['products'][] = array(
+				$theProduct = array(
 					'product_id'  => $result['product_id'],
 					'thumb'       => $image,
 					'name'        => $result['name'],
@@ -77,8 +80,22 @@ class ControllerModuleSpecial extends Controller {
                                         'saleoff'     => $saleoff,
 					'tax'         => $tax,
 					'rating'      => $rating,
-					'href'        => $this->url->link('product/product', 'product_id=' . $result['product_id'])
+					'href'        => $this->url->link('product/product', 'product_id=' . $result['product_id']),
+                                        'category_id' => $result['category_id'],
+                                        'category_name' => $result['category_name']
 				);
+                                
+                                $data['products'][] = $theProduct;
+
+                                if(!isset($data['categories'][$theProduct['category_id']])){
+                                    $data['categories'][$theProduct['category_id']] = array();
+                                    $data['categories'][$theProduct['category_id']]['category_name'] = '';
+                                    $data['categories'][$theProduct['category_id']]['category_id'] = '';
+                                    $data['categories'][$theProduct['category_id']]['products'] = array();
+                                }
+                                $data['categories'][$theProduct['category_id']]['category_name'] = $theProduct['category_name'];
+                                $data['categories'][$theProduct['category_id']]['category_id'] = $theProduct['category_id'];
+                                array_push($data['categories'][$theProduct['category_id']]['products'], $theProduct);
 			}
 
 			if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/module/special.tpl')) {
