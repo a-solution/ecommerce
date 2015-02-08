@@ -7,7 +7,7 @@
                 </div>
                 <div class="col-md-4 col2">
                     <div class="form">
-                        <input type="text" class="tnl" />
+                        <input type="text" class="tnl" placeholder="Địa chỉ Email" />
                         <span class="bnl">Nhận</span>
                     </div>
                 </div>
@@ -84,5 +84,5 @@
             fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));</script>
 </div>
-<script type="text/javascript" src="https://mylivechat.com/chatinline.aspx?hccid=72189449"></script>
+<!--script type="text/javascript" src="https://mylivechat.com/chatinline.aspx?hccid=72189449"></script-->
 </body></html>
