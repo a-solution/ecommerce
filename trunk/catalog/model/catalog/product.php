@@ -559,4 +559,15 @@ class ModelCatalogProduct extends Model {
 			return 0;
 		}
 	}
+        
+        public function countOrder($product_id)
+        {
+            $query = $this->db->query("SELECT COUNT(ORDER_ID) AS total FROM " . DB_PREFIX . "order_product where `product_id` = " . (int)$product_id);
+
+            if (isset($query->row['total'])) {
+                    return $query->row['total'];
+            } else {
+                    return 0;
+            }
+        }
 }
