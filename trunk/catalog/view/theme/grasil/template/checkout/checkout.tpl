@@ -16,7 +16,7 @@
     <?php } elseif ($column_left || $column_right) { ?>
     <?php $class = 'col-sm-9'; ?>
     <?php } else { ?>
-    <?php $class = 'col-sm-12'; ?>
+    <?php $class = 'col-sm-8'; ?>
     <?php } ?>
     <div id="content" class="<?php echo $class; ?>"><?php echo $content_top; ?>
       <h1><?php echo $heading_title; ?></h1>
@@ -84,6 +84,9 @@
         </div>
       </div>
       <?php echo $content_bottom; ?></div>
+    <div class="col-sm-4">
+        <?php echo $cart; ?>
+    </div>
     <?php echo $column_right; ?></div>
 </div>
 <script type="text/javascript"><!--
