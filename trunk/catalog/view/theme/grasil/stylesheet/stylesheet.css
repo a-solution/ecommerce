@@ -676,7 +676,12 @@ header .con-wishlist {
     border:1px solid #ddd;
     border-left: none;
 }
-
+.result-filter {
+    line-height: 26px;
+}
+.result-filter .btn {
+    margin-right: 10px;
+}
 /*aisde*/
 .intro .banner {
     padding-right:0;

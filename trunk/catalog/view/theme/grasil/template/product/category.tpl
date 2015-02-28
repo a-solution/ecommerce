@@ -45,46 +45,16 @@
                                 echo '<button type="button" id="order-'.$newsorts['value'].'" class="btn '.($newsorts['value']==strtolower($sort.'-'.$order)?' sort-active':'').'" href="'.$newsorts['href'].'" onclick="sort.setType(this)">'.$newsorts['text']. ' ' .$newsorts['icon'].' </button>';
                             }
                         ?>
-                        <button type="button" id="list-view" class="btn hidden-xs" data-toggle="tooltip" title="<?php echo $button_list; ?>"><i class="fa fa-th-list"></i></button>
-                        <button type="button" id="grid-view" class="btn hidden-xs" data-toggle="tooltip" title="<?php echo $button_grid; ?>"><i class="fa fa-th"></i></button>
+                        <!--button type="button" id="list-view" class="btn hidden-xs" data-toggle="tooltip" title="<?php echo $button_list; ?>"><i class="fa fa-th-list"></i></button>
+                        <button type="button" id="grid-view" class="btn hidden-xs" data-toggle="tooltip" title="<?php echo $button_grid; ?>"><i class="fa fa-th"></i></button-->
                         <button type="button" class="btn" id="compare-total" onclick="location='<?php echo $compare;?>'"><?php echo $text_compare; ?></button>
                     </div>
                 </div>
-            </div>
-            <!--div class="row">
-                <div class="col-md-2">
-                    <label class="control-label" for="input-sort"><?php echo $text_sort; ?></label>
-                </div>
-                <div class="col-md-2">
-                    <select id="input-sort" class="form-control col-sm-3" onchange="location = this.value;">                        
-                        <?php foreach ($sorts as $sorts) { ?>
-                        <?php if ($sorts['value'] == $sort . '-' . $order) { ?>
-                        <option value="<?php echo $sorts['value']; ?>" selected="selected"><?php echo $sorts['text']; ?></option>
-                        <?php } else { ?>
-                        <option value="<?php echo $sorts['href']; ?>"><?php echo $sorts['text']; ?></option>
-                        <?php } ?>
-                        <?php } ?>
-                    </select>
-                </div>
-                <div class="col-md-2">
-                    <label class="control-label" for="input-limit"><?php echo $text_limit; ?></label>
-                </div>
-                <div class="col-md-2">
-                    <select id="input-limit" class="form-control" onchange="location = this.value;">
-                        <?php foreach ($limits as $limits) { ?>
-                        <?php if ($limits['value'] == $limit) { ?>
-                        <option value="<?php echo $limits['href']; ?>" selected="selected"><?php echo $limits['text']; ?></option>
-                        <?php } else { ?>
-                        <option value="<?php echo $limits['href']; ?>"><?php echo $limits['text']; ?></option>
-                        <?php } ?>
-                        <?php } ?>
-                    </select>
-                </div>
-            </div-->
+            </div>            
             <br />
             <div class="row">
                 <?php foreach ($products as $product) { ?>
-                <div class="product-layout product-list col-xs-12">
+                <div class="product-layout product-grid col-lg-3 col-md-3 col-sm-6 col-xs-12">
                     <div class="product-thumb">
                         <div class="image"><a href="<?php echo $product['href']; ?>"><img src="<?php echo $product['thumb']; ?>" alt="<?php echo $product['name']; ?>" title="<?php echo $product['name']; ?>" class="img-responsive" /></a></div>
                         <div>
@@ -133,7 +103,7 @@
                 <div class="col-sm-6 text-right"><?php echo $results; ?></div>
             </div>
             <?php } ?>
-            <?php if (!$categories && !$products) { ?>
+            <?php if (!$products) { ?>
             <div class="empty-data">
                 <p><?php echo $text_empty; ?></p>
                 <div class="buttons">
