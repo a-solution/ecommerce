@@ -575,6 +575,7 @@ header .con-wishlist {
     border-color: #313131;
     border-radius: 0;    
 }
+
 #menu .has-extend-pic .dropdown-menu {
     min-height: 352px;
     padding-right: 200px;
@@ -792,13 +793,13 @@ header .con-wishlist {
 .product-thumb {
     border: 1px solid #ddd;
     margin-bottom: 20px;    
-    transition: all linear .2s;
+    transition: all linear .1s;
     min-height: 420px;
     position: relative;
 }
 .product-thumb:hover {
     border-color: #999;
-    box-shadow: 0 0 15px #ccc;
+/*    box-shadow: 0 0 15px #ccc;*/
 }
 .category-info .product-thumb {
     min-height: 420px;
@@ -809,20 +810,28 @@ header .con-wishlist {
 }
 .product-thumb .image {
     text-align: center;
-    padding: 2px;
+    margin: 1px;
+    overflow: hidden;
 }
 .product-thumb .image a {
-    display: block;
+    display: block;    
 }
 .product-thumb .image a:hover {
-    opacity: 0.8;
+    opacity: 0.8;    
 }
 .product-thumb .image img {
     margin-left: auto;
-    margin-right: auto;
+    margin-right: auto;    
 }
 .product-grid .product-thumb .image {
     float: none;
+}
+.product-thumb:hover .image a {
+    -webkit-transform:scale(1.1); /* Safari and Chrome */
+    -moz-transform:scale(1.1); /* Firefox */
+    -ms-transform:scale(1.1); /* IE 9 */
+    -o-transform:scale(1.1); /* Opera */
+     transform:scale(1.1);
 }
 .product-thumb .button-group {
     border-top: 1px solid #ddd;    
@@ -932,7 +941,7 @@ header .con-wishlist {
 }
 .product-thumb .saleoff {
     position: absolute;
-    top:-5px;    
+    top:-6px;    
     display: block;
     width:50px;
     height:51px;
