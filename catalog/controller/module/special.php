@@ -86,16 +86,29 @@ class ControllerModuleSpecial extends Controller {
 				);
                                 
                                 $data['products'][] = $theProduct;
-
-                                if(!isset($data['categories'][$theProduct['category_id']])){
-                                    $data['categories'][$theProduct['category_id']] = array();
-                                    $data['categories'][$theProduct['category_id']]['category_name'] = '';
-                                    $data['categories'][$theProduct['category_id']]['category_id'] = '';
-                                    $data['categories'][$theProduct['category_id']]['products'] = array();
+                                
+                                //If no category is specified, group by 'All'
+                                if(!isset($setting['category_ids']) || $setting['category_ids'] == ''){
+                                    if(!isset($data['categories']['All'])){
+                                        $data['categories']['All'] = array();
+                                        $data['categories']['All']['category_name'] = 'All';
+                                        $data['categories']['All']['category_id'] = 'All';
+                                        $data['categories']['All']['products'] = array();
+                                    }
+                                    array_push($data['categories']['All']['products'], $theProduct);                    
                                 }
-                                $data['categories'][$theProduct['category_id']]['category_name'] = $theProduct['category_name'];
-                                $data['categories'][$theProduct['category_id']]['category_id'] = $theProduct['category_id'];
-                                array_push($data['categories'][$theProduct['category_id']]['products'], $theProduct);
+                                //If some categories are specified, group by Categories ID
+                                else{
+                                    if(!isset($data['categories'][$theProduct['category_id']])){
+                                        $data['categories'][$theProduct['category_id']] = array();
+                                        $data['categories'][$theProduct['category_id']]['category_name'] = '';
+                                        $data['categories'][$theProduct['category_id']]['category_id'] = '';
+                                        $data['categories'][$theProduct['category_id']]['products'] = array();
+                                    }
+                                    $data['categories'][$theProduct['category_id']]['category_name'] = $theProduct['category_name'];
+                                    $data['categories'][$theProduct['category_id']]['category_id'] = $theProduct['category_id'];
+                                    array_push($data['categories'][$theProduct['category_id']]['products'], $theProduct);
+                                }  
 			}
 
 			if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/module/special.tpl')) {

@@ -213,7 +213,8 @@ class ModelCatalogProduct extends Model {
                         . ($data['category_ids'] == '' ? '' : " AND ptc.category_id IN (".$data['category_ids'].") ")
                         
                         //Hieu: Fix bug a product can belong to many categories    
-                        . " GROUP BY ps.product_id, ptc.category_id ";
+                        . " GROUP BY ps.product_id "
+                        . ($data['category_ids'] == '' ? '' : ', ptc.category_id ');
 
 		$sort_data = array(
 			'pd.name',
@@ -327,7 +328,9 @@ class ModelCatalogProduct extends Model {
                                     " LEFT JOIN `".DB_PREFIX."category` c ON (c.category_id = ptc.category_id) ".
                                     " LEFT JOIN `".DB_PREFIX."category_description` cd ON (c.category_id = cd.category_id) ".
                                     " WHERE p.product_id NOT IN (SELECT product_id FROM `".DB_PREFIX."order_product`) ".
-                                    ($category_ids == '' ? '' : ' AND ptc.category_id IN ('.$category_ids.') ').                                    
+                                    ($category_ids == '' ? '' : ' AND ptc.category_id IN ('.$category_ids.') ').   
+                                    " GROUP BY p.product_id ".
+                                    ($category_ids == '' ? '' : ', ptc.category_id ').   
                                     " ORDER BY quantity DESC LIMIT ".$lower_amount);
                             
                             $query2 = $this->db->query($queryString2);
