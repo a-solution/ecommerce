@@ -4,13 +4,13 @@ $_['heading_title']                  = 'Thanh toán';
 
 // Text
 $_['text_cart']                      = 'Giỏ hàng của bạn';
-$_['text_checkout_option']           = 'Bước 1: Xác nhận tài khoản';
-$_['text_checkout_account']          = 'Bước 2: Tạo tài khoản &amp; Thông tin thanh toán';
-$_['text_checkout_payment_address']  = 'Bước 2: Thông tin thanh toán';
-$_['text_checkout_shipping_address'] = 'Bước 3: Thông tin giao hàng';
-$_['text_checkout_shipping_method']  = 'Bước 4: Phương thức thức vận chuyển';
-$_['text_checkout_payment_method']   = 'Bước 5: Phương thức thanh toán';
-$_['text_checkout_confirm']          = 'Bước 6: Xác nhận đơn hàng của bạn';
+$_['text_checkout_option']           = 'Xác nhận tài khoản';
+$_['text_checkout_account']          = 'Tạo tài khoản &amp; Thông tin thanh toán';
+$_['text_checkout_payment_address']  = 'Thông tin thanh toán';
+$_['text_checkout_shipping_address'] = 'Thông tin giao hàng';
+$_['text_checkout_shipping_method']  = 'Phương thức thức vận chuyển';
+$_['text_checkout_payment_method']   = 'Phương thức thanh toán';
+$_['text_checkout_confirm']          = 'Xác nhận đơn hàng của bạn';
 $_['text_modify']                    = 'Cập nhật &raquo;';
 $_['text_new_customer']              = 'Bạn là khách hàng mới?';
 $_['text_returning_customer']        = 'Đăng nhập';
