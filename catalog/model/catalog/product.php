@@ -210,10 +210,10 @@ class ModelCatalogProduct extends Model {
                         . " LEFT JOIN  ".DB_PREFIX."product_to_category ptc ON (p.product_id = ptc.product_id) "
                         . " LEFT JOIN  ".DB_PREFIX."category_description cd ON (ptc.category_id = cd.category_id) "
                         . " WHERE p.status = '1' AND p.date_available <= NOW() AND p2s.store_id = '" . (int)$this->config->get('config_store_id') . "' AND ps.customer_group_id = '" . (int)$this->config->get('config_customer_group_id') . "' AND ((ps.date_start = '0000-00-00' OR ps.date_start < NOW()) AND (ps.date_end = '0000-00-00' OR ps.date_end > NOW())) "
-                        . ($data['category_ids'] == '' ? '' : " AND ptc.category_id IN (".$data['category_ids'].") ");
+                        . ($data['category_ids'] == '' ? '' : " AND ptc.category_id IN (".$data['category_ids'].") ")
                         
                         //Hieu: Fix bug a product can belong to many categories    
-                        //. " GROUP BY ps.product_id";
+                        . " GROUP BY ps.product_id, ptc.category_id ";
 
 		$sort_data = array(
 			'pd.name',
@@ -307,25 +307,31 @@ class ModelCatalogProduct extends Model {
 		if (!$product_data) {
 			$product_data = array();
                         
-			$query = $this->db->query("SELECT op.product_id, SUM(op.quantity) AS total, cd.category_id, cd.name"
+                        $queryString1 = ("SELECT op.product_id, SUM(op.quantity) AS total, cd.category_id, cd.name"
                                 ." FROM " . DB_PREFIX . "order_product op LEFT JOIN `" . DB_PREFIX . "order` o ON (op.order_id = o.order_id) LEFT JOIN `" . DB_PREFIX . "product` p ON (op.product_id = p.product_id) LEFT JOIN `" . DB_PREFIX . "product_to_store` p2s ON (p.product_id = p2s.product_id) ".
                                 " LEFT JOIN `".DB_PREFIX. "product_to_category` ptc ON (p.product_id = ptc.product_id) ".
                                 " LEFT JOIN `".DB_PREFIX. "category_description` cd on (ptc.category_id = cd.category_id) ".
                                 " WHERE o.order_status_id > '0' AND p.status = '1' AND p.date_available <= NOW() AND p2s.store_id = '" . (int)$this->config->get('config_store_id') . "' ".
                                 ($category_ids == '' ? '' : ' AND ptc.category_id IN ('.$category_ids.') ').
                                 " GROUP BY op.product_id ".
+                                ($category_ids == '' ? '' : ', ptc.category_id ').
                                 " ORDER BY total DESC LIMIT " . (int)$limit);
 
+                        $query = $this->db->query($queryString1);
+                        
                         //If 'Best Seller' is not enough, append other products to fullfil the 'limit' quota
                         if((int)$query->num_rows < (int)$limit){
                             $lower_amount = (int)$limit - (int)$query->num_rows;
-                            $query2 = $this->db->query("SELECT DISTINCT p.product_id, '0' as 'total', cd.category_id, cd.name FROM `" .DB_PREFIX. "product` p".
+                            $queryString2 = ("SELECT DISTINCT p.product_id, '0' as 'total', cd.category_id, cd.name FROM `" .DB_PREFIX. "product` p".
                                     " LEFT JOIN `".DB_PREFIX."product_to_category` ptc ON (p.product_id = ptc.product_id) ".
                                     " LEFT JOIN `".DB_PREFIX."category` c ON (c.category_id = ptc.category_id) ".
                                     " LEFT JOIN `".DB_PREFIX."category_description` cd ON (c.category_id = cd.category_id) ".
                                     " WHERE p.product_id NOT IN (SELECT product_id FROM `".DB_PREFIX."order_product`) ".
                                     ($category_ids == '' ? '' : ' AND ptc.category_id IN ('.$category_ids.') ').                                    
                                     " ORDER BY quantity DESC LIMIT ".$lower_amount);
+                            
+                            $query2 = $this->db->query($queryString2);
+                            
                             $result_set = array_merge($query->rows, $query2->rows);
                         }
                         
