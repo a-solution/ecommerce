@@ -2,6 +2,9 @@
     .container {
         width: 970px;
     }
+    #menu .open > .dropdown-menu {
+        display: none;    
+    }
 }
 
 @media (min-width: 768px) {
