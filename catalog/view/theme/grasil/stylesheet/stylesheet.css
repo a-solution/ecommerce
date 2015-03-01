@@ -74,10 +74,6 @@ span.hidden-xs, span.hidden-sm, span.hidden-md, span.hidden-lg {
 .nav-tabs {
     margin-bottom: 15px;
 }
-ul.nav-tabs a {
-    color: #313131 !important;
-    font-weight: bold;
-}
 div.required .control-label:before {
     content: '* ';
     color: #F00;
@@ -132,9 +128,6 @@ div.required .control-label:before {
 /* content */
 #content {
     
-}
-#content a, #content a.active{
-    color: #428bca;
 }
 /* footer */
 footer {
@@ -931,9 +924,6 @@ header .con-wishlist {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-}
-.product-thumb .caption h4 a, .product-thumb .caption h4 a.active {
-    color: #313131 !important;
 }
 .product-list .product-thumb .caption {
     margin-left: 230px;
