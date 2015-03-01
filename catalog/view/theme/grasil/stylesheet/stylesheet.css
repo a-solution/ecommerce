@@ -1129,19 +1129,21 @@ header .con-wishlist {
 .basic-info .price {    
     margin: 3px 0;
     color: #cc0000;
-    font-size: 2.2em;
+    font-size: 2.2em;    
 }
 .basic-info .price-new {
-    display: block;        
-}
-.basic-info .price-new h2 {
-    margin-top: 4px;
+    display: block;  
+    margin-top: 15px;
 }
 .basic-info .price-old {
     color: #999;
     font-size: .5em;
-/*    text-decoration: line-through;    */
 }
+.basic-info .price-old .saleoff {
+    color: green;
+    font-weight: bold;
+}
+
 .basic-info .price-tax {
     color: #999;
     font-size: 12px;
@@ -1250,12 +1252,14 @@ header .con-wishlist {
 }
 
 .tags {
-    border-top:1px solid #f2f2f2;
+    border-top:1px dashed #eee;
     padding-top: 15px;
 }
 .tags a {
-    border:1px dashed #ccc;
+    border:1px solid #eee;
     padding:1px 5px;
+    border-radius: 5px;
+    background: #f9f9f9;
 }
 
 .table-bordered thead td {

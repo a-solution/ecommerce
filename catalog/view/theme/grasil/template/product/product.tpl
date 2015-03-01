@@ -59,12 +59,12 @@
                     <ul class="list-unstyled price">
                         <?php if (!$special) { ?>
                         <li class="price-new">
-                            <h2><?php echo $price; ?></h2>
+                            <?php echo $price; ?>
                         </li>
                         <?php } else { ?>
-                            <li class="price-old"><span style="text-decoration: line-through;">Giá cũ: <?php echo $price; ?></span> - Giảm: <?php echo $saleoff ?>%</li>
+                        <li class="price-old"><span style="text-decoration: line-through;">Giá cũ: <?php echo $price; ?></span> - <span class="saleoff">Giảm: <?php echo $saleoff ?>%</span></li>
                         <li class="price-new">
-                            <h2><?php echo $special; ?></h2>
+                            <?php echo $special; ?>
                         </li>
                         <?php } ?>                        
                         <?php //if ($tax) { ?>
@@ -228,7 +228,7 @@
                             <ul class="list-unstyled">
                                 <li><label class="control-label" for="input-quantity"><?php echo $entry_qty; ?></label></li>
                                 <li>
-                                    <input type="text" name="quantity" value="<?php echo $minimum; ?>" size="2" id="input-quantity" class="form-control" />
+                                    <input type="text" name="quantity" value="<?php echo $minimum; ?>" size="2" id="input-quantity" class="form-control" onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')" onmouseout="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')" />
                                     <input type="hidden" name="product_id" value="<?php echo $product_id; ?>" />
                                 </li>
                                 <li>
