@@ -56,8 +56,8 @@
                     <li><a href="<?php echo $order; ?>"><?php echo $text_order; ?></a></li>
                     <li><a href="<?php echo $wishlist; ?>"><?php echo $text_wishlist; ?></a></li>
                     <li><a href="<?php echo $newsletter; ?>"><?php echo $text_newsletter; ?></a></li>
-                    <li><a href="#"><?php echo $text_faq; ?></a></li>
-                    <li><a href="#"><?php echo $text_guide; ?></a></li>
+                    <li><a href="<?php echo $faq_link; ?>"><?php echo $text_faq; ?></a></li>
+                    <li><a href="<?php echo $guide_link; ?>"><?php echo $text_guide; ?></a></li>
                 </ul>
             </div>
             <div class="col-sm-3">
@@ -67,7 +67,7 @@
             </div>
         </div>
         <hr>
-        <p class="powered"><?php echo $powered; ?></p> 
+        <p class="powered"><?php echo $powered;?></p>        
     </div>
 </footer>
 <!--Social & Support-->

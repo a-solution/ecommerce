@@ -46,8 +46,7 @@ class ControllerModuleLatest extends Controller {
                     $special = $this->currency->format($this->tax->calculate($result['special'], $result['tax_class_id'], $this->config->get('config_tax')));
                     //Customisze
                     if ($price) {
-                        //Hieu: fix Divide By Zero Exception
-                        $saleoff = (int)$price == 0 ? 0 : ((1 - $special / $price) * 100);
+                        $saleoff = (1 - $special/$price) * 100;
                         $saleoff = round($saleoff);
                     } else {
                         $saleoff = false;

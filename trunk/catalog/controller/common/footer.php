@@ -48,6 +48,9 @@ class ControllerCommonFooter extends Controller {
 		$data['wishlist'] = $this->url->link('account/wishlist', '', 'SSL');
 		$data['newsletter'] = $this->url->link('account/newsletter', '', 'SSL');
                 $data['shopping_cart'] = $this->url->link('checkout/cart');
+                
+                $data['faq_link'] = $this->url->link('information/information', 'information_id=' . 9);
+                $data['guide_link'] = $this->url->link('information/information', 'information_id=' . 10);
 
 		$data['powered'] = sprintf($this->language->get('text_powered'), $this->config->get('config_name'), date('Y', time()));
 
