@@ -583,7 +583,7 @@ class ModelCatalogProduct extends Model {
         
         public function countOrder($product_id)
         {
-            $query = $this->db->query("SELECT COUNT(ORDER_ID) AS total FROM " . DB_PREFIX . "order_product where `product_id` = " . (int)$product_id);
+            $query = $this->db->query("SELECT SUM(orp.quantity) AS 'total' FROM " . DB_PREFIX . "order_product orp where `product_id` = " . (int)$product_id);
 
             if (isset($query->row['total'])) {
                     return $query->row['total'];
