@@ -57,7 +57,7 @@
                     </div>
                 </div>
                 <div class="nav pull-right myaccount">                                 
-                    <div class="dropdown"><a href="<?php echo $account; ?>" title="<?php echo $text_account; ?>" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <span class="hidden-xs hidden-sm"><?php echo $text_account; ?></span> <span class="caret"></span></a>
+                    <div class="dropdown"><a href="<?php echo $account; ?>" title="<?php echo $text_account; ?>" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <span class="hidden-xs hidden-sm"><?php echo $customer_name; ?></span> <span class="caret"></span></a>
                         <ul class="dropdown-menu dropdown-menu-right">
                             <?php if ($logged) { ?>
                             <li><a href="<?php echo $account; ?>"><?php echo $text_account; ?></a></li>

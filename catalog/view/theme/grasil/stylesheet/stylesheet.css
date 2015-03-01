@@ -436,8 +436,9 @@ footer .powered .logo {
     padding-bottom:15px;    
 }
 #topnav .dropdown-menu li > a:hover {
-    background: #313131;
-    color: #fff;
+    background: #f2f2f2;
+    color: #000;
+    text-decoration: underline;
 }
 
 /*header*/
