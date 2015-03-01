@@ -60,11 +60,11 @@
                     <div class="dropdown"><a href="<?php echo $account; ?>" title="<?php echo $text_account; ?>" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <span class="hidden-xs hidden-sm"><?php echo $customer_name; ?></span> <span class="caret"></span></a>
                         <ul class="dropdown-menu dropdown-menu-right">
                             <?php if ($logged) { ?>
-                            <li><a href="<?php echo $account; ?>"><?php echo $text_account; ?></a></li>
-                            <li><a href="<?php echo $order; ?>"><?php echo $text_order; ?></a></li>
-                            <li><a href="<?php echo $transaction; ?>"><?php echo $text_transaction; ?></a></li>
-                            <li><a href="<?php echo $download; ?>"><?php echo $text_download; ?></a></li>
-                            <li><a href="<?php echo $logout; ?>"><?php echo $text_logout; ?></a></li>
+                            <li><a href="<?php echo $account; ?>"><i class="fa fa-lock"></i> <?php echo $text_account; ?></a></li>
+                            <li><a href="<?php echo $order; ?>"><i class="fa fa-history"></i> <?php echo $text_order; ?></a></li>
+                            <li><a href="<?php echo $transaction; ?>"><i class="fa fa-folder-open"></i> <?php echo $text_transaction; ?></a></li>
+                            <li><a href="<?php echo $download; ?>"><i class="fa fa-cloud-download"></i> <?php echo $text_download; ?></a></li>
+                            <li class="logout"><a href="<?php echo $logout; ?>"><i class="fa fa-sign-out"></i> <?php echo $text_logout; ?></a></li>
                             <?php } else { ?>
                             <li><a href="<?php echo $register; ?>"><?php echo $text_register; ?></a></li>
                             <li><a href="<?php echo $login; ?>"><?php echo $text_login; ?></a></li>

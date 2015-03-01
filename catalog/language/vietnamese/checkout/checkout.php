@@ -64,7 +64,7 @@ $_['entry_address_2']                = 'Địa chỉ 2';
 $_['entry_postcode']                 = 'Mã vùng';
 $_['entry_city']                     = 'Thành phố';
 $_['entry_country']                  = 'Quốc gia';
-$_['entry_zone']                     = 'Vùng miền / Tiểu bang';
+$_['entry_zone']                     = 'Tỉnh thành';
 $_['entry_newsletter']               = 'Tôi muốn theo dõi %s bản tin.';
 $_['entry_shipping'] 	             = 'Địa chỉ thanh toán và địa chỉ giao hàng giống nhau.';
 
