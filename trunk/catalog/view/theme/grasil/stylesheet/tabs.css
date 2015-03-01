@@ -38,7 +38,23 @@
     border: 1px solid #ddd;
 }
 .tab_content > div .product-thumb {
-    border: none;
+    border-color: #f9f9f9;
+    min-height: 340px;
+}
+.tab_content > div .product-thumb .button-group {
+    border-top-color: #f2f2f2;
+}
+.tab_content > div .product-thumb .button-group button {
+    background-color: #f9f9f9;
+}
+.tab_content > div .product-thumb:hover > .button-group button {
+    background: #313131;  
+    transition: all linear .2s;
+    color: #ccc;
+}
+.tab_content > div .product-thumb .button-group button:hover {
+    background-color: #313131;
+    color: #fff;
 }
 .tab_content .current { display: block; }
 .tab_content #home.first { display: block; }

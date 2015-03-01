@@ -799,15 +799,12 @@ header .con-wishlist {
     border: 1px solid #ddd;
     margin-bottom: 20px;    
     transition: all linear .1s;
-    min-height: 420px;
+    min-height: 355px;
     position: relative;
 }
 .product-thumb:hover {
     border-color: #999;
 /*    box-shadow: 0 0 15px #ccc;*/
-}
-.category-info .product-thumb {
-    min-height: 420px;
 }
 .category-info .img-thumbnail {
     padding:0;
@@ -845,6 +842,10 @@ header .con-wishlist {
     width: 100%;
     bottom: 0px;    
 }
+.product-thumb .orderred, .product-thumb .viewed {
+    color: #999;
+}
+
 .product-list .product-thumb .button-group {
     border-left: 1px solid #ddd;
 }
@@ -865,7 +866,7 @@ header .con-wishlist {
     border: none;
     display: inline-block;
     float: left;    
-    line-height: 38px;
+    line-height: 26px;
     font-weight: bold;
     text-align: center;
     text-transform: uppercase;
@@ -917,8 +918,11 @@ header .con-wishlist {
 }
 .product-thumb .caption h4 {
     font-size: 1em;
-    font-weight: bold;
-    margin-bottom: 3px;
+    font-weight: 400;
+    margin: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 .product-list .product-thumb .caption {
     margin-left: 230px;
@@ -928,16 +932,16 @@ header .con-wishlist {
 .product-thumb .price {    
     margin: 3px 0;
     color: #cc0000;
-    font-size: 2.2em;
+    font-size: 1.3em;
 }
 .product-thumb .price-new {    
-    display: block;
-    
+/*    display: block;    */
 }
 .product-thumb .price-old {
     color: #999;
-    font-size: .5em;
-    text-decoration: line-through;    
+    font-size: .7em;
+    text-decoration: line-through;
+    padding-left: 15px;
 }
 .product-thumb .price-tax {
     color: #999;
