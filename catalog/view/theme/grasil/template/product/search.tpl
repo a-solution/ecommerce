@@ -136,10 +136,11 @@
                   <?php echo $product['price']; ?>
                   <?php } else { ?>
                   <span class="price-new"><?php echo $product['special']; ?></span> <span class="price-old"><?php echo $product['price']; ?></span>
-                  <?php } ?>                  
+                  <span class="saleoff"><?php echo $product['saleoff']; ?>%</span>
+                  <?php } ?>          
               </p>
-              <p class="desc"><?php echo $product['description']; ?></p>
               <?php } ?>
+              <p class="desc"><?php echo $product['description']; ?></p>
             </div>
             <div class="button-group">
               <button type="button" data-toggle="tooltip" title="<?php echo $button_cart; ?>" onclick="cart.add('<?php echo $product['product_id']; ?>');"><i class="fa fa-shopping-cart"></i> <span class="hidden-xs hidden-sm hidden-md"><?php echo $button_cart; ?></span></button>

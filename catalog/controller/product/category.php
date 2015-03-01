@@ -230,8 +230,18 @@ class ControllerProductCategory extends Controller {
 
                 if ((float) $result['special']) {
                     $special = $this->currency->format($this->tax->calculate($result['special'], $result['tax_class_id'], $this->config->get('config_tax')));
+                    
+                    //Customisze
+                    if ($price) {
+                        $saleoff = (1 - $special / $price) * 100;
+                        $saleoff = round($saleoff);
+                    } else {
+                        $saleoff = false;
+                    }
+                    
                 } else {
                     $special = false;
+                    $saleoff = false;
                 }
 
                 if ($this->config->get('config_tax')) {
@@ -253,6 +263,7 @@ class ControllerProductCategory extends Controller {
                     'description' => utf8_substr(strip_tags(html_entity_decode($result['description'], ENT_QUOTES, 'UTF-8')), 0, $this->config->get('config_product_description_length')) . '..',
                     'price' => $price,
                     'special' => $special,
+                    'saleoff'     => $saleoff,
                     'tax' => $tax,
                     'rating' => $result['rating'],
                     'href' => $this->url->link('product/product', 'path=' . $this->request->get['path'] . '&product_id=' . $result['product_id'] . $url)
