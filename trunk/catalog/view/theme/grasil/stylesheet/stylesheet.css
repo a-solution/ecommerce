@@ -129,7 +129,7 @@ div.required .control-label:before {
 #content {
     
 }
-#content h2 {
+#content h2, #content h1 {
     border-bottom: 1px dashed #eee;
     padding-bottom: 10px;
 }
@@ -313,7 +313,7 @@ footer .powered .logo {
 
 .btn-primary {
     background: #313131 !important;
-    color: #fff;
+    color: #fff !important;
     border-radius: 0;
     border:none;
 }
@@ -428,6 +428,9 @@ footer .powered .logo {
 #topnav .myaccount .dropdown.open > a {
     background: #313131;
     color: #fff;
+}
+#topnav .myaccount .logout a {
+    color: #cc0000;    
 }
 #topnav .dropdown-menu {
     border-radius: 0;
@@ -1264,4 +1267,11 @@ header .con-wishlist {
 
 .table-bordered thead td {
     background: #f2f2f2;
+}
+
+.style-common {
+    
+}
+.style-common a {
+    color: #428bca;
 }

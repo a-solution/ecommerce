@@ -9,7 +9,7 @@ $_['text_shipping_method'] = 'Vui lòng chọn phương thức vận chuyển mo
 
 // Entry
 $_['entry_country']        = 'Quốc gia';
-$_['entry_zone']           = 'Vùng miền / Tiểu bang';
+$_['entry_zone']           = 'Tỉnh thành';
 $_['entry_postcode']       = 'Mã vùng';
 
 // Error
