@@ -420,7 +420,7 @@
             </div>
             <?php } ?>
             <?php if ($tags) { ?>
-            <p><?php echo $text_tags; ?>
+            <p class="tags"><?php echo $text_tags; ?>
                 <?php for ($i = 0; $i < count($tags); $i++) { ?>
                 <?php if ($i < (count($tags) - 1)) { ?>
                 <a href="<?php echo $tags[$i]['href']; ?>"><?php echo $tags[$i]['tag']; ?></a>,
