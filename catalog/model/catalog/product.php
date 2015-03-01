@@ -177,7 +177,7 @@ class ModelCatalogProduct extends Model {
 			} elseif ($data['sort'] == 'p.price') {
 				$sql .= " ORDER BY (CASE WHEN special IS NOT NULL THEN special WHEN discount IS NOT NULL THEN discount ELSE p.price END)";
 			} elseif ($data['sort'] == 'purchased') {
-                                $sql .= " ORDER BY o.date_added DESC, " . $data['sort'];
+                                $sql .= " ORDER BY MAX(o.date_added) DESC, " . $data['sort'];
                         } else {
 				$sql .= " ORDER BY " . $data['sort'];
 			}
