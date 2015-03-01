@@ -266,7 +266,9 @@ class ControllerProductCategory extends Controller {
                     'saleoff'     => $saleoff,
                     'tax' => $tax,
                     'rating' => $result['rating'],
-                    'href' => $this->url->link('product/product', 'path=' . $this->request->get['path'] . '&product_id=' . $result['product_id'] . $url)
+                    'href' => $this->url->link('product/product', 'path=' . $this->request->get['path'] . '&product_id=' . $result['product_id'] . $url),
+                    'purchased' => $result['purchased'],
+                    'viewed' => $result['viewed']
                 );
             }
 

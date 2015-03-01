@@ -266,7 +266,9 @@ class ControllerProductSearch extends Controller {
                     'saleoff'     => $saleoff,
                     'tax' => $tax,
                     'rating' => $result['rating'],
-                    'href' => $this->url->link('product/product', 'product_id=' . $result['product_id'] . $url)
+                    'href' => $this->url->link('product/product', 'product_id=' . $result['product_id'] . $url),
+                    'purchased' => $result['purchased'],
+                    'viewed' => $result['viewed']
                 );
             }
 

@@ -3,7 +3,7 @@
 $_['heading_title']    = 'Giỏ hàng của bạn';
 
 // Text
-$_['text_success']     = 'Bạn vừa thêm sàn phẩm <a href="%s">%s</a> vào <a href="%s">giỏ hàng của bạn</a>!';
+$_['text_success']     = 'Bạn vừa thêm sản phẩm <a href="%s">%s</a> vào <a href="%s">giỏ hàng của bạn</a>!';
 $_['text_remove']      = 'Cập nhật giỏ hàng thành công!';
 $_['text_login']       = 'Chú ý: Bạn phải <a href="%s">đăng nhập</a> hoặc <a href="%s">tạo một tài khoản</a> để xem giá!';
 $_['text_items']       = '%s sản phẩm - %s';
