@@ -129,6 +129,10 @@ div.required .control-label:before {
 #content {
     
 }
+#content h2 {
+    border-bottom: 1px dashed #eee;
+    padding-bottom: 10px;
+}
 /* footer */
 footer {
     margin-top: 30px;
@@ -982,7 +986,7 @@ header .con-wishlist {
 .breadcrumb {
     margin: 0 0 20px 0;
     padding: 3px 0;
-    border: 1px solid #eee;
+    border: 1px dashed #eee;
     background: none;
     border-radius: 0;
 }
@@ -1250,6 +1254,10 @@ header .con-wishlist {
     padding-top: 15px;
 }
 .tags a {
-    border:1px solid #ccc;
-    padding:5px;
+    border:1px dashed #ccc;
+    padding:1px 5px;
+}
+
+.table-bordered thead td {
+    background: #f2f2f2;
 }

@@ -93,8 +93,8 @@ if($category['category_name']=='All') : ?>
             <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
           <?php }
         } ?>
-        <span class="orderred" data-toggle="tooltip" title="Đã có 10 lượt mua"><i class="fa fa-tags"></i> 10</span>
-        <span class="viewed" data-toggle="tooltip" title="Đã có 10 lượt xem"><i class="fa fa-eye"></i> 10</span>
+        <span class="orderred" data-toggle="tooltip" title="Đã có <?php echo isset($product['purchased'])?$product['purchased']:'0'; ?> lượt mua"><i class="fa fa-tags"></i> <?php echo isset($product['purchased'])?$product['purchased']:'0'; ?></span>
+        <span class="viewed" data-toggle="tooltip" title="Đã có <?php echo isset($product['viewed'])?$product['viewed']:'0'; ?> lượt xem"><i class="fa fa-eye"></i> <?php echo isset($product['viewed'])?$product['viewed']:'0'; ?></span>
         </div>
         <?php if ($product['price']) { ?>
         <p class="price">
