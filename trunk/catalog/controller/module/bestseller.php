@@ -41,7 +41,7 @@ class ControllerModuleBestSeller extends Controller {
                     $special = $this->currency->format($this->tax->calculate($result['special'], $result['tax_class_id'], $this->config->get('config_tax')));
                     //Customisze
                     if ($price) {
-                        $saleoff = (1 - $special / $price) * 100;
+                        $saleoff = (int)$price == 0 ? 0 : (1 - $special / $price) * 100;
                         $saleoff = round($saleoff);
                     } else {
                         $saleoff = false;
@@ -76,6 +76,8 @@ class ControllerModuleBestSeller extends Controller {
                     'href' => $this->url->link('product/product', 'product_id=' . $result['product_id']),
                     'category_id' => $result['category_id'],
                     'category_name' => $result['category_name'],
+                    'purchased' => $result['purchased'],
+                    'viewed' => $result['viewed']
                 );
                 
                 $data['products'][] = $theProduct;
