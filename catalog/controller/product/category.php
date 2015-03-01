@@ -331,9 +331,9 @@ class ControllerProductCategory extends Controller {
             //Customize
             $data['newsorts'][] = array(
                 'text' => 'Bán chạy',
-                'value' => 'orders_count-desc',
+                'value' => 'purchased-desc',
                 'icon' =>'<i class="fa fa-long-arrow-down"></i>',
-                'href' => $this->url->link('product/category', 'path=' . $this->request->get['path'] . '&sort=orders_count&order=desc' . $url)
+                'href' => $this->url->link('product/category', 'path=' . $this->request->get['path'] . '&sort=purchased&order=desc' . $url)
             );
             if($sort == 'p.price' && $order == 'asc')
             {

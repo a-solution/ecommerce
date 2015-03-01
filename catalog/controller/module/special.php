@@ -82,7 +82,9 @@ class ControllerModuleSpecial extends Controller {
 					'rating'      => $rating,
 					'href'        => $this->url->link('product/product', 'product_id=' . $result['product_id']),
                                         'category_id' => $result['category_id'],
-                                        'category_name' => $result['category_name']
+                                        'category_name' => $result['category_name'],
+                                        'purchased' => $result['purchased'],
+                                        'viewed' => $result['viewed']
 				);
                                 
                                 $data['products'][] = $theProduct;
