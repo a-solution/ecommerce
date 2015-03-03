@@ -13,7 +13,7 @@ body {
     font-size: 14px;
     font-family: Arial, MyriadProCondensed, "Open Sans Condensed", 'Open Sans', Helvetica, Arial, sans-serif;    
     line-height: 20px;
-    background: #fff;
+    background: #fdfdfd;
 }
 /* Override the bootstrap defaults */
 /* Headings - Based on body font size*/
@@ -71,9 +71,6 @@ span.hidden-xs, span.hidden-sm, span.hidden-md, span.hidden-lg {
     display: inline;
 }
 
-.nav-tabs {
-    margin-bottom: 15px;
-}
 div.required .control-label:before {
     content: '* ';
     color: #F00;
@@ -241,6 +238,11 @@ footer .powered .logo {
 /* alert */
 .alert {
     padding: 8px 14px 8px 14px;
+    font-weight: bold;
+    color: #313131;
+}
+.alert a {
+    color: #cc0000;
 }
 
 .pagination {
@@ -399,8 +401,7 @@ footer .powered .logo {
     border-bottom: 1px solid #ebebeb;
     min-height: 48px;
     line-height: 48px;
-    font-size: 1.2em;
-    color: #8c8c8c;    
+    font-size: 1.2em;    
 }
 #topnav .div-icon {
     margin-right: 15px;
@@ -419,8 +420,7 @@ footer .powered .logo {
 #topnav .myaccount .dropdown > a {
     padding: 0 15px;
     display: block;
-    text-decoration: none;
-    color: #8c8c8c;
+    text-decoration: none;    
 }
 #topnav .myaccount .dropdown > a:hover {
     color: #313131;
@@ -444,26 +444,18 @@ footer .powered .logo {
 }
 #topnav .dropdown-menu li > a:hover {
     background: #f2f2f2;
-    color: #000;
-    text-decoration: underline;
+    color: #000;   
 }
 
 /*header*/
 header {
-    min-height: 70px;
-    color: #8c8c8c;
+    min-height: 70px;    
 }
 header .logo {
     background: url("../image/logo.png") no-repeat left center;
     display: block;
     width: 167px;
     height: 70px;
-}
-header a {
-    color: #8c8c8c;
-}
-header a:hover {
-    color: #313131;
 }
 header .con-wishlist {
     font-size: 1.2em;    
@@ -474,12 +466,10 @@ header .con-wishlist {
     font-size: 1.2em;    
     line-height: 70px;
     cursor: pointer;
-/*    transition: all linear .3s;*/
     text-align: center;
 }
-#cart .mycart:hover {
-    color: #313131;
-    background: #f9f9f9;
+#cart .mycart:hover .mylabel {
+    text-decoration: underline;
 }
 #cart .mycart span {
     display: inline-block;
@@ -809,6 +799,7 @@ header .con-wishlist {
     transition: all linear .1s;
     min-height: 355px;
     position: relative;
+    background: #fff;
 }
 .product-thumb:hover {
     border-color: #999;
@@ -1265,9 +1256,23 @@ header .con-wishlist {
     background: #f9f9f9;
 }
 
+.nav-tabs {
+    margin-bottom: 15px;
+    border-bottom-color: #313131;
+    border-bottom-width: 2px;
+}
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
+    border-color: #313131 #313131 transparent;    
+    background: #313131;
+    color: #fff;
+}
 .table-bordered thead td {
     background: #f2f2f2;
 }
+.table-bordered tbody td {
+    background: #fff;
+}
+
 
 .style-common {
     

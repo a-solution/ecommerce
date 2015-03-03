@@ -1,7 +1,7 @@
 <?php
 // Text
 $_['text_home']          = 'Trang chủ';
-$_['text_wishlist']      = 'Yêu thích (%s)';
+$_['text_wishlist']      = '<i class="fa fa-heart"></i> <span class="hidden-sm">Yêu thích (%s)</span>';
 $_['text_shopping_cart'] = 'Shopping Cart';
 $_['text_category']      = 'Danh mục';
 $_['text_account']       = 'Tài khoản';

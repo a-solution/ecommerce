@@ -86,9 +86,8 @@
                         <?php echo $search; ?>
                     </div>
                     <div class="col-sm-2 col-xs-6 con-wishlist">
-                        <a href="<?php echo $wishlist; ?>" id="wishlist-total" title="<?php echo $text_wishlist; ?>">
-                            <i class="fa fa-heart"></i>
-                            <span class="hidden-sm"><?php echo $text_wishlist; ?></span>
+                        <a href="<?php echo $wishlist; ?>" id="wishlist-total" title="">
+                            <?php echo $text_wishlist; ?>
                         </a>
                     </div>
                     <div class="col-sm-2 col-xs-6 con-cart">
