@@ -80,3 +80,43 @@ var sort = {
         window.location.href = $(obj).attr('href');
     }
 };
+
+// Asaca Script
+var _asaca = {
+    addNewsletter: function () {
+        $email = $('#nl-form .tnl').val();
+        if($email === '' || !_asaca.isEmail($email))
+        {
+            $('#nl-form .tnl').addClass('error');
+        }
+        else
+        {
+            $.ajax({
+                url: 'index.php?route=common/newsletter',
+                type: 'post',
+                data: {
+                    'email': $('#nl-form .tnl').val()
+                },
+                dataType: 'json',
+                beforeSend: function () {
+                    $('#nl-form .bnl').addClass('spin');
+                },
+                success: function (json) {                
+                    $('#nl-form .bnl').removeClass('spin');
+
+                    if (json['redirect']) {
+                        location = json['redirect'];
+                    }
+
+                    if (json['success']) {
+                        alert(json['success']);
+                    }
+                }
+            });
+        }
+    },
+    isEmail: function(emailAddress) {
+        var pattern = new RegExp(/^[+a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/i);        
+        return pattern.test(emailAddress);
+    }
+};

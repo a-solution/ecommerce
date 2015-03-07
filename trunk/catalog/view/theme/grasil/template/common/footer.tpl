@@ -6,9 +6,9 @@
                     Nhận ngay những ưu đãi hấp dẫn từ ASACA
                 </div>
                 <div class="col-md-4 col2">
-                    <div class="form">
+                    <div class="form" id="nl-form">
                         <input type="text" class="tnl" placeholder="Địa chỉ Email" />
-                        <span class="bnl">Nhận</span>
+                        <span class="bnl" onclick="_asaca.addNewsletter();">Nhận</span>
                     </div>
                 </div>
                 <div class="col-md-2 col3">

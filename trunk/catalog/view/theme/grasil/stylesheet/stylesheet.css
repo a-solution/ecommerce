@@ -166,6 +166,9 @@ footer .newsletter .tnl {
     line-height: 30px;
     border: none;
 }
+footer .newsletter .tnl.error {    
+    border: 2px solid red;
+}
 footer .newsletter .bnl {
     line-height: 30px;
     background: #ccc;
