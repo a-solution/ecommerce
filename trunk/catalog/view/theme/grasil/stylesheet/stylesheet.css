@@ -1163,10 +1163,12 @@ header .con-wishlist {
 }
 .basic-info .quantity ul li #input-quantity{
     height: 41px;
-    border-radius: 0;    
+    border-radius: 0;
+    padding-left:5px;
+    padding-right:5px;
+    width: 49px;
 }
-.basic-info .quantity ul li #button-cart{
-    width: 238px;
+.basic-info .quantity ul li #button-cart{    
     background: #313131;
     color: #fff;
     border-radius: 0;
