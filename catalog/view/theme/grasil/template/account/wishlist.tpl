@@ -24,12 +24,12 @@
       <table class="table table-bordered table-hover">
         <thead>
           <tr>
-            <td class="text-center"><?php echo $column_image; ?></td>
+            <td class="text-center" style="width:60px"><?php echo $column_image; ?></td>
             <td class="text-left"><?php echo $column_name; ?></td>
-            <td class="text-left"><?php echo $column_model; ?></td>
-            <td class="text-right"><?php echo $column_stock; ?></td>
-            <td class="text-right"><?php echo $column_price; ?></td>
-            <td class="text-right"><?php echo $column_action; ?></td>
+            <td class="text-left" style="width:100px"><?php echo $column_model; ?></td>
+            <td class="text-right" style="width:100px"><?php echo $column_stock; ?></td>
+            <td class="text-right" style="width:120px"><?php echo $column_price; ?></td>
+            <td class="text-right" style="width:90px"><?php echo $column_action; ?></td>
           </tr>
         </thead>
         <?php foreach ($products as $product) { ?>
@@ -46,7 +46,7 @@
                 <?php if (!$product['special']) { ?>
                 <?php echo $product['price']; ?>
                 <?php } else { ?>
-                <b><?php echo $product['special']; ?></b> <s><?php echo $product['price']; ?></s>
+                <b><?php echo $product['special']; ?></b></br><s><?php echo $product['price']; ?></s>
                 <?php } ?>
               </div>
               <?php } ?></td>
