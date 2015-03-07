@@ -87,7 +87,7 @@ var _asaca = {
         $email = $('#nl-form .tnl').val();
         if($email === '' || !_asaca.isEmail($email))
         {
-            $('#nl-form .tnl').addClass('error');
+            $('#nl-form .tnl').addClass('error');            
         }
         else
         {
@@ -98,18 +98,17 @@ var _asaca = {
                     'email': $('#nl-form .tnl').val()
                 },
                 dataType: 'json',
-                beforeSend: function () {
-                    $('#nl-form .bnl').addClass('spin');
+                beforeSend: function () {                    
+                    _asaca.popup('Đang xử lý, vui lòng chờ trong giây lát...')
                 },
-                success: function (json) {                
-                    $('#nl-form .bnl').removeClass('spin');
-
+                success: function (json) {
                     if (json['redirect']) {
                         location = json['redirect'];
                     }
 
                     if (json['success']) {
-                        alert(json['success']);
+                        _asaca.popupChange('<p>Cám ơn quý khách đã ủng hộ dịch vụ của chúng tôi.</p><p>Khi có thông tin mới chúng tôi sẽ thông báo đến Quý khách.</p>');
+                        $('#nl-form .tnl').val('');
                     }
                 }
             });
@@ -127,5 +126,17 @@ var _asaca = {
         {
             $(obj).val($(obj).val().replace(/\D/g,''));
         }
+    },
+    popup: function(message)
+    {
+        $('#myModalHeader').html('ASACA.VN');
+        $('#myModalBody').html(message);
+        //$('#myModalFooter').html();
+        
+        $('#myModal').modal({show:true, backdrop:'static'});
+    },
+    popupChange: function(message)
+    {
+        $('#myModalBody').html(message);
     }
 };
