@@ -6,14 +6,12 @@ class ControllerCommonNewsletter extends Controller {
 
         $json = array();        
         
-        $data = array();
-        
         $message = 'This email is sent automatically, please do not reply. \nThanks,\nASACA Team';
         
         $defaultSubject = 'Thanks you for visiting ASACA';
         
-        $theRequest = $this->request->get;
-        //$theRequest = $this->request->post;
+        //$theRequest = $this->request->get;
+        $theRequest = $this->request->post;
         
         $email = isset($theRequest['email']) ? $theRequest['email'] : ''; 
 
