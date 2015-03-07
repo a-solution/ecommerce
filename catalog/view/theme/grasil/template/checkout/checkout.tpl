@@ -21,7 +21,7 @@
     <div id="content" class="<?php echo $class; ?>"><?php echo $content_top; ?>
       <h1><?php echo $heading_title; ?></h1>
       <div class="panel-group" id="accordion">
-        <div class="panel panel-default">
+        <div class="panel panel-default" id="check-logged-account">
           <div class="panel-heading">
             <h4 class="panel-title"><?php echo $text_checkout_option; ?></h4>
           </div>
@@ -30,7 +30,7 @@
           </div>
         </div>
         <?php if (!$logged && $account != 'guest') { ?>
-        <div class="panel panel-default">
+        <div class="panel panel-default" id="check-payment-address" style="display: none;">
           <div class="panel-heading">
             <h4 class="panel-title"><?php echo $text_checkout_account; ?></h4>
           </div>
@@ -39,7 +39,7 @@
           </div>
         </div>
         <?php } else { ?>
-        <div class="panel panel-default">
+        <div class="panel panel-default" id="check-payment-address" style="display: none;">
           <div class="panel-heading">
             <h4 class="panel-title"><?php echo $text_checkout_payment_address; ?></h4>
           </div>
@@ -66,7 +66,7 @@
           </div>
         </div>
         <?php } ?>
-        <div class="panel panel-default">
+        <div class="panel panel-default" id="check-payment-method" style="display: none;">
           <div class="panel-heading">
             <h4 class="panel-title"><?php echo $text_checkout_payment_method; ?></h4>
           </div>
@@ -74,7 +74,7 @@
             <div class="panel-body"></div>
           </div>
         </div>
-        <div class="panel panel-default">
+        <div class="panel panel-default" style="display: none;">
           <div class="panel-heading">
             <h4 class="panel-title"><?php echo $text_checkout_confirm; ?></h4>
           </div>
@@ -104,6 +104,8 @@ $(document).on('change', 'input[name=\'account\']', function() {
 			$('#collapse-payment-address').parent().find('.panel-heading .panel-title').html('<?php echo $text_checkout_payment_address; ?>');
 		}	
 	}
+        $("#check-payment-address").show();
+        $("#check-payment-method").show();
 });
 
 <?php if (!$logged) { ?> 
@@ -125,6 +127,9 @@ $(document).ready(function() {
 });     
 <?php } else { ?>
 $(document).ready(function() {
+    $("#check-logged-account").hide();
+    $("#check-payment-address").show();
+    $("#check-payment-method").show();     
     $.ajax({
         url: 'index.php?route=checkout/payment_address',
         dataType: 'html',
@@ -143,15 +148,15 @@ $(document).ready(function() {
 <?php } ?>
 
 // Checkout
-$(document).delegate('#button-account', 'click', function() {
+$(document).delegate('#button-account', 'click', function() {    
     $.ajax({
         url: 'index.php?route=checkout/' + $('input[name=\'account\']:checked').val(),
         dataType: 'html',
         beforeSend: function() {
-        	$('#button-account').button('loading');
-		},      
+            $('#button-account').button('loading');
+        },      
         complete: function() {
-			$('#button-account').button('reset');
+            $('#button-account').button('reset');
         },          
         success: function(html) {
             $('.alert, .text-danger').remove();
@@ -165,6 +170,10 @@ $(document).delegate('#button-account', 'click', function() {
 			}	
 			
 			$('a[href=\'#collapse-payment-address\']').trigger('click');
+            //modify    
+            $("#check-logged-account").hide();
+            $("#check-payment-address").show();
+            $("#check-payment-method").show();
         },
         error: function(xhr, ajaxOptions, thrownError) {
             alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
@@ -746,7 +755,7 @@ $(document).delegate('#button-payment-method', 'click', function() {
          	$('#button-payment-method').button('loading');
 		},  
         complete: function() {
-            $('#button-payment-method').button('reset');
+            //$('#button-payment-method').button('reset');
         },          
         success: function(json) {
             $('.alert, .text-danger').remove();
@@ -755,7 +764,8 @@ $(document).delegate('#button-payment-method', 'click', function() {
                 location = json['redirect'];
             } else if (json['error']) {
                 if (json['error']['warning']) {
-                    $('#collapse-payment-method .panel-body').prepend('<div class="alert alert-warning">' + json['error']['warning'] + '<button type="button" class="close" data-dismiss="alert">&times;</button></div>');
+                    $('#button-payment-method').button('reset');    
+                    $('#collapse-payment-method .panel-body').prepend('<div class="alert alert-warning">' + json['error']['warning'] + '<button type="button" class="close" data-dismiss="alert">&times;</button></div>');                    
                 }           
             } else {
                 $.ajax({

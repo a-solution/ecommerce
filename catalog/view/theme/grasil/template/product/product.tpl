@@ -228,7 +228,7 @@
                             <ul class="list-unstyled">
                                 <li><label class="control-label" for="input-quantity"><?php echo $entry_qty; ?></label></li>
                                 <li>
-                                    <input type="text" name="quantity" value="<?php echo $minimum; ?>" size="2" id="input-quantity" class="form-control" onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')" onmouseout="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')" />
+                                    <input type="text" name="quantity" value="<?php echo $minimum; ?>" size="2" maxlength="2" id="input-quantity" class="form-control" onkeyup="_asaca.handleNumber(this);" onmouseout="_asaca.handleNumber(this);" style="text-align: center" />
                                     <input type="hidden" name="product_id" value="<?php echo $product_id; ?>" />
                                 </li>
                                 <li>
@@ -454,6 +454,10 @@ $('select[name=\'recurring_id\'], input[name="quantity"]').change(function(){
 //--></script> 
 <script type="text/javascript"><!--
 $('#button-cart').on('click', function() {
+    if ($("#input-quantity").val() == '')
+    {
+        $("#input-quantity").val(1);
+    }
     $.ajax({
     url: 'index.php?route=checkout/cart/add',
             type: 'post',
@@ -597,19 +601,19 @@ $('#review').delegate('.pagination a', 'click', function(e) {
     });
 //--></script> 
 <script type="text/javascript">
-    function selectItem(obj)
-    {
-        $(obj).parent().parent().parent().find('.radio').each(function(){            
+            function selectItem(obj)
+            {
+            $(obj).parent().parent().parent().find('.radio').each(function(){
             $(this).find('.img-thumbnail').removeClass('selected');
-        });
-        $(obj).addClass('selected');
-    }
+            });
+                    $(obj).addClass('selected');
+            }
     function selectBorder(obj)
     {
-        $(obj).parent().parent().find('.radio').each(function(){            
-            $(this).find('label').removeClass('selected');
-        });
-        $(obj).addClass('selected');
-    }    
+    $(obj).parent().parent().find('.radio').each(function(){
+    $(this).find('label').removeClass('selected');
+    });
+            $(obj).addClass('selected');
+    }
 </script>
 <?php echo $footer; ?>

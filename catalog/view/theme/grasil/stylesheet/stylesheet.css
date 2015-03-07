@@ -126,7 +126,7 @@ div.required .control-label:before {
 #content {
     
 }
-#content h2, #content h1 {
+#content h2, #content h1, #cart_info h2 {
     border-bottom: 1px dashed #eee;
     padding-bottom: 10px;
 }
@@ -470,6 +470,7 @@ header .con-wishlist {
     line-height: 70px;
     cursor: pointer;
     text-align: center;
+    overflow: hidden;
 }
 #cart .mycart:hover .mylabel {
     text-decoration: underline;
@@ -1282,4 +1283,51 @@ header .con-wishlist {
 }
 .style-common a {
     color: #428bca;
+}
+
+/*Cart Info in checkout page*/
+#cart_info {
+    
+}
+#cart_info .input-group {
+    line-height: 20px;
+}
+#cart_info .txt-quantity{
+    width: 40px;
+    height: 22px;
+    margin-right: 5px;    
+    text-align: center;
+    padding:0px;
+}
+#cart_info .product-price, #cart_info .order-total .total {
+    font-weight: bold;
+    color: #33cc00;
+}
+#cart_info .cart-update {
+    text-align: center;
+}
+#cart_info .order-total td {
+    vertical-align: middle;
+}
+#cart_info .order-total tr:first-child {
+    display: none;
+}
+#cart_info .order-total .total {
+    font-size: 2em;
+}
+
+/*Register Account*/
+.register-account {
+    
+}
+.register-account a {
+    color: #0033ff;
+}
+.register-account .btn-register{
+    width: 290px;
+    max-width: 100%;    
+    font-weight: bold;
+}
+.register-account .col-account {
+    min-height: 468px;
 }

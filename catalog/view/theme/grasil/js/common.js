@@ -118,5 +118,14 @@ var _asaca = {
     isEmail: function(emailAddress) {
         var pattern = new RegExp(/^[+a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/i);        
         return pattern.test(emailAddress);
+    },
+    isNumber: function(value) {
+        return (/\D/g.test($(value).val()));
+    },
+    handleNumber: function(obj) {
+        if (_asaca.isNumber($(obj).val()))
+        {
+            $(obj).val($(obj).val().replace(/\D/g,''));
+        }
     }
 };
