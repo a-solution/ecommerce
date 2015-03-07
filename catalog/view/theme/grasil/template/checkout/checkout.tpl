@@ -103,9 +103,7 @@ $(document).on('change', 'input[name=\'account\']', function() {
 		} else {
 			$('#collapse-payment-address').parent().find('.panel-heading .panel-title').html('<?php echo $text_checkout_payment_address; ?>');
 		}	
-	}
-        $("#check-payment-address").show();
-        $("#check-payment-method").show();
+	}        
 });
 
 <?php if (!$logged) { ?> 
