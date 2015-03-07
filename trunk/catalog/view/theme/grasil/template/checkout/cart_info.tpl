@@ -1,10 +1,10 @@
 <div id="cart_info">
-    <h1><?php echo $heading_title; ?>
+    <h2><?php echo $heading_title; ?>
         <?php if ($weight) { ?>
         &nbsp;(<?php echo $weight; ?>)
         <?php } ?>
-    </h1>
-    <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data">
+    </h2>    
+    <form action="<?php echo $action; ?>" method="post">
         <div class="table-responsive">
             <table class="table table-bordered">                
                 <tbody>
@@ -34,26 +34,30 @@
                             <?php } ?>
                             <br />Mã: <?php echo $product['model']; ?>
                             <br />
-                        <div class="input-group btn-block">
-                            <input type="text" name="quantity[<?php echo $product['key']; ?>]" value="<?php echo $product['quantity']; ?>" size="1" class="form-control" />
-                            x <?php echo $product['price']; ?>
-                        </div>                                                
+                            <div class="input-group btn-block">
+                                <input type="text" name="quantity[<?php echo $product['key']; ?>]" value="<?php echo $product['quantity']; ?>" size="1" class="form-control txt-quantity" disabled="disabled" />
+                                x <span class="product-price"><?php echo $product['price']; ?></span>
+                            </div>                                                
                         </td>                        
                     </tr>
-                    <?php } ?>            
+                    <?php } ?>                    
                 </tbody>
             </table>
         </div>
     </form>    
     <div class="row">
         <div class="col-sm-12">
-            <table class="table table-bordered">
+            <table class="table table-bordered order-total">
                 <?php foreach ($totals as $total) { ?>
                 <tr>
                     <td class="text-right"><strong><?php echo $total['title']; ?>:</strong></td>
-                    <td class="text-right"><?php echo $total['text']; ?></td>
+                    <td class="text-right total"><?php echo $total['text']; ?></td>
                 </tr>
                 <?php } ?>
+                <tr>
+                    <td colspan="2" class="cart-update">
+                        <a href="<?php echo $data['cart_link']?>">Cập nhật giỏ hàng</a></td>
+                </tr>
             </table>
         </div>
     </div>
