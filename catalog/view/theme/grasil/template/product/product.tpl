@@ -232,7 +232,10 @@
                                     <input type="hidden" name="product_id" value="<?php echo $product_id; ?>" />
                                 </li>
                                 <li>
-                                    <button type="button" id="button-cart" data-loading-text="<?php echo $text_loading; ?>" class="btn btn-primary btn-lg btn-block"><?php echo $button_cart; ?></button>
+                                    <button type="button" id="button-cart" data-loading-text="<?php echo $text_loading; ?>" class="btn btn-primary btn-lg btn-block">Đưa vào giỏ hàng</button>
+                                </li>
+                                <li>
+                                    <button type="button" id="button-cart-checkout" data-loading-text="<?php echo $text_loading; ?>" class="btn btn-primary btn-lg btn-block"><?php echo $button_cart; ?></button>
                                 </li>
                             </ul>
                         </div>
@@ -502,7 +505,54 @@ $('#button-cart').on('click', function() {
             }
     });
     });
-//--></script> 
+//--></script>
+<script type="text/javascript"><!--
+$('#button-cart-checkout').on('click', function() {
+    if ($("#input-quantity").val() == '')
+    {
+        $("#input-quantity").val(1);
+    }
+    $.ajax({
+    url: 'index.php?route=checkout/cart/add',
+            type: 'post',
+            data: $('#product input[type=\'text\'], #product input[type=\'hidden\'], #product input[type=\'radio\']:checked, #product input[type=\'checkbox\']:checked, #product select, #product textarea'),
+            dataType: 'json',
+            beforeSend: function() {
+            //$('#button-cart-checkout').button('loading');
+            },
+            complete: function() {
+            //$('#button-cart-checkout').button('reset');
+            },
+            success: function(json) {
+            $('.alert, .text-danger').remove();
+                    $('.form-group').removeClass('has-error');
+                    if (json['error']) {
+            if (json['error']['option']) {
+            for (i in json['error']['option']) {
+            var element = $('#input-option' + i.replace('_', '-'));
+                    if (element.parent().hasClass('input-group')) {
+            element.parent().after('<div class="text-danger">' + json['error']['option'][i] + '</div>');
+            } else {
+            element.after('<div class="text-danger">' + json['error']['option'][i] + '</div>');
+            }
+            }
+            }
+
+            if (json['error']['recurring']) {
+            $('select[name=\'recurring_id\']').after('<div class="text-danger">' + json['error']['recurring'] + '</div>');
+            }
+
+            // Highlight any found errors
+            $('.text-danger').parent().addClass('has-error');
+            }
+
+            if (json['success']) {
+                window.location = 'index.php?route=checkout/checkout';
+            }
+            }
+    });
+    });
+//--></script>
 <script type="text/javascript"><!--
 $('.date').datetimepicker({
     pickTime: false
