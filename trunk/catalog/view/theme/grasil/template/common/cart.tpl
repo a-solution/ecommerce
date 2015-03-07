@@ -23,8 +23,8 @@
                         <br />
                         - <small><?php echo $text_recurring; ?> <?php echo $product['recurring']; ?></small>
                         <?php } ?></td>
-                    <td class="text-right">x <?php echo $product['quantity']; ?></td>
-                    <td class="text-right"><?php echo $product['total']; ?></td>
+                    <td class="text-right" style="width: 60px">x <?php echo $product['quantity']; ?></td>
+                    <td class="text-right" style="width: 100px"><?php echo $product['total']; ?></td>
                     <td class="text-center">
                         <i class="fa fa-times-circle" onclick="cart.remove('<?php echo $product['key']; ?>');" title="<?php echo $button_remove; ?>"></i>
                     </td>
@@ -42,7 +42,7 @@
             </table>
         </li>
         <li>
-            <table class="table table-bordered">
+            <table class="table table-bordered price-total">
                 <?php foreach ($totals as $total) { ?>
                 <tr>
                     <td class="text-right"><strong><?php echo $total['title']; ?></strong></td>

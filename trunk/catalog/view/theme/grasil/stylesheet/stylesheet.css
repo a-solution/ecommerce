@@ -553,6 +553,10 @@ header .con-wishlist {
 #cart .dropdown-menu li > div a:hover.viewcart {
     background: #000;
 }
+
+#cart .price-total tr:first-child {
+    display: none;
+}
 /*End cart*/
 
 .navbar {
