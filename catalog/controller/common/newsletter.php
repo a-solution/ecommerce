@@ -4,6 +4,8 @@ class ControllerCommonNewsletter extends Controller {
 
     public function index() {        
 
+        $this->load->model('common/common');
+        
         $json = array();        
         
         $message = 'This email is sent automatically, please do not reply. \nThanks,\nASACA Team';
@@ -17,15 +19,23 @@ class ControllerCommonNewsletter extends Controller {
 
         if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
             try {
-                $this->sendEmail($email, $defaultSubject, $message);
-                $json['success'] = $email . ' is added successfully';
+                $data['email'] = $email;
+                $duplicated = $this->model_common_common->findEmail($email);
+                if(count($duplicated) > 0){
+                    $json['failed'] = "Email: '".$email ."' already existed";
+                }
+                else{
+                    $this->model_common_common->addNewEmail($data);
+                    $this->sendEmail($email, $defaultSubject, $message);
+                    $json['success'] = $email . ' is added successfully';
+                }
             }
             catch(Exception $ex) {
                 $json['failed'] = 'Error Message: ' .$ex->getMessage();
             }
         }   
         else{
-            $json['invalid'] = $email . ' is invalid email';
+            $json['failed'] = $email . ' is invalid email';
         }
         //$json['error'] = 'System Error';
         $this->response->addHeader('Content-Type: application/json');
@@ -40,5 +50,5 @@ class ControllerCommonNewsletter extends Controller {
         $mail->setSubject($subject);
         $mail->setText(html_entity_decode($message, ENT_QUOTES, 'UTF-8'));
         $mail->send();
-    }    
+    }        
 }
