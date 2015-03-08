@@ -1152,27 +1152,43 @@ header .con-wishlist {
 }
 .basic-info .quantity ul li {
     float: left;
-    margin-left: 10px;
+    margin-left: 6px;    
+}
+.basic-info .quantity ul li label {
+    margin-bottom: 0;    
 }
 .basic-info .quantity ul li:first-child {    
     margin-left: 0px;
+    border:1px solid #ccc;
+    background: #eee;
+    text-align: center;
 }
 .basic-info .quantity ul li #input-quantity{
-    height: 41px;
+    height: 30px;
     border-radius: 0;
     padding-left:5px;
     padding-right:5px;
-    width: 45px;
+    width: 57px;
+    border: 0;
+    border-top: 1px solid #ccc;
 }
-.basic-info .quantity ul li #button-cart{    
+.basic-info .quantity ul li .btn-primary {    
     background: #313131;
     color: #fff;
     border-radius: 0;
     border:none;
+    height: 52px;
 }
-.basic-info .quantity ul li #button-cart:hover{    
-    background: #000;
+.basic-info .quantity ul li #button-cart.btn-primary {
+    background: green !important;
 }
+.basic-info .quantity ul li #button-cart-checkout.btn-primary {
+    background: #cc0000 !important;
+}
+.basic-info .quantity ul li #button-cart.btn-primary:hover, .basic-info .quantity ul li #button-cart-checkout.btn-primary:hover {    
+    background: #000 !important;
+}
+
 .more-info {
     margin-top: 20px;
 }
