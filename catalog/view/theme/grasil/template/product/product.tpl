@@ -564,7 +564,7 @@ $('#button-review').on('click', function() {
             $('#button-review').button('loading');
             },
             complete: function() {
-                _asaca.scrollTo('#tab-faq .alert');
+                _asaca.scrollTo('#tab-review .alert');
                 $('#button-review').button('reset');
                 $('#captcha').attr('src', 'index.php?route=tool/captcha#' + new Date().getTime());
                 $('input[name=\'captcha\']').val('');
