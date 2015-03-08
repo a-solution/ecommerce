@@ -6,7 +6,7 @@
     </h2>    
     <form action="<?php echo $action; ?>" method="post">
         <div class="table-responsive">
-            <table class="table table-bordered">                
+            <table class="table table-bordered order-list">                
                 <tbody>
                     <?php foreach ($products as $product) { ?>
                     <tr>
@@ -14,28 +14,27 @@
                             <a href="<?php echo $product['href']; ?>"><img src="<?php echo $product['thumb']; ?>" alt="<?php echo $product['name']; ?>" title="<?php echo $product['name']; ?>" class="img-thumbnail" /></a>
                             <?php } ?></td>
                         <td class="text-left">
-                            <a href="<?php echo $product['href']; ?>"><b><?php echo $product['name']; ?></b></a>
+                            <div class="ptitle">
+                            <a href="<?php echo $product['href']; ?>"><?php echo $product['name']; ?></a>
                             <?php if (!$product['stock']) { ?>
-                            <span class="text-danger">***</span>
+                                <span class="text-danger">***</span>
                             <?php } ?>
+                            </div>
                             <?php if ($product['option']) { ?>
-                            <?php foreach ($product['option'] as $option) { ?>
-                            <br />
-                            <small><?php echo $option['name']; ?>: <?php echo $option['value']; ?></small>
+                            <?php foreach ($product['option'] as $option) { ?>                            
+                                <div><?php echo $option['name']; ?>: <?php echo $option['value']; ?></div>
                             <?php } ?>
                             <?php } ?>
-                            <?php if ($product['reward']) { ?>
-                            <br />
-                            <small><?php echo $product['reward']; ?></small>
+                            <?php if ($product['reward']) { ?>                            
+                                <div><?php echo $product['reward']; ?></div>
                             <?php } ?>
                             <?php if ($product['recurring']) { ?>
-                            <br />
-                            <span class="label label-info"><?php echo $text_recurring_item; ?></span> <small><?php echo $product['recurring']; ?></small>
+                                <div><span class="label label-info"><?php echo $text_recurring_item; ?></span> <small><?php echo $product['recurring']; ?></small></div>
                             <?php } ?>
-                            <br />Mã: <?php echo $product['model']; ?>
-                            <br />
+                            <div>Mã: <?php echo $product['model']; ?></div>                            
                             <div class="input-group btn-block">
-                                <input type="text" name="quantity[<?php echo $product['key']; ?>]" value="<?php echo $product['quantity']; ?>" size="1" class="form-control txt-quantity" disabled="disabled" />
+                                <!--input type="text" name="quantity[<?php echo $product['key']; ?>]" value="<?php echo $product['quantity']; ?>" size="1" class="form-control txt-quantity" disabled="disabled" /-->
+                                <span><?php echo $product['quantity']; ?></span>
                                 x <span class="product-price"><?php echo $product['price']; ?></span>
                             </div>                                                
                         </td>                        

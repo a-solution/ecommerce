@@ -553,10 +553,6 @@ header .con-wishlist {
 #cart .dropdown-menu li > div a:hover.viewcart {
     background: #000;
 }
-
-#cart .price-total tr:first-child {
-    display: none;
-}
 /*End cart*/
 
 .navbar {
@@ -1305,20 +1301,26 @@ header .con-wishlist {
     text-align: center;
     padding:0px;
 }
-#cart_info .product-price, #cart_info .order-total .total {
-    font-weight: bold;
-    color: #33cc00;
-}
 #cart_info .cart-update {
     text-align: center;
 }
-#cart_info .order-total td {
-    vertical-align: middle;
+
+.order-list .ptitle {
+    font-weight: bold;
 }
-#cart_info .order-total tr:first-child {
+
+table.order-total tr:first-child {
     display: none;
 }
-#cart_info .order-total .total {
+table.order-total tr td.total, #cart_info .product-price {
+    font-weight: bold;
+    color: #33cc00;
+}
+table.order-total tr td {
+    vertical-align: middle;
+    line-height: none;
+}
+table.order-total tr td.total {
     font-size: 2em;
 }
 
