@@ -66,7 +66,8 @@
           <?php echo $entry_description; ?></label>
       </p>
       <input type="button" value="<?php echo $button_search; ?>" id="button-search" class="btn btn-primary" />
-      <h2><?php echo $text_search; ?></h2>
+      <hr>
+      <h2 id="search-result"><?php echo $text_search; ?></h2>
       <?php if ($products) { ?>      
       <div class="row result-filter">
         <div class="col-sm-3">
@@ -105,7 +106,7 @@
           </select>
         </div>
       </div>
-      <br />
+      <hr>
       <div class="row"> 
         <?php foreach ($products as $product) { ?>  
         <div class="product-layout product-grid col-lg-3 col-md-3 col-sm-6 col-xs-12">
@@ -163,6 +164,9 @@
 </div>
 <?php echo $footer; ?> 
 <script type="text/javascript"><!--
+    $(document).ready(function() {
+        _asaca.scrollTo('#search-result');
+    });
 $('#button-search').bind('click', function() {
 	url = 'index.php?route=product/search';
 	
