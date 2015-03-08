@@ -750,10 +750,11 @@ $(document).delegate('#button-payment-method', 'click', function() {
         data: $('#collapse-payment-method input[type=\'radio\']:checked, #collapse-payment-method input[type=\'checkbox\']:checked, #collapse-payment-method textarea'),
         dataType: 'json',
         beforeSend: function() {
-         	$('#button-payment-method').button('loading');
-		},  
+            $('#button-payment-method').button('loading');
+            $('#handle-payment').show();
+        },  
         complete: function() {
-            //$('#button-payment-method').button('reset');
+            $('#handle-payment').hide();                        
         },          
         success: function(json) {
             $('.alert, .text-danger').remove();
