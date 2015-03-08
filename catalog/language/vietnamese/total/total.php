@@ -1,2 +1,2 @@
 <?php
-$_['text_total'] = 'Thành tiền';
+$_['text_total'] = 'Tổng tiền';

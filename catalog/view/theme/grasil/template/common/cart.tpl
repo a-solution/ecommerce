@@ -42,11 +42,11 @@
             </table>
         </li>
         <li>
-            <table class="table table-bordered price-total">
+            <table class="table table-bordered order-total">
                 <?php foreach ($totals as $total) { ?>
                 <tr>
                     <td class="text-right"><strong><?php echo $total['title']; ?></strong></td>
-                    <td class="text-right"><?php echo $total['text']; ?></td>
+                    <td class="text-right total"><?php echo $total['text']; ?></td>
                 </tr>
                 <?php } ?>
             </table>

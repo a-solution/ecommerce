@@ -39,12 +39,12 @@
           <table class="table table-bordered">
             <thead>
               <tr>
-                <td class="text-center"><?php echo $column_image; ?></td>
+                <td class="text-center" style="width: 80px"><?php echo $column_image; ?></td>
                 <td class="text-left"><?php echo $column_name; ?></td>
-                <td class="text-left"><?php echo $column_model; ?></td>
-                <td class="text-left"><?php echo $column_quantity; ?></td>
-                <td class="text-right"><?php echo $column_price; ?></td>
-                <td class="text-right"><?php echo $column_total; ?></td>
+                <td class="text-left" style="width: 150px"><?php echo $column_model; ?></td>
+                <td class="text-left" style="width: 150px"><?php echo $column_quantity; ?></td>
+                <td class="text-right" style="width: 135px"><?php echo $column_price; ?></td>
+                <td class="text-right" style="width: 135px"><?php echo $column_total; ?></td>
               </tr>
             </thead>
             <tbody>
@@ -73,9 +73,9 @@
                   <?php } ?></td>
                 <td class="text-left"><?php echo $product['model']; ?></td>
                 <td class="text-left"><div class="input-group btn-block" style="max-width: 200px;">
-                    <input type="text" name="quantity[<?php echo $product['key']; ?>]" value="<?php echo $product['quantity']; ?>" size="1" class="form-control" onkeyup="_asaca.handleNumber(this);" onmouseout="_asaca.handleNumber(this);" style="text-align: center" />
+                        <input type="text" name="quantity[<?php echo $product['key']; ?>]" value="<?php echo $product['quantity']; ?>" size="1" class="form-control" onkeyup="_asaca.handleNumber(this);" onmouseout="_asaca.handleNumber(this);" style="text-align: center" maxlength="2" />
                     <span class="input-group-btn">
-                    <button type="submit" data-toggle="tooltip" title="<?php echo $button_update; ?>" class="btn btn-primary"><i class="fa fa-refresh"></i></button>
+                    <button type="submit" data-toggle="tooltip" title="<?php echo $button_update; ?>" class="btn btn-primary"><i class="fa fa-save"></i></button>
                     <button type="button" data-toggle="tooltip" title="<?php echo $button_remove; ?>" class="btn btn-danger" onclick="cart.remove('<?php echo $product['key']; ?>');"><i class="fa fa-times-circle"></i></button></span></div></td>
                 <td class="text-right"><?php echo $product['price']; ?></td>
                 <td class="text-right"><?php echo $product['total']; ?></td>
@@ -105,11 +105,11 @@
       <br />
       <div class="row">
         <div class="col-sm-4 col-sm-offset-8">
-          <table class="table table-bordered">
+          <table class="table table-bordered order-total">
             <?php foreach ($totals as $total) { ?>
             <tr>
               <td class="text-right"><strong><?php echo $total['title']; ?>:</strong></td>
-              <td class="text-right"><?php echo $total['text']; ?></td>
+              <td class="text-right total" style="width: 135px"><?php echo $total['text']; ?></td>
             </tr>
             <?php } ?>
           </table>
