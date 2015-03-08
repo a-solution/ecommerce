@@ -125,11 +125,7 @@ var _asaca = {
         if (_asaca.isNumber($(obj).val()))
         {
             $(obj).val($(obj).val().replace(/\D/g,''));
-        }
-        if ($(obj).val()==='')
-        {
-            $(obj).val(1);
-        }
+        }        
     },
     popup: function(message)
     {
