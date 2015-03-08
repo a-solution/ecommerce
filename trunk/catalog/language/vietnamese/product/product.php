@@ -18,7 +18,7 @@ $_['text_login']                              = 'Vui lòng <a href="%s">Đăng n
 $_['text_no_reviews']                         = 'Không có đánh giá nào cho sản phẩm này.';
 $_['text_note']                               = '<span class="text-danger">Ghi chú:</span> Mã HTML sẽ không được thể hiện!';
 $_['text_success']                            = 'Cảm ơn bạn đã đánh giá. Đánh giá của bạn đã được gửi đến ban quản trị và đang chờ duyệt.';
-$_['text_related']                            = 'Sản phẩn liên quan';
+$_['text_related']                            = 'Sản phẩm liên quan';
 $_['text_tags']                               = 'Thẻ:';
 $_['text_error']                              = 'Không tìm thấy sản phẩm nào!';
 $_['text_payment_recurring']                    = 'Danh mục thanh toán';
