@@ -1,3 +1,8 @@
+#AuthType Basic
+#AuthName "asaca.vn"
+#AuthUserFile D:\WebServer\wamp\www\asaca\.htpasswd
+#Require valid-user
+
 # 1.To use URL Alias you need to be running apache with mod_rewrite enabled. 
 
 # 2. In your opencart directory rename htaccess.txt to .htaccess.

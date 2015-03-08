@@ -380,22 +380,22 @@ class ControllerProductCategory extends Controller {
             );
             
             
-            if($sort == 'p.viewed' && $order == 'asc')
+            if($sort == 'p.viewed' && $order == 'desc')
             {
                     $data['newsorts'][] = array(
                         'text' => 'Lượt xem',
-                        'value' => 'p.viewed-asc',
+                        'value' => 'p.viewed-desc',
                         'icon' =>'<i class="fa fa-long-arrow-down"></i>',
-                        'href' => $this->url->link('product/category', 'path=' . $this->request->get['path'] . '&sort=p.viewed&order=desc' . $url)
+                        'href' => $this->url->link('product/category', 'path=' . $this->request->get['path'] . '&sort=p.viewed&order=asc' . $url)
                     );                    
                 }
             else
             {
                     $data['newsorts'][] = array(
                         'text' => 'Lượt xem',
-                        'value' => 'p.viewed-desc',
+                        'value' => 'p.viewed-asc',
                         'icon' =>'<i class="fa fa-long-arrow-up"></i>',
-                        'href' => $this->url->link('product/category', 'path=' . $this->request->get['path'] . '&sort=p.viewed&order=asc' . $url)
+                        'href' => $this->url->link('product/category', 'path=' . $this->request->get['path'] . '&sort=p.viewed&order=desc' . $url)
                     );
                 }
 
