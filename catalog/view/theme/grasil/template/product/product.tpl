@@ -225,19 +225,19 @@
                         <?php } ?>
                         <hr>
                         <div class="form-group quantity">
-                            <ul class="list-unstyled">
-                                <li><label class="control-label" for="input-quantity"><?php echo $entry_qty; ?></label></li>
+                            <ul class="list-unstyled">                                
                                 <li>
+                                    <label class="control-label" for="input-quantity"><?php echo $entry_qty; ?></label>
                                     <input type="text" name="quantity" value="<?php echo $minimum; ?>" size="2" maxlength="2" id="input-quantity" class="form-control" onkeyup="_asaca.handleNumber(this);" onmouseout="_asaca.handleNumber(this);" style="text-align: center" />
                                     <input type="hidden" name="product_id" value="<?php echo $product_id; ?>" />
                                 </li>
                                 <li>
-                                    <button type="button" id="button-cart" data-loading-text="<?php echo $text_loading; ?>" class="btn btn-primary btn-lg btn-block">Đưa vào giỏ hàng</button>
+                                        <button type="button" id="button-cart" data-loading-text="<?php echo $text_loading; ?>" class="btn btn-primary btn-lg btn-block"><i class="fa fa-shopping-cart"></i> Thêm vào giỏ hàng</button>
                                 </li>
                                 <li>
-                                    <button type="button" id="button-cart-checkout" data-loading-text="<?php echo $text_loading; ?>" class="btn btn-primary btn-lg btn-block"><?php echo $button_cart; ?></button>
+                                    <button type="button" id="button-cart-checkout" data-loading-text="<?php echo $text_loading; ?>" class="btn btn-primary btn-lg btn-block"><i class="fa fa-check-square"></i> <?php echo $button_cart; ?></button>
                                 </li>
-                            </ul>
+                            </ul>                        
                         </div>
                         <?php if ($minimum > 1) { ?>
                         <div class="alert alert-info"><i class="fa fa-info-circle"></i> <?php echo $text_minimum; ?></div>
