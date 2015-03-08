@@ -455,104 +455,14 @@ $('select[name=\'recurring_id\'], input[name="quantity"]').change(function(){
     });
     });
 //--></script> 
-<script type="text/javascript"><!--
+<script type="text/javascript">
 $('#button-cart').on('click', function() {
-    if ($("#input-quantity").val() == '')
-    {
-        $("#input-quantity").val(1);
-    }
-    $.ajax({
-    url: 'index.php?route=checkout/cart/add',
-            type: 'post',
-            data: $('#product input[type=\'text\'], #product input[type=\'hidden\'], #product input[type=\'radio\']:checked, #product input[type=\'checkbox\']:checked, #product select, #product textarea'),
-            dataType: 'json',
-            beforeSend: function() {
-            $('#button-cart').button('loading');
-            },
-            complete: function() {
-            $('#button-cart').button('reset');
-            },
-            success: function(json) {
-            $('.alert, .text-danger').remove();
-                    $('.form-group').removeClass('has-error');
-                    if (json['error']) {
-            if (json['error']['option']) {
-            for (i in json['error']['option']) {
-            var element = $('#input-option' + i.replace('_', '-'));
-                    if (element.parent().hasClass('input-group')) {
-            element.parent().after('<div class="text-danger">' + json['error']['option'][i] + '</div>');
-            } else {
-            element.after('<div class="text-danger">' + json['error']['option'][i] + '</div>');
-            }
-            }
-            }
-
-            if (json['error']['recurring']) {
-            $('select[name=\'recurring_id\']').after('<div class="text-danger">' + json['error']['recurring'] + '</div>');
-            }
-
-            // Highlight any found errors
-            $('.text-danger').parent().addClass('has-error');
-            }
-
-            if (json['success']) {
-            $('.breadcrumb').after('<div class="alert alert-success">' + json['success'] + '<button type="button" class="close" data-dismiss="alert">&times;</button></div>');
-                    //$('#cart-total').html(json['total']);
-                    $('.mybag').html(json['count']);
-                    $('html, body').animate({ scrollTop: 0 }, 'slow');
-                    $('#cart > ul').load('index.php?route=common/cart/info ul li');
-            }
-            }
-    });
-    });
-//--></script>
-<script type="text/javascript"><!--
+    cart.addIntoCart();
+});
 $('#button-cart-checkout').on('click', function() {
-    if ($("#input-quantity").val() == '')
-    {
-        $("#input-quantity").val(1);
-    }
-    $.ajax({
-    url: 'index.php?route=checkout/cart/add',
-            type: 'post',
-            data: $('#product input[type=\'text\'], #product input[type=\'hidden\'], #product input[type=\'radio\']:checked, #product input[type=\'checkbox\']:checked, #product select, #product textarea'),
-            dataType: 'json',
-            beforeSend: function() {
-            //$('#button-cart-checkout').button('loading');
-            },
-            complete: function() {
-            //$('#button-cart-checkout').button('reset');
-            },
-            success: function(json) {
-            $('.alert, .text-danger').remove();
-                    $('.form-group').removeClass('has-error');
-                    if (json['error']) {
-            if (json['error']['option']) {
-            for (i in json['error']['option']) {
-            var element = $('#input-option' + i.replace('_', '-'));
-                    if (element.parent().hasClass('input-group')) {
-            element.parent().after('<div class="text-danger">' + json['error']['option'][i] + '</div>');
-            } else {
-            element.after('<div class="text-danger">' + json['error']['option'][i] + '</div>');
-            }
-            }
-            }
-
-            if (json['error']['recurring']) {
-            $('select[name=\'recurring_id\']').after('<div class="text-danger">' + json['error']['recurring'] + '</div>');
-            }
-
-            // Highlight any found errors
-            $('.text-danger').parent().addClass('has-error');
-            }
-
-            if (json['success']) {
-                window.location = 'index.php?route=checkout/checkout';
-            }
-            }
-    });
-    });
-//--></script>
+    cart.paymentCart();
+});
+</script>
 <script type="text/javascript"><!--
 $('.date').datetimepicker({
     pickTime: false
