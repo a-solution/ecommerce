@@ -231,5 +231,11 @@ var _asaca = {
     popupChange: function(message)
     {
         $('#myModalBody').html(message);
-    }
+    },
+    scrollTo: function(obj)
+    {
+        var offset = $(obj).offset();
+        var top = offset.top - 10;
+        $('html, body').animate({ scrollTop: top }, 'slow');
+    }    
 };
