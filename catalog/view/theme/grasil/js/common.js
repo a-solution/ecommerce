@@ -196,7 +196,29 @@ var _asaca = {
         if (_asaca.isNumber($(obj).val()))
         {
             $(obj).val($(obj).val().replace(/\D/g,''));
-        }        
+        }
+    },
+    plusOne: function(obj)
+    {
+        if($(obj).val()=='')
+        {
+           $(obj).val(1);
+        }
+        else if(parseInt($(obj).val()) < 99)
+        {
+            $(obj).val(parseInt($(obj).val())+1);
+        }
+    },
+    minusOne: function(obj)
+    {
+        if($(obj).val()=='' || $(obj).val()==0)
+        {
+           $(obj).val(1);
+        }
+        else if(parseInt($(obj).val()) > 1)
+        {
+            $(obj).val(parseInt($(obj).val()) - 1);
+        }
     },
     popup: function(message)
     {

@@ -1155,7 +1155,18 @@ header .con-wishlist {
     margin-left: 6px;    
 }
 .basic-info .quantity ul li label {
-    margin-bottom: 0;    
+    margin-bottom: 0;      
+}
+.basic-info .btn-step {
+    padding: 3px 9px;  
+    cursor: pointer;
+    color: #999;
+}
+.basic-info .btn-step:hover {
+    color: #313131;
+}
+.basic-info .btn-step.plus {    
+    border-left: 1px solid #ccc
 }
 .basic-info .quantity ul li:first-child {    
     margin-left: 0px;
@@ -1168,9 +1179,10 @@ header .con-wishlist {
     border-radius: 0;
     padding-left:5px;
     padding-right:5px;
-    width: 57px;
-    border: 0;
-    border-top: 1px solid #ccc;
+    width: 60px;
+    border: 0;    
+    border-bottom: 1px solid #ccc;
+    font-weight: bold;
 }
 .basic-info .quantity ul li .btn-primary {    
     background: #313131;
