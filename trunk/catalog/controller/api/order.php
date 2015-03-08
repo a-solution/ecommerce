@@ -325,7 +325,14 @@ class ControllerApiOrder extends Controller {
 		$this->load->language('api/order');
 
 		$json = array();
-
+                
+                //Hieu: fix error: Payment method is required
+                if(!isset($this->session->data['payment_method'])){
+                    if(isset($this->session->data['payment_methods'])){
+                        $this->session->data['payment_method'] = $this->session->data['payment_methods'][array_keys($data['categories'])[0]];
+                    }
+                }
+                
 		if (!isset($this->session->data['api_id'])) {
 			$json['error'] = $this->language->get('error_permission');
 		} else {
