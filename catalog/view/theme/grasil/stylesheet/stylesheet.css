@@ -490,6 +490,12 @@ header .con-wishlist {
 #cart .mycart .mybag.spin {
     background: url("../image/loading.gif") no-repeat center center;    
 }
+.spin {
+    background: url("../image/loading.gif") no-repeat center center;
+    width:20px;
+    height:20px;
+    display: inline-block;
+}
 
 #cart.open > .mycart {
     background: #313131;
@@ -1203,6 +1209,7 @@ header .con-wishlist {
 
 .more-info {
     margin-top: 20px;
+    min-height: 300px;
 }
 
 /*Social & Support*/

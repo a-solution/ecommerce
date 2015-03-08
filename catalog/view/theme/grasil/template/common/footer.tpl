@@ -29,9 +29,9 @@
             <div class="col-sm-3">
                 <h5><?php echo $text_service; ?></h5>
                 <div class="sic">                    
-                    <a target=_blank" class="fb" href="https://www.facebook.com/asaca"></a>
-                    <a target=_blank" class="tw" href="https://www.twitter.com/asaca"></a>
-                    <a target=_blank" class="yt" href="https://www.youtube.com/user/asaca"></a>
+                    <a target=_blank" class="fb" href="https://www.facebook.com/asaca.vn"></a>
+                    <a target=_blank" class="tw" href="https://www.twitter.com/asaca.vn"></a>
+                    <a target=_blank" class="yt" href="https://www.youtube.com/user/asaca.vn"></a>
                 </div>
                 <ul class="list-unstyled">
                     <li><a href="<?php echo $contact; ?>"><?php echo $text_contact; ?></a></li>

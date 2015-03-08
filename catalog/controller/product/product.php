@@ -710,5 +710,84 @@ class ControllerProductProduct extends Controller {
         $this->response->addHeader('Content-Type: application/json');
         $this->response->setOutput(json_encode($json));
     }
+    
+    public function faq() {
+        $this->load->language('product/product');
 
+        $json = array();
+
+        if ($this->request->server['REQUEST_METHOD'] == 'POST') {
+            if ((utf8_strlen($this->request->post['name']) < 3) || (utf8_strlen($this->request->post['name']) > 25)) {
+                $json['error'] = $this->language->get('error_name');
+            }
+
+            if ((utf8_strlen($this->request->post['text']) < 25) || (utf8_strlen($this->request->post['text']) > 1000)) {
+                $json['error'] = $this->language->get('error_text_faq');
+            }
+
+            if (empty($this->session->data['captcha']) || ($this->session->data['captcha'] != $this->request->post['captcha'])) {
+                $json['error'] = $this->language->get('error_captcha');
+            }
+
+            unset($this->session->data['captcha']);
+
+            if (!isset($json['error'])) {
+                $this->load->model('catalog/faq');
+
+                $this->model_catalog_faq->addFaq($this->request->get['product_id'], $this->request->post);
+
+                $json['success'] = $this->language->get('text_success_faq');
+            }
+        }
+
+        $this->response->addHeader('Content-Type: application/json');
+        $this->response->setOutput(json_encode($json));
+    }
+    
+    public function faqs() {
+        $this->load->language('product/product');
+
+        $this->load->model('catalog/faq');
+
+        $data['text_no_faqs'] = $this->language->get('text_no_faqs');
+
+        if (isset($this->request->get['page'])) {
+            $page = $this->request->get['page'];
+        } else {
+            $page = 1;
+        }
+
+        $data['faqs'] = array();
+
+        $faq_total = $this->model_catalog_faq->getTotalFaqsByProductId($this->request->get['product_id']);
+
+        $results = $this->model_catalog_faq->getFaqsByProductId($this->request->get['product_id'], ($page - 1) * 5, 5);
+
+        foreach ($results as $result) {
+            $data['faqs'][] = array(
+                'author' => $result['author'],
+                'text' => nl2br($result['text']),
+                'answer' => $result['answer'],
+                'answer_text' => nl2br($result['answer_text']),
+                'rating' => (int) $result['rating'],
+                'date_added' => date($this->language->get('date_format_short'), strtotime($result['date_added']))
+            );
+        }
+
+        $pagination = new Pagination();
+        $pagination->total = $faq_total;
+        $pagination->page = $page;
+        $pagination->limit = 5;
+        $pagination->url = $this->url->link('product/product/faqs', 'product_id=' . $this->request->get['product_id'] . '&page={page}');
+
+        $data['pagination'] = $pagination->render();
+
+        $data['results'] = sprintf($this->language->get('text_pagination'), ($faq_total) ? (($page - 1) * 5) + 1 : 0, ((($page - 1) * 5) > ($faq_total - 5)) ? $faq_total : ((($page - 1) * 5) + 5), $faq_total, ceil($faq_total / 5));
+
+        if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/product/faq.tpl')) {
+            $this->response->setOutput($this->load->view($this->config->get('config_template') . '/template/product/faq.tpl', $data));
+        } else {
+            $this->response->setOutput($this->load->view('default/template/product/faq.tpl', $data));
+        }
+    }
 }

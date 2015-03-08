@@ -30,6 +30,8 @@ $_['text_week']                               = 'tuần';
 $_['text_semi_month']                         = 'nửa tháng';
 $_['text_month']                              = 'tháng';
 $_['text_year']                               = 'năm';
+$_['text_success_faq']                        = 'Cảm ơn bạn đã đặt câu hỏi. Chúng tôi sẽ trả lời lại cho bạn trong thời gian sớm nhất.';
+$_['text_no_faqs']                            = 'Không có câu hỏi nào cho sản phẩm này.';
 
 // Entry
 $_['entry_qty']                               = 'Số lượng';
@@ -46,7 +48,8 @@ $_['tab_attribute']                           = 'Thông số';
 $_['tab_review']                              = 'Đánh giá (%s)';
 
 // Error
-$_['error_name']                              = 'Chú ý: Tên phải có từ 3 đến 25 ký tự!';
-$_['error_text']                              = 'Chú ý: Đánh giá phải từ 25 đến 1000 ký tự!';
-$_['error_rating']                            = 'Chú ý: phải chọn xếp hạng!';
-$_['error_captcha']                           = 'Chú ý: Mã xác minh phải đúng với hình!';
+$_['error_name']                              = 'Chú ý: Tên phải có từ 3 đến 25 ký tự.';
+$_['error_text']                              = 'Chú ý: Đánh giá phải từ 25 đến 1000 ký tự.';
+$_['error_text_faq']                          = 'Chú ý: Câu hỏi phải từ 25 đến 1000 ký tự.';
+$_['error_rating']                            = 'Chú ý: phải chọn xếp hạng.';
+$_['error_captcha']                           = 'Chú ý: Mã xác minh không đúng, vui lòng nhập lại.';

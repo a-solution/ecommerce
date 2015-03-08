@@ -232,7 +232,7 @@
                                     <i class="fa fa-minus-circle btn-step" onclick="_asaca.minusOne('#input-quantity');"></i><i class="fa fa-plus-circle btn-step plus" onclick="_asaca.plusOne('#input-quantity');"></i>
                                 </li>
                                 <li>
-                                        <button type="button" id="button-cart" data-loading-text="<?php echo $text_loading; ?>" class="btn btn-primary btn-lg btn-block"><i class="fa fa-shopping-cart"></i> Thêm vào giỏ hàng</button>
+                                    <button type="button" id="button-cart" data-loading-text="<?php echo $text_loading; ?>" class="btn btn-primary btn-lg btn-block"><i class="fa fa-shopping-cart"></i> Thêm vào giỏ hàng</button>
                                 </li>
                                 <li>
                                     <button type="button" id="button-cart-checkout" data-loading-text="<?php echo $text_loading; ?>" class="btn btn-primary btn-lg btn-block"><i class="fa fa-check-square"></i> <?php echo $button_cart; ?></button>
@@ -248,7 +248,8 @@
                     <div class="btn-group addto-box">
                         <button type="button" class="btn" onclick="wishlist.add('<?php echo $product_id; ?>');"><i class="fa fa-heart"></i> <?php echo $button_wishlist; ?></button>
                         <button type="button" class="btn" onclick="compare.add('<?php echo $product_id; ?>');"><i class="fa fa-exchange"></i> <?php echo $button_compare; ?></button>
-                        <button type="button" class="btn" onclick="$('a[href=\'#tab-review\']').trigger('click'); return false;"><i class="fa fa-comment"></i> <?php echo $text_write; ?></button>
+                        <button type="button" class="btn" onclick="$('a[href=\'#tab-faq\']').trigger('click');_asaca.scrollTo('#tab-faq h2');"><i class="fa fa-question-circle"></i> &nbsp;Đặt câu hỏi</button>
+                        <button type="button" class="btn" onclick="$('a[href=\'#tab-review\']').trigger('click');_asaca.scrollTo('#tab-review h2');"><i class="fa fa-comment"></i> <?php echo $text_write; ?></button>                        
                     </div>
                     <?php if ($review_status) { ?>
                     <div class="rating">
@@ -260,7 +261,7 @@
                             <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
                             <?php } ?>
                             <?php } ?>
-                            <a href="" onclick="$('a[href=\'#tab-review\']').trigger('click'); return false;"><?php echo $reviews; ?></a></p>                       
+                            <a href="" onclick="$('a[href=\'#tab-review\']').trigger('click');_asaca.scrollTo('#tab-review'); return false;"><?php echo $reviews; ?></a></p>                       
                         <hr />
                         <!-- AddThis Button BEGIN -->
                         <div class="addthis_toolbox addthis_default_style"><a class="addthis_button_facebook_like" fb:like:layout="button_count"></a><a class="addthis_counter addthis_pill_style"></a></div>
@@ -280,6 +281,7 @@
                         <?php if ($review_status) { ?>
                         <li><a href="#tab-review" data-toggle="tab"><?php echo $tab_review; ?></a></li>
                         <?php } ?>
+                        <li><a href="#tab-faq" data-toggle="tab">Hỏi đáp</a></li>
                     </ul>
                     <div class="tab-content">
                         <div class="tab-pane active" id="tab-description"><?php echo $description; ?></div>
@@ -354,6 +356,39 @@
                             </form>
                         </div>
                         <?php } ?>
+                        <div class="tab-pane" id="tab-faq">                            
+                            <form class="form-horizontal">
+                                <div id="faq"></div>
+                                <h2>Bạn có thể đặt câu hỏi tại đây</h2>
+                                <div class="form-group required">
+                                    <div class="col-sm-12">
+                                        <label class="control-label" for="input-name-faq"><?php echo $entry_name; ?></label>
+                                        <input type="text" name="name-faq" value="" id="input-name-faq" class="form-control" />
+                                    </div>
+                                </div>
+                                <div class="form-group required">
+                                    <div class="col-sm-12">
+                                        <label class="control-label" for="input-review-faq">Câu hỏi</label>
+                                        <textarea name="text-faq" rows="5" id="input-review-faq" class="form-control"></textarea>
+                                        <div class="help-block"><?php echo $text_note; ?></div>
+                                    </div>
+                                </div>                                
+                                <div class="form-group required">
+                                    <div class="col-sm-12">
+                                        <label class="control-label" for="input-captcha-faq"><?php echo $entry_captcha; ?></label>
+                                        <input type="text" name="captcha-faq" value="" id="input-captcha-faq" class="form-control" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-12"> <img src="index.php?route=tool/captcha" alt="" id="captcha-faq" /> </div>
+                                </div>
+                                <div class="buttons">
+                                    <div class="pull-right">
+                                        <button type="button" id="button-faq" data-loading-text="<?php echo $text_loading; ?>" class="btn btn-primary"><?php echo $button_continue; ?></button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -456,13 +491,12 @@ $('select[name=\'recurring_id\'], input[name="quantity"]').change(function(){
     });
 //--></script> 
 <script type="text/javascript">
-$('#button-cart').on('click', function() {
+            $('#button-cart').on('click', function() {
     cart.addIntoCart();
-});
-$('#button-cart-checkout').on('click', function() {
+            });
+            $('#button-cart-checkout').on('click', function() {
     cart.paymentCart();
-});
-</script>
+            });</script>
 <script type="text/javascript"><!--
 $('.date').datetimepicker({
     pickTime: false
@@ -519,8 +553,8 @@ $('#review').delegate('.pagination a', 'click', function(e) {
             $('#review').load(this.href);
             $('#review').fadeIn('slow');
     });
-            $('#review').load('index.php?route=product/product/review&product_id=<?php echo $product_id; ?>');
-            $('#button-review').on('click', function() {
+$('#review').load('index.php?route=product/product/review&product_id=<?php echo $product_id; ?>');
+$('#button-review').on('click', function() {
     $.ajax({
     url: 'index.php?route=product/product/write&product_id=<?php echo $product_id; ?>',
             type: 'post',
@@ -530,9 +564,10 @@ $('#review').delegate('.pagination a', 'click', function(e) {
             $('#button-review').button('loading');
             },
             complete: function() {
-            $('#button-review').button('reset');
-                    $('#captcha').attr('src', 'index.php?route=tool/captcha#' + new Date().getTime());
-                    $('input[name=\'captcha\']').val('');
+                _asaca.scrollTo('#tab-faq .alert');
+                $('#button-review').button('reset');
+                $('#captcha').attr('src', 'index.php?route=tool/captcha#' + new Date().getTime());
+                $('input[name=\'captcha\']').val('');
             },
             success: function(json) {
             $('.alert-success, .alert-danger').remove();
@@ -549,8 +584,41 @@ $('#review').delegate('.pagination a', 'click', function(e) {
             }
             }
     });
+});
+
+$('#faq').load('index.php?route=product/product/faqs&product_id=<?php echo $product_id; ?>');
+$('#button-faq').on('click', function() {
+    $.ajax({
+    url: 'index.php?route=product/product/faq&product_id=<?php echo $product_id; ?>',
+        type: 'post',
+        dataType: 'json',
+        data: 'name=' + encodeURIComponent($('input[name=\'name-faq\']').val()) + '&text=' + encodeURIComponent($('textarea[name=\'text-faq\']').val()) + '&rating=5&captcha=' + encodeURIComponent($('input[name=\'captcha-faq\']').val()),
+        beforeSend: function() {
+        $('#button-faq').button('loading');
+        },
+        complete: function() {
+            _asaca.scrollTo('#tab-faq .alert');
+            $('#button-faq').button('reset');
+            $('#captcha-faq').attr('src', 'index.php?route=tool/captcha#' + new Date().getTime());
+            $('input[name=\'captcha-faq\']').val('');
+        },
+        success: function(json) {
+            $('.alert-success, .alert-danger').remove();
+            if (json['error']) {
+                $('#faq').after('<div class="alert alert-danger"><i class="fa fa-exclamation-circle"></i> ' + json['error'] + '</div>');
+            }
+
+            if (json['success']) {
+                $('#faq').after('<div class="alert alert-success"><i class="fa fa-check-circle"></i> ' + json['success'] + '</div>');
+                $('input[name=\'name-faq\']').val('');
+                $('textarea[name=\'text-faq\']').val('');                
+                $('input[name=\'captcha-faq\']').val('');                                
+            }
+        }
     });
-            $(document).ready(function() {
+});
+
+$(document).ready(function() {
     $('.thumbnails').magnificPopup({
     type:'image',
             delegate: 'a',
@@ -558,7 +626,7 @@ $('#review').delegate('.pagination a', 'click', function(e) {
             enabled:true
             }
     });
-    });
+});
 //--></script> 
 <script type="text/javascript">
             function selectItem(obj)
