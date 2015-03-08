@@ -226,10 +226,10 @@
                         <hr>
                         <div class="form-group quantity">
                             <ul class="list-unstyled">                                
-                                <li>
-                                    <label class="control-label" for="input-quantity"><?php echo $entry_qty; ?></label>
+                                <li>                                                                        
                                     <input type="text" name="quantity" value="<?php echo $minimum; ?>" size="2" maxlength="2" id="input-quantity" class="form-control" onkeyup="_asaca.handleNumber(this);" onmouseout="_asaca.handleNumber(this);" style="text-align: center" />
                                     <input type="hidden" name="product_id" value="<?php echo $product_id; ?>" />
+                                    <i class="fa fa-minus-circle btn-step" onclick="_asaca.minusOne('#input-quantity');"></i><i class="fa fa-plus-circle btn-step plus" onclick="_asaca.plusOne('#input-quantity');"></i>
                                 </li>
                                 <li>
                                         <button type="button" id="button-cart" data-loading-text="<?php echo $text_loading; ?>" class="btn btn-primary btn-lg btn-block"><i class="fa fa-shopping-cart"></i> Thêm vào giỏ hàng</button>
