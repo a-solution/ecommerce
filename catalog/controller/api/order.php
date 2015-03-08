@@ -329,7 +329,8 @@ class ControllerApiOrder extends Controller {
                 //Hieu: fix error: Payment method is required
                 if(!isset($this->session->data['payment_method'])){
                     if(isset($this->session->data['payment_methods'])){
-                        $this->session->data['payment_method'] = $this->session->data['payment_methods'][array_keys($data['categories'])[0]];
+                        $this->session->data['payment_method'] = $this->session->data['payment_methods']
+                                [array_keys($this->session->data['payment_methods'])[0]];
                     }
                 }
                 
