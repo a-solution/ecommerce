@@ -23,17 +23,56 @@
                 <?php $class = 'col-sm-4'; ?>
                 <?php } ?>
                 <div class="<?php echo $class; ?>">
-                    <?php if ($thumb || $images) { ?>
-                    <ul class="thumbnails">
-                        <?php if ($thumb) { ?>
-                        <li><a class="thumbnail" href="<?php echo $popup; ?>" title="<?php echo $heading_title; ?>"><img src="<?php echo $thumb; ?>" title="<?php echo $heading_title; ?>" alt="<?php echo $heading_title; ?>" /></a></li>
-                        <?php } ?>
-                        <?php if ($images) { ?>
-                        <?php foreach ($images as $image) { ?>
-                        <li class="image-additional"><a class="thumbnail" href="<?php echo $image['popup']; ?>" title="<?php echo $heading_title; ?>"> <img src="<?php echo $image['thumb']; ?>" title="<?php echo $heading_title; ?>" alt="<?php echo $heading_title; ?>" /></a></li>
-                        <?php } ?>
-                        <?php } ?>
-                    </ul>
+                    <script src="catalog/view/theme/grasil/js/jquery.elevatezoom.js" type="text/javascript"></script>
+                    <div class="prd-media-box">
+                        <?php if ($thumb || $images) { ?>
+                        <div class="prd-image">                        
+                            <img id="prd-single-image" data-image="<?php echo $thumb; ?>" src="<?php echo $thumb; ?>" data-zoom-image="<?php echo $popup; ?>" title="<?php echo $heading_title; ?>" />
+                        </div>
+                        <div class="prd-more-image">
+                            <div id="prd-other-image">
+                            <?php if ($images) { ?>
+                            <a href="#" data-image="<?php echo $thumb; ?>" data-zoom-image="<?php echo $popup; ?>">
+                                <img src="<?php echo $thumb; ?>" alt="" />
+                            </a>
+                            <?php foreach ($images as $image) { ?>
+                                    <a href="#" data-image="<?php echo $image['popup']; ?>" data-zoom-image="<?php echo $image['popup']; ?>" title="<?php echo $heading_title; ?>"><img src="<?php echo $image['thumb']; ?>" title="<?php echo $heading_title; ?>" alt="" /></a>
+                                <?php } ?>
+                            <?php } else { ?>
+                            <a href="#" style="display: none" data-image="<?php echo $thumb; ?>" data-zoom-image="<?php echo $popup; ?>">
+                                <img src="<?php echo $thumb; ?>" alt="" />
+                            </a>
+                            <?php } ?>
+                            </div>
+                        </div>
+                    </div>
+                    <script type="text/javascript">
+                        //initiate the plugin and pass the id of the div containing gallery images
+                        $("#prd-single-image").elevateZoom
+                        ({
+                            gallery:'prd-other-image',
+                            cursor: 'pointer',
+                            galleryActiveClass: 'active',
+                            imageCrossfade: true,
+                            loadingIcon: 'catalog/view/theme/grasil/image/loading.gif',
+                            zoomType: 'window',
+                            zoomWindowHeight: 348,
+                            zoomWindowOffetx: 7,
+                            zoomWindowOffety: -3,
+                            borderSize: 2,
+                            borderColour: '#eee',                            
+                            zoomWindowFadeIn: 500,
+                            zoomWindowFadeOut: 500,
+                            lensFadeIn: 500,
+                            lensFadeOut: 500
+                        });
+                        //pass the images to Fancybox
+                        $("#prd-single-image").bind("click", function(e) {
+                            var ez = $('#prd-single-image').data('elevateZoom');
+                            $.fancybox(ez.getGalleryList());
+                            return false;
+                        });
+                    </script>
                     <?php } ?>          
                 </div>
                 <?php if ($column_left && $column_right) { ?>
@@ -54,7 +93,8 @@
                         <?php if ($reward) { ?>
                         <li><?php echo $text_reward; ?> <?php echo $reward; ?></li>
                         <?php } ?>
-                        <li><?php echo $text_stock; ?> <?php echo $stock; ?></li>                                            </ul>
+                        <li><?php echo $text_stock; ?> <?php echo $stock; ?></li>
+                    </ul>
                     <?php if ($price) { ?>
                     <ul class="list-unstyled price">
                         <?php if (!$special) { ?>
@@ -248,8 +288,8 @@
                     <div class="btn-group addto-box">
                         <button type="button" class="btn" onclick="wishlist.add('<?php echo $product_id; ?>');"><i class="fa fa-heart"></i> <?php echo $button_wishlist; ?></button>
                         <button type="button" class="btn" onclick="compare.add('<?php echo $product_id; ?>');"><i class="fa fa-exchange"></i> <?php echo $button_compare; ?></button>
-                        <button type="button" class="btn" onclick="$('a[href=\'#tab-faq\']').trigger('click');_asaca.scrollTo('#tab-faq h2');"><i class="fa fa-question-circle"></i> &nbsp;Đặt câu hỏi</button>
-                        <button type="button" class="btn" onclick="$('a[href=\'#tab-review\']').trigger('click');_asaca.scrollTo('#tab-review h2');"><i class="fa fa-comment"></i> <?php echo $text_write; ?></button>                        
+                        <button type="button" class="btn" onclick="$('a[href=\'#tab-faq\']').trigger('click'); _asaca.scrollTo('#tab-faq h2');"><i class="fa fa-question-circle"></i> &nbsp;Đặt câu hỏi</button>
+                        <button type="button" class="btn" onclick="$('a[href=\'#tab-review\']').trigger('click'); _asaca.scrollTo('#tab-review h2');"><i class="fa fa-comment"></i> <?php echo $text_write; ?></button>                        
                     </div>
                     <?php if ($review_status) { ?>
                     <div class="rating">
@@ -261,11 +301,11 @@
                             <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
                             <?php } ?>
                             <?php } ?>
-                            <a href="" onclick="$('a[href=\'#tab-review\']').trigger('click');_asaca.scrollTo('#tab-review'); return false;"><?php echo $reviews; ?></a></p>                       
+                            <a href="" onclick="$('a[href=\'#tab-review\']').trigger('click'); _asaca.scrollTo('#tab-review'); return false;"><?php echo $reviews; ?></a></p>                       
                         <hr />
                         <!-- AddThis Button BEGIN -->
                         <div class="addthis_toolbox addthis_default_style"><a class="addthis_button_facebook_like" fb:like:layout="button_count"></a><a class="addthis_counter addthis_pill_style"></a></div>
-                        <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-515eeaf54693130e"></script> 
+                        <!--script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-515eeaf54693130e"></script--> 
                         <!-- AddThis Button END --> 
                     </div>
                     <?php } ?>
@@ -493,10 +533,10 @@ $('select[name=\'recurring_id\'], input[name="quantity"]').change(function(){
 <script type="text/javascript">
             $('#button-cart').on('click', function() {
     cart.addIntoCart();
-            });
+    });
             $('#button-cart-checkout').on('click', function() {
     cart.paymentCart();
-            });</script>
+    });</script>
 <script type="text/javascript"><!--
 $('.date').datetimepicker({
     pickTime: false
@@ -553,8 +593,8 @@ $('#review').delegate('.pagination a', 'click', function(e) {
             $('#review').load(this.href);
             $('#review').fadeIn('slow');
     });
-$('#review').load('index.php?route=product/product/review&product_id=<?php echo $product_id; ?>');
-$('#button-review').on('click', function() {
+            $('#review').load('index.php?route=product/product/review&product_id=<?php echo $product_id; ?>');
+            $('#button-review').on('click', function() {
     $.ajax({
     url: 'index.php?route=product/product/write&product_id=<?php echo $product_id; ?>',
             type: 'post',
@@ -564,10 +604,10 @@ $('#button-review').on('click', function() {
             $('#button-review').button('loading');
             },
             complete: function() {
-                _asaca.scrollTo('#tab-review .alert');
-                $('#button-review').button('reset');
-                $('#captcha').attr('src', 'index.php?route=tool/captcha#' + new Date().getTime());
-                $('input[name=\'captcha\']').val('');
+            _asaca.scrollTo('#tab-review .alert');
+                    $('#button-review').button('reset');
+                    $('#captcha').attr('src', 'index.php?route=tool/captcha#' + new Date().getTime());
+                    $('input[name=\'captcha\']').val('');
             },
             success: function(json) {
             $('.alert-success, .alert-danger').remove();
@@ -584,41 +624,39 @@ $('#button-review').on('click', function() {
             }
             }
     });
-});
-
-$('#faq').load('index.php?route=product/product/faqs&product_id=<?php echo $product_id; ?>');
-$('#button-faq').on('click', function() {
+            });
+            $('#faq').load('index.php?route=product/product/faqs&product_id=<?php echo $product_id; ?>');
+            $('#button-faq').on('click', function() {
     $.ajax({
     url: 'index.php?route=product/product/faq&product_id=<?php echo $product_id; ?>',
-        type: 'post',
-        dataType: 'json',
-        data: 'name=' + encodeURIComponent($('input[name=\'name-faq\']').val()) + '&text=' + encodeURIComponent($('textarea[name=\'text-faq\']').val()) + '&rating=5&captcha=' + encodeURIComponent($('input[name=\'captcha-faq\']').val()),
-        beforeSend: function() {
-        $('#button-faq').button('loading');
-        },
-        complete: function() {
+            type: 'post',
+            dataType: 'json',
+            data: 'name=' + encodeURIComponent($('input[name=\'name-faq\']').val()) + '&text=' + encodeURIComponent($('textarea[name=\'text-faq\']').val()) + '&rating=5&captcha=' + encodeURIComponent($('input[name=\'captcha-faq\']').val()),
+            beforeSend: function() {
+            $('#button-faq').button('loading');
+            },
+            complete: function() {
             _asaca.scrollTo('#tab-faq .alert');
-            $('#button-faq').button('reset');
-            $('#captcha-faq').attr('src', 'index.php?route=tool/captcha#' + new Date().getTime());
-            $('input[name=\'captcha-faq\']').val('');
-        },
-        success: function(json) {
+                    $('#button-faq').button('reset');
+                    $('#captcha-faq').attr('src', 'index.php?route=tool/captcha#' + new Date().getTime());
+                    $('input[name=\'captcha-faq\']').val('');
+            },
+            success: function(json) {
             $('.alert-success, .alert-danger').remove();
-            if (json['error']) {
-                $('#faq').after('<div class="alert alert-danger"><i class="fa fa-exclamation-circle"></i> ' + json['error'] + '</div>');
+                    if (json['error']) {
+            $('#faq').after('<div class="alert alert-danger"><i class="fa fa-exclamation-circle"></i> ' + json['error'] + '</div>');
             }
 
             if (json['success']) {
-                $('#faq').after('<div class="alert alert-success"><i class="fa fa-check-circle"></i> ' + json['success'] + '</div>');
-                $('input[name=\'name-faq\']').val('');
-                $('textarea[name=\'text-faq\']').val('');                
-                $('input[name=\'captcha-faq\']').val('');                                
+            $('#faq').after('<div class="alert alert-success"><i class="fa fa-check-circle"></i> ' + json['success'] + '</div>');
+                    $('input[name=\'name-faq\']').val('');
+                    $('textarea[name=\'text-faq\']').val('');
+                    $('input[name=\'captcha-faq\']').val('');
             }
-        }
+            }
     });
-});
-
-$(document).ready(function() {
+            });
+            $(document).ready(function() {
     $('.thumbnails').magnificPopup({
     type:'image',
             delegate: 'a',
@@ -626,7 +664,7 @@ $(document).ready(function() {
             enabled:true
             }
     });
-});
+            });
 //--></script> 
 <script type="text/javascript">
             function selectItem(obj)
