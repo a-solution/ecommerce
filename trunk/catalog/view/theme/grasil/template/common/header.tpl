@@ -26,8 +26,7 @@
         <script src="catalog/view/javascript/jquery/jquery-2.1.1.min.js" type="text/javascript"></script>
         <link href="catalog/view/javascript/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen" />
         <script src="catalog/view/javascript/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-        <link href="catalog/view/javascript/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-        <!--link href="//fonts.googleapis.com/css?family=Open+Sans:400,400i,300,700" rel="stylesheet" type="text/css" /-->
+        <link href="catalog/view/javascript/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />        
         <link href="catalog/view/theme/grasil/stylesheet/stylesheet.css" rel="stylesheet">
         <link href="catalog/view/theme/grasil/stylesheet/animation.css" rel="stylesheet">
         <link href="catalog/view/theme/grasil/stylesheet/responsive.css" rel="stylesheet">
@@ -36,6 +35,27 @@
         <?php } ?>
         <script src="catalog/view/javascript/common.js" type="text/javascript"></script>
         <script src="catalog/view/theme/grasil/js/common.js" type="text/javascript"></script>
+        
+        <!--Start Fancybox-->        
+	<!-- Add mousewheel plugin (this is optional) -->
+	<script type="text/javascript" src="catalog/view/theme/grasil/js/fancybox/lib/jquery.mousewheel-3.0.6.pack.js"></script>
+	
+        <!-- Add fancyBox main JS and CSS files -->
+	<script type="text/javascript" src="catalog/view/theme/grasil/js/fancybox/source/jquery.fancybox.js?v=2.1.5"></script>
+	<link rel="stylesheet" type="text/css" href="catalog/view/theme/grasil/js/fancybox/source/jquery.fancybox.css?v=2.1.5" media="screen" />
+        
+	<!-- Add Button helper (this is optional) -->
+	<link rel="stylesheet" type="text/css" href="catalog/view/theme/grasil/js/fancybox/source/helpers/jquery.fancybox-buttons.css?v=1.0.5" />
+	<script type="text/javascript" src="catalog/view/theme/grasil/js/fancybox/source/helpers/jquery.fancybox-buttons.js?v=1.0.5"></script>
+
+	<!-- Add Thumbnail helper (this is optional) -->
+	<link rel="stylesheet" type="text/css" href="catalog/view/theme/grasil/js/fancybox/source/helpers/jquery.fancybox-thumbs.css?v=1.0.7" />
+	<script type="text/javascript" src="catalog/view/theme/grasil/js/fancybox/source/helpers/jquery.fancybox-thumbs.js?v=1.0.7"></script>
+
+	<!-- Add Media helper (this is optional) -->
+	<script type="text/javascript" src="catalog/view/theme/grasil/js/fancybox/source/helpers/jquery.fancybox-media.js?v=1.0.6"></script>
+        <!--End Fancybox-->
+        
         <?php foreach ($scripts as $script) { ?>
         <script src="<?php echo $script; ?>" type="text/javascript"></script>
         <?php } ?>

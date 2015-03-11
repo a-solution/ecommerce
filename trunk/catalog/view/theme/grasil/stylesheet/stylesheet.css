@@ -1026,6 +1026,12 @@ header .con-wishlist {
     border:0;
 }
 
+.basic-info {
+    
+}
+.basic-info {
+    
+}
 /*thumbnails details*/
 .thumbnails {
     overflow: auto;
@@ -1065,9 +1071,33 @@ header .con-wishlist {
 .thumbnails .image-additional {
     float: left;    
 }
-.basic-info {
-    
+
+.prd-media-box .prd-image {
+    margin-bottom: 20px;
+    padding: 5px;
+    display: block;
+    border: 1px solid #eee;    
 }
+.prd-media-box .prd-image #prd-single-image {
+    max-width: 280px;
+}
+.prd-media-box .prd-more-image a {
+    margin-bottom: 20px;
+    padding: 1px;
+    display: block;
+    border: 1px solid #eee;
+    float: left;
+    margin-right: 4px;
+}
+.prd-media-box .prd-more-image img {
+    border:1px solid white;
+    width: 40px;
+    height:48px;
+}
+.prd-media-box .prd-more-image .active img {
+/*    border:1px solid #999;*/
+}
+
 .basic-info hr {
     border-style: dashed;
 }
