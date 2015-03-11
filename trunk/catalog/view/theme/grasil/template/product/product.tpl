@@ -20,16 +20,12 @@
                 <?php } elseif ($column_left || $column_right) { ?>
                 <?php $class = 'col-sm-6'; ?>
                 <?php } else { ?>
-                <?php $class = 'col-sm-4'; ?>
+                <?php $class = 'col-sm-5'; ?>
                 <?php } ?>
                 <div class="<?php echo $class; ?>">
-                    <script src="catalog/view/theme/grasil/js/jquery.elevatezoom.js" type="text/javascript"></script>
-                    <div class="prd-media-box">
-                        <?php if ($thumb || $images) { ?>
-                        <div class="prd-image">                        
-                            <img id="prd-single-image" data-image="<?php echo $thumb; ?>" src="<?php echo $thumb; ?>" data-zoom-image="<?php echo $popup; ?>" title="<?php echo $heading_title; ?>" />
-                        </div>
-                        <div class="prd-more-image">
+                    <?php if ($thumb || $images) { ?>
+                    <div class="row prd-media-box">                                                
+                        <div class="col-sm-2 prd-more-image">
                             <div id="prd-other-image">
                             <?php if ($images) { ?>
                             <a href="#" data-image="<?php echo $thumb; ?>" data-zoom-image="<?php echo $popup; ?>">
@@ -45,7 +41,13 @@
                             <?php } ?>
                             </div>
                         </div>
+                        <div class="col-sm-10">
+                            <div class="prd-image">
+                                <img id="prd-single-image" data-image="<?php echo $thumb; ?>" src="<?php echo $thumb; ?>" data-zoom-image="<?php echo $popup; ?>" title="<?php echo $heading_title; ?>" />
+                            </div>
+                        </div>                        
                     </div>
+                    <script src="catalog/view/theme/grasil/js/jquery.elevatezoom.js" type="text/javascript"></script>
                     <script type="text/javascript">
                         //initiate the plugin and pass the id of the div containing gallery images
                         $("#prd-single-image").elevateZoom
@@ -56,11 +58,11 @@
                             imageCrossfade: true,
                             loadingIcon: 'catalog/view/theme/grasil/image/loading.gif',
                             zoomType: 'window',
-                            zoomWindowHeight: 348,
-                            zoomWindowOffetx: 7,
-                            zoomWindowOffety: -3,
-                            borderSize: 2,
-                            borderColour: '#eee',                            
+                            zoomWindowHeight: 417,
+                            zoomWindowOffetx: 8,
+                            zoomWindowOffety: -1,
+                            borderSize: 1,
+                            borderColour: '#ccc',                            
                             zoomWindowFadeIn: 500,
                             zoomWindowFadeOut: 500,
                             lensFadeIn: 500,
@@ -269,7 +271,7 @@
                                 <li>                                                                        
                                     <input type="text" name="quantity" value="<?php echo $minimum; ?>" size="2" maxlength="2" id="input-quantity" class="form-control" onkeyup="_asaca.handleNumber(this);" onmouseout="_asaca.handleNumber(this);" style="text-align: center" />
                                     <input type="hidden" name="product_id" value="<?php echo $product_id; ?>" />
-                                    <i class="fa fa-minus-circle btn-step" onclick="_asaca.minusOne('#input-quantity');"></i><i class="fa fa-plus-circle btn-step plus" onclick="_asaca.plusOne('#input-quantity');"></i>
+                                    <i class="fa fa-minus-square-o btn-step" onclick="_asaca.minusOne('#input-quantity');"></i><i class="fa fa-plus-square-o btn-step plus" onclick="_asaca.plusOne('#input-quantity');"></i>
                                 </li>
                                 <li>
                                     <button type="button" id="button-cart" data-loading-text="<?php echo $text_loading; ?>" class="btn btn-primary btn-lg btn-block"><i class="fa fa-shopping-cart"></i> Thêm vào giỏ hàng</button>
@@ -284,12 +286,12 @@
                         <?php } ?>
                     </div>                    
                 </div>
-                <div class="col-sm-3 col-xs-12">
+                <div class="col-sm-2 col-xs-12">
                     <div class="btn-group addto-box">
                         <button type="button" class="btn" onclick="wishlist.add('<?php echo $product_id; ?>');"><i class="fa fa-heart"></i> <?php echo $button_wishlist; ?></button>
                         <button type="button" class="btn" onclick="compare.add('<?php echo $product_id; ?>');"><i class="fa fa-exchange"></i> <?php echo $button_compare; ?></button>
-                        <button type="button" class="btn" onclick="$('a[href=\'#tab-faq\']').trigger('click'); _asaca.scrollTo('#tab-faq h2');"><i class="fa fa-question-circle"></i> &nbsp;Đặt câu hỏi</button>
-                        <button type="button" class="btn" onclick="$('a[href=\'#tab-review\']').trigger('click'); _asaca.scrollTo('#tab-review h2');"><i class="fa fa-comment"></i> <?php echo $text_write; ?></button>                        
+                        <button type="button" class="btn" onclick="$('a[href=\'#tab-faq\']').trigger('click'); _asaca.scrollTo('#tab-faq h2');"><i class="fa fa-support"></i> Đặt câu hỏi</button>
+                        <button type="button" class="btn" onclick="$('a[href=\'#tab-review\']').trigger('click'); _asaca.scrollTo('#tab-review h2');"><i class="fa fa-quote-left"></i> <?php echo $text_write; ?></button>                        
                     </div>
                     <?php if ($review_status) { ?>
                     <div class="rating">
@@ -301,11 +303,12 @@
                             <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
                             <?php } ?>
                             <?php } ?>
-                            <a href="" onclick="$('a[href=\'#tab-review\']').trigger('click'); _asaca.scrollTo('#tab-review'); return false;"><?php echo $reviews; ?></a></p>                       
+                        </p>
+                        <p><a href="" onclick="$('a[href=\'#tab-review\']').trigger('click'); _asaca.scrollTo('#tab-review'); return false;"><?php echo $reviews; ?></a></p>
                         <hr />
                         <!-- AddThis Button BEGIN -->
                         <div class="addthis_toolbox addthis_default_style"><a class="addthis_button_facebook_like" fb:like:layout="button_count"></a><a class="addthis_counter addthis_pill_style"></a></div>
-                        <!--script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-515eeaf54693130e"></script--> 
+                        <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-515eeaf54693130e"></script> 
                         <!-- AddThis Button END --> 
                     </div>
                     <?php } ?>
