@@ -13,7 +13,7 @@ $_['text_discount']                           = ' hoặc thêm ';
 $_['text_option']                             = 'Lựa chọn';
 $_['text_minimum']                            = 'Sản phẩm này có số lượng tối thiểu là %s';
 $_['text_reviews']                            = '%s đánh giá';
-$_['text_write']                              = 'Viết đánh giá của bạn';
+$_['text_write']                              = 'Viết đánh giá';
 $_['text_login']                              = 'Vui lòng <a href="%s">Đăng nhập</a> hoặc <a href="%s">đăng ký</a> để đánh giá';
 $_['text_no_reviews']                         = 'Không có đánh giá nào cho sản phẩm này.';
 $_['text_note']                               = '<span class="text-danger">Ghi chú:</span> Mã HTML sẽ không được thể hiện!';
