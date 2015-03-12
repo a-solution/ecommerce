@@ -11,11 +11,22 @@
         <title><?php echo $title; ?></title>
         <base href="<?php echo $base; ?>" />
         <?php if ($description) { ?>
-        <meta name="description" content="<?php echo $description; ?>" />
+        <meta name="description" content="<?php echo $description; ?>" />        
         <?php } ?>
         <?php if ($keywords) { ?>
         <meta name="keywords" content= "<?php echo $keywords; ?>" />
         <?php } ?>
+        
+        <meta property="og:title" content="<?php echo $title; ?>"/>
+        <meta property="og:image" content="http://static-origin.zalora.vn/p/mango-0988-655183-1-product.jpg"/>
+        <meta property="og:image" content="http://static-origin.zalora.vn/p/mango-0990-655183-2-product.jpg"/>
+        <meta property="og:image" content="http://static-origin.zalora.vn/p/mango-0991-655183-3-product.jpg"/>
+        <meta property="og:image" content="http://static-origin.zalora.vn/p/mango-0992-655183-4-product.jpg"/>
+        <meta property="og:image" content="http://static-origin.zalora.vn/p/mango-0993-655183-5-product.jpg"/>
+        <meta property="og:image" content="http://static-origin.zalora.vn/p/mango-0994-655183-6-product.jpg"/>
+        <meta property="og:description" content="<?php echo $description; ?>"/>
+        <meta property="og:url" content="<?php echo 'http://'.$_SERVER["HTTP_HOST"].$_SERVER["REQUEST_URI"]; ?>"/>
+        
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <?php if ($icon) { ?>
         <link href="<?php echo $icon; ?>" rel="icon" />
@@ -23,6 +34,10 @@
         <?php foreach ($links as $link) { ?>
         <link href="<?php echo $link['href']; ?>" rel="<?php echo $link['rel']; ?>" />
         <?php } ?>
+        
+        <link rel="apple-touch-icon-precomposed" href="<?php echo $base; ?>catalog/view/theme/grasil/image/apple-touch-icon-precomposed.png">
+        <link rel="apple-touch-icon" href="<?php echo $base; ?>catalog/view/theme/grasil/image/apple-touch-icon.png">
+        
         <script src="catalog/view/javascript/jquery/jquery-2.1.1.min.js" type="text/javascript"></script>
         <link href="catalog/view/javascript/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen" />
         <script src="catalog/view/javascript/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
