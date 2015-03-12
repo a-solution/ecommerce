@@ -16,16 +16,14 @@
         <?php if ($keywords) { ?>
         <meta name="keywords" content= "<?php echo $keywords; ?>" />
         <?php } ?>
-        
-        <meta property="og:title" content="<?php echo $title; ?>"/>
-        <meta property="og:image" content="http://static-origin.zalora.vn/p/mango-0988-655183-1-product.jpg"/>
-        <meta property="og:image" content="http://static-origin.zalora.vn/p/mango-0990-655183-2-product.jpg"/>
-        <meta property="og:image" content="http://static-origin.zalora.vn/p/mango-0991-655183-3-product.jpg"/>
-        <meta property="og:image" content="http://static-origin.zalora.vn/p/mango-0992-655183-4-product.jpg"/>
-        <meta property="og:image" content="http://static-origin.zalora.vn/p/mango-0993-655183-5-product.jpg"/>
-        <meta property="og:image" content="http://static-origin.zalora.vn/p/mango-0994-655183-6-product.jpg"/>
-        <meta property="og:description" content="<?php echo $description; ?>"/>
-        <meta property="og:url" content="<?php echo 'http://'.$_SERVER["HTTP_HOST"].$_SERVER["REQUEST_URI"]; ?>"/>
+                
+        <meta property="og:title" content="<?php echo $title; ?>" />
+        <meta property="og:site_name" content="ASACA.VN" />
+        <meta property="og:url" content="<?php echo 'http://' . $_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']; ?>" />
+        <meta property="og:image" content="http://demo.asaca.vn/image/cache/catalog/product/burton-menswear-6521-636092-1-735x1000.jpg" />        
+        <meta property="og:description" content="Description" />
+        <meta property="fb:app_id" content="357643941100377" />
+        <meta property="og:type" content="product" />
         
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <?php if ($icon) { ?>
