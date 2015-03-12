@@ -311,7 +311,7 @@
                         <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-515eeaf54693130e"></script-->                                                 
                         <!-- AddThis Button END -->
                                                 
-                        <div class="fb-share-button" data-href="http://localhost/asaca/thoi-trang-nam/ao-nam/ao-nam-test" data-layout="button_count"></div>                        
+                        <div class="fb-share-button" data-href="<?php echo 'http://' . $_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']; ?>" data-layout="button_count"></div>                        
                     </div>
                     <?php } ?>
                 </div>
