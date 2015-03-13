@@ -7,7 +7,8 @@
     <!--<![endif]-->
     <head>
         <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title><?php echo $title; ?></title>
         <base href="<?php echo $base; ?>" />
         <?php if ($description) { ?>
@@ -18,14 +19,14 @@
         <?php } ?>
                 
         <meta property="og:title" content="<?php echo $title; ?>" />
-        <meta property="og:site_name" content="ASACA.VN" />
-        <meta property="og:url" content="<?php echo 'http://' . $_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']; ?>" />
-        <meta property="og:image" content="http://demo.asaca.vn/image/cache/catalog/product/burton-menswear-6521-636092-1-735x1000.jpg" />        
-        <meta property="og:description" content="Description" />
+        <meta property="og:site_name" content="<?php echo $name; ?>" />                
+        <?php foreach ($images as $image) { ?>
+        <meta property="og:image" content="<?php echo $image['src']; ?>" />        
+        <?php } ?>
+        <meta property="og:description" content="<?php echo $description; ?>" />
         <meta property="fb:app_id" content="357643941100377" />
-        <meta property="og:type" content="product" />
-        
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta property="og:type" content="website" />
+                
         <?php if ($icon) { ?>
         <link href="<?php echo $icon; ?>" rel="icon" />
         <?php } ?>
@@ -74,8 +75,7 @@
         <?php } ?>
         <?php echo $google_analytics; ?>
     </head>
-    <body class="<?php echo $class; ?>" ontouchstart="">
-
+    <body class="<?php echo $class; ?>" ontouchstart="">        
         <nav id="topnav">
             <div class="container">
                 <div class="pull-left hidden-xs">

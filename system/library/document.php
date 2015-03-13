@@ -1,64 +1,83 @@
 <?php
+
 class Document {
-	private $title;
-	private $description;
-	private $keywords;
-	private $links = array();
-	private $styles = array();
-	private $scripts = array();
 
-	public function setTitle($title) {
-		$this->title = $title;
-	}
+    private $title;
+    private $description;
+    private $keywords;
+    private $links = array();
+    private $styles = array();
+    private $scripts = array();
+    //customize images for social network sharing
+    //added 13-Mar-2015
+    private $images = array();
 
-	public function getTitle() {
-		return $this->title;
-	}
+    //------------------------
 
-	public function setDescription($description) {
-		$this->description = $description;
-	}
+    public function setTitle($title) {
+        $this->title = $title;
+    }
 
-	public function getDescription() {
-		return $this->description;
-	}
+    public function getTitle() {
+        return $this->title;
+    }
 
-	public function setKeywords($keywords) {
-		$this->keywords = $keywords;
-	}
+    public function setDescription($description) {
+        $this->description = $description;
+    }
 
-	public function getKeywords() {
-		return $this->keywords;
-	}
+    public function getDescription() {
+        return $this->description;
+    }
 
-	public function addLink($href, $rel) {
-		$this->links[$href] = array(
-			'href' => $href,
-			'rel'  => $rel
-		);
-	}
+    public function setKeywords($keywords) {
+        $this->keywords = $keywords;
+    }
 
-	public function getLinks() {
-		return $this->links;
-	}
+    public function getKeywords() {
+        return $this->keywords;
+    }
 
-	public function addStyle($href, $rel = 'stylesheet', $media = 'screen') {
-		$this->styles[$href] = array(
-			'href'  => $href,
-			'rel'   => $rel,
-			'media' => $media
-		);
-	}
+    public function addLink($href, $rel) {
+        $this->links[$href] = array(
+            'href' => $href,
+            'rel' => $rel
+        );
+    }
 
-	public function getStyles() {
-		return $this->styles;
-	}
+    public function getLinks() {
+        return $this->links;
+    }
 
-	public function addScript($script) {
-		$this->scripts[md5($script)] = $script;
-	}
+    public function addStyle($href, $rel = 'stylesheet', $media = 'screen') {
+        $this->styles[$href] = array(
+            'href' => $href,
+            'rel' => $rel,
+            'media' => $media
+        );
+    }
 
-	public function getScripts() {
-		return $this->scripts;
-	}
+    public function getStyles() {
+        return $this->styles;
+    }
+
+    public function addScript($script) {
+        $this->scripts[md5($script)] = $script;
+    }
+
+    public function getScripts() {
+        return $this->scripts;
+    }
+
+    public function addImages($src, $rel) {
+        $this->images[] = array(
+            'src' => $src,
+            'rel' => $rel
+        );
+    }
+
+    public function getImages() {
+        return $this->images;
+    }
+
 }
