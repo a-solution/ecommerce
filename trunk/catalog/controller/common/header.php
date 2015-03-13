@@ -12,7 +12,7 @@ class ControllerCommonHeader extends Controller {
         }
 
         $data['base'] = $server;
-        $data['description'] = $this->document->getDescription();
+        $data['description'] = $this->document->getDescription() ? $this->document->getDescription(): $this->config->get('config_meta_description');
         $data['keywords'] = $this->document->getKeywords();
         $data['links'] = $this->document->getLinks();
         $data['styles'] = $this->document->getStyles();
@@ -21,6 +21,16 @@ class ControllerCommonHeader extends Controller {
         $data['direction'] = $this->language->get('direction');
         $data['google_analytics'] = html_entity_decode($this->config->get('config_google_analytics'), ENT_QUOTES, 'UTF-8');
         $data['name'] = $this->config->get('config_name');
+        
+        //customize images for social network sharing
+        //added 13-Mar-2015
+        $images = $this->document->getImages();        
+        if(empty($images))
+        {
+            $this->document->addImages('abc','no-image-sharing');            
+        }
+        $data['images'] = $this->document->getImages();
+        //--------------------------------------
 
         if (is_file(DIR_IMAGE . $this->config->get('config_icon'))) {
             $data['icon'] = $server . 'image/' . $this->config->get('config_icon');
