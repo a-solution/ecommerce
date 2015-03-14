@@ -83,7 +83,8 @@ class ControllerModuleLatest extends Controller {
                     'viewed' => $result['viewed']
                 );
             }
-
+            $data['type'] = isset($setting['type'])?$setting['type']:'Normal';
+            
             if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/module/latest.tpl')) {
                 return $this->load->view($this->config->get('config_template') . '/template/module/latest.tpl', $data);
             } else {

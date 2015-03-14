@@ -90,7 +90,8 @@ class ControllerModuleLatest extends Controller {
 				'key'    => $key,
 				'limit'  => $module['limit'],
 				'width'  => $module['width'],
-				'height' => $module['height']
+				'height' => $module['height'],
+                                'type'   => isset($module['type']) ? $module['type'] : 'Normal'
 			);
 		}
 		
