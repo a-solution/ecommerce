@@ -81,10 +81,11 @@ class ControllerModuleFeatured extends Controller {
 					'href'        => $this->url->link('product/product', 'product_id=' . $product_info['product_id']),
                                         'purchased'   => $product_info['purchased'],
                                         'viewed'      => $product_info['viewed']                                    
-				);
+				);   
 			}
 		}
-
+                $data['type'] = isset($setting['type'])?$setting['type']:'Normal';
+                
 		if ($data['products']) {
 			if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/module/featured.tpl')) {
 				return $this->load->view($this->config->get('config_template') . '/template/module/featured.tpl', $data);
