@@ -93,7 +93,8 @@ class ControllerModuleBestSeller extends Controller {
 				'limit'         => $module['limit'],
 				'width'         => $module['width'],
 				'height'        => $module['height'],
-                                'category_ids'  => isset($module['category_ids']) ? $module['category_ids'] : ''
+                                'category_ids'  => isset($module['category_ids']) ? $module['category_ids'] : '',
+                                'type'          => isset($module['type']) ? $module['type'] : 'Normal'
 			);
 		}
 		
