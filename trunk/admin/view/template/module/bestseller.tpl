@@ -55,6 +55,20 @@
                 <td class="text-right"><?php echo $module_row; ?></td>
                 <td class="text-left">
                     <input type="text" name="bestseller_module[<?php echo $bestseller_module['key']; ?>][limit]" value="<?php echo $bestseller_module['limit']; ?>" placeholder="<?php echo $entry_limit; ?>" class="form-control" />
+                    <div>
+                    <select name="bestseller_module[<?php echo $bestseller_module['key']; ?>][type]">    
+                        <?php if(!isset($bestseller_module['type']) || $bestseller_module['type'] == '' || $bestseller_module['type'] == 'Normal'){?>
+                            <option value="Normal" selected="selected">Normal</option>
+                            <option value="Carousel">Carousel</option>
+                        <?php }
+                            else{
+                        ?>
+                            <option value="Normal">Normal</option>
+                            <option value="Carousel" selected="selected">Carousel</option>
+                        <?php }?>
+                    </select>    
+                    <span>&nbsp;Type</span>        
+                    </div>
                     <select name="cbb_category_ids_<?php echo $bestseller_module['key']; ?>">    
                         <option value="" selected="selected">-- All--</option>
                         <?php foreach($categories as $category){?>    
