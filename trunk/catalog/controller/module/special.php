@@ -95,6 +95,7 @@ class ControllerModuleSpecial extends Controller {
                                         $data['categories']['All'] = array();
                                         $data['categories']['All']['category_name'] = 'All';
                                         $data['categories']['All']['category_id'] = 'All';
+                                        $data['categories']['All']['type'] = isset($setting['type'])?$setting['type']:'Normal';
                                         $data['categories']['All']['products'] = array();
                                     }
                                     array_push($data['categories']['All']['products'], $theProduct);                    
@@ -109,6 +110,7 @@ class ControllerModuleSpecial extends Controller {
                                     }
                                     $data['categories'][$theProduct['category_id']]['category_name'] = $theProduct['category_name'];
                                     $data['categories'][$theProduct['category_id']]['category_id'] = $theProduct['category_id'];
+                                    $data['categories'][$theProduct['category_id']]['type'] = isset($setting['type'])?$setting['type']:'Normal';
                                     array_push($data['categories'][$theProduct['category_id']]['products'], $theProduct);
                                 }  
 			}

@@ -129,6 +129,13 @@ function addModule() {
 	html += '  <td class="text-right">' + ($('tbody tr').length + 1) + '</td>';
 	html += '  <td class="text-left">'
                 +'<input type="text" name="bestseller_module[' + token + '][limit]" value="5" placeholder="<?php echo $entry_limit; ?>" class="form-control" />'
+                +'<div>'
+                +'<select name="bestseller_module[' + token + '][type]">'
+                +'<option value="Normal" selected="selected">Normal</option>'
+                +'<option value="Carousel">Carousel</option>'
+                +'</select>'
+                +'<span>&nbsp;Type</span>'
+                +'</div>'
                 +'<select name="cbb_category_ids_' + token + '">'  
                 +'<option value="" selected="selected">-- All--</option>'
                 <?php foreach($categories as $category){?>    
