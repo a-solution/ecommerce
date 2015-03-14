@@ -55,6 +55,20 @@
                 <td class="text-right"><?php echo $module_row; ?></td>
                 <td class="text-left">
                     <input type="text" name="special_module[<?php echo $special_module['key']; ?>][limit]" value="<?php echo $special_module['limit']; ?>" placeholder="<?php echo $entry_limit; ?>" class="form-control" />
+                    <div>
+                    <select name="special_module[<?php echo $special_module['key']; ?>][type]">    
+                        <?php if(!isset($special_module['type']) || $special_module['type'] == '' || $special_module['type'] == 'Normal'){?>
+                            <option value="Normal" selected="selected">Normal</option>
+                            <option value="Carousel">Carousel</option>
+                        <?php }
+                            else{
+                        ?>
+                            <option value="Normal">Normal</option>
+                            <option value="Carousel" selected="selected">Carousel</option>
+                        <?php }?>
+                    </select>    
+                    <span>&nbsp;Type</span>        
+                    </div>                    
                     <select name="cbb_category_ids_<?php echo $special_module['key']; ?>">    
                         <option value="" selected="selected">-- All--</option>
                         <?php foreach($categories as $category){?>    
@@ -115,6 +129,13 @@ function addModule() {
 	html += '  <td class="text-right">' + ($('tbody tr').length + 1) + '</td>';
 	html += '  <td class="text-left">'
                 +'<input type="text" name="special_module[' + token + '][limit]" value="5" placeholder="<?php echo $entry_limit; ?>" class="form-control" />'
+                +'<div>'
+                +'<select name="special_module[' + token + '][type]">'
+                +'<option value="Normal" selected="selected">Normal</option>'
+                +'<option value="Carousel">Carousel</option>'
+                +'</select>'
+                +'<span>&nbsp;Type</span>'
+                +'</div>'
                 +'<select name="cbb_category_ids_' + token + '">'  
                 +'<option value="" selected="selected">-- All--</option>'
                 <?php foreach($categories as $category){?>    
