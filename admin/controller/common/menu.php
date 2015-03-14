@@ -67,6 +67,7 @@ class ControllerCommonMenu extends Controller {
 		$data['text_report_product_viewed'] = $this->language->get('text_report_product_viewed');
 		$data['text_report_customer_order'] = $this->language->get('text_report_customer_order');
 		$data['text_review'] = $this->language->get('text_review');
+                $data['text_faq'] = $this->language->get('text_faq');
 		$data['text_return'] = $this->language->get('text_return');
 		$data['text_return_action'] = $this->language->get('text_return_action');
 		$data['text_return_reason'] = $this->language->get('text_return_reason');
@@ -157,6 +158,7 @@ class ControllerCommonMenu extends Controller {
 		$data['report_affiliate'] = $this->url->link('report/affiliate', 'token=' . $this->session->data['token'], 'SSL');
 		$data['report_affiliate_activity'] = $this->url->link('report/affiliate_activity', 'token=' . $this->session->data['token'], 'SSL');
 		$data['review'] = $this->url->link('catalog/review', 'token=' . $this->session->data['token'], 'SSL');
+                $data['faq'] = $this->url->link('catalog/faq', 'token=' . $this->session->data['token'], 'SSL');
 		$data['return'] = $this->url->link('sale/return', 'token=' . $this->session->data['token'], 'SSL');
 		$data['return_action'] = $this->url->link('localisation/return_action', 'token=' . $this->session->data['token'], 'SSL');
 		$data['return_reason'] = $this->url->link('localisation/return_reason', 'token=' . $this->session->data['token'], 'SSL');
