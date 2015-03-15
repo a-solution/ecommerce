@@ -23,6 +23,24 @@ class ControllerModuleBestSeller extends Controller {
 
         $results = $this->model_catalog_product->getBestSellerProducts($setting['limit'], isset($setting['category_ids']) ? $setting['category_ids'] : '');
 
+        //If no category is specified, group by 'All'
+        if(!isset($setting['category_ids']) || $setting['category_ids'] == ''){
+            $data['categories']['All'] = array();
+            $data['categories']['All']['category_name'] = 'All';
+            $data['categories']['All']['category_id'] = 'All';
+            $data['categories']['All']['type'] = isset($setting['type'])?$setting['type']:'Normal';
+            $data['categories']['All']['products'] = array();
+        }
+        else{
+            $the_arr = explode(",", $setting['category_ids']);
+            foreach ($the_arr as $the_id) {
+                $data['categories'][$the_id] = array();
+                $data['categories'][$the_id]['category_name'] = '';
+                $data['categories'][$the_id]['category_id'] = '';
+                $data['categories'][$the_id]['products'] = array();                
+            }
+        }
+        
         if ($results) {
             foreach ($results as $result) {
                 if ($result['image']) {
@@ -81,26 +99,13 @@ class ControllerModuleBestSeller extends Controller {
                 );
                 
                 $data['products'][] = $theProduct;
-            
+
                 //If no category is specified, group by 'All'
                 if(!isset($setting['category_ids']) || $setting['category_ids'] == ''){
-                    if(!isset($data['categories']['All'])){
-                        $data['categories']['All'] = array();
-                        $data['categories']['All']['category_name'] = 'All';
-                        $data['categories']['All']['category_id'] = 'All';
-                        $data['categories']['All']['type'] = isset($setting['type'])?$setting['type']:'Normal';
-                        $data['categories']['All']['products'] = array();
-                    }
                     array_push($data['categories']['All']['products'], $theProduct);                    
                 }
                 //If some categories are specified, group by Categories ID
                 else{
-                    if(!isset($data['categories'][$theProduct['category_id']])){
-                        $data['categories'][$theProduct['category_id']] = array();
-                        $data['categories'][$theProduct['category_id']]['category_name'] = '';
-                        $data['categories'][$theProduct['category_id']]['category_id'] = '';
-                        $data['categories'][$theProduct['category_id']]['products'] = array();
-                    }
                     $data['categories'][$theProduct['category_id']]['category_name'] = $theProduct['category_name'];
                     $data['categories'][$theProduct['category_id']]['category_id'] = $theProduct['category_id'];
                     $data['categories'][$theProduct['category_id']]['type'] = isset($setting['type'])?$setting['type']:'Normal';
