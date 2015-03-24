@@ -464,6 +464,13 @@ header .con-wishlist {
     font-size: 1.2em;    
     margin: 25px 0;
 }
+
+.like-fanpage {
+    margin-left: 10px;
+}
+.like-fanpage .fb-like > span {
+    height: 35px !important;
+}
 /* cart */
 #cart .mycart {
     font-size: 1.2em;    
@@ -636,7 +643,7 @@ header .con-wishlist {
     font-size: 25px;
     font-stretch: expanded;
     color: #fff;   
-    float: right;
+    float: left;
     background: #313131;
     margin: 0;
     padding: 0 20px;
@@ -782,8 +789,7 @@ header .con-wishlist {
     text-align: center !important;
     height: 30px;
     width: 30px;    
-    background: #f2f2f2;
-    opacity: 1 !important;
+    background: #f2f2f2;    
 }
 .carousel .flex-direction-nav a:before {
     line-height: 27px !important;
@@ -796,12 +802,45 @@ header .con-wishlist {
 .carousel .flex-next {
     right: 0px !important;
 }
+
+.tab_content .carousel .flex-direction-nav a {
+    top:50%;
+    margin-top: -20px;
+}
+.tab_content .carousel .flex-prev {
+    left: -30px !important;
+}
+.tab_content .carousel .flex-next {
+    right: -27px !important;    
+}
+.tab_content .crs-product.flexslider .slides li {
+    width: 178px !important;
+    margin-right: 1px !important;
+    border: none;
+}
+.tab_content .crs-product.flexslider .slides li .button-group {
+    display: none;
+}
+
 .carousel a.flex-disabled {
     color: #ccc;
 }
 .carousel .flex-control-nav {
     display: none;
 }
+.crs-product.flexslider {
+    border:0 !important;
+    background: none;
+}
+.crs-product.flexslider .slides li {
+    margin-right: 32px !important;
+    text-align: left;
+    width: 211px !important;
+}
+.crs-product.flexslider .flex-viewport {
+    padding-top: 5px;
+}
+
 /* product list */
 .product-thumb {
     border: 1px solid #ddd;
@@ -1073,9 +1112,13 @@ header .con-wishlist {
     font-size: 0.8em;
     border-bottom: 1px dashed #eee;
     margin-bottom: 15px;
+    padding-bottom: 10px;
 }
 .basic-info .viewed span {
     font-weight: bold;
+}
+.basic-info .viewed .fb-like {
+    margin-left: 15px;
 }
 .basic-info .radio.image {
     padding:0px;

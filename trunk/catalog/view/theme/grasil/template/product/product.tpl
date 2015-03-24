@@ -86,7 +86,10 @@
                 <?php } ?>
                 <div class="<?php echo $class; ?>">                    
                     <h1><?php echo $heading_title; ?></h1>                    
-                    <div class="viewed"><span><?php echo $orderred; ?></span> lượt mua | <span><?php echo $viewed; ?></span> lượt xem</div>
+                    <div class="viewed">
+                        <span><?php echo $orderred; ?></span> lượt mua | <span><?php echo $viewed; ?></span> lượt xem
+                        <div class="fb-like" data-href="<?php echo 'http://' . $_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']; ?>" data-layout="button_count" data-action="like" data-show-faces="false" data-share="true"></div>
+                    </div>
                     <ul class="list-unstyled">                        
                         <?php if ($manufacturer) { ?>
                         <li><?php echo $text_manufacturer; ?> <a href="<?php echo $manufacturers; ?>"><?php echo $manufacturer; ?></a></li>
@@ -305,13 +308,6 @@
                             <?php } ?>
                         </p>
                         <p><a href="" onclick="$('a[href=\'#tab-review\']').trigger('click'); _asaca.scrollTo('#tab-review'); return false;"><?php echo $reviews; ?></a></p>
-                        <hr />
-                        <!-- AddThis Button BEGIN -->
-                        <!--div class="addthis_toolbox addthis_default_style"><a class="addthis_button_facebook_like" fb:like:layout="button_count"></a><a class="addthis_counter addthis_pill_style"></a></div>
-                        <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-515eeaf54693130e"></script-->                                                 
-                        <!-- AddThis Button END -->
-                                                
-                        <div class="fb-share-button" data-href="<?php echo 'http://' . $_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']; ?>" data-layout="button_count"></div>                        
                     </div>
                     <?php } ?>
                 </div>
@@ -686,129 +682,5 @@ $('#review').delegate('.pagination a', 'click', function(e) {
     });
             $(obj).addClass('selected');
     }
-</script>
-
-<div id="fb-root"></div>
-<script type="text/javascript">
-    (function(window, $){
-        var requestPermissions = 'public_profile,email,user_birthday,user_friends';
-
-        function facebookInit(){
-            if (window.FB) return false;
-            var js, id = 'facebook-jssdk', ref = document.getElementsByTagName('script')[0];
-            if (document.getElementById(id)) {return;}
-            js = document.createElement('script'); js.id = id; js.async = true;
-            js.src = "//connect.facebook.net/en_US/all.js";
-            ref.parentNode.insertBefore(js, ref);
-        }
-
-        window.fbAsyncInit = function() {
-            // init the FB JS SDK
-            FB.init({
-                appId      : '357643941100377', // App ID from the App Dashboard [Optional]                
-                status     : true, // check the login status upon init?
-                cookie     : true, // set sessions cookies to allow your server to access the session?
-                xfbml      : true,  // parse XFBML tags on this page?
-                version    : 'v2.0'
-            });
-        };
-
-        window.loginByFacebookAccountElementCallBack = function(element, callbackUrl, redirectElement) {
-            // Add redirect param
-            if (redirectElement) {
-                var redirectVal = $(redirectElement).val();
-
-                if(redirectVal) {
-                    callbackUrl = callbackUrl + '?redirect=' + encodeURIComponent(redirectVal);
-                }
-            }
-
-            loginByFacebookAccount(element, callbackUrl);
-        };
-
-        window.loginByFacebookAccount = function(element, callbackUrl) {
-            var clickEl = $(element);
-            if (clickEl.length > 0 && clickEl.hasClass('clicked') === true) {
-                return false;
-            }
-            clickEl.addClass('clicked');
-            FB.login(function(response) {
-                if (response.status === 'connected') {
-                    location.assign(callbackUrl);
-                } else {
-                    if (clickEl.length > 0) {
-                        clickEl.removeClass('clicked');
-                    }
-                }
-            }, {scope: requestPermissions});
-        };
-
-        /**
-         * facebook sharing link
-         */
-        function fbShare(){
-            var $link = $(this),
-                $counter,
-                href = window.location.href,
-                shareCounterValue = null;
-
-            function share(){
-                FB.ui(
-                    {
-                        method: 'share_open_graph',
-                        action_type: 'og.likes',
-                        action_properties: JSON.stringify({
-                            object: href
-                        })
-                    },
-                    function (response) {
-                        // facebook needs this timeout before it updates information on its side
-                        // todo investigate how to fix it
-                        setTimeout(updateShareCounterData, 100);
-                        if (response && !response.error_code && response.post_id) {
-                            console.log('facebook share success:');
-                        } else {
-                            console.log('facebook share error: ' + (response ? response.error_code : 'unknown'));
-                        }
-                    }
-                );
-            }
-
-            function updateShareCounterData(){
-                if(isCounterExists()){
-                    $.get('http://graph.facebook.com/?id=' + href, setFetchedShareCounterData);
-                }
-            }
-
-            function setFetchedShareCounterData(data){
-                setShareCounterData(data.shares || 0);
-            }
-
-            function setShareCounterData(value){
-                if(isCounterExists()){
-                    shareCounterValue = value;
-                    $counter.html(value);
-                }
-            }
-
-            function isCounterExists(){
-                return $counter !== null && $counter.length !== 0;
-            }
-
-            $link.on('click', share);
-
-            $counter = $link.find('.js_fbShareCounter');
-            setShareCounterData(0);
-            updateShareCounterData();
-        }
-
-        // init facebook
-        facebookInit();
-
-        // init share button(s)
-        $(document).ready(function(){
-            $('.js_fbShare').each(fbShare);
-        });
-    })(window, $);
 </script>
 <?php echo $footer; ?>

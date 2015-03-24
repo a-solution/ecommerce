@@ -1,5 +1,4 @@
-#tabwrap {
-    background: #fff;
+#tabwrap {    
     overflow: hidden;
     width: 100%;
     min-height: 300px;
@@ -30,7 +29,9 @@
 	background: #313131;
 	color: #fff;	
 }
-
+.tab_content {
+    background: #fff;
+}
 .tab_content > div {
     clear: both;    
     display: none;
