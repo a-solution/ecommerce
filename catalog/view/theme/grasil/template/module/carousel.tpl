@@ -14,7 +14,7 @@
 $(window).load(function() {
 $('#carousel<?php echo $module; ?>').flexslider({
 	animation: 'slide',
-        animationLoop: false,
+        animationLoop: true,
 	itemMargin: 5,
         itemWidth: <?php echo $width; ?>,
         

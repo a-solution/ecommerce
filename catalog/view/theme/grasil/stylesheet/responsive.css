@@ -1,15 +1,18 @@
-@media (min-width: 1000px) {
+@media (min-width: 970px) {
     .container {
         width: 970px;
     }
     #menu .open > .dropdown-menu {
         display: none;    
     }
-}
-
-@media (min-width: 768px) {
     #menu .dropdown:hover .dropdown-menu {
         display: block;
+    }
+}
+
+@media (max-width: 991px) {    
+    .product-thumb {
+        min-height: 366px;
     }
 }
 @media (max-width: 767px) {
@@ -67,7 +70,9 @@
         border-top: 1px solid #ccc;
         padding: 10px 20px;
     }
-    
+    .product-thumb {
+        min-height: 366px;
+    }
     .product-list .product-thumb .caption {
         min-height: 0;
         margin-left: 0;

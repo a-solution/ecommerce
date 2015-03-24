@@ -88,6 +88,9 @@
                     <div class="pull-left div-icon top-hotline">
                         Hotline: <?php echo $telephone; ?>
                     </div>
+                    <div class="pull-left like-fanpage">
+                        <div class="fb-like" data-href="https://www.facebook.com/asaca.vn" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>                        
+                    </div>
                 </div>
                 <div class="nav pull-right myaccount">                                 
                     <div class="dropdown"><a href="<?php echo $account; ?>" title="<?php echo $text_account; ?>" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <span class="hidden-xs hidden-sm"><?php echo $customer_name; ?></span> <span class="caret"></span></a>
@@ -132,8 +135,9 @@
         <?php if ($categories) { ?>
         <div class="container">
             <nav id="menu" class="navbar">
-                <div class="navbar-header"><span id="category" class="visible-xs"><?php echo $text_category; ?></span>
+                <div class="navbar-header">
                     <button type="button" class="btn btn-navbar navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse"><i class="fa fa-bars"></i></button>
+                    <span id="category" class="visible-xs"><?php echo $text_category; ?></span>                    
                 </div>
                 <div class="collapse navbar-collapse navbar-ex1-collapse">
                     <ul class="nav navbar-nav">                        
