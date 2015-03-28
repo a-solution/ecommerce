@@ -3,7 +3,7 @@
 $_['heading_title']        = 'Ước lượng chi phí vận chuyển và thuế';
 
 // Text
-$_['text_success']         = 'Ước lượng phí vận chuyển đã được áp dụng thàn công!';
+$_['text_success']         = 'Ước lượng phí vận chuyển đã được áp dụng thành công!';
 $_['text_shipping']        = 'Điền địa chỉ nhận hàng của bạn để ước lượng chi phí vận chuyển.';
 $_['text_shipping_method'] = 'Vui lòng chọn phương thức vận chuyển mong muốn để dùng cho đơn hàng này.';
 
