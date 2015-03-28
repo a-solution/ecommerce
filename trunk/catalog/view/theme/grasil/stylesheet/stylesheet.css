@@ -467,13 +467,6 @@ header .con-wishlist {
     font-size: 1.2em;    
     margin: 25px 0;
 }
-
-.like-fanpage {
-    margin-left: 10px;
-}
-.like-fanpage .fb-like > span {
-    height: 35px !important;
-}
 .fb-page > span {
     width: 212px !important;
     overflow: hidden !important;
@@ -857,6 +850,7 @@ header .con-wishlist {
     transition: all linear .5s;    
     position: relative;
     background: #fff;
+    min-height: 332px;
 }
 .product-thumb:hover {
     border-color: #999;
@@ -1423,7 +1417,7 @@ header .con-wishlist {
 }
 
 table.order-total tr:first-child {
-    display: none;
+/*    display: none;*/
 }
 table.order-total tr td.total, #cart_info .product-price {
     font-weight: bold;
