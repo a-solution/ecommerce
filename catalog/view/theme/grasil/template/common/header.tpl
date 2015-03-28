@@ -88,9 +88,6 @@
                     <div class="pull-left div-icon top-hotline">
                         Hotline: <?php echo $telephone; ?>
                     </div>
-                    <div class="pull-left like-fanpage">
-                        <div class="fb-like" data-href="https://www.facebook.com/asaca.vn" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>                        
-                    </div>
                 </div>
                 <div class="nav pull-right myaccount">                                 
                     <div class="dropdown"><a href="<?php echo $account; ?>" title="<?php echo $text_account; ?>" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <span class="hidden-xs hidden-sm"><?php echo $customer_name; ?></span> <span class="caret"></span></a>

@@ -214,7 +214,7 @@
                   </select>
                 </div>
               </div>
-                <div class="form-group" style="display: none">
+                <div class="form-group">
                 <label class="col-sm-2 control-label"><?php echo $entry_shipping; ?></label>
                 <div class="col-sm-10">
                   <label class="radio-inline">
