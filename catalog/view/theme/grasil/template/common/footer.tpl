@@ -24,7 +24,9 @@
                     <?php foreach ($informations as $information) { ?>
                     <li><a href="<?php echo $information['href']; ?>"><?php echo $information['title']; ?></a></li>
                     <?php } ?>                    
-                </ul>                
+                </ul>
+                <br />
+                <a href="http://online.gov.vn/HomePage/WebsiteDisplay.aspx?DocId=31"><img width="112" src="http://online.gov.vn/seals/v4APtGs+b0VZ5ObVn1IeQw==.jpgx" title="" alt=""></a>
             </div>
             <?php } ?>            
             <div class="col-md-3 col-sm-6">
@@ -65,7 +67,10 @@
             </div>
         </div>
         <hr>
-        <p class="powered"><?php echo $powered;?></p>        
+        <p class="powered">
+            <?php echo $powered; ?><br />
+            Địa chỉ: 63/14A Đường Liên Khu 16-18 Bình Trị Đông, Bình Tân. Điện thoại: 0909.868.102 
+        </p>        
     </div>
 </footer>
 <!-- Modal -->

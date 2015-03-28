@@ -19,5 +19,4 @@ $_['text_customer']     = 'Khách hàng';
 $_['text_paymentmethod']= 'Hình thức thanh toán';
 $_['text_faq']= 'Câu hỏi thường gặp';
 $_['text_guide']= 'Hướng dẫn mua hàng';
-$_['text_powered']      = 'Bản quyền của %s &copy; %s<br />Địa chỉ: Tòa nhà Tân Thuận, Lô 29B-31B-33B, Đường Tân Thuận, KCX
-Tân Thuận, Phường Tân Thuận Đông, Quận 7, Tp.HCM<br /><br /><a href="http://online.gov.vn/HomePage/WebsiteDisplay.aspx?DocId=31"><img width="112" src="http://online.gov.vn/seals/v4APtGs+b0VZ5ObVn1IeQw==.jpgx" title="" alt=""></a>';
+$_['text_powered']      = 'Bản quyền của %s &copy; %s.';
