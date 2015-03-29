@@ -54,7 +54,7 @@
             <br />
             <div class="row">
                 <?php foreach ($products as $product) { ?>
-                <div class="product-layout product-grid col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                <div class="product-layout product-grid col-lg-3 col-md-3 col-sm-6 col-xs-6">
                     <div class="product-thumb">
                         <div class="image">
                             <a href="<?php echo $product['href']; ?>"><img src="<?php echo $product['thumb']; ?>" alt="<?php echo $product['name']; ?>" title="<?php echo $product['name']; ?>" class="img-responsive" /></a>
@@ -67,7 +67,7 @@
                         <div>
                             <div class="caption">
                                 <h4><a data-toggle="tooltip" title="<?php echo $product['name']; ?>" href="<?php echo $product['href']; ?>"><?php echo $product['name']; ?></a></h4>        
-                                <div class="rating">
+                                <div class="rating hidden-xs">
                                     <?php if ($product['rating']) {        
                                     for ($i = 1; $i <= 5; $i++) {
                                     if ($product['rating'] < $i) { ?>

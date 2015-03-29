@@ -6,7 +6,7 @@
     $(document).ready(function(){
     $('#tabwrap').basicTabs();
             });</script>
-<div id="tabwrap">    
+<div id="tabwrap" class="hidden-xs">    
     <ul class="tabs">        
         <?php foreach ($categories as $category) { ?>    
         <li><a href="#tab<?php echo $category['category_id'];?>"><?php echo $category['category_name'];?></a></li>            

@@ -142,29 +142,28 @@ footer hr {
     border-top: none;
     border-bottom: 1px solid #eee;
 }
-footer .newsletter {
-    background: #313131;
-    line-height: 50px;
+footer .newsletter {        
     color: #fff;
     font-size: 1.2em;
     text-transform: uppercase;
+    padding: 10px;
+    margin-bottom: 20px;
+    border:1px solid #ddd;
+    background: #eee;
+}
+footer .newsletter .nl-head {
+    padding-bottom: 10px;
+}
+footer .newsletter .nl-cbtn {
+    padding-top: 10px;
 }
 footer .newsletter input {
     color: #313131;
     padding: 0 10px;
-    width: 200px;
+    width: 190px;
     height:30px;
 }
 footer .newsletter a { color: #fff; }
-footer .newsletter .col1 {
-    padding-left:30px;    
-}
-footer .newsletter .col2 {
-    padding-left:27px;    
-}
-footer .newsletter .col3 {
-    padding-left:0px;    
-}
 footer .newsletter .tnl {
     line-height: 30px;
     border: none;
@@ -923,6 +922,41 @@ header .con-wishlist {
     color: #2ecc71;
 }
 
+/*For Mobile*/
+.thumbnails {
+    overflow: auto;
+    clear: both;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.thumbnails > li {
+	margin-left: 20px;
+}
+.thumbnails {
+	margin-left: -20px;
+}
+.thumbnails > img {
+	width: 100%;
+}
+.thumbnails .thumbnail {
+    border: 0 !important;
+}
+.image-additional a {
+	margin-bottom: 20px;
+	padding: 5px;
+	display: block;
+	border: 1px solid #ddd;
+}
+.image-additional {
+	max-width: 70px;
+}
+.thumbnails .image-additional {
+	float: left;
+	margin-left: 20px;
+}
+/*For Mobile*/
+
 .product-grid .product-thumb .image {
     float: none;
 }
@@ -1047,16 +1081,19 @@ header .con-wishlist {
 
 /*heading-title*/
 .heading-title {
-    border-bottom: 2px solid #313131;
+    border-bottom: 1px dashed #ddd;
     margin: 20px 0;
-    line-height: 40px;    
+    line-height: 40px;
+    background: url("../image/cart.png") no-repeat left center;
+    padding-left: 20px;
 }
 .heading-title span {
     display: inline-block;
     min-width: 213px;
-    padding: 0 15px;
-    background: #313131;
-    color: #fff;
+    padding: 0 15px 0 0;    
+    color: #313131;
+    text-transform: uppercase;
+    font-size: 14pt;
 }
 
 /* breadcrumb */
@@ -1226,56 +1263,49 @@ header .con-wishlist {
     display: block;
 }
 .basic-info .quantity {    
-    height:40px;    
+    height: 40px;    
+    line-height: 40px;
 }
 .basic-info .quantity ul li {
     float: left;
-    margin-left: 6px;    
-}
-.basic-info .quantity ul li label {
-    margin-bottom: 0;      
-}
-.basic-info .btn-step {
-    padding: 3px 9px;  
-    cursor: pointer;
-    color: #999;
-}
-.basic-info .btn-step:hover {
-    color: #313131;
-}
-.basic-info .btn-step.plus {    
-    border-left: 1px solid #ccc
-}
-.basic-info .quantity ul li:first-child {    
-    margin-left: 0px;
-    border:1px solid #ccc;
-    background: #eee;
-    text-align: center;
+    margin-right: 20px;
 }
 .basic-info .quantity ul li #input-quantity{
     height: 30px;
     border-radius: 0;
     padding-left:5px;
     padding-right:5px;
-    width: 60px;
-    border: 0;    
-    border-bottom: 1px solid #ccc;
+    width: 60px;    
+    border: 1px solid #ccc;
     font-weight: bold;
+    display: inline-block;
 }
-.basic-info .quantity ul li .btn-primary {    
+.basic-info .btn-step {
+    height: 30px;
+    cursor: pointer;
+    color: #999;
+}
+.basic-info .btn-step:hover {
+    color: #313131;
+}
+.basic-info .cbtn-buy ul li {
+    float: left;
+    margin-right: 6px;    
+}
+.basic-info .cbtn-buy ul li .btn-primary {    
     background: #313131;
     color: #fff;
     border-radius: 0;
-    border:none;
+    border: none !important;
     height: 52px;
 }
-.basic-info .quantity ul li #button-cart.btn-primary {
+.basic-info .cbtn-buy ul li #button-cart.btn-primary {
     background: green !important;
 }
-.basic-info .quantity ul li #button-cart-checkout.btn-primary {
+.basic-info .cbtn-buy ul li #button-cart-checkout.btn-primary {
     background: #cc0000 !important;
 }
-.basic-info .quantity ul li #button-cart.btn-primary:hover, .basic-info .quantity ul li #button-cart-checkout.btn-primary:hover {    
+.basic-info .cbtn-buy ul li #button-cart.btn-primary:hover, .basic-info .cbtn-buy ul li #button-cart-checkout.btn-primary:hover {    
     background: #000 !important;
 }
 
