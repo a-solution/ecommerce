@@ -88,9 +88,9 @@
                     <div class="pull-left div-icon top-hotline">
                         Hotline: <?php echo $telephone; ?>
                     </div>
-                </div>
-                <div class="nav pull-right myaccount">                                 
-                    <div class="dropdown"><a href="<?php echo $account; ?>" title="<?php echo $text_account; ?>" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <span class="hidden-xs hidden-sm"><?php echo $customer_name; ?></span> <span class="caret"></span></a>
+                </div>                
+                <div class="nav pull-right myaccount">                                                     
+                    <div class="dropdown"><a href="<?php echo $account; ?>" title="<?php echo $text_account; ?>" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <span class="hidden-xs hidden-sm"><?php echo $customer_name; ?></span> <span class="caret"></span></a>                        
                         <ul class="dropdown-menu dropdown-menu-right">
                             <?php if ($logged) { ?>
                             <li><a href="<?php echo $account; ?>"><i class="fa fa-lock"></i> <?php echo $text_account; ?></a></li>
@@ -105,6 +105,14 @@
                         </ul>
                     </div>                                   
                 </div>
+                <div class="pull-right hidden-lg hidden-md hidden-sm">
+                    <a href="<?php echo $shopping_cart; ?>">Giỏ hàng</a>
+                </div>
+                <div class="pull-left hidden-lg hidden-md hidden-sm">
+                    <a href="<?php echo $home; ?>" class="logo">
+                        <img src="catalog/view/theme/grasil/image/logo.png" style="height: 50px" alt="" />
+                    </a>
+                </div>
             </div>
         </nav>    
         <header>
@@ -118,14 +126,14 @@
                     <div class="col-sm-5 col-xs-12 con-search">
                         <?php echo $search; ?>
                     </div>
-                    <div class="col-sm-2 col-xs-6 con-wishlist">
+                    <div class="col-sm-2 col-xs-6 hidden-xs con-wishlist">
                         <a href="<?php echo $wishlist; ?>" id="wishlist-total" title="">
                             <?php echo $text_wishlist; ?>
                         </a>
                     </div>
-                    <div class="col-sm-2 col-xs-6 con-cart">
+                    <div class="col-sm-2 col-xs-6 hidden-xs con-cart">
                         <?php echo $cart; ?>
-                    </div>
+                    </div>                    
                 </div>
             </div>
         </header>

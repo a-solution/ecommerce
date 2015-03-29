@@ -24,57 +24,82 @@
                 <?php } ?>
                 <div class="<?php echo $class; ?>">
                     <?php if ($thumb || $images) { ?>
-                    <div class="row prd-media-box">                                                
+                    <div class="row prd-media-box hidden-xs">                                                
                         <div class="col-sm-2 prd-more-image">
                             <div id="prd-other-image">
-                            <?php if ($images) { ?>
-                            <a href="#" data-image="<?php echo $thumb; ?>" data-zoom-image="<?php echo $popup; ?>">
-                                <img src="<?php echo $thumb; ?>" alt="" />
-                            </a>
-                            <?php foreach ($images as $image) { ?>
-                                    <a href="#" data-image="<?php echo $image['popup']; ?>" data-zoom-image="<?php echo $image['popup']; ?>" title="<?php echo $heading_title; ?>"><img src="<?php echo $image['thumb']; ?>" title="<?php echo $heading_title; ?>" alt="" /></a>
+                                <?php if ($images) { ?>
+                                <a href="#" data-image="<?php echo $thumb; ?>" data-zoom-image="<?php echo $popup; ?>">
+                                    <img src="<?php echo $thumb; ?>" alt="" />
+                                </a>
+                                <?php foreach ($images as $image) { ?>
+                                <a href="#" data-image="<?php echo $image['popup']; ?>" data-zoom-image="<?php echo $image['popup']; ?>" title="<?php echo $heading_title; ?>"><img src="<?php echo $image['thumb']; ?>" title="<?php echo $heading_title; ?>" alt="" /></a>
                                 <?php } ?>
-                            <?php } else { ?>
-                            <a href="#" style="display: none" data-image="<?php echo $thumb; ?>" data-zoom-image="<?php echo $popup; ?>">
-                                <img src="<?php echo $thumb; ?>" alt="" />
-                            </a>
-                            <?php } ?>
+                                <?php } else { ?>
+                                <a href="#" style="display: none" data-image="<?php echo $thumb; ?>" data-zoom-image="<?php echo $popup; ?>">
+                                    <img src="<?php echo $thumb; ?>" alt="" />
+                                </a>
+                                <?php } ?>
                             </div>
                         </div>
                         <div class="col-sm-10">
                             <div class="prd-image">
                                 <img id="prd-single-image" data-image="<?php echo $thumb; ?>" src="<?php echo $thumb; ?>" data-zoom-image="<?php echo $popup; ?>" title="<?php echo $heading_title; ?>" />
                             </div>
-                        </div>                        
+                        </div>
+                        <script src="catalog/view/theme/grasil/js/jquery.elevatezoom.js" type="text/javascript"></script>
+                        <script type="text/javascript">
+                            //initiate the plugin and pass the id of the div containing gallery images
+                            $("#prd-single-image").elevateZoom
+                            ({
+                                gallery:'prd-other-image',
+                                    cursor: 'pointer',
+                                    galleryActiveClass: 'active',
+                                    imageCrossfade: true,
+                                    loadingIcon: 'catalog/view/theme/grasil/image/loading.gif',
+                                    zoomType: 'window',
+                                    zoomWindowHeight: 417,
+                                    zoomWindowOffetx: 8,
+                                    zoomWindowOffety: - 1,
+                                    borderSize: 1,
+                                    borderColour: '#ccc',
+                                    zoomWindowFadeIn: 500,
+                                    zoomWindowFadeOut: 500,
+                                    lensFadeIn: 500,
+                                    lensFadeOut: 500
+                            });
+                            //pass the images to Fancybox
+                            $("#prd-single-image").bind("click", function(e) {
+                                var ez = $('#prd-single-image').data('elevateZoom');
+                                $.fancybox(ez.getGalleryList());
+                                return false;
+                            });
+                        </script>
                     </div>
-                    <script src="catalog/view/theme/grasil/js/jquery.elevatezoom.js" type="text/javascript"></script>
-                    <script type="text/javascript">
-                        //initiate the plugin and pass the id of the div containing gallery images
-                        $("#prd-single-image").elevateZoom
-                        ({
-                            gallery:'prd-other-image',
-                            cursor: 'pointer',
-                            galleryActiveClass: 'active',
-                            imageCrossfade: true,
-                            loadingIcon: 'catalog/view/theme/grasil/image/loading.gif',
-                            zoomType: 'window',
-                            zoomWindowHeight: 417,
-                            zoomWindowOffetx: 8,
-                            zoomWindowOffety: -1,
-                            borderSize: 1,
-                            borderColour: '#ccc',                            
-                            zoomWindowFadeIn: 500,
-                            zoomWindowFadeOut: 500,
-                            lensFadeIn: 500,
-                            lensFadeOut: 500
-                        });
-                        //pass the images to Fancybox
-                        $("#prd-single-image").bind("click", function(e) {
-                            var ez = $('#prd-single-image').data('elevateZoom');
-                            $.fancybox(ez.getGalleryList());
-                            return false;
-                        });
-                    </script>
+                    <div class="row hidden-md hidden-sm hidden-lg">
+                        <div class="col-xs-12">
+                            <ul class="thumbnails">
+                                <?php if ($thumb) { ?>
+                                <li><a class="thumbnail" href="<?php echo $popup; ?>" title="<?php echo $heading_title; ?>"><img src="<?php echo $thumb; ?>" title="<?php echo $heading_title; ?>" alt="<?php echo $heading_title; ?>" /></a></li>
+                                <?php } ?>
+                                <?php if ($images) { ?>
+                                <?php foreach ($images as $image) { ?>
+                                <li class="image-additional"><a class="thumbnail" href="<?php echo $image['popup']; ?>" title="<?php echo $heading_title; ?>"> <img src="<?php echo $image['thumb']; ?>" title="<?php echo $heading_title; ?>" alt="<?php echo $heading_title; ?>" /></a></li>
+                                <?php } ?>
+                                <?php } ?>
+                            </ul>
+                            <script type="text/javascript">
+                                $(document).ready(function() {
+                                    $('.thumbnails').magnificPopup({
+                                    type:'image',
+                                            delegate: 'a',
+                                            gallery: {
+                                            enabled:true
+                                            }
+                                    });
+                                });
+                            </script>
+                        </div>
+                    </div>                    
                     <?php } ?>          
                 </div>
                 <?php if ($column_left && $column_right) { ?>
@@ -271,18 +296,24 @@
                         <hr>
                         <div class="form-group quantity">
                             <ul class="list-unstyled">                                
+                                <li>Số Lượng: </li>
                                 <li>                                                                        
-                                    <input type="text" name="quantity" value="<?php echo $minimum; ?>" size="2" maxlength="2" id="input-quantity" class="form-control" onkeyup="_asaca.handleNumber(this);" onmouseout="_asaca.handleNumber(this);" style="text-align: center" />
+                                    <i class="fa fa-minus-square-o btn-step" onclick="_asaca.minusOne('#input-quantity');"></i>
+                                    <input type="text" name="quantity" value="<?php echo $minimum; ?>" size="2" maxlength="2" id="input-quantity" class="form-control" onkeyup="_asaca.handleNumber(this);" onmouseout="_asaca.handleNumber(this);" style="text-align: center" />                                    
+                                    <i class="fa fa-plus-square-o btn-step plus" onclick="_asaca.plusOne('#input-quantity');"></i>
                                     <input type="hidden" name="product_id" value="<?php echo $product_id; ?>" />
-                                    <i class="fa fa-minus-square-o btn-step" onclick="_asaca.minusOne('#input-quantity');"></i><i class="fa fa-plus-square-o btn-step plus" onclick="_asaca.plusOne('#input-quantity');"></i>
                                 </li>
+                            </ul>
+                        </div>
+                        <div class="form-group cbtn-buy">
+                            <ul class="list-unstyled">                                
                                 <li>
                                     <button type="button" id="button-cart" data-loading-text="<?php echo $text_loading; ?>" class="btn btn-primary btn-lg btn-block"><i class="fa fa-shopping-cart"></i> Thêm vào giỏ hàng</button>
                                 </li>
                                 <li>
                                     <button type="button" id="button-cart-checkout" data-loading-text="<?php echo $text_loading; ?>" class="btn btn-primary btn-lg btn-block"><i class="fa fa-check-square"></i> <?php echo $button_cart; ?></button>
                                 </li>
-                            </ul>                        
+                            </ul>
                         </div>
                         <?php if ($minimum > 1) { ?>
                         <div class="alert alert-info"><i class="fa fa-info-circle"></i> <?php echo $text_minimum; ?></div>
@@ -443,7 +474,7 @@
                 <?php } elseif ($column_left || $column_right) { ?>
                 <?php $class = 'col-lg-4 col-md-4 col-sm-6 col-xs-12'; ?>
                 <?php } else { ?>
-                <?php $class = 'col-lg-3 col-md-3 col-sm-6 col-xs-12'; ?>
+                <?php $class = 'col-lg-3 col-md-3 col-sm-6 col-xs-6'; ?>
                 <?php } ?>
                 <div class="<?php echo $class; ?>">
                     <div class="product-thumb transition">
@@ -457,7 +488,7 @@
                         </div>
                         <div class="caption">
                             <h4><a data-toggle="tooltip" title="<?php echo $product['name']; ?>" href="<?php echo $product['href']; ?>"><?php echo $product['name']; ?></a></h4>        
-                            <div class="rating">
+                            <div class="rating hidden-xs">
                                 <?php if ($product['rating']) {        
                                 for ($i = 1; $i <= 5; $i++) {
                                 if ($product['rating'] < $i) { ?>
@@ -482,7 +513,7 @@
                                 <span class="price-new"><?php echo $product['special']; ?></span> <span class="price-old"><?php echo $product['price']; ?></span>
                                 <?php } ?>
                                 <?php if ($product['tax']) { ?>
-                                <span class="price-tax"><?php echo $text_tax; ?> <?php echo $product['tax']; ?></span>
+                                <!--span class="price-tax"><?php echo $text_tax; ?> <?php echo $product['tax']; ?></span-->
                                 <?php } ?>
                             </p>
                             <?php } ?>
@@ -627,7 +658,7 @@ $('#review').delegate('.pagination a', 'click', function(e) {
             }
             }
     });
-            });
+    });
             $('#faq').load('index.php?route=product/product/faqs&product_id=<?php echo $product_id; ?>');
             $('#button-faq').on('click', function() {
     $.ajax({
@@ -658,16 +689,7 @@ $('#review').delegate('.pagination a', 'click', function(e) {
             }
             }
     });
-            });
-            $(document).ready(function() {
-    $('.thumbnails').magnificPopup({
-    type:'image',
-            delegate: 'a',
-            gallery: {
-            enabled:true
-            }
-    });
-            });
+    });    
 //--></script> 
 <script type="text/javascript">
             function selectItem(obj)

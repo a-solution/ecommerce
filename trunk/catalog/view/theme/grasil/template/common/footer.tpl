@@ -1,21 +1,5 @@
 <footer>
-    <div class="container">
-        <div class="newsletter">
-            <div class="row">
-                <div class="col-sm-6 hidden-sm col1">
-                    Nhận ngay những ưu đãi hấp dẫn từ ASACA
-                </div>
-                <div class="col-md-4 col-sm-12 col2">
-                    <div class="form" id="nl-form">
-                        <input type="text" class="tnl" placeholder="Địa chỉ Email" />
-                        <span class="bnl" onclick="_asaca.addNewsletter();">Nhận</span>
-                    </div>
-                </div>
-                <div class="col-sm-2 hidden-sm col3">
-                    <a href="<?php echo $shopping_cart; ?>">Xem giỏ hàng</a>
-                </div>
-            </div>
-        </div>
+    <div class="container">        
         <div class="row footer-link">
             <?php if ($informations) { ?>
             <div class="col-md-3 col-sm-6">
@@ -23,13 +7,27 @@
                 <ul class="list-unstyled">
                     <?php foreach ($informations as $information) { ?>
                     <li><a href="<?php echo $information['href']; ?>"><?php echo $information['title']; ?></a></li>
-                    <?php } ?>                    
+                    <?php } ?>
+                    <li><a href="<?php echo $contact; ?>"><?php echo $text_contact; ?></a></li>
+                    <li><a href="<?php echo $return; ?>"><?php echo $text_return; ?></a></li>
+                    <li><a href="<?php echo $sitemap; ?>"><?php echo $text_sitemap; ?></a></li>
                 </ul>
                 <br />
                 <a href="http://online.gov.vn/HomePage/WebsiteDisplay.aspx?DocId=31"><img width="112" src="http://online.gov.vn/seals/v4APtGs+b0VZ5ObVn1IeQw==.jpgx" title="" alt=""></a>
             </div>
             <?php } ?>            
             <div class="col-md-3 col-sm-6">
+                <h5>Nhận ngay ưu đãi</h5>
+                <div class="newsletter">            
+                    <div class="form" id="nl-form">
+                        
+                        <input type="text" class="tnl" placeholder="Địa chỉ Email" />
+                        <div class="nl-cbtn">
+                            <span class="bnl" onclick="_asaca.addNewsletter();">Nam</span>
+                            <span class="bnl" onclick="_asaca.addNewsletter();">Nữ</span>
+                        </div>
+                    </div>            
+                </div>
                 <h5><?php echo $text_customer; ?></h5>
                 <ul class="list-unstyled">
                     <li><a href="<?php echo $account; ?>"><?php echo $text_account; ?></a></li>
@@ -38,10 +36,7 @@
                     <li><a href="<?php echo $wishlist; ?>"><?php echo $text_wishlist; ?></a></li>
                     <li><a href="<?php echo $newsletter; ?>"><?php echo $text_newsletter; ?></a></li>
                     <li><a href="<?php echo $faq_link; ?>"><?php echo $text_faq; ?></a></li>
-                    <li><a href="<?php echo $guide_link; ?>"><?php echo $text_guide; ?></a></li>
-                    <li><a href="<?php echo $contact; ?>"><?php echo $text_contact; ?></a></li>
-                    <li><a href="<?php echo $return; ?>"><?php echo $text_return; ?></a></li>
-                    <li><a href="<?php echo $sitemap; ?>"><?php echo $text_sitemap; ?></a></li>
+                    <li><a href="<?php echo $guide_link; ?>"><?php echo $text_guide; ?></a></li>                    
                 </ul>
                 <!--h5><?php echo $text_extra; ?></h5>
                 <ul class="list-unstyled">
@@ -49,12 +44,12 @@
                     <li><a href="<?php echo $voucher; ?>"><?php echo $text_voucher; ?></a></li>
                     <li><a href="<?php echo $affiliate; ?>"><?php echo $text_affiliate; ?></a></li>
                     <li><a href="<?php echo $special; ?>"><?php echo $text_special; ?></a></li>
-                </ul-->
+                </ul-->                
             </div>
-            <div class="col-md-3 col-sm-6">
+            <div class="col-md-3 col-sm-6">                
                 <h5><?php echo $text_paymentmethod; ?></h5>
                 <p>Hiện tại chúng tôi hỗ trợ thanh toán qua chuyển khoản ngân hàng hoặc thanh toán khi nhận hàng (COD)</p>                
-                <div class="bank"></div>
+                <div class="bank"></div>                
             </div>
             <div class="col-md-3 col-sm-6">
                 <h5><?php echo $text_service; ?></h5>

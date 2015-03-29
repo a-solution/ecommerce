@@ -7,27 +7,26 @@
 .tabs {
     overflow: hidden;
     padding-left: 0;
-    margin-bottom: 0px;
-    border-bottom: 2px solid #313131;
+    margin-bottom: 0px;    
 }
 .tabs li { list-style: none; }
 .tabs li a {
-	float: left;
-	display: block;
-	padding: 10px 45px;
-	color: #313131;
-	text-decoration: none;
-	text-align: center;
-	font-size: 1.429em;        
+    float: left;
+    display: block;
+    padding: 10px 45px;
+    color: #313131;
+    text-decoration: none;	
+    font-size: 1.429em;
+    border-bottom: 2px solid transparent;
 }
 
-.tabs li a:hover { background: #666; color: #f2f2f2; }
+.tabs li a:hover { border-bottom: 2px solid #313131; }
 .tabs li:first-child a { border-left: 0; }
 .tabs li:last-child a { border-right: 0; }
 
 .tabs li.current a {
-	background: #313131;
-	color: #fff;	
+    color: #2ecc71;
+    border-bottom: 2px solid #2ecc71;
 }
 .tab_content {
     background: #fff;
@@ -36,8 +35,7 @@
     clear: both;    
     display: none;
     padding: 20px 20px 0 20px;
-    border: 1px solid #ddd;
-    border-top-width: 0;
+    border: 1px solid #ddd;    
 }
 .tab_content > div .product-thumb {
     border-color: #ddd;
