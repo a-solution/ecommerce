@@ -1,7 +1,7 @@
 <h3 class="heading-title"><span><?php echo $heading_title; ?></span></h3>
 <div class="row product-layout">
     <?php foreach ($products as $product) { ?>
-    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
         <div class="product-thumb transition">
             <div class="image">
                 <a href="<?php echo $product['href']; ?>"><img src="<?php echo $product['thumb']; ?>" alt="<?php echo $product['name']; ?>" title="<?php echo $product['name']; ?>" class="img-responsive" /></a>
@@ -13,7 +13,7 @@
             </div>
             <div class="caption">
                 <h4><a data-toggle="tooltip" title="<?php echo $product['name']; ?>" href="<?php echo $product['href']; ?>"><?php echo $product['name']; ?></a></h4>        
-                <div class="rating">
+                <div class="rating hidden-xs">
                     <?php if ($product['rating']) {        
                     for ($i = 1; $i <= 5; $i++) {
                     if ($product['rating'] < $i) { ?>
@@ -35,7 +35,7 @@
                     <?php if (!$product['special']) { ?>
                     <?php echo $product['price']; ?>
                     <?php } else { ?>
-                    <span class="price-new"><?php echo $product['special']; ?></span> <span class="price-old"><?php echo $product['price']; ?></span>
+                    <span class="price-new"><?php echo $product['special']; ?></span> <span class="price-old hidden-xs"><?php echo $product['price']; ?></span>
                     <span class="saleoff"><?php echo $product['saleoff']; ?>%</span>
                     <?php } ?>
                 </p>

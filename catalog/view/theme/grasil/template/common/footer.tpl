@@ -64,7 +64,7 @@
         <hr>
         <p class="powered">
             <?php echo $powered; ?><br />
-            Địa chỉ: 63/14A Đường Liên Khu 16-18 Bình Trị Đông, Bình Tân. Điện thoại: 0909.868.102 
+            Phiên bản thử nghiệm - Sản phẩm trên ASACA.VN chỉ để tham khảo chưa thực sự bán hàng
         </p>        
     </div>
 </footer>
@@ -87,11 +87,11 @@
 </div>
 <!--script type="text/javascript" src="https://mylivechat.com/chatinline.aspx?hccid=72189449"></script-->
 <div id="fb-root"></div>
-<script>(function(d, s, id) {
+<!--script>(function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
   if (d.getElementById(id)) return;
   js = d.createElement(s); js.id = id;
   js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=357643941100377&version=v2.3";
   fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
+}(document, 'script', 'facebook-jssdk'));</script-->
 </body></html>
