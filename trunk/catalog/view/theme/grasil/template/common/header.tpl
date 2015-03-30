@@ -38,17 +38,17 @@
         <link rel="apple-touch-icon" href="<?php echo $base; ?>catalog/view/theme/grasil/image/apple-touch-icon.png">
         
         <script src="catalog/view/javascript/jquery/jquery-2.1.1.min.js" type="text/javascript"></script>
-        <link href="catalog/view/javascript/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen" />
+        <link href="catalog/view/javascript/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen" />                    
         <script src="catalog/view/javascript/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
         <link href="catalog/view/javascript/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />        
         <link href="catalog/view/theme/grasil/stylesheet/stylesheet.css" rel="stylesheet">
-        <link href="catalog/view/theme/grasil/stylesheet/animation.css" rel="stylesheet">
+        <link href="catalog/view/theme/grasil/stylesheet/animation.css" rel="stylesheet">        
         <link href="catalog/view/theme/grasil/stylesheet/responsive.css" rel="stylesheet">
         <?php foreach ($styles as $style) { ?>
         <link href="<?php echo $style['href']; ?>" type="text/css" rel="<?php echo $style['rel']; ?>" media="<?php echo $style['media']; ?>" />
         <?php } ?>
         <script src="catalog/view/javascript/common.js" type="text/javascript"></script>
-        <script src="catalog/view/theme/grasil/js/common.js" type="text/javascript"></script>
+        <script src="catalog/view/theme/grasil/js/common.js" type="text/javascript"></script>        
         
         <!--Start Fancybox-->        
 	<!-- Add mousewheel plugin (this is optional) -->
@@ -105,17 +105,21 @@
                         </ul>
                     </div>                                   
                 </div>
-                <div class="pull-right hidden-lg hidden-md hidden-sm">
-                    <a href="<?php echo $shopping_cart; ?>">Giỏ hàng</a>
+                <div class="pull-right hidden-lg hidden-md hidden-sm bsear">
+                    <i class="fa fa-search"></i>                    
                 </div>
-                <div class="pull-left hidden-lg hidden-md hidden-sm">
-                    <a href="<?php echo $home; ?>" class="logo">
-                        <img src="catalog/view/theme/grasil/image/logo.png" style="height: 50px" alt="" />
-                    </a>
+                <div class="pull-right hidden-lg hidden-md hidden-sm ccart">
+                    <a href="<?php echo $shopping_cart; ?>"></a>
+                </div>                
+                <div class="pull-left hidden-lg hidden-md hidden-sm" id="sidebar-menu" href="#sidr-left">                    
+                    <i class="fa fa-bars"></i>                    
+                </div>
+                <div class="pull-left hidden-lg hidden-md hidden-sm">                    
+                    <a href="<?php echo $home; ?>" class="logo">ASACA.VN</a>
                 </div>
             </div>
         </nav>    
-        <header>
+        <header class="hidden-xs">
             <div class="container">
                 <div class="row">
                     <div class="col-sm-3 col-xs-12 hidden-xs">
@@ -144,7 +148,10 @@
                     <button type="button" class="btn btn-navbar navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse"><i class="fa fa-bars"></i></button>
                     <span id="category" class="visible-xs"><?php echo $text_category; ?></span>                    
                 </div>
-                <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <div id="sidr-left">
+                    <div class="sidebar-header visible-xs">                        
+                        <?php echo $text_category; ?>
+                    </div>
                     <ul class="nav navbar-nav">                        
                         <?php
                             function asasort($array)
@@ -182,6 +189,53 @@
                         <?php } ?>
                     </ul>
                 </div>
+                <script src="catalog/view/theme/grasil/js/jquery.sidr.min.js" type="text/javascript"></script>
+                <script src="catalog/view/theme/grasil/js/jquery.touchwipe.1.1.1.js" type="text/javascript"></script>
+                <script type="text/javascript">
+                    $(document).ready(function() {
+                        $('#sidebar-menu').sidr({
+                            name: 'sidr-left',
+                            side: 'left',
+                            onOpen: function() {
+                                $('html,body').css({
+                                    height: '100%',
+                                    overflow: 'hidden'
+                                });
+                            }
+                        });
+                        
+                         $(window).touchwipe({
+                            wipeLeft: function() {
+                                // Close
+                                $.sidr('close', 'sidr-left');                                
+                            },
+                             wipeRight: function() {
+                                // Open
+                                $.sidr('open', 'sidr-left');
+                            }, 
+                            preventDefaultEvents: false
+                        }); 
+                        
+                        $(window).resize(function(){
+                            $.sidr('close', 'sidr-left');
+                            $("#sidr-left").show('slow');
+                        });
+                        
+                        $('.bsear').click(function(){
+                            var header = $('header');
+                            if(header.hasClass('hidden-xs') || header.css('display')=='none')
+                            {
+                                header.fadeIn('slow');                    
+                                header.removeClass('hidden-xs');
+                                $('#search input.input-lg').focus();
+                            }
+                            else
+                            {
+                                header.fadeOut('fast');                                
+                            }
+                        });
+                    });                    
+                </script> 
             </nav>
         </div>
         <?php } ?>

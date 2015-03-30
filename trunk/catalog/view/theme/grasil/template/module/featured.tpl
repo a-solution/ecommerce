@@ -14,7 +14,7 @@
                 </div>
                 <div class="caption">
                     <h4><a data-toggle="tooltip" title="<?php echo $product['name']; ?>" href="<?php echo $product['href']; ?>"><?php echo $product['name']; ?></a></h4>        
-                    <div class="rating">
+                    <div class="rating hidden-xs">
                         <?php if ($product['rating']) {        
                         for ($i = 1; $i <= 5; $i++) {
                         if ($product['rating'] < $i) { ?>
@@ -36,7 +36,7 @@
                         <?php if (!$product['special']) { ?>
                         <?php echo $product['price']; ?>
                         <?php } else { ?>
-                        <span class="price-new"><?php echo $product['special']; ?></span> <span class="price-old"><?php echo $product['price']; ?></span>
+                        <span class="price-new"><?php echo $product['special']; ?></span> <span class="price-old hidden-xs"><?php echo $product['price']; ?></span>
                         <span class="saleoff"><?php echo $product['saleoff']; ?>%</span>
                         <?php } ?>          
                     </p>
@@ -52,7 +52,7 @@
     animationLoop: true,
     itemMargin: 32,
     itemWidth: 211,
-    slideshowSpeed: 6000,
+    slideshowSpeed: 12000,
     animationSpeed: 600,
 });
 </script>
@@ -72,7 +72,7 @@
             </div>
             <div class="caption">
                 <h4><a data-toggle="tooltip" title="<?php echo $product['name']; ?>" href="<?php echo $product['href']; ?>"><?php echo $product['name']; ?></a></h4>        
-                <div class="rating">
+                <div class="rating hidden-xs">
                     <?php if ($product['rating']) {        
                     for ($i = 1; $i <= 5; $i++) {
                     if ($product['rating'] < $i) { ?>
@@ -94,7 +94,7 @@
                     <?php if (!$product['special']) { ?>
                     <?php echo $product['price']; ?>
                     <?php } else { ?>
-                    <span class="price-new"><?php echo $product['special']; ?></span> <span class="price-old"><?php echo $product['price']; ?></span>
+                    <span class="price-new"><?php echo $product['special']; ?></span> <span class="price-old hidden-xs"><?php echo $product['price']; ?></span>
                     <span class="saleoff"><?php echo $product['saleoff']; ?>%</span>
                     <?php } ?>          
                 </p>

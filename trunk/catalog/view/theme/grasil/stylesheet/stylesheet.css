@@ -1297,7 +1297,7 @@ header .con-wishlist {
     color: #fff;
     border-radius: 0;
     border: none !important;
-    height: 52px;
+    height: 52px;    
 }
 .basic-info .cbtn-buy ul li #button-cart.btn-primary {
     background: green !important;
