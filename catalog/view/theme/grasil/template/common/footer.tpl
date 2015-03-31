@@ -18,15 +18,18 @@
             <?php } ?>            
             <div class="col-md-3 col-sm-6">
                 <h5>Nhận ngay ưu đãi</h5>
-                <div class="newsletter">            
-                    <div class="form" id="nl-form">
-                        
-                        <input type="text" class="tnl" placeholder="Địa chỉ Email" />
-                        <div class="nl-cbtn">
-                            <span class="bnl" onclick="_asaca.addNewsletter();">Nam</span>
-                            <span class="bnl" onclick="_asaca.addNewsletter();">Nữ</span>
+                <div class="newsletter" id="nl-form">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <input type="text" class="tnl" placeholder="Địa chỉ Email" />
                         </div>
-                    </div>            
+                        <div class="col-md-6 col-sm-6 col-xs-6">
+                            <div class="bnl men" onclick="_asaca.addNewsletter('1');">Nam</div>
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-xs-6">
+                            <div class="bnl women" onclick="_asaca.addNewsletter('0');">Nữ</div>
+                        </div>                        
+                    </div>                 
                 </div>
                 <h5><?php echo $text_customer; ?></h5>
                 <ul class="list-unstyled">
@@ -74,11 +77,9 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalHeader">Modal title</h4>
+        <h4 class="modal-title" id="myModalHeader">...</h4>
       </div>
-      <div class="modal-body" id="myModalBody">
-        ...
-      </div>
+      <div class="modal-body" id="myModalBody">...</div>
       <div class="modal-footer" id="myModalFooter">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>        
       </div>

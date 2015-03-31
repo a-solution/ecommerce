@@ -2,7 +2,8 @@
     overflow: hidden;
     width: 100%;
     min-height: 300px;
-    margin-top: 20px;    
+    margin-top: 20px; 
+    margin-bottom: 15px;
 }
 .tabs {
     overflow: hidden;
