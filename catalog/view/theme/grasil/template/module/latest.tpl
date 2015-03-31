@@ -47,12 +47,17 @@
     </ul>
 </div>
 <script type="text/javascript">
-            $('.carousel-latest').flexslider({
-    animation: 'slide',
-            animationLoop: true,
-            itemMargin: 32,
-            itemWidth: 211
-            });</script>
+    var width = $(window).width();
+	var itemWidth = 211;
+    if (width < 768) {
+        itemWidth = 156;
+    }        
+	$('.carousel-latest').flexslider({
+		animation: 'slide',
+		animationLoop: true,
+		itemMargin: 32,
+		itemWidth: itemWidth
+    });</script>
 <?php else: ?>
 <h3 class="heading-title"><span><?php echo $heading_title; ?></span></h3>
 <div class="row product-layout">
