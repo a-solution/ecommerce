@@ -47,14 +47,19 @@
     </ul>
 </div>
 <script type="text/javascript">
+	var width = $(window).width();
+	var itemWidth = 211;
+    if (width < 768) {
+        itemWidth = 156;
+    }
     $('.carousel-features').flexslider({
-    animation: 'slide',
-    animationLoop: true,
-    itemMargin: 32,
-    itemWidth: 211,
-    slideshowSpeed: 12000,
-    animationSpeed: 600,
-});
+		animation: 'slide',
+		animationLoop: true,
+		itemMargin: 32,
+		itemWidth: itemWidth,
+		slideshowSpeed: 12000,
+		animationSpeed: 600,
+	});
 </script>
 <?php else: ?>
 <h3 class="heading-title"><span><?php echo $heading_title; ?></span></h3>

@@ -181,11 +181,16 @@
     </ul>
 </div>
 <script type="text/javascript">
-    $('.carousel-bestseller').flexslider({
+    var width = $(window).width();
+	var itemWidth = 211;
+    if (width < 768) {
+        itemWidth = 156;
+    }
+	$('.carousel-bestseller').flexslider({
     animation: 'slide',
     animationLoop: true,
     itemMargin: 32,
-    itemWidth: 211
+    itemWidth: itemWidth
 });
 </script>
 <?php else: ?>
