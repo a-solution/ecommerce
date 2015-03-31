@@ -20,8 +20,4 @@ $moduleIntro .= $module;
         ?>
     </div>
 </div>
-<?php else : ?>
-<?php
-echo $modulesAside;
-?>
 <?php endif;?>

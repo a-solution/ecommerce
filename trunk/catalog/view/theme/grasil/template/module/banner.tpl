@@ -1,11 +1,9 @@
-<div id="banner<?php echo $module; ?>" class="banner">
-    <ul class="list-unstyled">
+<div id="banner<?php echo $module; ?>" class="banner hidden-xs">    
     <?php foreach ($banners as $banner) { ?>
     <?php if ($banner['link']) { ?>
-    <li><a href="<?php echo $banner['link']; ?>"><img src="<?php echo $banner['image']; ?>" alt="<?php echo $banner['title']; ?>" class="img-responsive center-block" /></a></li>
+    <a href="<?php echo $banner['link']; ?>"><img src="<?php echo $banner['image']; ?>" alt="<?php echo $banner['title']; ?>" /></a>
     <?php } else { ?>
-    <li><img src="<?php echo $banner['image']; ?>" alt="<?php echo $banner['title']; ?>" class="img-responsive center-block" /></li>
+    <img src="<?php echo $banner['image']; ?>" alt="<?php echo $banner['title']; ?>" />
     <?php } ?>
-    <?php } ?>
-  </ul>
+    <?php } ?>  
 </div>
