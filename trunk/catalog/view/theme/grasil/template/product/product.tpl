@@ -46,6 +46,9 @@
                                 <img id="prd-single-image" data-image="<?php echo $thumb; ?>" src="<?php echo $thumb; ?>" data-zoom-image="<?php echo $popup; ?>" title="<?php echo $heading_title; ?>" />
                             </div>
                         </div>
+						<!-- Add fancyBox main JS and CSS files -->
+						<script type="text/javascript" src="catalog/view/theme/grasil/js/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+						<link rel="stylesheet" type="text/css" href="catalog/view/theme/grasil/js/fancybox/source/jquery.fancybox.css?v=2.1.5" media="screen" />
                         <script src="catalog/view/theme/grasil/js/jquery.elevatezoom.js" type="text/javascript"></script>
                         <script type="text/javascript">
                             //initiate the plugin and pass the id of the div containing gallery images
