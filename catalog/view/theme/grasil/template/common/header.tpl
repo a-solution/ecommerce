@@ -48,27 +48,7 @@
         <link href="<?php echo $style['href']; ?>" type="text/css" rel="<?php echo $style['rel']; ?>" media="<?php echo $style['media']; ?>" />
         <?php } ?>
         <script src="catalog/view/javascript/common.js" type="text/javascript"></script>
-        <script src="catalog/view/theme/grasil/js/common.js" type="text/javascript"></script>        
-        
-        <!--Start Fancybox-->        
-	<!-- Add mousewheel plugin (this is optional) -->
-	<script type="text/javascript" src="catalog/view/theme/grasil/js/fancybox/lib/jquery.mousewheel-3.0.6.pack.js"></script>
-	
-        <!-- Add fancyBox main JS and CSS files -->
-	<script type="text/javascript" src="catalog/view/theme/grasil/js/fancybox/source/jquery.fancybox.js?v=2.1.5"></script>
-	<link rel="stylesheet" type="text/css" href="catalog/view/theme/grasil/js/fancybox/source/jquery.fancybox.css?v=2.1.5" media="screen" />
-        
-	<!-- Add Button helper (this is optional) -->
-	<link rel="stylesheet" type="text/css" href="catalog/view/theme/grasil/js/fancybox/source/helpers/jquery.fancybox-buttons.css?v=1.0.5" />
-	<script type="text/javascript" src="catalog/view/theme/grasil/js/fancybox/source/helpers/jquery.fancybox-buttons.js?v=1.0.5"></script>
-
-	<!-- Add Thumbnail helper (this is optional) -->
-	<link rel="stylesheet" type="text/css" href="catalog/view/theme/grasil/js/fancybox/source/helpers/jquery.fancybox-thumbs.css?v=1.0.7" />
-	<script type="text/javascript" src="catalog/view/theme/grasil/js/fancybox/source/helpers/jquery.fancybox-thumbs.js?v=1.0.7"></script>
-
-	<!-- Add Media helper (this is optional) -->
-	<script type="text/javascript" src="catalog/view/theme/grasil/js/fancybox/source/helpers/jquery.fancybox-media.js?v=1.0.6"></script>
-        <!--End Fancybox-->
+        <script src="catalog/view/theme/grasil/js/common.js" type="text/javascript"></script>        	        
         
         <?php foreach ($scripts as $script) { ?>
         <script src="<?php echo $script; ?>" type="text/javascript"></script>
@@ -189,8 +169,7 @@
                         <?php } ?>
                     </ul>
                 </div>
-                <script src="catalog/view/theme/grasil/js/jquery.sidr.min.js" type="text/javascript"></script>
-                <script src="catalog/view/theme/grasil/js/jquery.touchwipe.1.1.1.js" type="text/javascript"></script>
+                <script src="catalog/view/theme/grasil/js/jquery.sidr.min.js" type="text/javascript"></script>                
                 <script type="text/javascript">
                     $(document).ready(function() {
                         $('#sidebar-menu').sidr({
@@ -202,24 +181,12 @@
                                     overflow: 'hidden'
                                 });
                             }
-                        });
-                        
-                         $(window).touchwipe({
-                            wipeLeft: function() {
-                                // Close
-                                $.sidr('close', 'sidr-left');                                
-                            },
-                             wipeRight: function() {
-                                // Open
-                                $.sidr('open', 'sidr-left');
-                            }, 
-                            preventDefaultEvents: false
                         }); 
                         
-                        $(window).resize(function(){
+                        /*$(window).resize(function(){
                             $.sidr('close', 'sidr-left');
                             $("#sidr-left").show('slow');
-                        });
+                        });*/
                         
                         $('.bsear').click(function(){
                             var header = $('header');
