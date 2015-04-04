@@ -20,6 +20,12 @@
     header .con-search, header .con-cart {
         padding-left: 15px;
     }
+    header .con-search {
+        margin-top: -15px;
+        padding-left: 15px;
+        padding-top: 15px;
+        background: #ccc;
+    }
     #search {
         padding: 0;
         margin-bottom: 15px;

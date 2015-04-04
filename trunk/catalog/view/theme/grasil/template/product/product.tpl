@@ -53,30 +53,29 @@
                         <script type="text/javascript">
                             //initiate the plugin and pass the id of the div containing gallery images
                             $("#prd-single-image").elevateZoom
-                            ({
-                                gallery:'prd-other-image',
-                                    cursor: 'pointer',
-                                    galleryActiveClass: 'active',
-                                    imageCrossfade: true,
-                                    loadingIcon: 'catalog/view/theme/grasil/image/loading.gif',
-                                    zoomType: 'window',
-                                    zoomWindowHeight: 417,
-                                    zoomWindowOffetx: 8,
-                                    zoomWindowOffety: - 1,
-                                    borderSize: 1,
-                                    borderColour: '#ccc',
-                                    zoomWindowFadeIn: 500,
-                                    zoomWindowFadeOut: 500,
-                                    lensFadeIn: 500,
-                                    lensFadeOut: 500
-                            });
-                            //pass the images to Fancybox
-                            $("#prd-single-image").bind("click", function(e) {
-                                var ez = $('#prd-single-image').data('elevateZoom');
-                                $.fancybox(ez.getGalleryList());
-                                return false;
-                            });
-                        </script>
+                                    ({
+                                    gallery:'prd-other-image',
+                                            cursor: 'pointer',
+                                            galleryActiveClass: 'active',
+                                            imageCrossfade: true,
+                                            loadingIcon: 'catalog/view/theme/grasil/image/loading.gif',
+                                            zoomType: 'window',
+                                            zoomWindowHeight: 417,
+                                            zoomWindowOffetx: 8,
+                                            zoomWindowOffety: - 1,
+                                            borderSize: 1,
+                                            borderColour: '#ccc',
+                                            zoomWindowFadeIn: 500,
+                                            zoomWindowFadeOut: 500,
+                                            lensFadeIn: 500,
+                                            lensFadeOut: 500
+                                    });
+                                    //pass the images to Fancybox
+                                    $("#prd-single-image").bind("click", function(e) {
+                            var ez = $('#prd-single-image').data('elevateZoom');
+                                    $.fancybox(ez.getGalleryList());
+                                    return false;
+                            });                        </script>
                     </div>
                     <div class="row hidden-md hidden-sm hidden-lg">
                         <div class="col-xs-12">
@@ -91,16 +90,15 @@
                                 <?php } ?>
                             </ul>
                             <script type="text/javascript">
-                                $(document).ready(function() {
-                                    $('.thumbnails').magnificPopup({
-                                    type:'image',
-                                            delegate: 'a',
-                                            gallery: {
-                                            enabled:true
-                                            }
-                                    });
+                                        $(document).ready(function() {
+                                $('.thumbnails').magnificPopup({
+                                type:'image',
+                                        delegate: 'a',
+                                        gallery: {
+                                        enabled:true
+                                        }
                                 });
-                            </script>
+                                });                            </script>
                         </div>
                     </div>                    
                     <?php } ?>          
@@ -692,22 +690,36 @@ $('#review').delegate('.pagination a', 'click', function(e) {
             }
             }
     });
-    });    
+    });
 //--></script> 
 <script type="text/javascript">
-            function selectItem(obj)
-            {
-            $(obj).parent().parent().parent().find('.radio').each(function(){
+    function selectItem(obj)
+    {
+        $(obj).parent().parent().parent().find('.radio').each(function(){
             $(this).find('.img-thumbnail').removeClass('selected');
-            });
-                    $(obj).addClass('selected');
-            }
+        });
+        $(obj).addClass('selected');
+        $(obj).parent().find('input[type=radio]').prop('checked', true);
+    }
     function selectBorder(obj)
     {
-    $(obj).parent().parent().find('.radio').each(function(){
-    $(this).find('label').removeClass('selected');
-    });
-            $(obj).addClass('selected');
+        $(obj).parent().parent().find('.radio').each(function(){
+            $(this).find('label').removeClass('selected');
+        });
+        $(obj).addClass('selected');
+        $(obj).find('input[type=radio]').prop('checked', true);
     }
+    $(document).ready(function(){
+        $('.form-group.required').each(function(){
+            if($(this).find('.border').length == 1)
+            {                
+                selectItem($(this).find('label'));
+            }
+            if($(this).find('.image').length == 1)
+            {                
+                selectItem($(this).find('.image').find('.img-thumbnail'));
+            }
+        });
+    });
 </script>
 <?php echo $footer; ?>
