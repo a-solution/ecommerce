@@ -6,7 +6,7 @@
     <div class="panel-body">
       <p><?php echo $text_shipping; ?></p>
       <form class="form-horizontal">
-        <div class="form-group required">
+        <div class="form-group required" style="display:none;">
           <label class="col-sm-2 control-label" for="input-country"><?php echo $entry_country; ?></label>
           <div class="col-sm-10">
             <select name="country_id" id="input-country" class="form-control">
@@ -74,14 +74,18 @@ $('#button-quote').on('click', function() {
 
 			if (json['shipping_method']) {
 				$('#modal-shipping').remove();
-
+                                    
+                                var multipleShipOptions = (Object.keys(json['shipping_method']).length > 1);
+                                    
 				html  = '<div id="modal-shipping" class="modal">';
 				html += '  <div class="modal-dialog">';
 				html += '    <div class="modal-content">';
-				html += '      <div class="modal-header">';
-				html += '        <h4 class="modal-title"><?php echo $text_shipping_method; ?></h4>';
-				html += '      </div>';
-				html += '      <div class="modal-body">';
+                                if(multipleShipOptions){
+                                    html += '      <div class="modal-header">';
+                                    html += '        <h4 class="modal-title"><?php echo $text_shipping_method; ?></h4>';
+                                    html += '      </div>';
+                                }
+                                html += '      <div class="modal-body">';
 
 				for (i in json['shipping_method']) {
 					html += '<p><strong>' + json['shipping_method'][i]['title'] + '</strong></p>';
@@ -92,12 +96,28 @@ $('#button-quote').on('click', function() {
 							html += '  <label>';
 
 							if (json['shipping_method'][i]['quote'][j]['code'] == '<?php echo $shipping_method; ?>') {
-								html += '<input type="radio" name="shipping_method" value="' + json['shipping_method'][i]['quote'][j]['code'] + '" checked="checked" />';
+                                                                //Not to show radio button if only one option
+                                                                if(Object.keys(json['shipping_method'][i]['quote']).length > 1){
+                                                                    html += '<input type="radio" name="shipping_method" value="' + json['shipping_method'][i]['quote'][j]['code'] + '" checked="checked" />';
+                                                                }
+                                                                else{
+                                                                    html += '<input type="radio" name="shipping_method" value="' + json['shipping_method'][i]['quote'][j]['code'] + '" checked="checked" style="display: none"/>';
+                                                                }
 							} else {
-								html += '<input type="radio" name="shipping_method" value="' + json['shipping_method'][i]['quote'][j]['code'] + '" />';
+                                                                //Not to show radio button if only one option
+                                                                if(Object.keys(json['shipping_method'][i]['quote']).length > 1){
+                                                                    html += '<input type="radio" name="shipping_method" value="' + json['shipping_method'][i]['quote'][j]['code'] + '" />';
+                                                                }
+                                                                else{
+                                                                    html += '<input type="radio" name="shipping_method" value="' + json['shipping_method'][i]['quote'][j]['code'] + '" checked="checked" style="display: none"/>';
+                                                                }								
 							}
-
-							html += json['shipping_method'][i]['quote'][j]['title'] + ' - ' + json['shipping_method'][i]['quote'][j]['text'] + '</label></div>';
+                                                        if(json['shipping_method'][i]['quote'][j]['cost'] == null || json['shipping_method'][i]['quote'][j]['cost'] == "0"){
+                                                            html += "Miễn phí vận chuyển" + '</label></div>';
+                                                        }    
+							else{
+                                                            html += json['shipping_method'][i]['quote'][j]['title'] + ' ' + json['shipping_method'][i]['quote'][j]['text'] + '</label></div>';
+                                                        }
 						}
 					} else {
 						html += '<div class="alert alert-danger">' + json['shipping_method'][i]['error'] + '</div>';
@@ -111,8 +131,13 @@ $('#button-quote').on('click', function() {
 				<?php if ($shipping_method) { ?>
 				html += '        <input type="button" value="<?php echo $button_shipping; ?>" id="button-shipping" data-loading-text="<?php echo $text_loading; ?>" class="btn btn-primary" />';
 				<?php } else { ?>
-				html += '        <input type="button" value="<?php echo $button_shipping; ?>" id="button-shipping" data-loading-text="<?php echo $text_loading; ?>" class="btn btn-primary" disabled="disabled" />';
-				<?php } ?>
+                                            if(multipleShipOptions){ 
+                                                html += '        <input type="button" value="<?php echo $button_shipping; ?>" id="button-shipping" data-loading-text="<?php echo $text_loading; ?>" class="btn btn-primary" disabled="disabled" />';                                            
+                                            }
+                                            else{
+                                                html += '        <input type="button" value="<?php echo $button_shipping; ?>" id="button-shipping" data-loading-text="<?php echo $text_loading; ?>" class="btn btn-primary" />';        
+                                            }
+				<?php }?>
 
 				html += '      </div>';
 				html += '    </div>';
