@@ -1103,7 +1103,7 @@ header .con-wishlist {
 
 /* breadcrumb */
 .breadcrumb {
-    margin: 0 0 20px 0;
+    margin: 20px 0 20px 0;
     padding: 3px 0;
     border: 1px dashed #eee;
     background: none;
@@ -1139,6 +1139,16 @@ header .con-wishlist {
 }
 .breadcrumb li:last-child:after {
     border:0;
+}
+.breadcrumb .has-sub:hover > a {
+    text-decoration: underline;
+}
+.breadcrumb .has-sub:hover .dropdown-menu {
+    display: block;
+    border-radius: 0;
+    margin: 0;
+    left: 18px;
+    box-shadow: none;
 }
 
 .basic-info {
@@ -1318,6 +1328,9 @@ header .con-wishlist {
     margin-top: 20px;
     min-height: 300px;
 }
+#tab-description img, #tab-review img, #tab-faq img{
+    max-width: 100%;
+}
 
 /*Social & Support*/
 .social-sec {
@@ -1339,17 +1352,6 @@ header .con-wishlist {
 }
 #column-left .banner ul li:first-child {
     margin-top: 0;
-}
-
-.breadcrumb .has-sub:hover > a {
-    text-decoration: underline;
-}
-.breadcrumb .has-sub:hover .dropdown-menu {
-    display: block;
-    border-radius: 0;
-    margin: 0;
-    left: 18px;
-    box-shadow: none;
 }
 
 /*Category*/
