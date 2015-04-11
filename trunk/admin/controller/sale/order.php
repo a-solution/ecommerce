@@ -2,6 +2,8 @@
 class ControllerSaleOrder extends Controller {
 	private $error = array();
 
+        private $allowedStatuses = ["Complete", "Canceled", "Pending"];
+        
 	public function index() {
 		$this->load->language('sale/order');
 
@@ -541,7 +543,9 @@ class ControllerSaleOrder extends Controller {
 		$this->load->model('localisation/order_status');
 
 		$data['order_statuses'] = $this->model_localisation_order_status->getOrderStatuses();
-
+                
+                $data['allowedStatuses'] = $this->allowedStatuses;
+                
 		$data['sort'] = $sort;
 		$data['order'] = $order;
 
@@ -946,6 +950,8 @@ class ControllerSaleOrder extends Controller {
 		$this->load->model('localisation/order_status');
 
 		$data['order_statuses'] = $this->model_localisation_order_status->getOrderStatuses();
+                
+                $data['allowedStatuses'] = $this->allowedStatuses;
 
 		$this->load->model('localisation/country');
 

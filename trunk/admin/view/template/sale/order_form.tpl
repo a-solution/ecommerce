@@ -846,7 +846,12 @@
                       <?php if ($order_status['order_status_id'] == $order_status_id) { ?>
                       <option value="<?php echo $order_status['order_status_id']; ?>" selected="selected"><?php echo $order_status['name']; ?></option>
                       <?php } else { ?>
-                      <option value="<?php echo $order_status['order_status_id']; ?>"><?php echo $order_status['name']; ?></option>
+                            <?php if($allowedStatuses && in_array($order_status['name'], $allowedStatuses)){ ?>
+                                <option value="<?php echo $order_status['order_status_id']; ?>" style="display: block"><?php echo $order_status['name']; ?></option>
+                            <?php } else { ?>
+                                <option value="<?php echo $order_status['order_status_id']; ?>" style="display: none"><?php echo $order_status['name']; ?></option>
+                            <?php } ?>
+                            
                       <?php } ?>
                       <?php } ?>
                     </select>
