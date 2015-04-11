@@ -608,6 +608,14 @@ class ControllerApiOrder extends Controller {
 						$order_data['commission'] = 0;
 					}
 
+                                        
+                                        if (isset($this->request->post['order_status_id'])) {
+                                            $order_data['order_status_id'] = $this->request->post['order_status_id'];    
+                                        }
+                                        else{
+                                            $order_data['order_status_id'] = $this->request->get['order_status_id'];
+                                        }
+                                        
 					$this->model_checkout_order->editOrder($order_id, $order_data);
 
 					// Set the order history
@@ -657,10 +665,10 @@ class ControllerApiOrder extends Controller {
 			}
 		}
 
-		print_r($json);
+		//print_r($json);
 
-		//$this->response->addHeader('Content-Type: application/json');
-		//$this->response->setOutput(json_encode($json));
+		$this->response->addHeader('Content-Type: application/json');
+		$this->response->setOutput(json_encode($json));
 	}
 
 	public function history() {
