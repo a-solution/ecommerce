@@ -19,14 +19,21 @@ class ControllerModuleSpecial extends Controller {
                 
                 $data['categories'] = array();
 
-		$filter_data = array(
+		/*$filter_data = array(
 			'sort'  => 'pd.name',
 			'order' => 'ASC',
 			'start' => 0,
 			'limit' => $setting['limit'],
                         'category_ids' => isset($setting['category_ids']) ? $setting['category_ids'] : ''
+		);*/
+                $filter_data = array(
+			'sort'  => 'total_discount',
+			'order' => 'DESC',
+			'start' => 0,
+			'limit' => $setting['limit'],
+                        'category_ids' => isset($setting['category_ids']) ? $setting['category_ids'] : ''
 		);
-
+                
 		$results = $this->model_catalog_product->getProductSpecials($filter_data);
                 
                 //If no category is specified, group by 'All'
