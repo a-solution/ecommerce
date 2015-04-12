@@ -333,7 +333,7 @@ class ControllerApiOrder extends Controller {
                                 [array_keys($this->session->data['payment_methods'])[0]];
                     }
                 }
-                
+
 		if (!isset($this->session->data['api_id'])) {
 			$json['error'] = $this->language->get('error_permission');
 		} else {
@@ -616,7 +616,7 @@ class ControllerApiOrder extends Controller {
                                             $order_data['order_status_id'] = $this->request->get['order_status_id'];
                                         }
                                         
-					$this->model_checkout_order->editOrder($order_id, $order_data);
+					$this->model_checkout_order->editOrder($order_id, $order_data, $order_info);
 
 					// Set the order history
 					if (isset($this->request->post['order_status_id'])) {
@@ -657,7 +657,7 @@ class ControllerApiOrder extends Controller {
 			$order_info = $this->model_checkout_order->getOrder($order_id);
 
 			if ($order_info) {
-				$this->model_checkout_order->deleteOrder($order_id);
+				$this->model_checkout_order->deleteOrder($order_id, $order_info);
 
 				$json['success'] = $this->language->get('text_success');
 			} else {
