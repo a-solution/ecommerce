@@ -218,6 +218,7 @@ class ModelCatalogProduct extends Model {
 	public function getProductSpecials($data = array()) {
 		$sql = "SELECT DISTINCT ps.product_id, (SELECT AVG(rating) FROM " . DB_PREFIX . "review r1 WHERE r1.product_id = ps.product_id AND r1.status = '1' GROUP BY r1.product_id) AS rating "
                         . " , cd.category_id, cd.name "
+                        . ((isset($data['sort']) && $data['sort'] == 'total_discount')? ", abs(p.price - ps.price) 'total_discount' " : "")
                         . " FROM " . DB_PREFIX . "product_special ps LEFT JOIN " . DB_PREFIX . "product p ON (ps.product_id = p.product_id) LEFT JOIN " . DB_PREFIX . "product_description pd ON (p.product_id = pd.product_id) LEFT JOIN " . DB_PREFIX . "product_to_store p2s ON (p.product_id = p2s.product_id)"
                         . " LEFT JOIN  ".DB_PREFIX."product_to_category ptc ON (p.product_id = ptc.product_id) "
                         . " LEFT JOIN  ".DB_PREFIX."category_description cd ON (ptc.category_id = cd.category_id) "
@@ -233,7 +234,8 @@ class ModelCatalogProduct extends Model {
 			'p.model',
 			'ps.price',
 			'rating',
-			'p.sort_order'
+			'p.sort_order',
+                        'total_discount'
 		);
 
 		if (isset($data['sort']) && in_array($data['sort'], $sort_data)) {
