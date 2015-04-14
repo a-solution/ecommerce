@@ -190,13 +190,23 @@ class ControllerCheckoutShipping extends Controller {
 		}
 
 		if (!$json) {
-			$shipping = explode('.', $this->request->post['shipping_method']);
+                    $shipping = explode('.', $this->request->post['shipping_method']);
 
-			$this->session->data['shipping_method'] = $this->session->data['shipping_methods'][$shipping[0]]['quote'][$shipping[1]];
+                    $this->session->data['shipping_method'] = $this->session->data['shipping_methods'][$shipping[0]]['quote'][$shipping[1]];
 
-			$this->session->data['success'] = $this->language->get('text_success');
+                    $this->session->data['success'] = $this->language->get('text_success');
 
-			$json['redirect'] = $this->url->link('checkout/cart');
+                    $json['redirect'] = $this->url->link('checkout/cart');
+                    
+                    if(isset($this->request->post['total']))
+                    {
+                        $oldTotal = str_replace(',', '', $this->request->post['total']);
+                        $oldShip = str_replace(',', '', $this->request->post['ship']);
+                        $ship = str_replace(',', '', $this->session->data['shipping_methods']['flat']['quote']['flat']['cost']);
+                        $total = $oldTotal - $oldShip + $ship;
+                        $json['ship'] = $this->currency->format($ship);
+                        $json['total'] = $this->currency->format($total);
+                    }                        
 		}
 
 		$this->response->addHeader('Content-Type: application/json');

@@ -15,7 +15,63 @@
         <li><a href="<?php echo $breadcrumb['href']; ?>"><?php echo $breadcrumb['text']; ?></a></li>
         <?php } ?>
         <?php } ?>
-    </ul>
+    </ul>    
+    <div class="subcat-list">
+        <ul class="bxslider list-unstyled">
+            <?php
+            $catCount = 0;
+            foreach ($categories as $category) : ?>
+            <li>
+                <a href="<?php echo $category['href']?>">
+                <?php if($category['image']) : ?>
+                <img src="<?php echo $category['image']?>" />
+                <?php endif; ?>
+                <div class="subname">
+                    <?php echo $category['text']?>
+                </div>
+                </a>
+            </li>
+            <?php
+                //$catCount++;
+                //if($catCount==6) break;
+                endforeach;
+            ?>
+            <?php if($catCount < 6 && isset($category_parent)) : ?>
+                <?php foreach ($category_parent as $catGroup) : ?>
+                    <li>
+                        <a href="<?php echo $catGroup['href']?>">
+                        <?php if($catGroup['image']) : ?>
+                        <img src="<?php echo $catGroup['image']?>" />
+                        <?php endif; ?>
+                        <div class="subname">
+                            <?php echo $catGroup['text']?>
+                        </div>
+                        </a>
+                    </li>
+                <?php
+                //if($catCount==5) break;
+                //$catCount++;                    
+                endforeach; ?>
+            <?php endif; ?>
+        </ul>
+        <div class="clearfix"></div>
+        <script type="text/javascript">
+            $(document).ready(function(){
+                $('.bxslider').bxSlider({
+                    minSlides: 2,
+                    maxSlides: 6,
+                    moveSlides: 1,
+                    slideWidth: 155,
+                    slideMargin: 0,
+                    pager: false,
+                    controls: true,
+                    infiniteLoop: true,
+                    hideControlOnEnd: true
+                });
+            });
+        </script>
+    </div>
+    
     <div class="row category-info"><?php echo $column_left; ?>
         <?php if ($column_left && $column_right) { ?>
         <?php $class = 'col-sm-6'; ?>
@@ -28,7 +84,7 @@
             <?php if ($thumb) { ?>
             <!--div class="row">
                 <div class="col-sm-12"><img src="<?php echo $thumb; ?>" alt="<?php echo $heading_title; ?>" title="<?php echo $heading_title; ?>" class="img-thumbnail" /></div>
-            </div-->      
+            </div-->
             <?php } ?>
             <div class="row cat-heading">
                 <div class="col-sm-12 col-xs-12">

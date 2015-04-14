@@ -10,7 +10,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title><?php echo $title; ?></title>
-        <base href="<?php echo $base; ?>" />
+        <base href="<?php echo $base; ?>" />        
         <?php if ($description) { ?>
         <meta name="description" content="<?php echo $description; ?>" />        
         <?php } ?>
@@ -26,10 +26,15 @@
         <meta property="og:description" content="<?php echo $description; ?>" />
         <meta property="fb:app_id" content="357643941100377" />
         <meta property="og:type" content="website" />
-                
+        
         <?php if ($icon) { ?>
         <link href="<?php echo $icon; ?>" rel="icon" />
         <?php } ?>
+        
+        <script type="text/javascript">
+            BASE_URL = '<?php echo $base; ?>';
+        </script>
+        
         <?php foreach ($links as $link) { ?>
         <link href="<?php echo $link['href']; ?>" rel="<?php echo $link['rel']; ?>" />
         <?php } ?>
@@ -53,6 +58,12 @@
         <?php foreach ($scripts as $script) { ?>
         <script src="<?php echo $script; ?>" type="text/javascript"></script>
         <?php } ?>
+                
+        <!-- bxSlider Javascript file -->
+        <script src="catalog/view/theme/grasil/js/bxslider/jquery.bxslider.min.js"></script>
+        <!-- bxSlider CSS file -->
+        <link href="catalog/view/theme/grasil/js/bxslider/jquery.bxslider.css" rel="stylesheet" />
+        
         <?php echo $google_analytics; ?>
     </head>
     <body class="<?php echo $class; ?>" ontouchstart="">        

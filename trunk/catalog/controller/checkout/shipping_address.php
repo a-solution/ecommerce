@@ -125,7 +125,7 @@ class ControllerCheckoutShippingAddress extends Controller {
 					// Default Shipping Address
 					$this->load->model('account/address');
 
-					$this->session->data['shipping_address'] = $this->model_account_address->getAddress($this->request->post['address_id']);
+					$this->session->data['shipping_address'] = $this->model_account_address->getAddress($this->request->post['address_id']);                                                                                
 
 					unset($this->session->data['shipping_method']);
 					unset($this->session->data['shipping_methods']);

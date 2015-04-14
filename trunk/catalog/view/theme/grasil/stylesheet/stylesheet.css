@@ -41,8 +41,16 @@ legend {
     padding: 7px 0px
 }
 label {
-    font-size: 12px;
     font-weight: normal;
+}
+.required .control-label {
+    font-weight: bold;
+}
+.required.has-error .control-label {
+    color: #313131;
+}
+.text-danger {
+    color: red;
 }
 .form-control {
     height: 32px;
@@ -746,6 +754,9 @@ header .con-wishlist {
     box-shadow: none !important;
     margin-bottom: 0 !important;
 }
+.flexslider.carousel {
+    border: 1px solid #eee !important;
+}
 .flexslider .flex-prev {
     left: 10px !important;
 }
@@ -860,6 +871,27 @@ header .con-wishlist {
     border-color: #999;
 /*    box-shadow: 0 0 15px #ccc;*/
 }
+
+.subcat-list {
+    margin-bottom: 20px;
+    border: 1px solid #eee;
+    background: #fff;
+}
+.subcat-list ul {
+    margin:  0;
+    padding: 0;
+}
+.subcat-list ul li {    
+    float: left;    
+    text-align: center;
+}
+.subcat-list ul li:last-child {
+    margin-left: 0;
+}
+.subcat-list ul li img {
+    max-width: 100%;
+}
+
 .category-info .img-thumbnail {
     padding:0;
     border: 0;
@@ -1053,7 +1085,7 @@ header .con-wishlist {
 .product-thumb .price {    
     margin: 3px 0;
     color: #cc0000;
-    font-size: 1.3em;
+    font-size: 1.1em;
 }
 .product-thumb .price-new {    
 /*    display: block;    */
@@ -1212,13 +1244,15 @@ header .con-wishlist {
     margin: 0;
     margin-right: 5px;
 }
+.basic-info .radio.image .img-thumbnail {
+    border: 2px solid #ddd;
+    padding:1px;
+    border-radius: 0 !important;
+}
 .basic-info .radio.image .img-thumbnail.selected {
     border: 2px solid red;
 }
-.basic-info .radio.image .img-thumbnail {
-    border: 2px solid #fff;
-    padding:1px;
-}
+
 
 .basic-info .radio.border {
     padding:0px;
@@ -1233,7 +1267,7 @@ header .con-wishlist {
     border: 2px solid red;
 }
 .basic-info .radio.border label {
-    border: 2px solid #eee;
+    border: 2px solid #ddd;
     padding:1px 10px;
     color: #313131 !important;
 }
@@ -1432,6 +1466,9 @@ header .con-wishlist {
 }
 
 /*Cart Info in checkout page*/
+.order-list .ptitle {
+    font-weight: bold;
+}
 #cart_info {
     
 }
@@ -1446,26 +1483,55 @@ header .con-wishlist {
     padding:0px;
 }
 #cart_info .cart-update {
-    text-align: center;
+    text-align: center;   
 }
-
-.order-list .ptitle {
-    font-weight: bold;
+#cart_info .cart-update a {
+    color: #18599d;    
 }
-
-table.order-total tr:first-child {
-/*    display: none;*/
-}
-table.order-total tr td.total, #cart_info .product-price {
-    font-weight: bold;
+table.order-total tr td.total, #cart_info .product-price {    
     color: #33cc00;
+}
+#cart_info .product-price {
+    font-weight: bold;
+}
+table.order-total tr td.method {
+    text-align: right;
 }
 table.order-total tr td {
     vertical-align: middle;
     line-height: none;
 }
 table.order-total tr td.total {
-    font-size: 2em;
+    font-size: 1.5em;
+    text-align: right;
+}
+table.order-total tr td.fee {
+/*    font-size: 1.2em;*/
+}
+
+.fc-color{
+    -webkit-animation: color-change 1s 2;
+    -moz-animation: color-change 1s 2;
+    -o-animation: color-change 1s 2;
+    -ms-animation: color-change 1s 2;
+    animation: color-change 1s 2;
+}
+
+@-webkit-keyframes color-change {    
+    0% { color: #cc0000; }
+    100% { color: #33cc00; }
+}
+@-ms-keyframes color-change {
+    0% { color: #cc0000; }
+    100% { color: #33cc00; }
+}
+@-o-keyframes color-change {
+    0% { color: #cc0000; }
+    100% { color: #33cc00; }
+}
+@keyframes color-change {
+    0% { color: #cc0000; }
+    100% { color: #33cc00; }
 }
 
 /*Register Account*/

@@ -109,7 +109,7 @@
             <?php foreach ($totals as $total) { ?>
             <tr>
               <td class="text-right"><strong><?php echo $total['title']; ?>:</strong></td>
-              <td class="text-right total" style="width: 135px"><?php echo $total['text']; ?></td>
+              <td class="text-right total <?php echo $total['class']; ?>"><?php echo $total['text']; ?></td>
             </tr>
             <?php } ?>
           </table>
