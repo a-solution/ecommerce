@@ -223,8 +223,7 @@ var _asaca = {
     popup: function(message)
     {
         $('#myModalHeader').html('ASACA.VN');
-        $('#myModalBody').html(message);
-        //$('#myModalFooter').html();
+        $('#myModalBody').html(message);        
         
         $('#myModal').modal({show:true, backdrop:'static'});
     },
@@ -237,5 +236,16 @@ var _asaca = {
         var offset = $(obj).offset();
         var top = offset.top - 10;
         $('html, body').animate({ scrollTop: top }, 'slow');
-    }    
+    },
+    loading: function(obj)
+    {
+        img = "<img id='img-loading' src='"+BASE_URL+"/catalog/view/theme/grasil/image/loading.gif' />";
+        $(obj).hide();
+        $(img).insertAfter($(obj));
+    },
+    reset: function(obj)
+    {        
+        $(obj).show();
+        $('#img-loading').remove();
+    }
 };

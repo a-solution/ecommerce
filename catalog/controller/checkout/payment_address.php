@@ -169,7 +169,7 @@ class ControllerCheckoutPaymentAddress extends Controller {
 
 					$address_id = $this->model_account_address->addAddress($this->request->post);
 
-					$this->session->data['payment_address'] = $this->model_account_address->getAddress($address_id);
+					$this->session->data['payment_address'] = $this->model_account_address->getAddress($address_id);                                                                                
 
 					unset($this->session->data['payment_method']);
 					unset($this->session->data['payment_methods']);

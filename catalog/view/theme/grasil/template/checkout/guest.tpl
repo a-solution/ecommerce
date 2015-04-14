@@ -92,7 +92,7 @@
     </div>
 </div>
 <?php if ($shipping_required) { ?>
-<div class="checkbox">
+<div class="checkbox" style="display: none">
   <label>
     <?php if ($shipping_address) { ?>
     <input type="checkbox" name="shipping_address" value="1" checked="checked" />
@@ -267,4 +267,49 @@ $('#collapse-payment-address select[name=\'country_id\']').on('change', function
 });
 
 $('#collapse-payment-address select[name=\'country_id\']').trigger('change');
+
+$('#input-payment-zone').on('change', function() {
+    $.ajax({
+        url: 'index.php?route=checkout/shipping/quote',
+        type: 'post',
+        data: 'country_id=' + $('select[name=\'country_id\']').val() + '&zone_id=' + $('select[name=\'zone_id\']').val() + '&postcode=' + encodeURIComponent($('input[name=\'postcode\']').val()),
+        dataType: 'json',
+        beforeSend: function() {
+            //$('#button-quote').button('loading');
+        },
+        complete: function() {
+            //$('#button-quote').button('reset');
+        },
+        success: function(json) {            
+            $.ajax({
+		url: 'index.php?route=checkout/shipping/shipping',
+		type: 'post',
+		data: 'shipping_method=flat.flat&total='+$('.all-total').text().slice(0, -1)+'&ship='+$('.fee').text().slice(0, -1),
+		dataType: 'json',
+		beforeSend: function() {
+                    _asaca.loading($('.fee > span'));
+                    $('.fee').removeClass('fc-color');
+                    $('.all-total').removeClass('fc-color');
+		},
+		complete: function() {
+                    _asaca.reset($('.fee > span'));
+                    $('.fee').addClass('fc-color');
+                    $('.all-total').addClass('fc-color');
+		},
+		success: function(json) {                    
+                    if(json['ship']==='0đ')
+                    {
+                        $('.fee > span').text('Miễn phí');
+                    }
+                    else
+                    {
+                        $('.fee > span').text(json['ship']);
+                    }
+                    $('.fee > input').val(json['ship']);
+                    $('.all-total').text(json['total']);
+		}
+	});
+        }
+    });
+});
 //--></script> 

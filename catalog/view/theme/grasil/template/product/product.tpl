@@ -46,9 +46,9 @@
                                 <img id="prd-single-image" data-image="<?php echo $thumb; ?>" src="<?php echo $thumb; ?>" data-zoom-image="<?php echo $popup; ?>" title="<?php echo $heading_title; ?>" />
                             </div>
                         </div>
-						<!-- Add fancyBox main JS and CSS files -->
-						<script type="text/javascript" src="catalog/view/theme/grasil/js/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-						<link rel="stylesheet" type="text/css" href="catalog/view/theme/grasil/js/fancybox/source/jquery.fancybox.css?v=2.1.5" media="screen" />
+                        <!-- Add fancyBox main JS and CSS files -->
+                        <script type="text/javascript" src="catalog/view/theme/grasil/js/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+                        <link rel="stylesheet" type="text/css" href="catalog/view/theme/grasil/js/fancybox/source/jquery.fancybox.css?v=2.1.5" media="screen" />
                         <script src="catalog/view/theme/grasil/js/jquery.elevatezoom.js" type="text/javascript"></script>
                         <script type="text/javascript">
                             //initiate the plugin and pass the id of the div containing gallery images
@@ -125,6 +125,11 @@
                         <li><?php echo $text_reward; ?> <?php echo $reward; ?></li>
                         <?php } ?>
                         <li><?php echo $text_stock; ?> <?php echo $stock; ?></li>
+                        <?php foreach ($options as $option) { ?>
+                        <?php if ($option['type'] == 'text' && !$option['required']) { ?>
+                        <li><?php echo $option['name']; ?>: <?php echo $option['value']; ?></li>
+                        <?php }?>
+                        <?php }?>
                     </ul>
                     <?php if ($price) { ?>
                     <ul class="list-unstyled price">
@@ -230,11 +235,17 @@
                             </div>
                         </div>
                         <?php } ?>
-                        <?php if ($option['type'] == 'text') { ?>
-                        <div class="form-group<?php echo ($option['required'] ? ' required' : ''); ?>">
-                            <label class="control-label" for="input-option<?php echo $option['product_option_id']; ?>"><?php echo $option['name']; ?></label>
-                            <input type="text" name="option[<?php echo $option['product_option_id']; ?>]" value="<?php echo $option['value']; ?>" placeholder="<?php echo $option['name']; ?>" id="input-option<?php echo $option['product_option_id']; ?>" class="form-control" />
-                        </div>
+                        <?php if ($option['type'] == 'text') {
+                            if($option['required'])
+                            {
+                            ?>
+                                <div class="form-group required">
+                                    <label class="control-label" for="input-option<?php echo $option['product_option_id']; ?>"><?php echo $option['name']; ?></label>
+                                    <input type="text" name="option[<?php echo $option['product_option_id']; ?>]" value="<?php echo $option['value']; ?>" placeholder="<?php echo $option['name']; ?>" id="input-option<?php echo $option['product_option_id']; ?>" class="form-control" />
+                                </div>
+                            <?php
+                            }
+                        ?>
                         <?php } ?>
                         <?php if ($option['type'] == 'textarea') { ?>
                         <div class="form-group<?php echo ($option['required'] ? ' required' : ''); ?>">

@@ -21,14 +21,14 @@
             </select>
           </div>
         </div>
-        <div class="form-group required">
+          <div class="form-group required">
           <label class="col-sm-2 control-label" for="input-zone"><?php echo $entry_zone; ?></label>
           <div class="col-sm-10">
             <select name="zone_id" id="input-zone" class="form-control">
             </select>
           </div>
         </div>
-        <div class="form-group required">
+        <div class="form-group required" style="display: none">
           <label class="col-sm-2 control-label" for="input-postcode"><?php echo $entry_postcode; ?></label>
           <div class="col-sm-10">
             <input type="text" name="postcode" value="<?php echo $postcode; ?>" placeholder="<?php echo $entry_postcode; ?>" id="input-postcode" class="form-control" />

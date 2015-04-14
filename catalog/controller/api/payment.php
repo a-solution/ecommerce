@@ -43,10 +43,12 @@ class ControllerApiPayment extends Controller {
 			if ((utf8_strlen(trim($this->request->post['address_1'])) < 3) || (utf8_strlen(trim($this->request->post['address_1'])) > 128)) {
 				$json['error']['address_1'] = $this->language->get('error_address_1');
 			}
+                        
+                        //HuyLy modified 15-Apr-2015
 
-			if ((utf8_strlen($this->request->post['city']) < 2) || (utf8_strlen($this->request->post['city']) > 32)) {
-				$json['error']['city'] = $this->language->get('error_city');
-			}
+//			if ((utf8_strlen($this->request->post['city']) < 2) || (utf8_strlen($this->request->post['city']) > 32)) {
+//				$json['error']['city'] = $this->language->get('error_city');
+//			}
 
 			$this->load->model('localisation/country');
 

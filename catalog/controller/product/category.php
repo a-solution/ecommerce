@@ -2,6 +2,8 @@
 
 class ControllerProductCategory extends Controller {
 
+    private $imgCatWidth = 200;
+    private $imgCatHeight = 200;
     public function index() {
         $this->load->language('product/category');
 
@@ -9,7 +11,7 @@ class ControllerProductCategory extends Controller {
 
         $this->load->model('catalog/product');
 
-        $this->load->model('tool/image');
+        $this->load->model('tool/image');                
 
         if (isset($this->request->get['filter'])) {
             $filter = $this->request->get['filter'];
@@ -81,24 +83,39 @@ class ControllerProductCategory extends Controller {
                 if ($category_info) {
                     //Customize 30-Dec-14
                     $categories_child = $this->model_catalog_category->getCategories($path_id);                    
-                    $data_category_child = array();                
+                    $data_category_child = array();
+                    
                 
                     if($categories_child)
                     {
                         foreach ($categories_child as $category_child) {
+                            if (isset($category_child['image'])) {
+                                $imageCat = $this->model_tool_image->resize($category_child['image'], $this->imgCatWidth, $this->imgCatHeight);
+                            }
                             $data_category_child[] = array(
                                 'text' => $category_child['name'],
-                                'href' => $this->url->link('product/category', 'path=' . $path . '_' . $category_child['category_id'] . $url)
-                            );
+                                'href' => $this->url->link('product/category', 'path=' . $path . '_' . $category_child['category_id'] . $url),
+                                'image' => $imageCat
+                            );                            
                         }
-                    }
+                    }                    
                     $data['breadcrumbs'][] = array(
                         'text' => $category_info['name'],
                         'href' => $this->url->link('product/category', 'path=' . $path . $url),
                         'child' => $data_category_child
                     );
+                    $dataCatParent[] = $data_category_child;                    
                 }
-            }            
+            }
+            if(isset($dataCatParent))
+            {
+                krsort($dataCatParent);
+                foreach ($dataCatParent as $catParent) {
+                    foreach ($catParent as $catSub) {
+                        $data['category_parent'][] = $catSub;
+                    }
+                }
+            }
         } else {
             $category_id = 0;
         }
@@ -187,12 +204,18 @@ class ControllerProductCategory extends Controller {
                     'filter_category_id' => $result['category_id'],
                     'filter_sub_category' => true
                 );
+                
+                if (isset($result['image'])) {
+                    $imageCat = $this->model_tool_image->resize($result['image'], $this->imgCatWidth, $this->imgCatHeight);
+                }                
 
                 $data['categories'][] = array(
                     'text' => $result['name'] . ($this->config->get('config_product_count') ? ' (' . $this->model_catalog_product->getTotalProducts($filter_data) . ')' : ''),
-                    'href' => $this->url->link('product/category', 'path=' . $this->request->get['path'] . '_' . $result['category_id'] . $url)
+                    'href' => $this->url->link('product/category', 'path=' . $this->request->get['path'] . '_' . $result['category_id'] . $url),
+                    'image' => $imageCat
                 );
-            }
+                
+            }            
             
             $data['breadcrumbs'][] = array(
                 'text' => $category_info['name'],
