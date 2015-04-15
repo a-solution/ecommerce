@@ -49,7 +49,7 @@
         </div>
         <?php } ?>
         <?php if ($shipping_required) { ?>
-        <div class="panel panel-default">
+        <div class="panel panel-default" style="display: none;">
           <div class="panel-heading">
             <h4 class="panel-title"><?php echo $text_checkout_shipping_address; ?></h4>
           </div>
@@ -57,7 +57,7 @@
             <div class="panel-body"></div>
           </div>
         </div>
-        <div class="panel panel-default">
+        <div class="panel panel-default" style="display: none;">
           <div class="panel-heading">
             <h4 class="panel-title"><?php echo $text_checkout_shipping_method; ?></h4>
           </div>
@@ -272,51 +272,6 @@ $(document).delegate('#button-register', 'click', function() {
             alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
         }
     }); 
-});
-
-$(document).delegate('#input-payment-zone', 'change', function() {
-    $.ajax({
-        url: 'index.php?route=checkout/shipping/quote',
-        type: 'post',
-        data: 'country_id=' + $('select[name=\'country_id\']').val() + '&zone_id=' + $('select[name=\'zone_id\']').val() + '&postcode=' + encodeURIComponent($('input[name=\'postcode\']').val()),
-        dataType: 'json',
-        beforeSend: function() {
-            //$('#button-quote').button('loading');
-        },
-        complete: function() {
-            //$('#button-quote').button('reset');
-        },
-        success: function(json) {            
-            $.ajax({
-		url: 'index.php?route=checkout/shipping/shipping',
-		type: 'post',
-		data: 'shipping_method=flat.flat&total='+$('.all-total').text().slice(0, -1)+'&ship='+$('.fee').text().slice(0, -1),
-		dataType: 'json',
-		beforeSend: function() {
-                    _asaca.loading($('.fee > span'));
-                    $('.fee').removeClass('fc-color');
-                    $('.all-total').removeClass('fc-color');
-		},
-		complete: function() {
-                    _asaca.reset($('.fee > span'));
-                    $('.fee').addClass('fc-color');
-                    $('.all-total').addClass('fc-color');
-		},
-		success: function(json) {                    
-                    if(json['ship']==='0đ')
-                    {
-                        $('.fee > span').text('Miễn phí');
-                    }
-                    else
-                    {
-                        $('.fee > span').text(json['ship']);
-                    }
-                    $('.fee > input').val(json['ship']);
-                    $('.all-total').text(json['total']);
-		}
-	});
-        }
-    });
 });
 
 // Payment Address  
@@ -771,6 +726,50 @@ $(document).delegate('#button-payment-method', 'click', function() {
             alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
         }
     }); 
+});
+$(document).delegate('#input-payment-zone', 'change', function() {
+    $.ajax({
+        url: 'index.php?route=checkout/shipping/quote',
+        type: 'post',
+        data: 'country_id=' + $('select[name=\'country_id\']').val() + '&zone_id=' + $('select[name=\'zone_id\']').val() + '&postcode=' + encodeURIComponent($('input[name=\'postcode\']').val()),
+        dataType: 'json',
+        beforeSend: function() {
+            //$('#button-quote').button('loading');
+        },
+        complete: function() {
+            //$('#button-quote').button('reset');
+        },
+        success: function(json) {            
+            $.ajax({
+		url: 'index.php?route=checkout/shipping/shipping',
+		type: 'post',
+		data: 'shipping_method=flat.flat&total='+$('.all-total').text().slice(0, -1)+'&ship='+$('.fee').text().slice(0, -1),
+		dataType: 'json',
+		beforeSend: function() {
+                    _asaca.loadingObject($('#cart-ci-main'));
+                    $('.fee').removeClass('fc-color');
+                    $('.all-total').removeClass('fc-color');
+		},
+		complete: function() {
+                    _asaca.reset($('#cart-ci-main'));
+                    $('.fee').addClass('fc-color');
+                    $('.all-total').addClass('fc-color');
+		},
+		success: function(json) {                    
+                    if(json['ship']==='0đ')
+                    {
+                        $('.fee > span').text('Miễn phí');
+                    }
+                    else
+                    {
+                        $('.fee > span').text(json['ship']);
+                    }
+                    $('.fee > input').val(json['ship']);
+                    $('.all-total').text(json['total']);
+		}
+	});
+        }
+    });
 });
 //--></script> 
 <?php echo $footer; ?>

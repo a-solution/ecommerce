@@ -237,15 +237,28 @@ var _asaca = {
         var top = offset.top - 10;
         $('html, body').animate({ scrollTop: top }, 'slow');
     },
-    loading: function(obj)
+    loadingObject: function(obj)
     {
-        img = "<img id='img-loading' src='"+BASE_URL+"/catalog/view/theme/grasil/image/loading.gif' />";
-        $(obj).hide();
-        $(img).insertAfter($(obj));
+        if($('#wa-mask').length === 0)
+        {
+            oheight = $(obj).height();
+            div = '<div id="wa-mask" class="wa-mask" style="height:'+oheight+'px"></div>';
+            div+= '<img id="wa-loading" class="wa-loading" src="'+BASE_URL+'/catalog/view/theme/grasil/image/loading.gif" />';                        
+            $(div).appendTo($(obj));
+        }        
+    },
+    loadingWindow: function()
+    {
+        if($('#wa-mask').length === 0)
+        {            
+            oh = $(document).height();
+            div = '<div id="wa-mask" class="wa-mask" style="height:'+oh+'px"></div>';
+            div+= '<img id="wa-loading" class="wa-loading" src="'+BASE_URL+'/catalog/view/theme/grasil/image/loading.gif" />';                        
+            $(div).appendTo($('html body'));            
+        }        
     },
     reset: function(obj)
     {        
-        $(obj).show();
-        $('#img-loading').remove();
+        $('#wa-mask, #wa-loading').remove();        
     }
 };
