@@ -45,8 +45,10 @@
             <table class="table table-bordered order-total">
                 <?php foreach ($totals as $total) { ?>
                 <tr>
-                    <td class="text-right"><strong><?php echo $total['title']; ?></strong></td>
-                    <td class="text-right total"><?php echo $total['text']; ?></td>
+                    <td class="method"><?php echo $total['title']; ?>:</td>                    
+                    <td class="total <?php echo $total['class']; ?>">
+                        <span><?php echo ($total['text']=='0đ')?"Miễn phí":$total['text']; ?></span>                        
+                    </td>
                 </tr>
                 <?php } ?>
             </table>

@@ -88,8 +88,8 @@ class ControllerCheckoutCheckout extends Controller {
         $data['content_bottom'] = $this->load->controller('common/content_bottom');
         $data['footer'] = $this->load->controller('common/footer');
         $data['header'] = $this->load->controller('common/header');
-
-        $data['cart'] = $this->load->controller('checkout/cart_info');
+                
+        $data['cart'] = $this->load->controller('checkout/cart_info');        
 
         if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/checkout/checkout.tpl')) {
             $this->response->setOutput($this->load->view($this->config->get('config_template') . '/template/checkout/checkout.tpl', $data));

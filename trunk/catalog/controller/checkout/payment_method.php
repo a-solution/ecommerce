@@ -279,7 +279,7 @@ class ControllerCheckoutPaymentMethod extends Controller {
                     if (isset($this->session->data['shipping_method']['title'])) {
                         $order_data['shipping_method'] = $this->session->data['shipping_method']['title'];
                     } else {
-                        $order_data['shipping_method'] = 'flat.flat';
+                        $order_data['shipping_method'] = '';
                     }
 
                     if (isset($this->session->data['shipping_method']['code'])) {

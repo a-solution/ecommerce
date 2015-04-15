@@ -100,7 +100,7 @@
       <?php if ($coupon || $voucher || $reward || $shipping) { ?>
       <h2><?php echo $text_next; ?></h2>
       <p><?php echo $text_next_choice; ?></p>
-      <div class="panel-group" id="accordion"><?php echo $coupon; ?><?php echo $voucher; ?><?php echo $reward; ?><?php echo $shipping; ?></div>
+      <div class="panel-group" id="accordion"><?php echo $coupon; ?><?php echo $voucher; ?><?php echo $reward; ?><?php //echo $shipping; ?></div>
       <?php } ?>
       <br />
       <div class="row">
@@ -108,8 +108,10 @@
           <table class="table table-bordered order-total">
             <?php foreach ($totals as $total) { ?>
             <tr>
-              <td class="text-right"><strong><?php echo $total['title']; ?>:</strong></td>
-              <td class="text-right total <?php echo $total['class']; ?>"><?php echo $total['text']; ?></td>
+                <td class="method"><?php echo $total['title']; ?>:</td>                    
+                <td class="total <?php echo $total['class']; ?>">
+                  <span><?php echo ($total['text']=='0đ')?"Miễn phí":$total['text']; ?></span>                            
+                </td>
             </tr>
             <?php } ?>
           </table>
