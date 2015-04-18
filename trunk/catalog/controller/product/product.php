@@ -163,6 +163,9 @@ class ControllerProductProduct extends Controller {
         if ($product_info) {
             $url = '';
 
+            //Save the product info to cookie
+            $this->saveToCookies($product_info);
+
             if (isset($this->request->get['path'])) {
                 $url .= '&path=' . $this->request->get['path'];
             }
@@ -326,11 +329,11 @@ class ControllerProductProduct extends Controller {
                 $data['special'] = false;
                 $data['saleoff'] = false;
             }
-            
+
             //Customize
             $data['viewed'] = $product_info['viewed'];
             $data['orderred'] = $this->model_catalog_product->countOrder($this->request->get['product_id']);
-            
+
 
             if ($this->config->get('config_tax')) {
                 $data['tax'] = $this->currency->format((float) $product_info['special'] ? $product_info['special'] : $product_info['price']);
@@ -711,7 +714,7 @@ class ControllerProductProduct extends Controller {
         $this->response->addHeader('Content-Type: application/json');
         $this->response->setOutput(json_encode($json));
     }
-    
+
     public function faq() {
         $this->load->language('product/product');
 
@@ -744,7 +747,7 @@ class ControllerProductProduct extends Controller {
         $this->response->addHeader('Content-Type: application/json');
         $this->response->setOutput(json_encode($json));
     }
-    
+
     public function faqs() {
         $this->load->language('product/product');
 
@@ -791,4 +794,65 @@ class ControllerProductProduct extends Controller {
             $this->response->setOutput($this->load->view('default/template/product/faq.tpl', $data));
         }
     }
+
+    /**
+     * Save viewed product to cookie
+     * @param type $product_info
+     */
+    private function saveToCookies($product_info) {
+        //Check cookie exist, if existed, work with data of it
+        if (isset($_COOKIE["asaca_product_viewed"])) {
+            //parse json to array
+            $viewed_products = json_decode($_COOKIE["asaca_product_viewed"], true);
+            
+            //if the product does not exist in array, we will add it to cookie
+            if (!$this->in_array_r($product_info["product_id"], $viewed_products)) {                
+                //add more viewed product to cookie            
+                $arr = $this->createNewArrItem($product_info);
+                $viewed_products[] = $arr;
+                
+                //save to cookie
+                setcookie("asaca_product_viewed", json_encode($viewed_products));                     
+            }
+        } else {
+            //create new item and add to cookie
+            $arr = $this->createNewArrItem($product_info);
+            setcookie("asaca_product_viewed", json_encode($arr));
+        }
+    }
+
+    /**
+     * Create new viewed product including id, name, image
+     * @param type $product_info
+     * @return type
+     */
+    private function createNewArrItem($product_info) {
+        //create new item
+        $array = array(
+            "product_id" => $product_info["product_id"],
+            "name" => $product_info["name"],
+            "image" => $product_info["image"]
+        );
+
+        return $array;
+    }
+    
+    /**
+     * Loop to find a value in multiple dimensions array
+     * @param type $needle
+     * @param type $haystack
+     * @param type $strict
+     * @return boolean
+     */
+    private function in_array_r($needle, $haystack) {
+        foreach ($haystack as $item) {
+            //check item existed in array
+            if(is_array($haystack) && in_array($needle, $haystack) || is_array($item) && in_array($needle, $item))
+            {
+                return true;
+            }
+        }               
+        return false;
+    }
+
 }
