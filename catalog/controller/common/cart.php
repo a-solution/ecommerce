@@ -11,22 +11,41 @@ class ControllerCommonCart extends Controller {
         $total_data = array();
         $total = 0;
         $taxes = $this->cart->getTaxes();
-
-        // Display prices
-        if (($this->config->get('config_customer_price') && $this->customer->isLogged()) || !$this->config->get('config_customer_price')) {
-            //modify to show shipping_method if it's not existed        
-            if (!isset($this->session->data['shipping_method'])) {
+        
+        if(!$this->customer->isLogged()) {        
+            if(!isset($this->session->data['shipping_method'])) {
+                //modify to show shipping_method if it's not existed        
                 $this->load->model('shipping/flat');
                 $this->load->language('shipping/flat');
                 $this->session->data['shipping_method']['title'] = $this->language->get('text_description');
                 $this->session->data['shipping_method']['cost'] = $this->model_shipping_flat->getCost($this->config->get('config_zone_id'));
                 $this->session->data['shipping_method']['tax_class_id'] = $this->config->get('flat_tax_class_id');
                 $this->session->data['shipping_method']['code'] = 'flat.flat';
-                
+
                 $this->session->data['payment_address']['country_id'] = $this->config->get('config_country_id');
                 $this->session->data['payment_address']['zone_id'] = $this->config->get('config_zone_id');
+                //End modify
             }
-            //End modify
+        }
+        else {
+            if(!isset($this->session->data['payment_address_logged'])) {
+                $this->load->model('account/address');
+                $defaultAddress = $this->model_account_address->getAddress($this->customer->getAddressId());
+
+                $this->load->model('shipping/flat');
+                $this->load->language('shipping/flat');
+                $this->session->data['shipping_method']['title'] = $this->language->get('text_description');
+                $this->session->data['shipping_method']['cost'] = $this->model_shipping_flat->getCost($defaultAddress['zone_id']);
+                $this->session->data['shipping_method']['tax_class_id'] = $this->config->get('flat_tax_class_id');
+                $this->session->data['shipping_method']['code'] = 'flat.flat';
+
+                $this->session->data['payment_address']['country_id'] = $defaultAddress['country_id'];
+                $this->session->data['payment_address']['zone_id'] = $defaultAddress['zone_id'];
+            }
+        }
+        
+        // Display prices
+        if (($this->config->get('config_customer_price') && $this->customer->isLogged()) || !$this->config->get('config_customer_price')) {            
         
             $sort_order = array();
 

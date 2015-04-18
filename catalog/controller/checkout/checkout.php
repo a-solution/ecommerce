@@ -93,13 +93,17 @@ class ControllerCheckoutCheckout extends Controller {
         $data['payment_method'] = $this->load->controller('checkout/payment_method_checkout');
         $data['checkout_type'] = '';
         
-        if(!$data['logged'] && $data['account'] != 'guest')
+        if(!$data['logged'] && $data['account'] == 'register')
         {
             $data['checkout_type'] = $this->load->controller('checkout/register_checkout');
         }
+        else if(!$data['logged'] && $data['account'] == 'guest')
+        {
+            $data['checkout_type'] = $this->load->controller('checkout/guest_checkout');
+        }
         else
         {
-            $data['checkout_type'] = $this->load->controller('checkout/guest_checkout');            
+            $data['checkout_type'] = $this->load->controller('checkout/payment_address_checkout');
         }
 
         if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/checkout/checkout.tpl')) {
