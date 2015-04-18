@@ -199,11 +199,159 @@ class ControllerCheckoutPaymentMethodCheckout extends Controller {
             }           
         }
         else if(!$logged && $this->session->data['account'] == 'register') {
-            //REGISTER
+            //REGISTER                       
+            $this->load->model('account/customer');
+
+            if ((utf8_strlen(trim($this->request->post['firstname'])) < 1) || (utf8_strlen(trim($this->request->post['firstname'])) > 32)) {
+                $json['error']['firstname'] = $this->language->get('error_firstname');
+            }
+
+            if ((utf8_strlen(trim($this->request->post['lastname'])) < 1) || (utf8_strlen(trim($this->request->post['lastname'])) > 32)) {
+                $json['error']['lastname'] = $this->language->get('error_lastname');
+            }
+
+            if ((utf8_strlen($this->request->post['email']) > 96) || !preg_match('/^[^\@]+@.*\.[a-z]{2,6}$/i', $this->request->post['email'])) {
+                $json['error']['email'] = $this->language->get('error_email');
+            }
+
+            if ($this->model_account_customer->getTotalCustomersByEmail($this->request->post['email'])) {
+                $json['error']['warning'] = $this->language->get('error_exists');
+            }
+
+            if ((utf8_strlen($this->request->post['telephone']) < 3) || (utf8_strlen($this->request->post['telephone']) > 32)) {
+                $json['error']['telephone'] = $this->language->get('error_telephone');
+            }
+
+            if ((utf8_strlen(trim($this->request->post['address_1'])) < 3) || (utf8_strlen(trim($this->request->post['address_1'])) > 128)) {
+                $json['error']['address_1'] = $this->language->get('error_address_1');
+            }
+
+            $this->load->model('localisation/country');
+
+            $country_info = $this->model_localisation_country->getCountry($this->request->post['country_id']);            
+
+            if ($this->request->post['country_id'] == '') {
+                $json['error']['country'] = $this->language->get('error_country');
+            }
+
+            if (!isset($this->request->post['zone_id']) || $this->request->post['zone_id'] == '') {
+                $json['error']['zone'] = $this->language->get('error_zone');
+            }
+
+            if ((utf8_strlen($this->request->post['password']) < 4) || (utf8_strlen($this->request->post['password']) > 20)) {
+                $json['error']['password'] = $this->language->get('error_password');
+            }
+
+            if ($this->request->post['confirm'] != $this->request->post['password']) {
+                $json['error']['confirm'] = $this->language->get('error_confirm');
+            }           
+
+            // Customer Group
+            if (isset($this->request->post['customer_group_id']) && is_array($this->config->get('config_customer_group_display')) && in_array($this->request->post['customer_group_id'], $this->config->get('config_customer_group_display'))) {
+                $customer_group_id = $this->request->post['customer_group_id'];
+            } else {
+                $customer_group_id = $this->config->get('config_customer_group_id');
+            }                            
+
+            if (!$json) {
+                $customer_id = $this->model_account_customer->addCustomer($this->request->post);
+
+                $this->session->data['account'] = 'register';
+
+                $this->load->model('account/customer_group');
+
+                $customer_group_info = $this->model_account_customer_group->getCustomerGroup($customer_group_id);
+
+                if ($customer_group_info && !$customer_group_info['approval']) {
+                    $this->customer->login($this->request->post['email'], $this->request->post['password']);
+
+                    // Default Payment Address
+                    $this->load->model('account/address');
+
+                    $this->session->data['payment_address'] = $this->model_account_address->getAddress($this->customer->getAddressId());
+
+                    if (!empty($this->request->post['shipping_address'])) {
+                        $this->session->data['shipping_address'] = $this->model_account_address->getAddress($this->customer->getAddressId());
+                    }
+                } else {
+                    $json['redirect'] = $this->url->link('account/success');
+                }
+
+                // Add to activity log
+                $this->load->model('account/activity');
+
+                $activity_data = array(
+                    'customer_id' => $customer_id,
+                    'name' => $this->request->post['firstname'] . ' ' . $this->request->post['lastname']
+                );
+
+                $this->model_account_activity->addActivity('register', $activity_data);
+            }
         }
         else
         {
-            //EXISTING
+            //EXISTING            
+            if (isset($this->request->post['payment_address']) && $this->request->post['payment_address'] == 'existing') {
+                $this->load->model('account/address');
+
+                if (empty($this->request->post['address_id'])) {
+                    $json['error']['warning'] = $this->language->get('error_address');
+                } elseif (!in_array($this->request->post['address_id'], array_keys($this->model_account_address->getAddresses()))) {
+                    $json['error']['warning'] = $this->language->get('error_address');
+                }
+
+                if (!$json) {
+                    // Default Payment Address
+                    $this->load->model('account/address');
+                    $this->session->data['payment_address'] = $this->model_account_address->getAddress($this->request->post['address_id']);                    
+                }
+            } else {
+                if ((utf8_strlen(trim($this->request->post['firstname'])) < 1) || (utf8_strlen(trim($this->request->post['firstname'])) > 32)) {
+                    $json['error']['firstname'] = $this->language->get('error_firstname');
+                }
+
+                if ((utf8_strlen(trim($this->request->post['lastname'])) < 1) || (utf8_strlen(trim($this->request->post['lastname'])) > 32)) {
+                    $json['error']['lastname'] = $this->language->get('error_lastname');
+                }
+
+                if ((utf8_strlen(trim($this->request->post['address_1'])) < 3) || (utf8_strlen(trim($this->request->post['address_1'])) > 128)) {
+                    $json['error']['address_1'] = $this->language->get('error_address_1');
+                }
+
+                $this->load->model('localisation/country');
+
+                $country_info = $this->model_localisation_country->getCountry($this->request->post['country_id']);               
+
+                if ($this->request->post['country_id'] == '') {
+                    $json['error']['country'] = $this->language->get('error_country');
+                }
+
+                if (!isset($this->request->post['zone_id']) || $this->request->post['zone_id'] == '') {
+                    $json['error']['zone'] = $this->language->get('error_zone');
+                }               
+
+                if (!$json) {
+                    // Default Payment Address
+                    $this->load->model('account/address');
+                    $address_id = $this->model_account_address->addAddress($this->request->post);
+                    
+                    //set address default
+                    $addressDefault['default'] = true;
+                    $this->model_account_address->editAddress($address_id, $addressDefault);
+                    //end set address default
+                    
+                    $this->session->data['payment_address'] = $this->model_account_address->getAddress($address_id);                    
+                    $this->session->data['shipping_address'] = $this->session->data['payment_address'];
+                    
+                    $this->load->model('account/activity');
+                    $activity_data = array(
+                        'customer_id' => $this->customer->getId(),
+                        'name' => $this->customer->getFirstName() . ' ' . $this->customer->getLastName()
+                    );
+
+                    $this->model_account_activity->addActivity('address_add', $activity_data);
+                }
+            }
         }
         //End cutomize
 
@@ -515,7 +663,7 @@ class ControllerCheckoutPaymentMethodCheckout extends Controller {
                 $this->model_checkout_order->addOrderHistory($this->session->data['order_id'], $this->config->get('cod_order_status_id'));
                 //return JSON to redirect to success page
                 $json['redirect'] = $this->url->link('checkout/success');
-                
+                                
                 unset($this->session->data['shipping_method']);
                 unset($this->session->data['shipping_methods']);
                 unset($this->session->data['payment_method']);

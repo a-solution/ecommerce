@@ -1,6 +1,6 @@
 <?php
 
-class ControllerCheckoutPaymentAddress extends Controller {
+class ControllerCheckoutPaymentAddressCheckout extends Controller {
 
     public function index() {
         $this->load->language('checkout/checkout');
@@ -48,24 +48,9 @@ class ControllerCheckoutPaymentAddress extends Controller {
 
         $this->load->model('localisation/country');
 
-        $data['countries'] = $this->model_localisation_country->getCountries();
+        $data['countries'] = $this->model_localisation_country->getCountries();        
 
-        // Custom Fields
-        $this->load->model('account/custom_field');
-
-        $data['custom_fields'] = $this->model_account_custom_field->getCustomFields($this->config->get('config_customer_group_id'));
-
-        if (isset($this->session->data['payment_address']['custom_field'])) {
-            $data['payment_address_custom_field'] = $this->session->data['payment_address']['custom_field'];
-        } else {
-            $data['payment_address_custom_field'] = array();
-        }
-
-        if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/checkout/payment_address.tpl')) {
-            $this->response->setOutput($this->load->view($this->config->get('config_template') . '/template/checkout/payment_address.tpl', $data));
-        } else {
-            $this->response->setOutput($this->load->view('default/template/checkout/payment_address.tpl', $data));
-        }
+        return $this->load->view($this->config->get('config_template') . '/template/checkout/payment_address_checkout.tpl', $data);
     }
 
     public function save() {
@@ -133,10 +118,6 @@ class ControllerCheckoutPaymentAddress extends Controller {
                 if ((utf8_strlen(trim($this->request->post['address_1'])) < 3) || (utf8_strlen(trim($this->request->post['address_1'])) > 128)) {
                     $json['error']['address_1'] = $this->language->get('error_address_1');
                 }
-
-//				if ((utf8_strlen($this->request->post['city']) < 2) || (utf8_strlen($this->request->post['city']) > 32)) {
-//					$json['error']['city'] = $this->language->get('error_city');
-//				}
 
                 $this->load->model('localisation/country');
 
