@@ -1,30 +1,36 @@
 // Cart add remove functions
 var cart = {
-    'add': function (product_id, quantity) {
+    'add': function (product_id, checkout, quantity) {
         $.ajax({
             url: 'index.php?route=checkout/cart/add',
             type: 'post',
             data: 'product_id=' + product_id + '&quantity=' + (typeof (quantity) != 'undefined' ? quantity : 1),
             dataType: 'json',
             beforeSend: function () {
-                $('#cart .mybag').addClass('spin');
+                //$('#cart .mybag').addClass('spin');
+                _asaca.loadingWindow();
             },
             success: function (json) {
                 $('.alert, .text-danger').remove();
-                $('#cart .mybag').removeClass('spin');
+                //$('#cart .mybag').removeClass('spin');
+                _asaca.reset();
 
                 if (json['redirect']) {
                     location = json['redirect'];
                 }
 
                 if (json['success']) {
-                    $('#content').parent().before('<div class="alert alert-success"><i class="fa fa-check-circle"></i> ' + json['success'] + '<button type="button" class="close" data-dismiss="alert">&times;</button></div>');
-
-                    $('#cart .mybag').html(json['count']);
-
-                    $('html, body').animate({scrollTop: 0}, 'slow');
-
-                    $("#cart > ul").load('index.php?route=common/cart/info ul li');
+                    if(checkout===true)
+                    {                        
+                        paymentCartCallback(json);
+                    }
+                    else
+                    {
+                        $('#content').parent().before('<div class="alert alert-success"><i class="fa fa-check-circle"></i> ' + json['success'] + '<button type="button" class="close" data-dismiss="alert">&times;</button></div>');
+                        $('#cart .mybag').html(json['count']);
+                        $('html, body').animate({scrollTop: 0}, 'slow');
+                        $("#cart > ul").load('index.php?route=common/cart/info ul li');
+                    }
                 }
             }
         });
@@ -135,7 +141,11 @@ var cart = {
         cart.addProduct('addToCartCallback');
     },
     paymentCart: function() {
-        cart.addProduct('window.location = "index.php?route=checkout/checkout"');
+        //cart.addProduct('window.location = "index.php?route=checkout/checkout"');
+        cart.addProduct('paymentCartCallback');
+    },
+    checkout: function(json) {
+        _asaca.modalAjax('index.php?route=checkout/login', 'Đăng nhập để mua hàng');
     }
 };
 
@@ -144,6 +154,16 @@ function addToCartCallback(json) {
     $('.mybag').html(json['count']);
     $('html, body').animate({ scrollTop: 0 }, 'slow');
     $('#cart > ul').load('index.php?route=common/cart/info ul li');
+}
+function paymentCartCallback(json) {
+    cart.checkout(json);    
+    setTimeout(
+    function() 
+    {
+        $('#modal-body').prepend('<div class="alert alert-success"><i class="fa fa-check-circle"></i> ' + json['success'] + '<button type="button" class="close" data-dismiss="alert">&times;</button></div>');
+    }, 500);    
+    $('.mybag').html(json['count']);    
+    $('#cart > ul').load('index.php?route=common/cart/info ul li');    
 }
 
 var sort = {
@@ -200,7 +220,7 @@ var _asaca = {
     },
     plusOne: function(obj)
     {
-        if($(obj).val()=='')
+        if($(obj).val()==='')
         {
            $(obj).val(1);
         }
@@ -219,6 +239,54 @@ var _asaca = {
         {
             $(obj).val(parseInt($(obj).val()) - 1);
         }
+    },
+    modal: function(msg, title) {
+        
+        if(title===undefined)
+        {
+            title = 'ASACA.VN';
+        }
+        
+        $('#asaca-modal').remove();
+        
+        html = '<div id="asaca-modal" class="modal">';
+        html += '  <div class="modal-dialog">';
+        html += '    <div class="modal-content">';
+        html += '      <div class="modal-header">';
+        html += '        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>';
+        html += '        <h4 class="modal-title" id="modal-title">' + title + '</h4>';
+        html += '      </div>';
+        html += '      <div class="modal-body" id="modal-body">' + msg + '</div>';
+        html += '      <div class="modal-footer" id="modal-footer" style="display:none">';
+        html += '        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>';
+        html += '      </div>';
+        html += '    </div';
+        html += '  </div>';
+        html += '</div>';
+
+        $('body').append(html);
+
+        $('#asaca-modal').modal({show:true, backdrop:'static'});
+    },
+    modalAjax: function(url, title, callback) {        
+        $.ajax({
+            url: url,
+            type: 'get',
+            dataType: 'json',
+            cache: false,
+            success: function (json, callback) {
+                //json = $.parseJSON(msg);
+                if (json['redirect']) {
+                    window.location = json['redirect'];
+                    return;
+                }
+                _asaca.modal(json['data'], title);                                                
+            }
+        });
+    },
+    modalUpdate: function(message)
+    {
+        $('#modal-body').html(message);
     },
     popup: function(message)
     {
@@ -252,8 +320,9 @@ var _asaca = {
         if($('#wa-mask').length === 0)
         {            
             oh = $(document).height();
-            div = '<div id="wa-mask" class="wa-mask" style="height:'+oh+'px"></div>';
-            div+= '<img id="wa-loading" class="wa-loading" src="'+BASE_URL+'/catalog/view/theme/grasil/image/loading.gif" />';                        
+            var top = $(document).scrollTop() + $(window).height()/2;            
+            div = '<div id="wa-mask" class="wa-mask" style="height:'+oh+'px"></div>';            
+            div+= '<img id="wa-loading" class="wa-loading" style="top:'+top+'px" src="'+BASE_URL+'/catalog/view/theme/grasil/image/loading.gif" />';                        
             $(div).appendTo($('html body'));            
         }        
     },
@@ -262,3 +331,15 @@ var _asaca = {
         $('#wa-mask, #wa-loading').remove();        
     }
 };
+
+$(document).ready(function () {
+    $('.button-checkout').on('click', function() {
+        cart.checkout();
+    });
+    $('.prd-btn-buy').on('click', function() {        
+        if($(this).attr('prdid'))
+        {
+            cart.add($(this).attr('prdid'), true);
+        }
+    });
+});

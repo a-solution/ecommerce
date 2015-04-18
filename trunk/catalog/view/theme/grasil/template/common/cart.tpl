@@ -54,7 +54,7 @@
             </table>
             <div class="text-right">
                 <a href="<?php echo $cart; ?>" class="viewcart"><strong><i class="fa fa-shopping-cart"></i> <?php echo $text_cart; ?></strong></a>                
-                <a href="<?php echo $checkout; ?>" class="checkout"><strong><i class="fa fa-share"></i> <?php echo $text_checkout; ?></strong></a>
+                <a href="javascript:void(0);" action="<?php echo $checkout; ?>" class="checkout button-checkout"><strong><i class="fa fa-share"></i> <?php echo $text_checkout; ?></strong></a>
             </div>
         </li>
         <?php } else { ?>

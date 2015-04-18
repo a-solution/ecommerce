@@ -577,12 +577,13 @@ $('select[name=\'recurring_id\'], input[name="quantity"]').change(function(){
     });
 //--></script> 
 <script type="text/javascript">
-            $('#button-cart').on('click', function() {
-    cart.addIntoCart();
+    $('#button-cart').on('click', function() {
+        cart.addIntoCart();
     });
-            $('#button-cart-checkout').on('click', function() {
-    cart.paymentCart();
-    });</script>
+    $('#button-cart-checkout').on('click', function() {
+        cart.paymentCart();
+    });
+</script>
 <script type="text/javascript"><!--
 $('.date').datetimepicker({
     pickTime: false

@@ -1,7 +1,21 @@
 <?php
 class ControllerCheckoutLogin extends Controller {
 	public function index() {
-		$this->load->language('checkout/checkout');
+                $json = array();
+		if ($this->customer->isLogged()) {
+			$json['redirect'] = $this->url->link('checkout/checkout', '', 'SSL');
+		}
+
+		if ((!$this->cart->hasProducts() && empty($this->session->data['vouchers'])) || (!$this->cart->hasStock() && !$this->config->get('config_stock_checkout'))) {
+			$json['redirect'] = $this->url->link('checkout/cart');
+		}
+                if (isset($json['redirect'])) {
+                    $this->response->addHeader('Content-Type: application/json');
+                    $this->response->setOutput(json_encode($json));
+                    return;
+                }
+                
+                $this->load->language('checkout/checkout');
 
 		$data['text_checkout_account'] = $this->language->get('text_checkout_account');
 		$data['text_checkout_payment_address'] = $this->language->get('text_checkout_payment_address');
@@ -31,11 +45,10 @@ class ControllerCheckoutLogin extends Controller {
 
 		$data['forgotten'] = $this->url->link('account/forgotten', '', 'SSL');
 
-		if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/checkout/login.tpl')) {
-			$this->response->setOutput($this->load->view($this->config->get('config_template') . '/template/checkout/login.tpl', $data));
-		} else {
-			$this->response->setOutput($this->load->view('default/template/checkout/login.tpl', $data));
-		}
+		$json['data'] = $this->load->view($this->config->get('config_template') . '/template/checkout/login.tpl', $data);
+                
+                $this->response->addHeader('Content-Type: application/json');
+                $this->response->setOutput(json_encode($json));
 	}
 
 	public function save() {
