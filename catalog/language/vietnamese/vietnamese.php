@@ -24,6 +24,7 @@ $_['button_address_add']    = 'Thêm địa chỉ';
 $_['button_back']           = 'Trở lại';
 $_['button_continue']       = 'Tiếp tục';
 $_['button_cart']           = 'Mua Ngay';
+$_['button_order']           = 'Đặt hàng';
 $_['button_cancel']         = 'Huỷ';
 $_['button_compare']        = 'So sánh giá';
 $_['button_wishlist']       = 'Thêm vào yêu thích';

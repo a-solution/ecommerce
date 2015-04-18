@@ -22,6 +22,9 @@ class ControllerCommonCart extends Controller {
                 $this->session->data['shipping_method']['cost'] = $this->model_shipping_flat->getCost($this->config->get('config_zone_id'));
                 $this->session->data['shipping_method']['tax_class_id'] = $this->config->get('flat_tax_class_id');
                 $this->session->data['shipping_method']['code'] = 'flat.flat';
+                
+                $this->session->data['payment_address']['country_id'] = $this->config->get('config_country_id');
+                $this->session->data['payment_address']['zone_id'] = $this->config->get('config_zone_id');
             }
             //End modify
         

@@ -89,7 +89,18 @@ class ControllerCheckoutCheckout extends Controller {
         $data['footer'] = $this->load->controller('common/footer');
         $data['header'] = $this->load->controller('common/header');
                 
-        $data['cart'] = $this->load->controller('checkout/cart_info');        
+        $data['cart'] = $this->load->controller('checkout/cart_info');                
+        $data['payment_method'] = $this->load->controller('checkout/payment_method_checkout');
+        $data['checkout_type'] = '';
+        
+        if(!$data['logged'] && $data['account'] != 'guest')
+        {
+            $data['checkout_type'] = $this->load->controller('checkout/register_checkout');
+        }
+        else
+        {
+            $data['checkout_type'] = $this->load->controller('checkout/guest_checkout');            
+        }
 
         if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/checkout/checkout.tpl')) {
             $this->response->setOutput($this->load->view($this->config->get('config_template') . '/template/checkout/checkout.tpl', $data));
@@ -144,6 +155,17 @@ class ControllerCheckoutCheckout extends Controller {
                 'required' => $custom_field['required']
             );
         }
+
+        $this->response->addHeader('Content-Type: application/json');
+        $this->response->setOutput(json_encode($json));
+    }
+    
+    public function option() {        
+        $json = array();
+        
+        $json['redirect'] = $this->url->link('checkout/checkout', '', 'SSL');
+        
+        $this->session->data['account'] = $this->request->post['option'];
 
         $this->response->addHeader('Content-Type: application/json');
         $this->response->setOutput(json_encode($json));

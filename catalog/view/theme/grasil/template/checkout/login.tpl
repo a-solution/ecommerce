@@ -1,4 +1,4 @@
-<div class="row">
+<div id="checkout-option-form" class="row checkout-option">
   <div class="col-sm-6">
     <h2><?php echo $text_new_customer; ?></h2>
     <p><?php echo $text_checkout; ?></p>
@@ -39,3 +39,62 @@
     <input type="button" value="<?php echo $button_login; ?>" id="button-login" data-loading-text="<?php echo $text_loading; ?>" class="btn btn-primary" />
   </div>
 </div>
+<script type="text/javascript">
+// Checkout
+$(document).delegate('#button-account', 'click', function() {    
+    $.ajax({
+        url: 'index.php?route=checkout/checkout/option',
+        data: {
+            option: $('#checkout-option-form input[name=\'account\']:checked').val()
+        },
+        type: 'post',
+        dataType: 'json',
+        async: false,
+        cache: false,
+        beforeSend: function() {
+            $('#button-account').button('loading');
+        },      
+        complete: function() {
+            $('#button-account').button('reset');
+        },          
+        success: function(json) {
+            window.location = json['redirect'];            
+        },
+        error: function(xhr, ajaxOptions, thrownError) {
+            alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+        }
+    });
+});
+
+// Login
+$(document).delegate('#button-login', 'click', function() {
+    $.ajax({
+        url: 'index.php?route=checkout/login/save',
+        type: 'post',
+        data: $('#checkout-option-form :input'),
+        dataType: 'json',
+        beforeSend: function() {
+            $('#button-login').button('loading');
+        },  
+        complete: function() {
+            $('#button-login').button('reset');
+        },              
+        success: function(json) {
+            $('.alert, .text-danger').remove();
+            $('.form-group').removeClass('has-error');
+			
+            if (json['redirect']) {
+                location = json['redirect'];
+            } else if (json['error']) {
+                $('#modal-body').prepend('<div class="alert alert-danger"><i class="fa fa-exclamation-circle"></i> ' + json['error']['warning'] + '<button type="button" class="close" data-dismiss="alert">&times;</button></div>');           
+                    // Highlight any found errors
+                    $('#checkout-option-form input[name=\'email\']').parent().addClass('has-error');	
+                    $('#checkout-option-form input[name=\'password\']').parent().addClass('has-error');	   
+               }
+        },
+        error: function(xhr, ajaxOptions, thrownError) {
+            alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+        }
+    }); 
+});
+</script>

@@ -119,7 +119,7 @@
       </div>
       <div class="buttons">
         <div class="pull-left"><a href="<?php echo $continue; ?>" class="btn btn-default"><?php echo $button_shopping; ?></a></div>
-        <div class="pull-right"><a href="<?php echo $checkout; ?>" class="btn btn-primary"><?php echo $button_checkout; ?></a></div>
+        <div class="pull-right"><a href="javascript:void(0);" class="btn btn-primary button-checkout" onclick=""><?php echo $button_checkout; ?></a></div>
       </div>
       <?php echo $content_bottom; ?></div>
     <?php echo $column_right; ?></div>
