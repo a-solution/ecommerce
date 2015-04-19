@@ -11,7 +11,7 @@ class ControllerModuleRecent extends Controller {
             $data['recent'] = "";
         }
         
-        $data['heading_title'] = "Sản phẩm đã xem";
+        $data['heading_title'] = "Đã xem";
 
         if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/module/recent.tpl')) {
             return $this->load->view($this->config->get('config_template') . '/template/module/recent.tpl', $data);
