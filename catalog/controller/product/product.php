@@ -474,7 +474,8 @@ class ControllerProductProduct extends Controller {
             $prd_cookie = array(                
                 "product_id" => $product_info["product_id"],
                 "name" => $product_info["name"],
-                "image" => $data['thumb']
+                "image" => $data['thumb'],
+                'link' => $this->url->link('product/product', $url . 'path=69&product_id=' . $product_info["product_id"])
             );
             $this->saveToCookies($prd_cookie);
 
@@ -812,7 +813,7 @@ class ControllerProductProduct extends Controller {
             
             //if the product does not exist in array, we will add it to cookie
             if (!$this->in_array_r($product_info["product_id"], $viewed_products)) {                
-                if(count($viewed_products) >= 8)
+                if(count($viewed_products) >= 7)
                 {
                     array_shift($viewed_products);
                 }
@@ -821,12 +822,12 @@ class ControllerProductProduct extends Controller {
                 array_push($viewed_products, $arr);
                 
                 //save to cookie
-                setcookie("asaca_product_viewed", json_encode($viewed_products));                     
+                setcookie("asaca_product_viewed", json_encode($viewed_products), time()+60*60*24*30, '/');                     
             }
         } else {
             //create new item and add to cookie
             $arr[] = $this->createNewArrItem($product_info);
-            setcookie("asaca_product_viewed", json_encode($arr));
+            setcookie("asaca_product_viewed", json_encode($arr), time()+60*60*24*30, '/');
         }
     }
 
@@ -840,7 +841,8 @@ class ControllerProductProduct extends Controller {
         $array = array(
             "product_id" => $product_info["product_id"],
             "name" => $product_info["name"],
-            "image" => $product_info["image"]
+            "image" => $product_info["image"],
+            "link" => $product_info['link']
         );
 
         return $array;
