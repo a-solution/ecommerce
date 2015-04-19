@@ -46,7 +46,7 @@ class ControllerModuleSuggestion extends Controller {
             foreach ($categories as $category) {
                 $children = $this->model_catalog_category->getCategories($category['category_id']);                               
                 
-                //if does not find the the most recent parent catgory, the last cate will be recent cat
+                //if does not find the the most recent parent category, the last parent category will be recent category
                 $recent_cat = $category;
                 
                 //if a category does not have sub category, it will be the most recent parent catgory of a product                
