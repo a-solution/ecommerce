@@ -167,7 +167,7 @@ div.required .control-label:before {
 
 /* content */
 #content {
-    
+    position: inherit !important;
 }
 #content h1, #content h2 {
     border-bottom: 1px dashed #eee;
@@ -1638,7 +1638,24 @@ table.order-total tr td.fee {
 
 /*FOR PRODUCT RECENT*/
 .prd-recent {
-    
+    position: fixed;
+    left: 10px;
+    top:60px;
+    width: 140px;
+    background: #fff;
+    border: 1px solid #eee;
+}
+.prd-recent .heading-title {
+    margin: 0;
+    margin-left:10px;
+}
+.prd-recent .heading-title span {
+    font-size: 10px;
+    min-width: 100%;
+    padding-right: 0;
+}
+.prd-recent .pr-content {
+    position: relative;
 }
 .prd-recent ul {
     margin: 0;
@@ -1646,9 +1663,10 @@ table.order-total tr td.fee {
     list-style: none;
 }
 .prd-recent ul li {
-    width: 12.5%;
+/*    width: 12.5%;    
+    margin-left: 18px;*/
     float: left;
-    margin-left: 18px;
+    width: 50%;
     text-align: center;
     background: #fff;
     padding: 10px;

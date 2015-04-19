@@ -813,7 +813,7 @@ class ControllerProductProduct extends Controller {
             
             //if the product does not exist in array, we will add it to cookie
             if (!$this->in_array_r($product_info["product_id"], $viewed_products)) {                
-                if(count($viewed_products) >= 7)
+                if(count($viewed_products) >= 8)
                 {
                     array_shift($viewed_products);
                 }
