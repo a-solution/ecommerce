@@ -79,7 +79,6 @@ class ControllerCheckoutShipping extends Controller {
         }
         else
         {
-
             if ($this->request->post['country_id'] == '') {
                 $json['error']['country'] = $this->language->get('error_country');
             }
@@ -100,7 +99,7 @@ class ControllerCheckoutShipping extends Controller {
         if (!$json) {
             
             if(isset($this->request->post['address_id'])) {
-                if($this->request->post['payment_address']=='existing') {                                    
+                if($this->request->post['payment_address']==='existing') {                                    
                     $this->load->model('account/address');
                     $myAddress = $this->model_account_address->getAddress($this->request->post['address_id']);
 
@@ -222,7 +221,7 @@ class ControllerCheckoutShipping extends Controller {
 
             $this->session->data['shipping_method'] = $this->session->data['shipping_methods'][$shipping[0]]['quote'][$shipping[1]];
 
-            $this->session->data['success'] = $this->language->get('text_success');
+            //$this->session->data['success'] = $this->language->get('text_success');
 
             $json['redirect'] = $this->url->link('checkout/cart');
 

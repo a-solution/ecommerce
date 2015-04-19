@@ -1,3 +1,4 @@
+<div class="my-payment-address">
 <?php if ($addresses) { ?>
 <div class="radio">
   <label>
@@ -8,9 +9,9 @@
   <select name="address_id" class="form-control">
     <?php foreach ($addresses as $address) { ?>
     <?php if ($address['address_id'] == $address_id) { ?>
-    <option value="<?php echo $address['address_id']; ?>" selected="selected"><?php echo $address['firstname']; ?> <?php echo $address['lastname']; ?>, <?php echo $address['address_1']; ?>, <?php echo $address['city']; ?>, <?php echo $address['zone']; ?>, <?php echo $address['country']; ?></option>
+    <option value="<?php echo $address['address_id']; ?>" selected="selected"><?php echo $address['firstname']; ?> <?php echo $address['lastname']; ?>, <?php echo $address['address_1']; ?>, <?php echo $address['zone']; ?>, <?php echo $address['country']; ?></option>
     <?php } else { ?>
-    <option value="<?php echo $address['address_id']; ?>"><?php echo $address['firstname']; ?> <?php echo $address['lastname']; ?>, <?php echo $address['address_1']; ?>, <?php echo $address['city']; ?>, <?php echo $address['zone']; ?>, <?php echo $address['country']; ?></option>
+    <option value="<?php echo $address['address_id']; ?>"><?php echo $address['firstname']; ?> <?php echo $address['lastname']; ?>, <?php echo $address['address_1']; ?>, <?php echo $address['zone']; ?>, <?php echo $address['country']; ?></option>
     <?php } ?>
     <?php } ?>
   </select>
@@ -63,16 +64,11 @@
           <input type="hidden" name="address_2" value="" />
           <input type="hidden" name="company" value="" />
           <input type="hidden" name="fax" value="" />
+          <input type="hidden" name="postcode" value="" />
           </fieldset>
       </div>
-      <div class="col-md-12">
-          <div class="buttons clearfix">
-              <div class="pull-right">
-                  <input type="button" value="<?php echo $button_continue; ?>" id="button-payment-address" data-loading-text="<?php echo $text_loading; ?>" class="btn btn-primary" />
-              </div>
-          </div>
-      </div>
   </div>
+</div>
 <script type="text/javascript"><!--
 $('input[name=\'payment_address\']').on('change', function() {
 	if (this.value == 'new') {

@@ -663,11 +663,6 @@ class ControllerCheckoutPaymentMethodCheckout extends Controller {
                 $this->model_checkout_order->addOrderHistory($this->session->data['order_id'], $this->config->get('cod_order_status_id'));
                 //return JSON to redirect to success page
                 $json['redirect'] = $this->url->link('checkout/success');
-                                
-                unset($this->session->data['shipping_method']);
-                unset($this->session->data['shipping_methods']);
-                unset($this->session->data['payment_method']);
-                unset($this->session->data['payment_methods']);
             }
             //End Customize
         }

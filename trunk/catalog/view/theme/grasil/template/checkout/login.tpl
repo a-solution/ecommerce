@@ -55,13 +55,14 @@ $(document).delegate('#button-account', 'click', function() {
             $('#button-account').button('loading');
         },      
         complete: function() {
-            $('#button-account').button('reset');
-        },          
+            
+        },
         success: function(json) {
             window.location = json['redirect'];            
         },
         error: function(xhr, ajaxOptions, thrownError) {
             alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+            $('#button-login').button('reset');
         }
     });
 });
@@ -77,23 +78,26 @@ $(document).delegate('#button-login', 'click', function() {
             $('#button-login').button('loading');
         },  
         complete: function() {
-            $('#button-login').button('reset');
+            
         },              
         success: function(json) {
             $('.alert, .text-danger').remove();
             $('.form-group').removeClass('has-error');
 			
             if (json['redirect']) {
-                location = json['redirect'];
+                location = json['redirect'];                
             } else if (json['error']) {
                 $('#modal-body').prepend('<div class="alert alert-danger"><i class="fa fa-exclamation-circle"></i> ' + json['error']['warning'] + '<button type="button" class="close" data-dismiss="alert">&times;</button></div>');           
-                    // Highlight any found errors
-                    $('#checkout-option-form input[name=\'email\']').parent().addClass('has-error');	
-                    $('#checkout-option-form input[name=\'password\']').parent().addClass('has-error');	   
-               }
+                // Highlight any found errors
+                $('#checkout-option-form input[name=\'email\']').parent().addClass('has-error');	
+                $('#checkout-option-form input[name=\'password\']').parent().addClass('has-error');	   
+                
+                $('#button-login').button('reset');
+            }            
         },
         error: function(xhr, ajaxOptions, thrownError) {
             alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+            $('#button-login').button('reset');
         }
     }); 
 });

@@ -6,23 +6,22 @@ var cart = {
             type: 'post',
             data: 'product_id=' + product_id + '&quantity=' + (typeof (quantity) != 'undefined' ? quantity : 1),
             dataType: 'json',
-            beforeSend: function () {
-                //$('#cart .mybag').addClass('spin');
+            beforeSend: function () {                
                 _asaca.loadingWindow();
             },
             success: function (json) {
-                $('.alert, .text-danger').remove();
-                //$('#cart .mybag').removeClass('spin');
-                _asaca.reset();
+                $('.alert, .text-danger').remove();                                
 
                 if (json['redirect']) {
                     location = json['redirect'];
+                    return;
                 }
 
                 if (json['success']) {
                     if(checkout===true)
                     {                        
                         paymentCartCallback(json);
+                        return;
                     }
                     else
                     {
@@ -32,6 +31,7 @@ var cart = {
                         $("#cart > ul").load('index.php?route=common/cart/info ul li');
                     }
                 }
+                _asaca.reset();
             }
         });
     },
@@ -145,7 +145,14 @@ var cart = {
         cart.addProduct('paymentCartCallback');
     },
     checkout: function(json) {
-        _asaca.modalAjax('index.php?route=checkout/login', 'Đăng nhập để mua hàng');
+        if(typeof (LOGGED) != 'undefined')
+        {            
+            window.location = LINK_CHECKOUT;
+            return;
+        }
+        else {
+            _asaca.modalAjax('index.php?route=checkout/login', 'Đăng nhập để mua hàng');
+        }
     }
 };
 
@@ -157,9 +164,7 @@ function addToCartCallback(json) {
 }
 function paymentCartCallback(json) {
     cart.checkout(json);    
-    setTimeout(
-    function() 
-    {
+    setTimeout( function() {
         $('#modal-body').prepend('<div class="alert alert-success"><i class="fa fa-check-circle"></i> ' + json['success'] + '<button type="button" class="close" data-dismiss="alert">&times;</button></div>');
     }, 500);    
     $('.mybag').html(json['count']);    
@@ -274,13 +279,13 @@ var _asaca = {
             type: 'get',
             dataType: 'json',
             cache: false,
-            success: function (json, callback) {
-                //json = $.parseJSON(msg);
+            success: function (json, callback) {                
                 if (json['redirect']) {
                     window.location = json['redirect'];
                     return;
                 }
-                _asaca.modal(json['data'], title);                                                
+                _asaca.modal(json['data'], title);                
+                _asaca.reset();
             }
         });
     },
@@ -311,7 +316,7 @@ var _asaca = {
         {
             oheight = $(obj).height();
             div = '<div id="wa-mask" class="wa-mask" style="height:'+oheight+'px"></div>';
-            div+= '<img id="wa-loading" class="wa-loading" src="'+BASE_URL+'/catalog/view/theme/grasil/image/loading.gif" />';                        
+            div+= '<img id="wa-loading" class="wa-loading" src="'+BASE_URL+'/catalog/view/theme/grasil/image/loading64.gif" />';                        
             $(div).appendTo($(obj));
         }        
     },
@@ -322,21 +327,23 @@ var _asaca = {
             oh = $(document).height();
             var top = $(document).scrollTop() + $(window).height()/2;            
             div = '<div id="wa-mask" class="wa-mask" style="height:'+oh+'px"></div>';            
-            div+= '<img id="wa-loading" class="wa-loading" style="top:'+top+'px" src="'+BASE_URL+'/catalog/view/theme/grasil/image/loading.gif" />';                        
+            div+= '<img id="wa-loading" class="wa-loading" style="top:'+top+'px" src="'+BASE_URL+'/catalog/view/theme/grasil/image/loading64.gif" />';                        
             $(div).appendTo($('html body'));            
         }        
     },
-    reset: function(obj)
+    reset: function()
     {        
-        $('#wa-mask, #wa-loading').remove();        
+        if($('#wa-mask, #wa-loading').length > 0) {
+            $('#wa-mask, #wa-loading').remove();
+        }
     }
 };
 
 $(document).ready(function () {
-    $('.button-checkout').on('click', function() {
+    $(document).delegate('.button-checkout', 'click', function(){
         cart.checkout();
     });
-    $('.prd-btn-buy').on('click', function() {        
+    $(document).delegate('.prd-btn-buy', 'click', function() {    
         if($(this).attr('prdid'))
         {
             cart.add($(this).attr('prdid'), true);
