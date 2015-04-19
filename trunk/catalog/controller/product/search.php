@@ -233,7 +233,7 @@ class ControllerProductSearch extends Controller {
                         
                     //Customisze
                     if ($price) {
-                        $saleoff = (1 - $special / $price) * 100;
+                        $saleoff = (1 - doubleval($result['special'])/doubleval($result['price'])) * 100;
                         $saleoff = round($saleoff);
                     } else {
                         $saleoff = false;

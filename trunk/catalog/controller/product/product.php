@@ -320,7 +320,7 @@ class ControllerProductProduct extends Controller {
                 $data['special'] = $special;
                 //Customisze
                 if ($data['price']) {
-                    $saleoff = (1 - $special / $data['price']) * 100;
+                    $saleoff = (1 - doubleval($product_info['special'])/doubleval($product_info['price'])) * 100;
                     $data['saleoff'] = round($saleoff);
                 } else {
                     $data['saleoff'] = false;

@@ -72,7 +72,7 @@ class ControllerModuleSpecial extends Controller {
                                     $special = $this->currency->format($this->tax->calculate($result['special'], $result['tax_class_id'], $this->config->get('config_tax')));
 				    //Customisze
                                     if($price) {
-                                        $saleoff = (1 - $special/$price) * 100;
+                                        $saleoff = (1 - doubleval($result['special'])/doubleval($result['price'])) * 100;                                        
                                         $saleoff = round($saleoff);
                                     }
                                     else {
