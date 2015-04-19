@@ -94,9 +94,9 @@ $(document).delegate('#button-payment-method', 'click', function() {
         }
     }); 
 });
-$(document).delegate('#input-payment-zone, #payment-existing select[name=address_id]', 'change', function() {
-    if($('#payment-existing select[name=address_id]').length > 0) {
-        data = 'address_id='+$('#payment-existing select[name=address_id]').val() +'&payment_address='+$('input[name=payment_address]:checked').val()+'&country_id=' + $('select[name=\'country_id\']').val() + '&zone_id=' + $('select[name=\'zone_id\']').val();
+$(document).delegate('#input-payment-zone, .my-payment-address select[name=address_id], .my-payment-address input[name=payment_address]', 'change', function() {
+    if($('.my-payment-address select[name=address_id]').length > 0) {
+        data = 'address_id='+$('#payment-existing select[name=address_id]').val() +'&payment_address='+$('.my-payment-address input[name=payment_address]:checked').val()+'&country_id=' + $('.my-payment-address select[name=\'country_id\']').val() + '&zone_id=' + $('.my-payment-address select[name=\'zone_id\']').val();
     }
     else
     {
@@ -108,10 +108,10 @@ $(document).delegate('#input-payment-zone, #payment-existing select[name=address
         data: data,
         dataType: 'json',
         beforeSend: function() {
-            //$('#button-quote').button('loading');
+            
         },
         complete: function() {
-            //$('#button-quote').button('reset');
+            
         },
         success: function(json) {            
             $.ajax({

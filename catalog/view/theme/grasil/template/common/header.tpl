@@ -33,6 +33,10 @@
         
         <script type="text/javascript">
             BASE_URL = '<?php echo $base; ?>';
+            <?php if($logged):?>
+            LOGGED = true;
+            LINK_CHECKOUT = '<?php echo $checkout; ?>';
+            <?php endif;?>
         </script>
         
         <?php foreach ($links as $link) { ?>
