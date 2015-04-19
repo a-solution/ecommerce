@@ -3,6 +3,9 @@
 class ControllerModuleSuggestion extends Controller {
 
     public function index() {
+        
+        $data['suggestion'] = array();
+        
         if (isset($_COOKIE["asaca_product_viewed"])) {
             //get viewed product from cookie
             $viewed_products = json_decode($_COOKIE["asaca_product_viewed"], true);            
@@ -128,8 +131,6 @@ class ControllerModuleSuggestion extends Controller {
                     );                                        
                 }
             }
-        } else {
-            $data['suggestion'] = "";
         }
         
         if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/module/suggestion.tpl')) {
