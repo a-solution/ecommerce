@@ -475,7 +475,7 @@ class ControllerProductProduct extends Controller {
                 "product_id" => $product_info["product_id"],
                 "name" => $product_info["name"],
                 "image" => $data['thumb'],
-                'link' => $this->url->link('product/product', $url . 'path=69&product_id=' . $product_info["product_id"])
+                'link' => $this->url->link('product/product', $url . '&product_id=' . $product_info["product_id"])
             );
             $this->saveToCookies($prd_cookie);
 
