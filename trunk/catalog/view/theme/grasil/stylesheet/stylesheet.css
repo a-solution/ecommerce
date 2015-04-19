@@ -1635,3 +1635,35 @@ table.order-total tr td.fee {
     height: 58px;
     font-size: 18pt;
 }
+
+/*FOR PRODUCT RECENT*/
+.prd-recent {
+    
+}
+.prd-recent ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.prd-recent ul li {
+    width: 12.5%;
+    float: left;
+    margin-left: 18px;
+    text-align: center;
+    background: #fff;
+    padding: 10px;
+}
+.prd-recent ul li:first-child {
+    margin-left: 0;
+}
+.prd-recent ul li img{
+    max-width: 100%;
+}
+.prd-recent ul li .caption {
+    font-size: 1em;
+    font-weight: 400;
+    margin: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
