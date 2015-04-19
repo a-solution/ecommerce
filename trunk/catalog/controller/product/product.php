@@ -161,10 +161,7 @@ class ControllerProductProduct extends Controller {
         $product_info = $this->model_catalog_product->getProduct($product_id);
 
         if ($product_info) {
-            $url = '';
-
-            //Save the product info to cookie
-            $this->saveToCookies($product_info);
+            $url = '';           
 
             if (isset($this->request->get['path'])) {
                 $url .= '&path=' . $this->request->get['path'];
@@ -472,6 +469,14 @@ class ControllerProductProduct extends Controller {
                     );
                 }
             }
+            
+            //Save the product info to cookie
+            $prd_cookie = array(                
+                "product_id" => $product_info["product_id"],
+                "name" => $product_info["name"],
+                "image" => $data['thumb']
+            );
+            $this->saveToCookies($prd_cookie);
 
             $data['text_payment_recurring'] = $this->language->get('text_payment_recurring');
             $data['recurrings'] = $this->model_catalog_product->getProfiles($this->request->get['product_id']);
@@ -807,16 +812,20 @@ class ControllerProductProduct extends Controller {
             
             //if the product does not exist in array, we will add it to cookie
             if (!$this->in_array_r($product_info["product_id"], $viewed_products)) {                
+                if(count($viewed_products) >= 8)
+                {
+                    array_shift($viewed_products);
+                }
                 //add more viewed product to cookie            
                 $arr = $this->createNewArrItem($product_info);
-                $viewed_products[] = $arr;
+                array_push($viewed_products, $arr);
                 
                 //save to cookie
                 setcookie("asaca_product_viewed", json_encode($viewed_products));                     
             }
         } else {
             //create new item and add to cookie
-            $arr = $this->createNewArrItem($product_info);
+            $arr[] = $this->createNewArrItem($product_info);
             setcookie("asaca_product_viewed", json_encode($arr));
         }
     }
