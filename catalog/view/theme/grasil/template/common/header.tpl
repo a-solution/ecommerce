@@ -196,12 +196,7 @@
                                     overflow: 'hidden'
                                 });
                             }
-                        }); 
-                        
-                        /*$(window).resize(function(){
-                            $.sidr('close', 'sidr-left');
-                            $("#sidr-left").show('slow');
-                        });*/
+                        });
                         
                         $('.bsear').click(function(){
                             var header = $('header');

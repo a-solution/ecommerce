@@ -1,10 +1,3 @@
-@font-face {
-    font-family: "MyriadProCondensed";
-    src: url("fonts/MyriadPro-Cond.eot?#iefix") format("embedded-opentype");
-    src: local("☺"),
-        url("fonts/MyriadPro-Cond.otf") format("opentype"),
-        url("fonts/MyriadPro-Cond.woff") format("woff")
-}
 @-webkit-keyframes color-change {    
     0% { color: #cc0000; }
     100% { color: #33cc00; }
@@ -41,12 +34,12 @@
 }
 
 html {
-    background: #313131;
+    
 }
 body {    
     color: #313131;
     font-size: 14px;
-    font-family: Arial, MyriadProCondensed, "Open Sans Condensed", 'Open Sans', Helvetica, Arial, sans-serif;    
+    font-family: Arial, Helvetica, sans-serif;    
     line-height: 20px;
     background: #fdfdfd;
 }
@@ -891,6 +884,17 @@ header .con-wishlist {
 .crs-product.flexslider .flex-viewport {
     padding-top: 5px;
 }
+.carousel-suggestion {
+    margin-bottom: 30px;   
+}
+.carousel-suggestion .bx-viewport {
+    
+}
+.carousel-suggestion.crs-product.flexslider .slides li {
+    margin-right: 1px !important;
+    text-align: left;
+    width: 178px !important;
+}
 
 /* product list */
 .product-thumb {
@@ -933,16 +937,18 @@ header .con-wishlist {
 }
 .product-thumb .image {    
     position: relative;
-    min-height: 251px;    
+/*    min-height: 251px;    */
     overflow: hidden;    
 }
 .product-thumb .image a img {
     display: block;
     margin: 0 auto;
 }
-.product-thumb .image .prd-btn-buy, .product-thumb .image .prd-btn-others {
+.product-thumb .image .prd-btn-buy, .product-thumb .image .prd-btn-others, .product-thumb .image .prd-viewed {
     display: none;        
+    position: absolute;
 }
+
 .product-thumb:hover .image a {
     -webkit-transform:scale(1.1);
     -moz-transform:scale(1.1);
@@ -951,9 +957,8 @@ header .con-wishlist {
      transform:scale(1.1);
      opacity: 0.2;
 }
-.product-thumb:hover .image .prd-btn-buy, .product-thumb:hover .image .prd-btn-others {
-    position: absolute;
-    display: block;    
+.product-thumb:hover .image .prd-btn-buy, .product-thumb:hover .image .prd-btn-others, .product-thumb:hover .image .prd-viewed {    
+    display: block;
     cursor: pointer;
 }
 .product-thumb:hover .image .prd-btn-buy {    
@@ -974,8 +979,7 @@ header .con-wishlist {
 .product-thumb:hover .image .prd-btn-buy:hover {
     background: #2ecc71;    
 }
-.product-thumb:hover .image .prd-btn-others {
-    position: absolute;
+.product-thumb:hover .image .prd-btn-others {    
     display: block;
     top: 5px;
     right: 5px;
@@ -992,6 +996,13 @@ header .con-wishlist {
 .prd-btn-others i.compare {
     border: 1px solid #2ecc71;
     color: #2ecc71;
+}
+.product-thumb:hover .image .prd-viewed {
+    bottom: 5px;
+    right: 5px;
+}
+.product-thumb:hover .image .prd-viewed span {
+    color: #000;
 }
 
 /*For Mobile*/
@@ -1648,6 +1659,7 @@ table.order-total tr td.fee {
 .prd-recent .heading-title {
     margin: 0;
     margin-left:10px;
+    line-height: 20px;
 }
 .prd-recent .heading-title span {
     font-size: 10px;
