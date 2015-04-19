@@ -13,7 +13,7 @@
                     <li><a href="<?php echo $sitemap; ?>"><?php echo $text_sitemap; ?></a></li>
                 </ul>
                 <br />
-                <a href="http://online.gov.vn/HomePage/WebsiteDisplay.aspx?DocId=31"><img width="112" src="http://online.gov.vn/seals/v4APtGs+b0VZ5ObVn1IeQw==.jpgx" title="" alt=""></a>
+                <a href="http://online.gov.vn/HomePage/WebsiteDisplay.aspx?DocId=31"><img width="112" src="catalog/view/theme/grasil/image/bct.png" title="" alt=""></a>
             </div>
             <?php } ?>            
             <div class="col-md-3 col-sm-6">
@@ -71,28 +71,13 @@
         </p>        
     </div>
 </footer>
-<!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalHeader">...</h4>
-      </div>
-      <div class="modal-body" id="myModalBody">...</div>
-      <div class="modal-footer" id="myModalFooter">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>        
-      </div>
-    </div>
-  </div>
-</div>
-<!--script type="text/javascript" src="https://mylivechat.com/chatinline.aspx?hccid=72189449"></script-->
+<script type="text/javascript" src="https://mylivechat.com/chatinline.aspx?hccid=72189449"></script>
 <div id="fb-root"></div>
-<!--script>(function(d, s, id) {
+<script>(function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
   if (d.getElementById(id)) return;
   js = d.createElement(s); js.id = id;
   js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=357643941100377&version=v2.3";
   fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script-->
+}(document, 'script', 'facebook-jssdk'));</script>
 </body></html>

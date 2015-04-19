@@ -15,7 +15,8 @@
         <li><a href="<?php echo $breadcrumb['href']; ?>"><?php echo $breadcrumb['text']; ?></a></li>
         <?php } ?>
         <?php } ?>
-    </ul>    
+    </ul>
+    <?php if($categories || isset($category_parent)) : ?>
     <div class="subcat-list">
         <ul class="bxslider list-unstyled">
             <?php
@@ -56,21 +57,20 @@
         </ul>
         <div class="clearfix"></div>
         <script type="text/javascript">
-            $(document).ready(function(){
-                $('.bxslider').bxSlider({
-                    minSlides: 2,
-                    maxSlides: 6,
-                    moveSlides: 1,
-                    slideWidth: 155,
-                    slideMargin: 0,
-                    pager: false,
-                    controls: true,
-                    infiniteLoop: true,
-                    hideControlOnEnd: true
-                });
+            $('.bxslider').bxSlider({
+                minSlides: 2,
+                maxSlides: 6,
+                //moveSlides: 1,
+                slideWidth: 155,
+                slideMargin: 0,
+                pager: false,
+                controls: true,
+                infiniteLoop: true,
+                hideControlOnEnd: true
             });
         </script>
     </div>
+    <?php endif; ?>
     
     <div class="row category-info"><?php echo $column_left; ?>
         <?php if ($column_left && $column_right) { ?>
