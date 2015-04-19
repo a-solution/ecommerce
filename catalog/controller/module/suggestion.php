@@ -44,17 +44,20 @@ class ControllerModuleSuggestion extends Controller {
             
             //loop to find most recent parent category
             foreach ($categories as $category) {
-                $children = $this->model_catalog_category->getCategories($category['category_id']);
+                $children = $this->model_catalog_category->getCategories($category['category_id']);                               
                 
-                //if a category does not have sub category, it will be the most recent parent catgory of a product
+                //if does not find the the most recent parent catgory, the last cate will be recent cat
+                $recent_cat = $category;
+                
+                //if a category does not have sub category, it will be the most recent parent catgory of a product                
                 if (!$children) {
-                    $recent_cat = $category;
+                    $recent_cat = $category;            
                     break;
-                }
-            }
+                }                                                
+            }                                                
             
-            //if recent_cat is not empty
-            if (!empty($recent_cat)) {                
+            if(!empty($recent_cat)) //if recent_cat is not empty
+            { 
                 $filter_data = array(
                     'filter_category_id' => $recent_cat["category_id"],
                     'sort' => 'purchased',
