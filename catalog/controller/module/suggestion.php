@@ -17,7 +17,10 @@ class ControllerModuleSuggestion extends Controller {
             $this->load->model('catalog/category');
             $this->load->model('catalog/product');
             $this->load->model('tool/image'); 
-
+            
+            $data['button_cart'] = $this->language->get('button_cart');
+            $data['button_wishlist'] = $this->language->get('button_wishlist');
+            $data['button_compare'] = $this->language->get('button_compare');            
             // Set the last category breadcrumb
             $url = '';
 
