@@ -66,6 +66,28 @@
                   <?php } ?>
                   <?php } ?></td>
                 <td class="text-right"><input type="text" name="filter[<?php echo $filter_row; ?>][sort_order]" value="<?php echo $filter['sort_order']; ?>" placeholder="<?php echo $entry_sort_order; ?>" id="input-sort-order" class="form-control" /></td>
+                <td class="text-left">
+                    Option values
+                    <select name="cbb_option_values_<?php echo $filter_row; ?>">    
+                        <?php foreach($options as $option){?>    
+                        <option value="<?php echo $option['option_value_id']; ?>"><?php echo $option['path']; ?></option>
+                        <?php }?>
+                    </select>
+                    <input type="button" value="Add" onclick="SelectToAddCategory('<?php echo $filter_row; ?>', 'cbb_option_values_<?php echo $filter_row ?>');">
+                    <div style="height: 80px; overflow: auto;" class="well-sm" id="div_selected_options_<?php echo $filter_row ?>">
+                        
+                          
+                            <?php foreach($filter['option_values'] as $sel_option){?>    
+                                <div>
+                                    <i onclick="clickMinusCircleButton(this);" class="fa fa-minus-circle"></i> <?php echo $sel_option['path']; ?> 
+                                    <input type="hidden" name="filter[<?php echo $filter_row; ?>][options][<?php echo $sel_option['option_value_id']; ?>]" value="<?php echo $sel_option['option_value_id']; ?>">
+                                </div>
+                            <?php }?>
+                        
+                        
+                    </div>
+                    
+                </td>
                 <td class="text-left"><button type="button" onclick="$('#filter-row<?php echo $filter_row; ?>').remove();" data-toggle="tooltip" title="<?php echo $button_remove; ?>" class="btn btn-danger"><i class="fa fa-minus-circle"></i></button></td>
               </tr>
               <?php $filter_row++; ?>
@@ -73,7 +95,7 @@
             </tbody>
             <tfoot>
               <tr>
-                <td colspan="2"></td>
+                <td colspan="3"></td>
                 <td class="text-left"><a onclick="addFilterRow();" data-toggle="tooltip" title="<?php echo $button_filter_add; ?>" class="btn btn-primary"><i class="fa fa-plus-circle"></i></a></td>
               </tr>
             </tfoot>
@@ -87,20 +109,50 @@ var filter_row = <?php echo $filter_row; ?>;
 
 function addFilterRow() {
 	html  = '<tr id="filter-row' + filter_row + '">';	
-    html += '  <td class="text-left"><input type="hidden" name="filter[' + filter_row + '][filter_id]" value="" />';
+        html += '  <td class="text-left"><input type="hidden" name="filter[' + filter_row + '][filter_id]" value="" />';
 	<?php foreach ($languages as $language) { ?>
 	html += '  <div class="input-group">';
 	html += '    <span class="input-group-addon"><img src="view/image/flags/<?php echo $language['image']; ?>" title="<?php echo $language['name']; ?>" /></span><input type="text" name="filter[' + filter_row + '][filter_description][<?php echo $language['language_id']; ?>][name]" value="" placeholder="<?php echo $entry_name ?>" class="form-control" />';
-    html += '  </div>';
+        html += '  </div>';
 	<?php } ?>
 	html += '  </td>';
 	html += '  <td class="text-right"><input type="text" name="filter[' + filter_row + '][sort_order]" value="" value="" placeholder="<?php echo $entry_sort_order; ?>" id="input-sort-order" class="form-control" /></td>';
-	html += '  <td class="text-left"><button type="button" onclick="$(\'#filter-row' + filter_row + '\').remove();" data-toggle="tooltip" title="<?php echo $button_remove; ?>" class="btn btn-danger"><i class="fa fa-minus-circle"></i></button></td>';
-	html += '</tr>';	
+	html += '  <td class="text-left">';
+        html += '       Option values';
+        html += '       <select name="cbb_option_values_'+(filter_row)+'">';
+                            <?php foreach($options as $option){?>    
+        html +=             '<option value="<?php echo $option['option_value_id']; ?>"><?php echo $option['path']; ?></option>'
+                            <?php }?>
+        html += '       </select>';
+        html += '       <input type="button" onclick="SelectToAddCategory(\''+ filter_row +'\', \'cbb_option_values_'+ filter_row +'\');" value="Add">';
+        html += '       <div style="height: 80px; overflow: auto;" class="well-sm" id="div_selected_options_'+(filter_row)+'">';
+        html += '       </div>';
+        html += '  </td>';
+        html += '  <td class="text-left"><button type="button" onclick="$(\'#filter-row' + filter_row + '\').remove();" data-toggle="tooltip" title="<?php echo $button_remove; ?>" class="btn btn-danger"><i class="fa fa-minus-circle"></i></button></td>';        
+        html += '</tr>';	
 	
 	$('#filter tbody').append(html);
 	
 	filter_row++;
 }
+
+function SelectToAddCategory(module_id, cbb_control_name){
+    var cbb_control = $('select[name=\''+ cbb_control_name +'\']')
+    var selText = $('select[name=\''+ cbb_control_name +'\'] option:selected').text();
+    var selVal = $('select[name=\''+ cbb_control_name +'\'] option:selected').val()
+    
+    
+    if($("input[name='filter["+module_id+"][options]["+selVal+"]']").length>0 && ($("input[name='filter["+module_id+"][options]["+selVal+"]']").map(function(){return $(this).attr("value");}).get()).indexOf(String(selVal)) >= 0){
+            return;
+    }
+    
+    $('#div_selected_options_' + module_id).append('<div><i class="fa fa-minus-circle" onclick="clickMinusCircleButton(this);"></i> ' + selText + '<input name="filter['+module_id+'][options]['+selVal+']" type="hidden" value="' + selVal + '" /></div>');
+}
+
+function clickMinusCircleButton(control){
+    $(control).parent().remove();
+}    
+
+
 //--></script></div>
 <?php echo $footer; ?> 

@@ -355,6 +355,7 @@ class ControllerCatalogFilter extends Controller {
 			$data['filters'] = $this->request->post['filter'];
 		} elseif (isset($this->request->get['filter_group_id'])) {
 			$data['filters'] = $this->model_catalog_filter->getFilterDescriptions($this->request->get['filter_group_id']);
+                        $data['options'] = $this->model_catalog_filter->getAllOptionValues();
 		} else {
 			$data['filters'] = array();
 		}
