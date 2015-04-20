@@ -87,8 +87,9 @@
         slideMargin: 0,
         pager: false,
         controls: true,
+		auto: true,
         infiniteLoop: true,
-        hideControlOnEnd: true
+		hideControlOnEnd: true
     });
 </script>
 <?php endif; ?>
