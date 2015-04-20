@@ -15,27 +15,7 @@
     100% { color: #33cc00; }
 }
 
-/*FOR IMAGE*/
-@-webkit-keyframes img-effect {    
-    0% { opacity: 0; }
-    100% { opacity: 1; }
-}
-@-ms-keyframes img-effect {
-    0% { opacity: 0; }
-    100% { opacity: 1; }
-}
-@-o-keyframes img-effect {
-    0% { opacity: 0; }
-    100% { opacity: 1; }
-}
-@keyframes img-effect {
-    0% { opacity: 0; }
-    100% { opacity: 1; }
-}
-
-html {
-    
-}
+html {}
 body {    
     color: #313131;
     font-size: 14px;
@@ -884,31 +864,28 @@ header .con-wishlist {
 .crs-product.flexslider .flex-viewport {
     padding-top: 5px;
 }
+
+/*FOR Carousel SUGGESTION*/
 .carousel-suggestion {
     margin-bottom: 30px;   
 }
 .carousel-suggestion .bx-viewport {
     
 }
-.carousel-suggestion.crs-product.flexslider .slides li {
-    margin-right: 1px !important;
-    text-align: left;
-    width: 178px !important;
-}
 
 /* product list */
 .product-thumb {
-    border: 1px solid #ddd;
+    border: 1px solid #f9f9f9;
     border-bottom-width: 2px;    
     margin-bottom: 20px;    
-    transition: all linear .5s;    
+    transition: all linear .2s;    
     position: relative;
     background: #fff;
-    min-height: 332px;        
+    min-height: 332px;    
 }
 .product-thumb:hover {
     border-color: #999;
-/*    box-shadow: 0 0 15px #ccc;*/
+/*    box-shadow: 0 0 5px #999;*/
 }
 
 .subcat-list {
@@ -949,13 +926,14 @@ header .con-wishlist {
     position: absolute;
 }
 
-.product-thumb:hover .image a {
+.product-thumb:hover .image a img {
     -webkit-transform:scale(1.1);
     -moz-transform:scale(1.1);
     -ms-transform:scale(1.1);
     -o-transform:scale(1.1);
-     transform:scale(1.1);
-     opacity: 0.2;
+    transform:scale(1.1);
+    opacity: 0.5;
+    transition: all linear .2s;
 }
 .product-thumb:hover .image .prd-btn-buy, .product-thumb:hover .image .prd-btn-others, .product-thumb:hover .image .prd-viewed {    
     display: block;

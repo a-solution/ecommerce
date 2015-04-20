@@ -725,7 +725,7 @@ $('#review').delegate('.pagination a', 'click', function(e) {
         $('.form-group.required').each(function(){
             if($(this).find('.border').length == 1)
             {                
-                selectItem($(this).find('label'));
+                selectBorder($(this).find('label'));
             }
             if($(this).find('.image').length == 1)
             {                
