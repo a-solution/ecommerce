@@ -39,6 +39,11 @@ class ModelCatalogFilter extends Model {
 			$this->db->query("INSERT INTO " . DB_PREFIX . "filter_group_description SET filter_group_id = '" . (int)$filter_group_id . "', language_id = '" . (int)$language_id . "', name = '" . $this->db->escape($value['name']) . "'");
 		}
 
+                $filters_of_group = $this->db->query("SELECT * FROM `".DB_PREFIX."filter` WHERE filter_group_id='".(int)$filter_group_id ."'");
+                foreach($filters_of_group->rows as $filter_of_group){
+                    $this->db->query("DELETE FROM `" . DB_PREFIX . "option_value_filter` WHERE filter_id = '" . (int)$filter_of_group['filter_id'] . "'");
+                }
+                
 		$this->db->query("DELETE FROM " . DB_PREFIX . "filter WHERE filter_group_id = '" . (int)$filter_group_id . "'");
 		$this->db->query("DELETE FROM " . DB_PREFIX . "filter_description WHERE filter_group_id = '" . (int)$filter_group_id . "'");
 
@@ -55,6 +60,12 @@ class ModelCatalogFilter extends Model {
 				foreach ($filter['filter_description'] as $language_id => $filter_description) {
 					$this->db->query("INSERT INTO " . DB_PREFIX . "filter_description SET filter_id = '" . (int)$filter_id . "', language_id = '" . (int)$language_id . "', filter_group_id = '" . (int)$filter_group_id . "', name = '" . $this->db->escape($filter_description['name']) . "'");
 				}
+                                
+                                if(isset($filter['options'])){
+                                    foreach ($filter['options'] as $theOptionValueIdKey => $theOptionValueIdVal) {
+                                            $this->db->query("INSERT INTO " . DB_PREFIX . "option_value_filter SET filter_id = '" . (int)$filter_id . "', option_value_id = '" . (int)$theOptionValueIdKey . "'");
+                                    }                                    
+                                }
 			}
 		}
 
@@ -162,21 +173,40 @@ class ModelCatalogFilter extends Model {
 	public function getFilterDescriptions($filter_group_id) {
 		$filter_data = array();
 
-		$filter_query = $this->db->query("SELECT * FROM " . DB_PREFIX . "filter WHERE filter_group_id = '" . (int)$filter_group_id . "'");
+		$filter_query = $this->db->query("SELECT * FROM " . DB_PREFIX . "filter WHERE filter_group_id = '" . (int)$filter_group_id . "' ORDER BY filter_id ASC");
 
 		foreach ($filter_query->rows as $filter) {
 			$filter_description_data = array();
-
+                        $option_values_filter = array();
+                        
 			$filter_description_query = $this->db->query("SELECT * FROM " . DB_PREFIX . "filter_description WHERE filter_id = '" . (int)$filter['filter_id'] . "'");
-
 			foreach ($filter_description_query->rows as $filter_description) {
 				$filter_description_data[$filter_description['language_id']] = array('name' => $filter_description['name']);
 			}
 
+                        $queryString = "SELECT CONCAT(od.name, '&nbsp;>&nbsp;', ovd.name) path, ovf.filter_id, ovf.option_value_id, ovf.description".
+                            " FROM `".DB_PREFIX."option_description` od".
+                            " JOIN `".DB_PREFIX."option_value_description` ovd ON ovd.option_id = od.option_id".        
+                            " JOIN `".DB_PREFIX."option_value_filter` ovf on ovf.option_value_id = ovd.option_value_id".
+                            " WHERE ovf.filter_id = '".((int)$filter['filter_id'])."'";
+
+                        
+                        $option_values_filter_query = $this->db->query($queryString);
+                        
+                        foreach ($option_values_filter_query->rows as $opt_val) {
+                                $tmpArr = array();                                
+				$tmpArr['option_value_id'] =  $opt_val['option_value_id'];
+                                $tmpArr['filter_id'] =  $opt_val['filter_id'];
+                                $tmpArr['description'] =  $opt_val['description'];
+                                $tmpArr['path'] =  $opt_val['path'];
+                                $option_values_filter[]=$tmpArr;
+			}
+                        
 			$filter_data[] = array(
 				'filter_id'          => $filter['filter_id'],
 				'filter_description' => $filter_description_data,
-				'sort_order'         => $filter['sort_order']
+				'sort_order'         => $filter['sort_order'],
+                                'option_values'      => $option_values_filter
 			);
 		}
 
@@ -188,4 +218,9 @@ class ModelCatalogFilter extends Model {
 
 		return $query->row['total'];
 	}
+        
+        public function getAllOptionValues(){
+            $option_values = $this->db->query("SELECT ovd.option_id, ovd.option_value_id, CONCAT(od.name, '&nbsp;>&nbsp;', ovd.name) path FROM `".DB_PREFIX."option_value_description` ovd LEFT JOIN `".DB_PREFIX."option_description` od ON ovd.option_id = od.option_id");
+            return $option_values->rows;
+        }
 }
