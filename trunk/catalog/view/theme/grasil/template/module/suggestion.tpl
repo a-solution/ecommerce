@@ -1,7 +1,7 @@
 <?php if($suggestion) : ?>
 <div class="carousel-suggestion">
     <h3 class="heading-title"><span>Có thể bạn quan tâm</span></h3>    
-    <ul class="bxslider list-unstyled product-layout">
+    <ul class="bxslider list-unstyled">
         <?php foreach ($suggestion as $product) { ?>        
         <li class="product-thumb">
             <div class="image">
