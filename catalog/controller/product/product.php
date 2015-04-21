@@ -5,6 +5,21 @@ class ControllerProductProduct extends Controller {
     private $error = array();
 
     public function index() {
+        //Work around to fix route of product when have no path
+        if (!isset($this->request->get['path'])) {
+            $this->load->model('catalog/product');
+            if (isset($this->request->get['product_id'])) {
+                $product_id = (int) $this->request->get['product_id'];
+            } else {
+                $product_id = 0;
+            }
+            $prdPath = $this->model_catalog_product->getProductCategoryPath($product_id);
+            if($prdPath)
+            {
+                $this->response->redirect($this->url->link('product/product', 'path='.$prdPath. '&product_id=' . $product_id), 301);
+            }
+        }
+        
         $this->load->language('product/product');
 
         $data['breadcrumbs'] = array();

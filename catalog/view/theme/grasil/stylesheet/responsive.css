@@ -34,10 +34,10 @@
         width: 156px !important;
     }
     .product-thumb {
-        min-height: 255px;
+/*        min-height: 255px;*/
     }
     .product-thumb .image {
-        min-height: 190px;
+/*        min-height: 190px;*/
     }
     .cbtn-buy {
         position: fixed;
