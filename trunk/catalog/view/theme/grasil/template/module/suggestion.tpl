@@ -10,11 +10,7 @@
                 <div class="prd-btn-others">                        
                     <i class="fa fa-heart favorite" data-toggle="tooltip" title="<?php echo $button_wishlist; ?>" onclick="wishlist.add('<?php echo $product['product_id']; ?>');"></i>
                     <i class="fa fa-exchange compare" data-toggle="tooltip" title="<?php echo $button_compare; ?>" onclick="compare.add('<?php echo $product['product_id']; ?>');"></i>
-                </div>
-                <div class="prd-viewed">
-                    <span class="orderred" data-toggle="tooltip" title="Đã có <?php echo isset($product['purchased'])?$product['purchased']:'0'; ?> lượt mua"><i class="fa fa-tags"></i> <?php echo isset($product['purchased'])?$product['purchased']:'0'; ?></span>
-                    <span class="viewed" data-toggle="tooltip" title="Đã có <?php echo isset($product['viewed'])?$product['viewed']:'0'; ?> lượt xem"><i class="fa fa-eye"></i> <?php echo isset($product['viewed'])?$product['viewed']:'0'; ?></span>
-                </div>
+                </div>                
             </div>                    
             <div class="caption">
                 <h4><a data-toggle="tooltip" title="<?php echo $product['name']; ?>" href="<?php echo $product['href']; ?>"><?php echo $product['name']; ?></a></h4>        
@@ -31,7 +27,9 @@
                     for ($i = 1; $i <= 5; $i++) { ?>
                     <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
                     <?php }
-                    } ?>                    
+                    } ?>
+                    <span class="orderred" data-toggle="tooltip" title="Đã có <?php echo isset($product['purchased'])?$product['purchased']:'0'; ?> lượt mua"><i class="fa fa-tags"></i> <?php echo isset($product['purchased'])?$product['purchased']:'0'; ?></span>
+                    <span class="viewed" data-toggle="tooltip" title="Đã có <?php echo isset($product['viewed'])?$product['viewed']:'0'; ?> lượt xem"><i class="fa fa-eye"></i> <?php echo isset($product['viewed'])?$product['viewed']:'0'; ?></span>
                 </div>
                 <?php if ($product['price']) { ?>
                 <p class="price">
@@ -51,11 +49,11 @@
 </div>
 <script type="text/javascript">
     $('.carousel-suggestion .bxslider').bxSlider({
-        minSlides: 2,
-        maxSlides: 6,
+        minSlides: 1,
+        maxSlides: 5,
         moveSlides: 1,
-        slideWidth: 186,
-        slideMargin: 0,
+        slideWidth: 184,
+        slideMargin: 5,
         pager: false,        
         auto: true,
         infiniteLoop: true,

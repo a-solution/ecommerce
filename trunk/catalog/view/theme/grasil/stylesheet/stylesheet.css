@@ -877,11 +877,17 @@ header .con-wishlist {
 .product-thumb {
     border: 1px solid #f9f9f9;
     border-bottom-width: 2px;
-    margin-bottom: 20px;    
+    margin-bottom: 20px;
     transition: all linear .2s;    
     position: relative;
-    background: #fff;
+    background: #fff;    
 /*    min-height: 332px;*/
+}
+li.product-thumb {
+    margin-right: 5px;
+}
+.bxslider .product-thumb {
+    border: none;
 }
 .product-thumb:hover {
 /*    border-color: #999;
@@ -1068,11 +1074,12 @@ header .con-wishlist {
 
 /*caption*/
 .product-thumb .caption {
-    padding: 5px 15px;
+    padding: 4px 8px;
 }
 .product-thumb .caption h4 {
     font-size: 1em;
     font-weight: 400;
+    line-height: 1.2em;
     margin: 0;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -1086,14 +1093,14 @@ header .con-wishlist {
 .product-thumb .price {    
     margin: 3px 0;
     color: #cc0000;
-    font-size: 1.3em;
+    font-size: 1.2em;
 }
 .product-thumb .price-new {    
 /*    display: block;    */
 }
 .product-thumb .price-old {
     color: #999;
-    font-size: .7em;
+    font-size: 0.7em;
     text-decoration: line-through;
 /*    padding-left: 15px;*/
     float: right;
@@ -1684,6 +1691,7 @@ table.order-total tr td.fee {
     width: auto;
     background: none;
     border: none;
+    margin-bottom: 20px;
 }
 .common-home .prd-recent .heading-title {    
     line-height: 40px;

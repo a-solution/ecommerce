@@ -36,7 +36,6 @@
     box-shadow: none !important;
     border: 0 !important;
     left: 0 !important;    
-    background: #fff;
 
     /*fix other elements on the page moving (on Chrome)*/
     -webkit-transform: translatez(0);
