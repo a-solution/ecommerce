@@ -161,7 +161,7 @@ class ControllerProductProduct extends Controller {
         $product_info = $this->model_catalog_product->getProduct($product_id);
 
         if ($product_info) {
-            $url = '';           
+            $url = '';
 
             if (isset($this->request->get['path'])) {
                 $url .= '&path=' . $this->request->get['path'];
@@ -317,7 +317,7 @@ class ControllerProductProduct extends Controller {
                 $data['special'] = $special;
                 //Customisze
                 if ($data['price']) {
-                    $saleoff = (1 - doubleval($product_info['special'])/doubleval($product_info['price'])) * 100;
+                    $saleoff = (1 - doubleval($product_info['special']) / doubleval($product_info['price'])) * 100;
                     $data['saleoff'] = round($saleoff);
                 } else {
                     $data['saleoff'] = false;
@@ -469,9 +469,9 @@ class ControllerProductProduct extends Controller {
                     );
                 }
             }
-            
+
             //Save the product info to cookie
-            $prd_cookie = array(                
+            $prd_cookie = array(
                 "product_id" => $product_info["product_id"],
                 "name" => $product_info["name"],
                 "image" => $data['thumb'],
@@ -810,25 +810,56 @@ class ControllerProductProduct extends Controller {
         if (isset($_COOKIE["asaca_product_viewed"])) {
             //parse json to array
             $viewed_products = json_decode($_COOKIE["asaca_product_viewed"], true);
-            
+
             //if the product does not exist in array, we will add it to cookie
-            if (!$this->in_array_r($product_info["product_id"], $viewed_products)) {                
-                if(count($viewed_products) >= 8)
-                {
+            if (!$this->in_array_r($product_info["product_id"], $viewed_products)) {
+                if (count($viewed_products) >= 8) {
                     array_shift($viewed_products);
                 }
-                //add more viewed product to cookie            
-                $arr = $this->createNewArrItem($product_info);
-                array_push($viewed_products, $arr);
                 
-                //save to cookie
-                setcookie("asaca_product_viewed", json_encode($viewed_products), time()+60*60*24*30, '/');                     
+                $this->pushNewItemToCookie($viewed_products,$product_info);
+            } else { //remove it and add to the end
+                $viewed_products = $this->removeElementWithValue($viewed_products, "product_id", $product_info["product_id"]);                
+                $this->pushNewItemToCookie($viewed_products,$product_info);
             }
         } else {
             //create new item and add to cookie
             $arr[] = $this->createNewArrItem($product_info);
-            setcookie("asaca_product_viewed", json_encode($arr), time()+60*60*24*30, '/');
+            setcookie("asaca_product_viewed", json_encode($arr), time() + 60 * 60 * 24 * 30, '/');
         }
+    }
+
+    /**
+     * Add new item to existing array
+     * @param type $viewed_products
+     * @param type $product_info
+     */
+    function pushNewItemToCookie($viewed_products, $product_info) {
+        //create new array item
+        $arr = $this->createNewArrItem($product_info);
+        
+        //push to existing array
+        array_push($viewed_products, $arr);
+        
+        //save to cookie
+        setcookie("asaca_product_viewed", json_encode($viewed_products), time() + 60 * 60 * 24 * 30, '/');
+    }
+
+    /**
+     * Remove an item in dimestion array by given key value
+     * @param type $array
+     * @param type $key
+     * @param type $value
+     * @return type
+     */
+    function removeElementWithValue($array, $key, $value) {
+        foreach ($array as $subKey => $subArray) {
+            if ($subArray[$key] == $value) {
+                unset($array[$subKey]);
+                break;
+            }
+        }
+        return $array;
     }
 
     /**
@@ -847,7 +878,7 @@ class ControllerProductProduct extends Controller {
 
         return $array;
     }
-    
+
     /**
      * Loop to find a value in multiple dimensions array
      * @param type $needle
@@ -858,11 +889,10 @@ class ControllerProductProduct extends Controller {
     private function in_array_r($needle, $haystack) {
         foreach ($haystack as $item) {
             //check item existed in array
-            if(is_array($haystack) && in_array($needle, $haystack) || is_array($item) && in_array($needle, $item))
-            {
+            if (is_array($haystack) && in_array($needle, $haystack) || is_array($item) && in_array($needle, $item)) {
                 return true;
             }
-        }               
+        }
         return false;
     }
 
