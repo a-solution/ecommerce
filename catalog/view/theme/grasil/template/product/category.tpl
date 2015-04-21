@@ -17,7 +17,7 @@
         <?php } ?>
     </ul>
     <?php if($categories || isset($category_parent)) : ?>
-    <div class="subcat-list">
+    <div class="subcat-list hidden-xs">
         <ul class="bxslider list-unstyled">
             <?php
             $catCount = 0;

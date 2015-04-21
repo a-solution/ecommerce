@@ -16,8 +16,8 @@
         <?php foreach ($categories as $category) { ?>    
         <div id="tab<?php echo $category['category_id'];?>">
             <?php if($category['type'] == 'Carousel'): ?>
-            <div class="carousel-bestseller-tab flexslider crs-product carousel">                
-                <ul class="slides product-layout">
+            <div class="carousel-bestseller-tab-<?php echo $category['category_id'];?>">                
+                <ul class="bxslider list-unstyled">
                     <?php foreach ($category['products'] as $product) { ?>        
                         <li class="product-thumb">
                             <div class="image">
@@ -58,13 +58,12 @@
                                 </p>
                                 <?php } ?>
                             </div>
-                        </li>        
-                    <?php } ?>
+                        </li>
+                    <?php } ?>                    
                 </ul>
-            </div>
-            
-            <?php else: ?>
-            
+                <div class="clearfix"></div>
+            </div>            
+            <?php else: ?>            
             <div class="row product-layout">
                 <?php foreach ($category['products'] as $product) { ?>
                 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
@@ -116,26 +115,16 @@
         <?php }  ?>
     </div>   
 </div>
-<script type="text/javascript">
-    $('.carousel-bestseller-tab').flexslider({
-    animation: 'slide',
-    animationLoop: true,
-    itemMargin: 1,
-    itemWidth: 178,
-    slideshow: false,
-    mousewheel: true
-});
-</script>
 <?php else: ?>
-<?php $category = array_shift($categories); ?>
+<?php $category = array_shift($categories);?>
 <?php if($category['type'] == 'Carousel'): ?>
-<div class="carousel-bestseller flexslider crs-product carousel">
+<div class="carousel-bestseller-<?php echo $category['category_id']?>">
     <?php if($category['category_name']=='All') : ?>
     <h3 class="heading-title"><span><?php echo $heading_title; ?></span></h3>
     <?php else: ?>
     <h3 class="heading-title"><span>TOP <?php echo $category['category_name']; ?></span></h3>
     <?php endif; ?>
-    <ul class="slides product-layout">
+    <ul class="bxslider list-unstyled">
         <?php foreach ($category['products'] as $product) { ?>        
             <li class="product-thumb">
                 <div class="image">
@@ -181,17 +170,17 @@
     </ul>
 </div>
 <script type="text/javascript">
-    var width = $(window).width();
-	var itemWidth = 211;
-    if (width < 768) {
-        itemWidth = 156;
-    }
-	$('.carousel-bestseller').flexslider({
-    animation: 'slide',
-    animationLoop: true,
-    itemMargin: 32,
-    itemWidth: itemWidth
-});
+    $('.carousel-bestseller-<?php echo $category['category_id']?> .bxslider').bxSlider({
+        minSlides: 1,
+        maxSlides: 5,
+        moveSlides: 1,
+        slideWidth: 184,
+        slideMargin: 5,
+        pager: false,        
+        auto: true,
+        infiniteLoop: true,
+        stopAuto: false
+    });
 </script>
 <?php else: ?>
 
@@ -202,7 +191,7 @@
 <?php endif; ?>
 <div class="row product-layout">
     <?php foreach ($category['products'] as $product) { ?>
-    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
         <div class="product-thumb transition">
             <div class="image">
                 <a href="<?php echo $product['href']; ?>"><img src="<?php echo $product['thumb']; ?>" alt="<?php echo $product['name']; ?>" title="<?php echo $product['name']; ?>" class="img-responsive" /></a>
