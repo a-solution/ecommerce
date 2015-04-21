@@ -876,46 +876,21 @@ header .con-wishlist {
 /* product list */
 .product-thumb {
     border: 1px solid #f9f9f9;
-    border-bottom-width: 2px;    
+    border-bottom-width: 2px;
     margin-bottom: 20px;    
     transition: all linear .2s;    
     position: relative;
     background: #fff;
-    min-height: 332px;    
+/*    min-height: 332px;*/
 }
 .product-thumb:hover {
-    border-color: #999;
-/*    box-shadow: 0 0 5px #999;*/
-}
-
-.subcat-list {
-    margin-bottom: 20px;
-    border: 1px solid #eee;
-    background: #fff;
-}
-.subcat-list ul {
-    margin:  0;
-    padding: 0;
-}
-.subcat-list ul li {    
-    float: left;    
-    text-align: center;
-}
-.subcat-list ul li:last-child {
-    margin-left: 0;
-}
-.subcat-list ul li img {
-    max-width: 100%;
-}
-
-.category-info .img-thumbnail {
-    padding:0;
-    border: 0;
+/*    border-color: #999;
+    box-shadow: 0 0 5px #999;*/
 }
 .product-thumb .image {    
     position: relative;
 /*    min-height: 251px;    */
-    overflow: hidden;    
+    overflow: hidden;
 }
 .product-thumb .image a img {
     display: block;
@@ -1031,6 +1006,8 @@ header .con-wishlist {
 }
 .product-thumb .orderred, .product-thumb .viewed {
     color: #999;
+    float: right;
+    margin-left: 5px;
 }
 
 .product-list .product-thumb .button-group {
@@ -1109,7 +1086,7 @@ header .con-wishlist {
 .product-thumb .price {    
     margin: 3px 0;
     color: #cc0000;
-    font-size: 1.1em;
+    font-size: 1.3em;
 }
 .product-thumb .price-new {    
 /*    display: block;    */
@@ -1118,7 +1095,8 @@ header .con-wishlist {
     color: #999;
     font-size: .7em;
     text-decoration: line-through;
-    padding-left: 15px;
+/*    padding-left: 15px;*/
+    float: right;
 }
 .product-thumb .price-tax {
     color: #999;
@@ -1446,6 +1424,31 @@ header .con-wishlist {
     margin: 15px 0;
 }
 
+.subcat-list {
+    margin-bottom: 20px;
+    border: 1px solid #eee;
+    background: #fff;
+}
+.subcat-list ul {
+    margin:  0;
+    padding: 0;
+}
+.subcat-list ul li {    
+    float: left;    
+    text-align: center;
+}
+.subcat-list ul li:last-child {
+    margin-left: 0;
+}
+.subcat-list ul li img {
+    max-width: 100%;
+}
+
+.category-info .img-thumbnail {
+    padding:0;
+    border: 0;
+}
+
 /*Live Support*/
 .live-support {
     position: fixed;
@@ -1635,8 +1638,7 @@ table.order-total tr td.fee {
     border: 1px solid #eee;
 }
 .prd-recent .heading-title {
-    margin: 0;
-    margin-left:10px;
+    margin: 0 0 0 10px;    
     line-height: 20px;
 }
 .prd-recent .heading-title span {
@@ -1646,6 +1648,7 @@ table.order-total tr td.fee {
 }
 .prd-recent .pr-content {
     position: relative;
+    background: #fff;
 }
 .prd-recent ul {
     margin: 0;
@@ -1653,8 +1656,6 @@ table.order-total tr td.fee {
     list-style: none;
 }
 .prd-recent ul li {
-/*    width: 12.5%;    
-    margin-left: 18px;*/
     float: left;
     width: 50%;
     text-align: center;
@@ -1667,11 +1668,49 @@ table.order-total tr td.fee {
 .prd-recent ul li img{
     max-width: 100%;
 }
-.prd-recent ul li .caption {
+.prd-recent ul li .pr-caption .pr-title{
+    display: none;
     font-size: 1em;
-    font-weight: 400;
-    margin: 0;
+    font-weight: 400;    
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+}
+/*SPECIFIC FOR HOMEPAGE*/
+.common-home .prd-recent {
+    position: static;
+    left: 10px;
+    top:60px;
+    width: auto;
+    background: none;
+    border: none;
+}
+.common-home .prd-recent .heading-title {    
+    line-height: 40px;
+    margin: 20px 0 0 0;
+    padding-left: 20px;
+}
+.common-home .prd-recent .heading-title span {        
+    font-size: 14pt;
+    min-width: 213px;
+    padding: 0 15px 0 0;
+    text-transform: uppercase;
+}
+.prd-recent .pr-content {    
+    background: #ccc;
+    padding: 10px 0;
+}
+.common-home .prd-recent ul li {
+    background: #fff;
+    float: left;
+    margin-left: 16px;
+    padding: 10px 5px;
+    text-align: center;
+    width: 10.6%;
+}
+.common-home .prd-recent ul li img{
+    max-width: 100%;
+}
+.common-home .prd-recent ul li .pr-caption .pr-title {
+    display: block;
 }
