@@ -46,7 +46,8 @@
             </div>
         </li>
         <?php } ?>        
-    </ul>    
+    </ul>
+    <div class="clearfix"></div>
 </div>
 <script type="text/javascript">
     $('.carousel-suggestion .bxslider').bxSlider({
