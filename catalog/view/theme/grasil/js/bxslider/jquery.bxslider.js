@@ -67,6 +67,8 @@
 		auto: false,
 		pause: 4000,
 		autoStart: true,
+                //Fix when clicking next or previous
+                autoStop: true,
 		autoDirection: 'next',
 		autoHover: false,
 		autoDelay: 0,
@@ -1255,6 +1257,14 @@
 			// clear the interval
 			clearInterval(slider.interval);
 			slider.interval = null;
+                        
+                        //Customize to fix auto stop when clicking next or previous button
+                        if( slider.settings.stopAuto == false ){
+                            setTimeout(function(){
+                                el.startAuto();
+                            }, slider.settings.pause);
+                        }
+                        
 			// if auto controls are displayed and preventControlUpdate is not true
 			if (slider.settings.autoControls && preventControlUpdate != true) updateAutoControls('start');
 		}
