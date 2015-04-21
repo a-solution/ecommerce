@@ -54,12 +54,12 @@
         minSlides: 2,
         maxSlides: 6,
         moveSlides: 1,
-        slideWidth: 188,
+        slideWidth: 186,
         slideMargin: 0,
         pager: false,        
         auto: true,
-        infiniteLoop: false,
-        autoHover: true
+        infiniteLoop: true,
+        stopAuto: false
     });
 </script>
 <?php endif; ?>

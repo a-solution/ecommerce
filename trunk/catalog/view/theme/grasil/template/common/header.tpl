@@ -64,7 +64,7 @@
         <?php } ?>
                 
         <!-- bxSlider Javascript file -->
-        <script src="catalog/view/theme/grasil/js/bxslider/jquery.bxslider.min.js"></script>
+        <script src="catalog/view/theme/grasil/js/bxslider/jquery.bxslider.js"></script>
         <!-- bxSlider CSS file -->
         <link href="catalog/view/theme/grasil/js/bxslider/jquery.bxslider.css" rel="stylesheet" />
         
