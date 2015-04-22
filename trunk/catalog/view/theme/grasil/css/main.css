@@ -216,7 +216,7 @@ footer .footer-link .sic a {
     height: 32px;
     float: left;
     margin-left: 10px;
-    background: url("../image/sic.png") no-repeat left top;
+    background: url("../images/sic.png") no-repeat left top;
     opacity: 1;
 }
 footer .footer-link .sic a:hover {
@@ -239,14 +239,14 @@ footer .footer-link .sic a.yt {
 }
 footer .footer-link .bank{
     height:87px;
-    background: url("../image/bank.png") no-repeat left top;
+    background: url("../images/bank.png") no-repeat left top;
 }
 footer .powered {
     font-size: 0.9em;
     margin-bottom: 50px;
 }
 footer .powered .logo {
-    background: url("../image/logo.png") no-repeat left center;
+    background: url("../images/logo.png") no-repeat left center;
     display: inline-block;
     height: 70px;
     width: 167px;
@@ -425,13 +425,13 @@ footer .powered .logo {
     padding-left: 30px;
 }
 #topnav .top-ship {
-    background: url("../image/ship.png") no-repeat left center;    
+    background: url("../images/ship.png") no-repeat left center;    
 }
 #topnav .top-money {
-    background: url("../image/money.png") no-repeat left center;    
+    background: url("../images/money.png") no-repeat left center;    
 }
 #topnav .top-hotline {
-    background: url("../image/hotline.png") no-repeat left center;    
+    background: url("../images/hotline.png") no-repeat left center;    
 }
 
 #topnav .myaccount .dropdown > a {
@@ -469,7 +469,7 @@ header {
     min-height: 70px;    
 }
 header .logo {
-    background: url("../image/logo.png") no-repeat left center;
+    background: url("../images/logo.png") no-repeat left center;
     display: block;
     width: 167px;
     height: 70px;
@@ -500,17 +500,17 @@ header .con-wishlist {
 #cart .mycart .mybag {
     width: 24px;
     height: 70px;
-    background: url("../image/mybag.png") no-repeat center 12px;    
+    background: url("../images/mybag.png") no-repeat center 12px;    
     text-align: center;
     color: #fff; 
     font-weight: bold;
     margin-left: 5px;
 }
 #cart .mycart .mybag.spin {
-    background: url("../image/loading.gif") no-repeat center center;    
+    background: url("../images/loading.gif") no-repeat center center;    
 }
 .spin {
-    background: url("../image/loading.gif") no-repeat center center;
+    background: url("../images/loading.gif") no-repeat center center;
     width:20px;
     height:20px;
     display: inline-block;
@@ -521,7 +521,7 @@ header .con-wishlist {
     color: #fff;
 }
 #cart.open > .mycart .mybag {
-    background: url("../image/mybag-w.png") no-repeat center 12px;
+    background: url("../images/mybag-w.png") no-repeat center 12px;
     color: #313131;
 }
 #cart .dropdown-menu {
@@ -710,32 +710,15 @@ header .con-wishlist {
 .result-filter .btn {
     margin-right: 10px;
 }
-/*aisde*/
-.intro .banner {
-    padding-right:0;
-}
-.intro .flexslider {
-    margin-right: 15px !important;
-    border: 0 !important;
-}
-.intro .aside {
-    padding-left: 0;
-}
-.intro .aside ul {
-    margin: 0;
-}
-.intro .aside li:first-child {
-    margin-top: 0px;
-}
-.intro .aside li {
-    margin-top: 16px;
-}
+
+/**/
 
 /* FOR CAROUSEL COMMON*/
 .carousel {
     background: #fff;
     border: 1px solid #eee;
     padding: 10px 0;
+    margin-top: 15px;
 }
 .carousel .name {
     padding: 0 10px 10px;
@@ -994,7 +977,7 @@ li.product-thumb {
     display: block;
     width:50px;
     height:51px;
-    background: url("../image/saleoff.png") no-repeat left top;
+    background: url("../images/saleoff.png") no-repeat left top;
     color: #fff;
     font-size: 14px;
     padding-top:20px;
@@ -1008,7 +991,7 @@ li.product-thumb {
     border-bottom: 1px dashed #ddd;
     margin: 20px 0;
     line-height: 40px;
-    background: url("../image/cart.png") no-repeat left center;
+    background: url("../images/cart.png") no-repeat left center;
     padding-left: 20px;
 }
 .heading-title span {
@@ -1018,6 +1001,14 @@ li.product-thumb {
     color: #313131;
     text-transform: uppercase;
     font-size: 14pt;
+}
+.heading-title .goto {
+    float: right;
+}
+.heading-title .goto span{
+    min-width: 0;
+    padding-right: 0;
+    padding-left: 20px;
 }
 
 /* breadcrumb */
@@ -1260,6 +1251,19 @@ li.product-thumb {
     top: 190px;    
 }
 
+/*STYLE FOR BANNER*/
+/*Top Banner*/
+.banner {
+    
+}
+.banner ul {
+    margin-bottom: 0;
+    padding: 0;
+    list-style: none;
+}
+.banner ul li {
+    float: left;
+}
 /*Banner Left*/
 #column-left .banner {
 /*    border: 1px solid #ddd;*/
@@ -1589,10 +1593,10 @@ table.order-total tr td.fee {
 .common-home .prd-recent ul li {
     background: #fff;
     float: left;
-    margin-left: 16px;
+    margin-left: 15px;
     padding: 10px 5px;
     text-align: center;
-    width: 10.6%;
+    width: 11%;
 }
 .common-home .prd-recent ul li img{
     max-width: 100%;

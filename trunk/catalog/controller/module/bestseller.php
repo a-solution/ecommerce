@@ -108,6 +108,7 @@ class ControllerModuleBestSeller extends Controller {
                 else{
                     $data['categories'][$theProduct['category_id']]['category_name'] = $theProduct['category_name'];
                     $data['categories'][$theProduct['category_id']]['category_id'] = $theProduct['category_id'];
+                    $data['categories'][$theProduct['category_id']]['category_link'] = $this->url->link('product/category','path='.$theProduct['category_id']);
                     $data['categories'][$theProduct['category_id']]['type'] = isset($setting['type'])?$setting['type']:'Normal';
                     array_push($data['categories'][$theProduct['category_id']]['products'], $theProduct);
                 }                

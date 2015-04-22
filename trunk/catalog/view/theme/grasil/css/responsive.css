@@ -1,7 +1,4 @@
-@media (min-width: 970px) {
-    .container {
-        width: 970px;
-    }
+@media (min-width: 970px) {    
     #menu .open > .dropdown-menu {
         display: none;    
     }
