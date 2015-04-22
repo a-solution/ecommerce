@@ -3,6 +3,18 @@
 class ControllerCommonHeader extends Controller {
 
     public function index() {
+//        include $_SERVER['DOCUMENT_ROOT'].'/Mobile_Detect.php';
+//        $detect = new Mobile_Detect();
+//
+//        if ($detect->isMobile() && !$detect->isTablet() && $this->config->get('config_store_id')!=1){
+//                if (isset($this->request->server['HTTPS'])) {
+//                        $mobile_redirect = 'https://m.asaca.vn';
+//                } else {
+//                        $mobile_redirect = 'http://m.asaca.vn';
+//                }
+//                if ($_SERVER['REQUEST_URI']) $mobile_redirect .= html_entity_decode($_SERVER['REQUEST_URI']);
+//                header('Location: '.$mobile_redirect);
+//        }
         $data['title'] = $this->document->getTitle() . ' | ' . $this->config->get('config_name');
 
         if ($this->request->server['HTTPS']) {

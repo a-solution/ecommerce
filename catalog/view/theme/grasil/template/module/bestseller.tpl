@@ -168,6 +168,7 @@
             </li>        
         <?php } ?>
     </ul>
+    <div class="clearfix"></div>
 </div>
 <script type="text/javascript">
     $('.carousel-bestseller-<?php echo $category['category_id']?> .bxslider').bxSlider({
