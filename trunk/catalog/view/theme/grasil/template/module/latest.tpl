@@ -45,6 +45,7 @@
         </li>        
         <?php } ?>
     </ul>
+    <div class="clearfix"></div>
 </div>
 <script type="text/javascript">
     $('.carousel-latest .bxslider').bxSlider({

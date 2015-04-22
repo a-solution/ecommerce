@@ -1,7 +1,7 @@
 <?php if($type=='Carousel'): ?>
-<div class="carousel-features flexslider crs-product carousel">
+<div class="carousel-features">
     <h3 class="heading-title"><span><?php echo $heading_title; ?></span></h3>    
-    <ul class="slides product-layout">
+    <ul class="bxslider list-unstyled">
         <?php foreach ($products as $product) { ?>        
             <li class="product-thumb">
                 <div class="image">
@@ -45,21 +45,20 @@
             </li>        
         <?php } ?>
     </ul>
+    <div class="clearfix"></div>
 </div>
 <script type="text/javascript">
-	var width = $(window).width();
-	var itemWidth = 211;
-    if (width < 768) {
-        itemWidth = 156;
-    }
-    $('.carousel-features').flexslider({
-		animation: 'slide',
-		animationLoop: true,
-		itemMargin: 32,
-		itemWidth: itemWidth,
-		slideshowSpeed: 12000,
-		animationSpeed: 600,
-	});
+    $('.carousel-features .bxslider').bxSlider({
+        minSlides: 1,
+        maxSlides: 5,
+        moveSlides: 1,
+        slideWidth: 184,
+        slideMargin: 5,
+        pager: false,        
+        auto: true,
+        infiniteLoop: true,
+        stopAuto: false
+    });
 </script>
 <?php else: ?>
 <h3 class="heading-title"><span><?php echo $heading_title; ?></span></h3>
