@@ -50,9 +50,9 @@
 <script type="text/javascript">
     $('.carousel-latest .bxslider').bxSlider({
         minSlides: 1,
-        maxSlides: 5,
+        maxSlides: 6,
         moveSlides: 1,
-        slideWidth: 184,
+        slideWidth: 186,
         slideMargin: 5,
         pager: false,        
         auto: true,

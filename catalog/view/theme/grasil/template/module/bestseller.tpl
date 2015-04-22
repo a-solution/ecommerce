@@ -1,11 +1,11 @@
 <?php if(count($categories) > 1) : ?>
-<script src="catalog/view/theme/grasil/js/basicTabs.js" type="text/javascript"></script>
-<link href="catalog/view/theme/grasil/stylesheet/tabs.css" rel="stylesheet">
-<title>Basic jQuery Tabs</title>
+<script src="catalog/view/theme/grasil/js/tabs/tabs.js" type="text/javascript"></script>
+<link href="catalog/view/theme/grasil/js/tabs/style.css" rel="stylesheet">
 <script type="text/javascript">
     $(document).ready(function(){
-    $('#tabwrap').basicTabs();
-            });</script>
+        $('#tabwrap').basicTabs();
+    });
+</script>
 <div id="tabwrap" class="hidden-xs">    
     <ul class="tabs">        
         <?php foreach ($categories as $category) { ?>    
@@ -122,7 +122,14 @@
     <?php if($category['category_name']=='All') : ?>
     <h3 class="heading-title"><span><?php echo $heading_title; ?></span></h3>
     <?php else: ?>
-    <h3 class="heading-title"><span>TOP <?php echo $category['category_name']; ?></span></h3>
+    <h3 class="heading-title"><span>TOP <?php echo $category['category_name']; ?></span>
+        <div class="goto hidden-xs">
+            <span><a href="<?php echo $category['category_link']?>?sort=purchased&order=desc">Bán chạy</a></span>
+            <span><a href="<?php echo $category['category_link']?>?sort=p.price&order=asc">Giá tốt</a></span>
+            <span><a href="<?php echo $category['category_link']?>?sort=p.viewed&order=desc">Xem nhiều nhất</a></span>
+            <span><a href="<?php echo $category['category_link']?>">Mới</a></span>
+        </div>
+    </h3>
     <?php endif; ?>
     <ul class="bxslider list-unstyled">
         <?php foreach ($category['products'] as $product) { ?>        
@@ -173,9 +180,9 @@
 <script type="text/javascript">
     $('.carousel-bestseller-<?php echo $category['category_id']?> .bxslider').bxSlider({
         minSlides: 1,
-        maxSlides: 5,
+        maxSlides: 6,
         moveSlides: 1,
-        slideWidth: 184,
+        slideWidth: 186,
         slideMargin: 5,
         pager: false,        
         auto: true,

@@ -43,16 +43,16 @@
         <link href="<?php echo $link['href']; ?>" rel="<?php echo $link['rel']; ?>" />
         <?php } ?>
         
-        <link rel="apple-touch-icon-precomposed" href="<?php echo $base; ?>catalog/view/theme/grasil/image/apple-touch-icon-precomposed.png">
-        <link rel="apple-touch-icon" href="<?php echo $base; ?>catalog/view/theme/grasil/image/apple-touch-icon.png">
+        <link rel="apple-touch-icon-precomposed" href="<?php echo $base; ?>catalog/view/theme/grasil/images/apple-touch-icon-precomposed.png">
+        <link rel="apple-touch-icon" href="<?php echo $base; ?>catalog/view/theme/grasil/images/apple-touch-icon.png">
         
         <script src="catalog/view/javascript/jquery/jquery-2.1.1.min.js" type="text/javascript"></script>
         <link href="catalog/view/javascript/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen" />                    
         <script src="catalog/view/javascript/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
         <link href="catalog/view/javascript/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />        
-        <link href="catalog/view/theme/grasil/stylesheet/stylesheet.css" rel="stylesheet">
-        <link href="catalog/view/theme/grasil/stylesheet/animation.css" rel="stylesheet">        
-        <link href="catalog/view/theme/grasil/stylesheet/responsive.css" rel="stylesheet">
+        <link href="catalog/view/theme/grasil/css/main.css" rel="stylesheet">
+        <link href="catalog/view/theme/grasil/css/animation.css" rel="stylesheet">        
+        <link href="catalog/view/theme/grasil/css/responsive.css" rel="stylesheet">
         <?php foreach ($styles as $style) { ?>
         <link href="<?php echo $style['href']; ?>" type="text/css" rel="<?php echo $style['rel']; ?>" media="<?php echo $style['media']; ?>" />
         <?php } ?>

@@ -316,7 +316,7 @@ var _asaca = {
         {
             oheight = $(obj).height();
             div = '<div id="wa-mask" class="wa-mask" style="height:'+oheight+'px"></div>';
-            div+= '<img id="wa-loading" class="wa-loading" src="'+BASE_URL+'/catalog/view/theme/grasil/image/loading64.gif" />';                        
+            div+= '<img id="wa-loading" class="wa-loading" src="'+BASE_URL+'/catalog/view/theme/grasil/images/loading64.gif" />';                        
             $(div).appendTo($(obj));
         }        
     },
@@ -327,7 +327,7 @@ var _asaca = {
             oh = $(document).height();
             var top = $(document).scrollTop() + $(window).height()/2;            
             div = '<div id="wa-mask" class="wa-mask" style="height:'+oh+'px"></div>';            
-            div+= '<img id="wa-loading" class="wa-loading" style="top:'+top+'px" src="'+BASE_URL+'/catalog/view/theme/grasil/image/loading64.gif" />';                        
+            div+= '<img id="wa-loading" class="wa-loading" style="top:'+top+'px" src="'+BASE_URL+'/catalog/view/theme/grasil/images/loading64.gif" />';                        
             $(div).appendTo($('html body'));            
         }        
     },
