@@ -123,10 +123,16 @@
     height: 32px;
     text-indent: -9999px;
     z-index: 1;
-    opacity: 0;
+    opacity: 0;    
+}
+@media (max-width: 767px) {
+    .bx-wrapper .bx-controls-direction a {
+        display: none;
+    }
 }
 .bx-wrapper .bx-controls-direction a:hover {
     opacity: 1;
+    transition: none;
 }
 .bx-wrapper .bx-controls-direction a.disabled {
     display: none;
@@ -135,10 +141,16 @@
     opacity: 1;
 }
 .bx-wrapper:hover a.bx-prev {
-    left: -18px;    
+    left: 0px;    
 }
 .bx-wrapper:hover a.bx-next {
-    right: -18px;
+    right: 0px;
+}
+.bx-wrapper .bx-prev:hover {    
+    background: url(images/controls.png) no-repeat 0 0;
+}
+.bx-wrapper .bx-next:hover {
+    background: url(images/controls.png) no-repeat -43px 0;
 }
 
 /* AUTO CONTROLS (START / STOP) */
