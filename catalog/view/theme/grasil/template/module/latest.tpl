@@ -49,15 +49,13 @@
 </div>
 <script type="text/javascript">
     $('.carousel-latest .bxslider').bxSlider({
-        minSlides: 1,
-        maxSlides: 6,
-        moveSlides: 1,
-        slideWidth: 186,
-        slideMargin: 5,
-        pager: false,        
-        auto: true,
-        infiniteLoop: true,
-        stopAuto: false
+        minSlides: 2,
+        maxSlides: 6,        
+        slideWidth: 185,
+        slideMargin: 6,
+        pager: false,
+        auto: true,        
+        stopAuto: false    
     });
 </script>
 <?php else: ?>

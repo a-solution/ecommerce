@@ -15,12 +15,10 @@
     $($list.find("li:nth-child(" + settings.starting_tab + ")").find('a').attr('href') +' .bxslider').bxSlider({
         minSlides: 1,
         maxSlides: 5,
-        moveSlides: 1,
         slideWidth: 175,
         slideMargin: 5,
         pager: false,        
         auto: false,
-        infiniteLoop: true,
         stopAuto: false
     });
 
@@ -33,12 +31,10 @@
         $(currentTab + ' .bxslider').bxSlider({
             minSlides: 1,
             maxSlides: 5,
-            moveSlides: 1,
             slideWidth: 175,
             slideMargin: 5,
             pager: false,        
-            auto: true,
-            infiniteLoop: true,
+            auto: false,
             stopAuto: false
         });
         
