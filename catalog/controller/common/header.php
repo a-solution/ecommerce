@@ -62,8 +62,10 @@ class ControllerCommonHeader extends Controller {
         $this->load->language('common/header');
 
         $data['text_home'] = $this->language->get('text_home');
-        $data['text_wishlist'] = sprintf($this->language->get('text_wishlist'), (isset($this->session->data['wishlist']) ? count($this->session->data['wishlist']) : 0));
+        $data['text_wishlist'] = $this->language->get('text_wishlist');
+        $data['text_wishlist_items'] = isset($this->session->data['wishlist']) ? count($this->session->data['wishlist']) : 0;
         $data['text_shopping_cart'] = $this->language->get('text_shopping_cart');
+        $data['text_tip'] = $this->language->get('text_tip');
         $data['text_logged'] = sprintf($this->language->get('text_logged'), $this->url->link('account/account', '', 'SSL'), $this->customer->getFirstName(), $this->url->link('account/logout', '', 'SSL'));
         
         $data['customer_name'] = $this->customer->isLogged() ? $this->customer->getFirstName():$this->language->get('text_account');
@@ -208,6 +210,8 @@ class ControllerCommonHeader extends Controller {
         } else {
             $data['class'] = 'common-home';
         }
+        
+        $data['text_cart_items'] = $this->cart->countProducts();
 
         if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/common/header.tpl')) {
             return $this->load->view($this->config->get('config_template') . '/template/common/header.tpl', $data);

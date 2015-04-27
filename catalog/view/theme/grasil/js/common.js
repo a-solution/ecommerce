@@ -25,10 +25,9 @@ var cart = {
                     }
                     else
                     {
-                        $('#content').parent().before('<div class="alert alert-success"><i class="fa fa-check-circle"></i> ' + json['success'] + '<button type="button" class="close" data-dismiss="alert">&times;</button></div>');
-                        $('#cart .mybag').html(json['count']);
-                        $('html, body').animate({scrollTop: 0}, 'slow');
-                        $("#cart > ul").load('index.php?route=common/cart/info ul li');
+                        $('#content').parent().before('<div class="alert alert-success"><i class="fa fa-check-circle"></i> ' + json['success'] + '<button type="button" class="close" data-dismiss="alert">&times;</button></div>');                        
+                        $('html, body').animate({scrollTop: 0}, 'slow');                        
+                        cart.load(json['count']);
                     }
                 }
                 _asaca.reset();
@@ -42,17 +41,13 @@ var cart = {
             data: 'key=' + key + '&quantity=' + (typeof (quantity) != 'undefined' ? quantity : 1),
             dataType: 'json',
             beforeSend: function () {
-                $('#cart .mybag').addClass('spin');
+                
             },
-            success: function (json) {
-                $('#cart .mybag').removeClass('spin');
-
-                $('#cart .mybag').html(json['count']);
-
+            success: function (json) {                
                 if (getURLVar('route') == 'checkout/cart' || getURLVar('route') == 'checkout/checkout') {
                     location = 'index.php?route=checkout/cart';
                 } else {
-                    $('#cart > ul').load('index.php?route=common/cart/info ul li');
+                    cart.load(json['count']);
                 }
             }
         });
@@ -64,17 +59,15 @@ var cart = {
             data: 'key=' + key,
             dataType: 'json',
             beforeSend: function () {
-                $('#cart .mybag').addClass('spin');
+                
             },
-            success: function (json) {
-                $('#cart .mybag').removeClass('spin');
-                $('#cart .mybag').html(json['count']);
+            success: function (json) {                          
                 $(".alert").remove();
 
                 if (getURLVar('route') == 'checkout/cart' || getURLVar('route') == 'checkout/checkout') {
                     location = 'index.php?route=checkout/cart';
                 } else {
-                    $('#cart > ul').load('index.php?route=common/cart/info ul li');
+                    cart.load(json['count']);
                 }
             }
         });
@@ -153,23 +146,94 @@ var cart = {
         else {
             _asaca.modalAjax('index.php?route=checkout/login', 'Đăng nhập để mua hàng');
         }
+    },
+    load: function(count) {
+        $.ajax({
+            url: 'index.php?route=common/cart/info',            
+            dataType: 'html',
+            beforeSend: function () {
+                $('#mycart .bag').removeClass('zoomIn animated');
+            },
+            success: function (data) {                
+                $('#mycart .bag').html(count);
+                $('#mycart .bag').addClass('zoomIn animated');
+                $("#mini-cart").html(data);                
+            }
+        });        
     }
 };
 
 function addToCartCallback(json) {
-    $('.breadcrumb').after('<div class="alert alert-success">' + json['success'] + '<button type="button" class="close" data-dismiss="alert">&times;</button></div>');
-    $('.mybag').html(json['count']);
+    $('.breadcrumb').after('<div class="alert alert-success">' + json['success'] + '<button type="button" class="close" data-dismiss="alert">&times;</button></div>');    
     $('html, body').animate({ scrollTop: 0 }, 'slow');
-    $('#cart > ul').load('index.php?route=common/cart/info ul li');
+    cart.load(json['count']);
 }
 function paymentCartCallback(json) {
     cart.checkout(json);    
     setTimeout( function() {
         $('#modal-body').prepend('<div class="alert alert-success"><i class="fa fa-check-circle"></i> ' + json['success'] + '<button type="button" class="close" data-dismiss="alert">&times;</button></div>');
-    }, 500);    
-    $('.mybag').html(json['count']);    
-    $('#cart > ul').load('index.php?route=common/cart/info ul li');    
+    }, 500);
+    cart.load(json['count']);
 }
+
+var voucher = {
+    'add': function () {
+
+    },
+    'remove': function (key) {
+        $.ajax({
+            url: 'index.php?route=checkout/cart/remove',
+            type: 'post',
+            data: 'key=' + key,
+            dataType: 'json',
+            beforeSend: function () {
+                $('#cart > button').button('loading');
+            },
+            complete: function () {
+                $('#cart > button').button('reset');
+            },
+            success: function (json) {
+                $('#cart-total').html(json['total']);
+
+                if (getURLVar('route') == 'checkout/cart' || getURLVar('route') == 'checkout/checkout') {
+                    location = 'index.php?route=checkout/cart';
+                } else {
+                    $('#cart > ul').load('index.php?route=common/cart/info ul li');
+                }
+            }
+        });
+    }
+}
+
+var wishlist = {
+    'add': function (product_id) {
+        $.ajax({
+            url: 'index.php?route=account/wishlist/add',
+            type: 'post',
+            data: 'product_id=' + product_id,
+            dataType: 'json',
+            success: function (json) {
+                $('.alert').remove();
+
+                if (json['success']) {
+                    $('#content').parent().before('<div class="alert alert-success"><i class="fa fa-check-circle"></i> ' + json['success'] + '<button type="button" class="close" data-dismiss="alert">&times;</button></div>');
+                }
+
+                if (json['info']) {
+                    $('#content').parent().before('<div class="alert alert-info"><i class="fa fa-info-circle"></i> ' + json['info'] + '<button type="button" class="close" data-dismiss="alert">&times;</button></div>');
+                }
+
+                $('#wishlist-total').html(json['total']);
+
+                $('html, body').animate({scrollTop: 0}, 'slow');
+            }
+        });
+    },
+    'remove': function () {
+
+    }
+}
+//------------------------------------------------
 
 var sort = {
     'setType': function(obj) {

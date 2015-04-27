@@ -58,7 +58,7 @@
                                             cursor: 'pointer',
                                             galleryActiveClass: 'active',
                                             imageCrossfade: true,
-                                            loadingIcon: 'catalog/view/theme/grasil/image/loading.gif',
+                                            loadingIcon: 'catalog/view/theme/grasil/images/loading64.gif',
                                             zoomType: 'window',
                                             zoomWindowHeight: 417,
                                             zoomWindowOffetx: 8,

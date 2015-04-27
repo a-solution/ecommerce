@@ -66,7 +66,7 @@
             <?php else: ?>            
             <div class="row product-layout">
                 <?php foreach ($category['products'] as $product) { ?>
-                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                <div class="col-lg-2 col-md-2 col-sm-6 col-xs-6">
                     <div class="product-thumb transition">
                         <div class="image">
                             <a href="<?php echo $product['href']; ?>"><img src="<?php echo $product['thumb']; ?>" alt="<?php echo $product['name']; ?>" title="<?php echo $product['name']; ?>" class="img-responsive" /></a>
@@ -197,7 +197,7 @@
 <?php endif; ?>
 <div class="row product-layout">
     <?php foreach ($category['products'] as $product) { ?>
-    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+    <div class="col-lg-2 col-md-2 col-sm-6 col-xs-6">
         <div class="product-thumb transition">
             <div class="image">
                 <a href="<?php echo $product['href']; ?>"><img src="<?php echo $product['thumb']; ?>" alt="<?php echo $product['name']; ?>" title="<?php echo $product['name']; ?>" class="img-responsive" /></a>

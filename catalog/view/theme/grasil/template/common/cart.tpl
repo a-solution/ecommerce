@@ -1,66 +1,54 @@
-<div id="cart">    
-    <div data-toggle="dropdown" data-loading-text="<?php echo $text_loading; ?>" class="mycart">
-        <span class="mylabel hidden-sm"><?php echo $text_mycart; ?></span>
-        <span class="mybag"><?php echo $text_number_of_items; ?></span>            
-    </div>    
-    <ul class="dropdown-menu pull-right" id="mini-cart">
-        <?php if ($products || $vouchers) { ?>
-        <li>
-            <table class="table table-striped">
-                <?php foreach ($products as $product) { ?>
-                <tr>
-                    <td class="text-center"><?php if ($product['thumb']) { ?>
-                        <a href="<?php echo $product['href']; ?>"><img src="<?php echo $product['thumb']; ?>" alt="<?php echo $product['name']; ?>" title="<?php echo $product['name']; ?>" class="img-thumbnail" /></a>
-                        <?php } ?></td>
-                    <td class="text-left"><a href="<?php echo $product['href']; ?>"><?php echo $product['name']; ?></a>
-                        <?php if ($product['option']) { ?>
-                        <?php foreach ($product['option'] as $option) { ?>
-                        <br />
-                        - <small><?php echo $option['name']; ?> <?php echo $option['value']; ?></small>
-                        <?php } ?>
-                        <?php } ?>
-                        <?php if ($product['recurring']) { ?>
-                        <br />
-                        - <small><?php echo $text_recurring; ?> <?php echo $product['recurring']; ?></small>
-                        <?php } ?></td>
-                    <td class="text-right" style="width: 60px">x <?php echo $product['quantity']; ?></td>
-                    <td class="text-right" style="width: 100px"><?php echo $product['total']; ?></td>
-                    <td class="text-center">
-                        <i class="fa fa-times-circle" onclick="cart.remove('<?php echo $product['key']; ?>');" title="<?php echo $button_remove; ?>"></i>
-                    </td>
-                </tr>
+<?php if ($products || $vouchers) { ?>        
+    <table>
+        <?php foreach ($products as $product) { ?>
+        <tr>
+            <td class="text-center"><?php if ($product['thumb']) { ?>
+                <a href="<?php echo $product['href']; ?>"><img src="<?php echo $product['thumb']; ?>" alt="<?php echo $product['name']; ?>" title="<?php echo $product['name']; ?>" class="img-thumbnail" /></a>
+                <?php } ?></td>
+            <td class="text-left"><a href="<?php echo $product['href']; ?>"><?php echo $product['name']; ?></a>
+                <?php if ($product['option']) { ?>
+                <?php foreach ($product['option'] as $option) { ?>
+                <br />
+                - <small><?php echo $option['name']; ?> <?php echo $option['value']; ?></small>
                 <?php } ?>
-                <?php foreach ($vouchers as $voucher) { ?>
-                <tr>
-                    <td class="text-center"></td>
-                    <td class="text-left"><?php echo $voucher['description']; ?></td>
-                    <td class="text-right">x&nbsp;1</td>
-                    <td class="text-right"><?php echo $voucher['amount']; ?></td>
-                    <td class="text-center text-danger"><button type="button" onclick="voucher.remove('<?php echo $voucher['key']; ?>');" title="<?php echo $button_remove; ?>" class="btn btn-danger btn-xs"><i class="fa fa-times"></i></button></td>
-                </tr>
                 <?php } ?>
-            </table>
-        </li>
-        <li>
-            <table class="table table-bordered order-total">
-                <?php foreach ($totals as $total) { ?>
-                <tr>
-                    <td class="method"><?php echo $total['title']; ?>:</td>                    
-                    <td class="total <?php echo $total['class']; ?>">
-                        <span><?php echo ($total['text']=='0đ')?"Miễn phí":$total['text']; ?></span>                        
-                    </td>
-                </tr>
-                <?php } ?>
-            </table>
-            <div class="text-right">
-                <a href="<?php echo $cart; ?>" class="viewcart"><strong><i class="fa fa-shopping-cart"></i> <?php echo $text_cart; ?></strong></a>                
-                <a href="javascript:void(0);" action="<?php echo $checkout; ?>" class="checkout button-checkout"><strong><i class="fa fa-share"></i> <?php echo $text_checkout; ?></strong></a>
-            </div>
-        </li>
-        <?php } else { ?>
-        <li>
-            <p class="text-center"><?php echo $text_empty; ?></p>
-        </li>
+                <?php if ($product['recurring']) { ?>
+                <br />
+                - <small><?php echo $text_recurring; ?> <?php echo $product['recurring']; ?></small>
+                <?php } ?></td>
+            <td class="text-right" style="width: 60px">x <?php echo $product['quantity']; ?></td>
+            <td class="text-right" style="width: 100px"><?php echo $product['total']; ?></td>
+            <td class="text-center">
+                <i class="fa fa-times-circle" onclick="cart.remove('<?php echo $product['key']; ?>');" title="<?php echo $button_remove; ?>"></i>
+            </td>
+        </tr>
         <?php } ?>
-    </ul>
-</div>
+        <?php foreach ($vouchers as $voucher) { ?>
+        <tr>
+            <td class="text-center"></td>
+            <td class="text-left"><?php echo $voucher['description']; ?></td>
+            <td class="text-right">x&nbsp;1</td>
+            <td class="text-right"><?php echo $voucher['amount']; ?></td>
+            <td class="text-center text-danger"><button type="button" onclick="voucher.remove('<?php echo $voucher['key']; ?>');" title="<?php echo $button_remove; ?>" class="btn btn-danger btn-xs"><i class="fa fa-times"></i></button></td>
+        </tr>
+        <?php } ?>
+    </table>                
+    <table class="order-total">
+        <?php foreach ($totals as $total) { ?>
+        <tr>
+            <td class="method"><?php echo $total['title']; ?>:</td>                    
+            <td class="total <?php echo $total['class']; ?>">
+                <span><?php echo ($total['text']=='0đ')?"Miễn phí":$total['text']; ?></span>                        
+            </td>
+        </tr>
+        <?php } ?>
+    </table>
+    <table class="c-cart-btn">
+        <tr>
+            <td><a href="<?php echo $cart; ?>" class="viewcart"><strong><i class="fa fa-shopping-cart"></i> <?php echo $text_cart; ?></strong></a></td>
+            <td><a href="javascript:void(0);" action="<?php echo $checkout; ?>" class="checkout button-checkout"><strong><i class="fa fa-share"></i> <?php echo $text_checkout; ?></strong></a></td>
+        </tr>
+    </table>        
+<?php } else { ?>
+<p class="text-center"><?php echo $text_empty; ?></p>
+<?php } ?>
