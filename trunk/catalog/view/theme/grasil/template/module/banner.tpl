@@ -1,4 +1,4 @@
-<div id="banner<?php echo $module; ?>" class="banner hidden-xs">
+<div id="banner<?php echo $module; ?>" class="banner">
     <ul class="">
         <?php foreach ($banners as $banner) { ?>
         <li>

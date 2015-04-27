@@ -17,7 +17,7 @@
         <?php } ?>
     </ul>
     <?php if($categories || isset($category_parent)) : ?>
-    <div class="subcat-list hidden-xs">
+    <!--div class="subcat-list hidden-xs">
         <ul class="bxslider list-unstyled">
             <?php
             $catCount = 0;
@@ -69,7 +69,7 @@
                 hideControlOnEnd: true
             });
         </script>
-    </div>
+    </div-->
     <?php endif; ?>
     
     <div class="row category-info"><?php echo $column_left; ?>
@@ -86,28 +86,27 @@
                 <div class="col-sm-12"><img src="<?php echo $thumb; ?>" alt="<?php echo $heading_title; ?>" title="<?php echo $heading_title; ?>" class="img-thumbnail" /></div>
             </div-->
             <?php } ?>
-            <div class="row cat-heading">
+            <div class="row">
                 <div class="col-sm-12 col-xs-12">
-                    <h2 data-toggle="dropdown"><?php echo $heading_title; ?></h2>                    
+                    <div class="cat-heading">
+                        <h2><?php echo $heading_title; ?></h2>
+                        <div class="filter" style="float: right">
+                            <div class="select-filter visible-xs">Sắp xếp</div>
+                            <div class="btn-group hidden-xs">
+                                <?php                            
+                                    foreach($newsorts as $newsorts)
+                                    {
+                                        echo '<button type="button" id="order-'.$newsorts['value'].'" class="btn '.($newsorts['value']==strtolower($sort.'-'.$order)?' sort-active':'').'" href="'.$newsorts['href'].'" onclick="sort.setType(this)">'.$newsorts['text']. ' ' .$newsorts['icon'].' </button>';
+                                    }
+                                ?>                                
+                                <button type="button" class="btn" id="compare-total" onclick="location='<?php echo $compare;?>'"><?php echo $text_compare; ?></button>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
                 </div>                
             </div>
-            <?php if ($products) { ?>
-            <div class="row filter">
-                <div class="col-sm-12">
-                    <div class="btn-group">
-                        <?php                            
-                            foreach($newsorts as $newsorts)
-                            {
-                                echo '<button type="button" id="order-'.$newsorts['value'].'" class="btn '.($newsorts['value']==strtolower($sort.'-'.$order)?' sort-active':'').'" href="'.$newsorts['href'].'" onclick="sort.setType(this)">'.$newsorts['text']. ' ' .$newsorts['icon'].' </button>';
-                            }
-                        ?>
-                        <!--button type="button" id="list-view" class="btn hidden-xs" data-toggle="tooltip" title="<?php echo $button_list; ?>"><i class="fa fa-th-list"></i></button>
-                        <button type="button" id="grid-view" class="btn hidden-xs" data-toggle="tooltip" title="<?php echo $button_grid; ?>"><i class="fa fa-th"></i></button-->
-                        <button type="button" class="btn" id="compare-total" onclick="location='<?php echo $compare;?>'"><?php echo $text_compare; ?></button>
-                    </div>
-                </div>
-            </div>            
-            <br />
+            <?php if ($products) { ?>            
             <div class="row">
                 <?php foreach ($products as $product) { ?>
                 <div class="product-layout product-grid col-lg-2 col-md-2 col-sm-6 col-xs-6">

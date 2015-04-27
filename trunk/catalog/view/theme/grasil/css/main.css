@@ -60,6 +60,9 @@ label {
 .text-danger {
     color: red;
 }
+.form-group {
+    margin-bottom: 10px;
+}
 .form-control {
     height: 32px;
     -webkit-appearance: none;
@@ -744,20 +747,20 @@ ul.main-nav {
     background: #fff;
     z-index: 999;
 }
-ul.main-nav li {
+ul.main-nav > li {
     background: #fff url('../images/arrow-right.png') no-repeat right center;
     border-style: solid;
     border-color: #eee;
     border-width: 0 1px 1px;
 }
-ul.main-nav li:hover {
+ul.main-nav > li:hover {
     border-right: 1px solid #fff;
     background-image: none;
 }
-ul.main-nav li:last-child {
+ul.main-nav > li:last-child {
     border-bottom-width: 8px;
 }
-ul.main-nav li a {
+ul.main-nav > li a {
     padding: 14px 10px 14px 40px;
     display: block;
     position: relative;
@@ -818,10 +821,8 @@ ul.main-nav li:hover .subnav {
     padding: 20px 20px;
 }
 .subnav ul li {
-    margin: 0 10px;    
-    background: none;
-    width: auto;
-    border-width: 0 0 1px;
+    margin: 0 10px;
+    border-bottom: 1px solid #eee;
 }
 .subnav ul li:last-child {
     border-bottom-width: 0;
@@ -1252,6 +1253,10 @@ li.product-thumb {
 
 .basic-info hr {
     border-style: dashed;
+    margin: 10px 0;
+}
+.basic-info h3 {
+    margin-top: 10px;
 }
 .basic-info h1 {
     margin-top: 0;
@@ -1435,9 +1440,14 @@ li.product-thumb {
 .cat-heading {
     position: relative;
     line-height: 32px;
+    margin-bottom: 30px;
+    border-bottom: 1px dashed #eee;
 }
-.cat-heading h2 {
+#content .cat-heading h2 {
+    border: none;
     margin: 0;
+    padding: 0;
+    float: left;
 }
 .cat-heading .items-layout .btn-group .btn {
     margin-right: 5px;
@@ -1454,11 +1464,10 @@ li.product-thumb {
     background: #eee;
 }
 .filter {
-    margin-top: 15px;
-    margin-bottom: 15px;
+    margin: 0;
 }
 .filter .btn-group .btn {
-    margin-right: 10px;
+    margin-left: 10px;
 }
 
 .empty-data {
@@ -1749,4 +1758,31 @@ table.order-total tr td.fee {
 }
 .common-home .prd-recent ul li .pr-caption .pr-title {
     display: block;
+}
+
+#nav-controller {
+    background: #f7f7f7;
+    line-height: 44px;
+    height: 44px;
+    font-size: 16pt;
+}
+#nav-controller .touch-menu, #nav-controller .touch-logo {
+    float: left;    
+}
+#nav-controller .touch-cart, #nav-controller .touch-search, #nav-controller .touch-user {
+    float: right;
+}
+#nav-controller .touch-menu, #nav-controller .touch-cart, #nav-controller .touch-search, #nav-controller .touch-user {
+    width: 44px;
+    text-align: center;
+}
+#nav-controller .touch-logo {
+    background: url('../images/logo.png') no-repeat left center;    
+    height: 44px;
+    width: 130px;
+}
+#nav-controller .touch-logo a {
+    display: block;
+    height: 44px;
+    width: 130px;
 }
