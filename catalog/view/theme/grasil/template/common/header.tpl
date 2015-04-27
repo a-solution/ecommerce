@@ -71,16 +71,16 @@
         <?php echo $google_analytics; ?>
     </head>
     <body class="<?php echo $class; ?>" ontouchstart="">
-        <header>
+        <header class="hidden-xs">
             <div id="top-line">
                 <div class="container">
                     <div class="left">
                         <ul>
-                            <li><a href="">Hướng dẫn mua hàng</a></li>
-                            <li><a href="">Đơn hàng & Thanh toán</a></li>
+                            <li class="visible-lg"><a href="">Hướng dẫn mua hàng</a></li>
+                            <li class="visible-lg"><a href="">Đơn hàng & Thanh toán</a></li>
                             <li><a href="">Hỗ trợ khách hàng</a> <span class="hotline">0908433302</span></li>
-                            <li class="sep"><a href="">Giao hàng miễn phí</a></li>
-                            <li class="sep"><a href="">Thanh toán khi nhận hàng</a></li>
+                            <li class="sep hidden-sm hidden-xs"><a href="">Giao hàng miễn phí</a></li>
+                            <li class="sep hidden-sm hidden-xs"><a href="">Thanh toán khi nhận hàng</a></li>
                         </ul>
                     </div>
                     <div class="right">                                                    
@@ -88,7 +88,7 @@
                         <div class="logged-menu">
                             <div href="<?php echo $account; ?>" title="<?php echo $text_account; ?>">
                                 <i class="fa fa-user"></i>
-                                <span class="customer-name hidden-xs hidden-sm"><?php echo $customer_name; ?></span>
+                                <span class="customer-name"><?php echo $customer_name; ?></span>
                                 <span class="caret"></span>
                             </div>
                             <ul>
@@ -116,7 +116,7 @@
                         <a href="<?php echo $home; ?>" class="logo"></a>                    
                         <div class="slogan">Hướng tới mua hàng trực tuyến đơn giản nhất</div>
                     </div>
-                    <div class="csearch">
+                    <div class="csearch hidden-sm hidden-xs">
                         <div class="ctb">
                             <?php echo $search; ?>
                         </div>
@@ -138,18 +138,25 @@
                                     <?php echo $cart; ?>
                                 </div>
                             </li>                            
-                            <li id="favorite" class="has-bag">
+                            <li id="favorite" class="has-bag visible-lg">
                                 <a class="favorite" href=""><?php echo $text_wishlist; ?></a>
                                 <span id="wishlist-total" class="bag"><?php echo $text_wishlist_items; ?></span>
                             </li>
-                            <li><a class="tip" href=""><?php echo $text_tip; ?></a></li>                            
+                            <li class="visible-lg"><a class="tip" href=""><?php echo $text_tip; ?></a></li>                            
                         </ul>
                     </div>
                     <div class="clearfix"></div>
                 </div>
             </div>            
         </header>
-        <div id="top-nav">
+        <div id="nav-controller" class="visible-xs">
+            <div class="touch-menu"><i class="fa fa-bars"></i></div>
+            <div class="touch-logo"><a href="<?php echo $home; ?>"></a></div>
+            <div class="touch-user"><i class="fa fa-user"></i></div>            
+            <div class="touch-search"><i class="fa fa-search"></i></div>
+            <div class="touch-cart"><i class="fa fa-shopping-cart"></i></div>            
+        </div>
+        <div id="top-nav" class="hidden-xs">
             <div class="container">
                 <div id="main-nav">
                     <div class="btn-category"><?php echo $text_category; ?></div>
