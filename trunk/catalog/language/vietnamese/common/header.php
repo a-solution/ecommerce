@@ -1,11 +1,12 @@
 <?php
 // Text
 $_['text_home']          = 'Trang chủ';
-$_['text_wishlist']      = '<i class="fa fa-heart"></i> <span class="hidden-sm">Yêu thích (%s)</span>';
-$_['text_shopping_cart'] = 'Shopping Cart';
-$_['text_category']      = 'Danh mục';
+$_['text_wishlist']      = 'Yêu thích';
+$_['text_shopping_cart'] = 'Giỏ hàng';
+$_['text_tip']           = 'Cẩm nang';
+$_['text_category']      = 'Danh mục sản phẩm';
 $_['text_account']       = 'Tài khoản';
-$_['text_register']      = 'Bạn chưa có tài khoản?';
+$_['text_register']      = 'Đăng ký';
 $_['text_login']         = 'Đăng nhập';
 $_['text_order']         = 'Lịch sử đơn hàng' ;
 $_['text_transaction']   = 'Giao dịch';
