@@ -1169,7 +1169,7 @@ li.product-thumb {
     border-radius: 0;
     position: absolute;
     top: -28px;
-    left: 280px;
+    margin-left: 220px;
 }
 .breadcrumb i {
     font-size: 15px;
