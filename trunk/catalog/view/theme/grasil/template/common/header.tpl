@@ -150,11 +150,62 @@
             </div>            
         </header>
         <div id="nav-controller" class="visible-xs">
-            <div class="touch-menu"><i class="fa fa-bars"></i></div>
+            <div class="touch-menu menu-btn" id="touch-menu"><i class="fa fa-bars"></i></div>
             <div class="touch-logo"><a href="<?php echo $home; ?>"></a></div>
-            <div class="touch-user"><i class="fa fa-user"></i></div>            
-            <div class="touch-search"><i class="fa fa-search"></i></div>
-            <div class="touch-cart"><i class="fa fa-shopping-cart"></i></div>            
+            <div class="touch-user">
+                <?php if ($logged) { ?>
+                <div class="logged-menu">
+                    <div href="<?php echo $account; ?>" title="<?php echo $text_account; ?>">
+                        <i class="fa fa-user"></i>                        
+                        <span class="caret"></span>
+                    </div>
+                    <ul>
+                        <li><a href="<?php echo $account; ?>"><i class="fa fa-lock"></i> <?php echo $text_account; ?></a></li>
+                        <li><a href="<?php echo $order; ?>"><i class="fa fa-history"></i> <?php echo $text_order; ?></a></li>
+                        <li><a href="<?php echo $transaction; ?>"><i class="fa fa-folder-open"></i> <?php echo $text_transaction; ?></a></li>
+                        <li><a href="<?php echo $download; ?>"><i class="fa fa-cloud-download"></i> <?php echo $text_download; ?></a></li>
+                        <li class="logout"><a href="<?php echo $logout; ?>"><i class="fa fa-sign-out"></i> <?php echo $text_logout; ?></a></li>                            
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+                <?php } else { ?>
+                <a href="<?php echo $login;?>"><i class="fa fa-user"></i></a>
+                <?php } ?>
+            </div>
+            <div class="touch-search" id="touch-search"><i class="fa fa-search"></i></div>
+            <div class="touch-cart"><a href="<?php echo $shopping_cart;?>"><i class="fa fa-shopping-cart"></i></a></div>
+            <script type="text/javascript">
+                $('#touch-search').click(function(){
+                    if($('#xs-search').css('display') == 'none')
+                    {
+                        $('#xs-search').show('slow');
+                        $('#xs-search .stxt').focus();
+                    }
+                    else
+                    {
+                        $('#xs-search').hide();
+                    }
+                });
+                $('#touch-menu').click(function(){
+                    if($('.pushy .main-nav').length === 0) {
+                       $('.main-nav').clone().appendTo(".pushy");                       
+                    }                    
+                });
+            </script>            
+        </div>
+        <!-- Pushy Menu -->
+        <div class="visible-xs">
+            <link rel="stylesheet" href="catalog/view/theme/grasil/js/pushy/pushy.css">        
+            <script src="catalog/view/theme/grasil/js/pushy/pushy.min.js"></script>        
+            <nav class="pushy pushy-left">
+                <div class="lbl-category"><?php echo $text_category; ?></div>
+            </nav>        
+            <div class="site-overlay"></div>
+            <!-- End Pushy Menu -->
+        </div>        
+        <div id="xs-search" style="display: none;">
+            <?php echo $search; ?>
+            <div class="clearfix"></div>            
         </div>
         <div id="top-nav" class="hidden-xs">
             <div class="container">
@@ -188,7 +239,7 @@
                                 </ul>
                                 <?php } ?>
                                 <div class="clearfix"></div>
-                                <div class="extend-pic" style="background-image: url('<?php echo $category["image"]; ?>')"><a href="<?php echo $category['href']; ?>"></a></div>                                
+                                <div class="extend-pic hidden-xs" style="background-image: url('<?php echo $category["image"]; ?>')"><a href="<?php echo $category['href']; ?>"></a></div>                                
                             </div>                            
                         </li>
                         <?php } else { ?>

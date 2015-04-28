@@ -473,13 +473,13 @@ header #top-line {
 #top-line .right {
     float: right;    
 }
-#top-line .logged-menu {
+.logged-menu {
     position: relative;
 }
-#top-line .customer-name {
+.customer-name {
     font-weight: bold;
 }
-#top-line .logged-menu ul {
+.logged-menu ul {
     margin: 0;
     padding: 0;
     list-style: none;
@@ -490,17 +490,18 @@ header #top-line {
     border: 1px solid #eee;
     right: 0;
 }
-#top-line .logged-menu:hover ul {
+.logged-menu:hover ul {
     display: block;
 }
-#top-line .logged-menu ul li {    
+.logged-menu ul li {    
     padding: 10px;
     float: none;
 }
-#top-line .logged-menu ul li a {    
+.logged-menu ul li a {    
     display: block;    
     color: #313131 !important;
     white-space: nowrap;
+    text-align: left;
 }
 /*END TOP LINE*/
 
@@ -737,7 +738,7 @@ header #top {
 .common-home .slideshow {
     margin-left: 200px;
 }
-ul.main-nav {
+#main-nav ul.main-nav {
     margin: 0;
     padding: 0;
     list-style: none;
@@ -747,54 +748,54 @@ ul.main-nav {
     background: #fff;
     z-index: 999;
 }
-ul.main-nav > li {
+#main-nav ul.main-nav > li {
     background: #fff url('../images/arrow-right.png') no-repeat right center;
     border-style: solid;
     border-color: #eee;
     border-width: 0 1px 1px;
 }
-ul.main-nav > li:hover {
+#main-nav ul.main-nav > li:hover {
     border-right: 1px solid #fff;
     background-image: none;
 }
-ul.main-nav > li:last-child {
+#main-nav ul.main-nav > li:last-child {
     border-bottom-width: 8px;
 }
-ul.main-nav > li a {
+#main-nav ul.main-nav > li a {
     padding: 14px 10px 14px 40px;
     display: block;
     position: relative;
 }
 /*Thoi Trang Nu*/
-ul.main-nav li a#nav-59 {
+#main-nav ul.main-nav li a#nav-59 {
     background: url('../images/ttn.png') no-repeat 10px center;
 }
 /*Thoi Trang Nam*/
-ul.main-nav li a#nav-20 {
+#main-nav ul.main-nav li a#nav-20 {
     background: url('../images/ttnam.png') no-repeat 10px center;
 }
 /*Do Gia Dung*/
-ul.main-nav li a#nav-62 {
+#main-nav ul.main-nav li a#nav-62 {
     background: url('../images/dogiadung.png') no-repeat 10px center;
 }
 /*Thuc Pham*/
-ul.main-nav li a#nav-115 {
+#main-nav ul.main-nav li a#nav-115 {
     background: url('../images/thucpham.png') no-repeat 10px center;
 }
 /*My Pham*/
-ul.main-nav li a#nav-116 {
+#main-nav ul.main-nav li a#nav-116 {
     background: url('../images/mypham.png') no-repeat 10px center;
 }
 /*Dien thoai*/
-ul.main-nav li a#nav-117 {
+#main-nav ul.main-nav li a#nav-117 {
     background: url('../images/dienthoai.png') no-repeat 10px center;
 }
 /*May Vi Tinh*/
-ul.main-nav li a#nav-118 {
+#main-nav ul.main-nav li a#nav-118 {
     background: url('../images/maytinh.png') no-repeat 10px center;
 }
 
-ul.main-nav li .subnav {
+#main-nav ul.main-nav li .subnav {
     display: none;
     position: absolute;
     left: 200px;
@@ -804,10 +805,10 @@ ul.main-nav li .subnav {
     background: #fff;    
     border-left-width: 0;    
 }
-ul.main-nav li:hover .subnav {
+#main-nav ul.main-nav li:hover .subnav {
     display: block;
 }
-.subnav .extend-pic {
+#main-nav .subnav .extend-pic {
     right: 0;
     bottom: 0;
     min-height: 350px;
@@ -816,18 +817,18 @@ ul.main-nav li:hover .subnav {
     background-repeat: no-repeat;
     position: absolute;
 }
-.subnav ul {
+#main-nav .subnav ul {
     display: table-cell;
     padding: 20px 20px;
 }
-.subnav ul li {
+#main-nav .subnav ul li {
     margin: 0 10px;
     border-bottom: 1px solid #eee;
 }
-.subnav ul li:last-child {
+#main-nav .subnav ul li:last-child {
     border-bottom-width: 0;
 }
-.subnav ul li a {    
+#main-nav .subnav ul li a {    
     display: block;
     padding: 5px 0;    
     clear: both;    
@@ -835,17 +836,8 @@ ul.main-nav li:hover .subnav {
     white-space: nowrap;
 }
 
-.subnav ul > li.level1 a {
+#main-nav .subnav ul > li.level1 a {
     font-weight: bold;
-}
-.subnav a.see-all {
-    position: absolute;
-    bottom:20px;
-    left: 20px;
-    display: block;        
-    padding: 3px 10px; 
-    background: #313131;
-    color: #fff;    
 }
 
 .result-filter {
@@ -1103,7 +1095,7 @@ li.product-thumb {
 .product-thumb .price {    
     margin: 3px 0;
     color: #cc0000;
-    font-size: 1.1em;
+    font-size: 1.2em;
 }
 .product-thumb .price-new {    
 /*    display: block;    */
@@ -1513,7 +1505,7 @@ li.product-thumb {
     border:1px solid #eee;
     padding:1px 5px;
     border-radius: 5px;
-    background: #f9f9f9;
+    background: #fff;
 }
 
 .nav-tabs {
@@ -1784,4 +1776,8 @@ table.order-total tr td.fee {
     display: block;
     height: 44px;
     width: 130px;
+}
+#nav-controller .touch-user .logged-menu a {
+    font-size: 12pt;
+    line-height: 30px;
 }
