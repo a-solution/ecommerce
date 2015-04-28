@@ -58,7 +58,7 @@ class ModelCatalogFilter extends Model {
 				$filter_id = $this->db->getLastId();
 
 				foreach ($filter['filter_description'] as $language_id => $filter_description) {
-					$this->db->query("INSERT INTO " . DB_PREFIX . "filter_description SET filter_id = '" . (int)$filter_id . "', language_id = '" . (int)$language_id . "', filter_group_id = '" . (int)$filter_group_id . "', name = '" . $this->db->escape($filter_description['name']) . "'");
+					$this->db->query("INSERT INTO " . DB_PREFIX . "filter_description SET filter_id = '" . (int)$filter_id . "', language_id = '" . (int)$language_id . "', filter_group_id = '" . (int)$filter_group_id . "', name = '" . $this->db->escape($filter_description['name']) . "', filter_expression='".$this->db->escape($filter_description['filter_expression'])."'");
 				}
                                 
                                 if(isset($filter['options'])){
@@ -181,7 +181,8 @@ class ModelCatalogFilter extends Model {
                         
 			$filter_description_query = $this->db->query("SELECT * FROM " . DB_PREFIX . "filter_description WHERE filter_id = '" . (int)$filter['filter_id'] . "'");
 			foreach ($filter_description_query->rows as $filter_description) {
-				$filter_description_data[$filter_description['language_id']] = array('name' => $filter_description['name']);
+				$filter_description_data[$filter_description['language_id']] = array('name' => $filter_description['name'],
+                                    'filter_expression' => $filter_description['filter_expression']);
 			}
 
                         $queryString = "SELECT CONCAT(od.name, '&nbsp;>&nbsp;', ovd.name) path, ovf.filter_id, ovf.option_value_id, ovf.description".
@@ -205,7 +206,7 @@ class ModelCatalogFilter extends Model {
 			$filter_data[] = array(
 				'filter_id'          => $filter['filter_id'],
 				'filter_description' => $filter_description_data,
-				'sort_order'         => $filter['sort_order'],
+				'sort_order'         => $filter['sort_order'],                            
                                 'option_values'      => $option_values_filter
 			);
 		}

@@ -64,7 +64,12 @@
                   <?php if (isset($error_filter[$filter_row][$language['language_id']])) { ?>
                   <div class="text-danger"><?php echo $error_filter[$filter_row][$language['language_id']]; ?></div>
                   <?php } ?>
-                  <?php } ?></td>
+                  <?php } ?>
+                  <div>
+                      <span>Filter Expression</span>
+                      <input type="text" name="filter[<?php echo $filter_row; ?>][filter_description][<?php echo $language['language_id']; ?>][filter_expression]" value="<?php echo isset($filter['filter_description'][$language['language_id']]) ? $filter['filter_description'][$language['language_id']]['filter_expression'] : ''; ?>" placeholder="<?php echo 'For filter price only'; ?>" class="form-control" id="input-filter-expression" />
+                  </div>
+                </td>
                 <td class="text-right"><input type="text" name="filter[<?php echo $filter_row; ?>][sort_order]" value="<?php echo $filter['sort_order']; ?>" placeholder="<?php echo $entry_sort_order; ?>" id="input-sort-order" class="form-control" /></td>
                 <td class="text-left">
                     Option values
@@ -114,6 +119,10 @@ function addFilterRow() {
 	html += '  <div class="input-group">';
 	html += '    <span class="input-group-addon"><img src="view/image/flags/<?php echo $language['image']; ?>" title="<?php echo $language['name']; ?>" /></span><input type="text" name="filter[' + filter_row + '][filter_description][<?php echo $language['language_id']; ?>][name]" value="" placeholder="<?php echo $entry_name ?>" class="form-control" />';
         html += '  </div>';
+        html += '   <div>'
+        html += '     <span>Filter Expression</span>'              
+        html += '     <input type="text" name="filter[' + filter_row + '][filter_description][<?php echo $language['language_id']; ?>][filter_expression]" value="" placeholder="For filter price only" class="form-control" id="input-filter-expression" />'    
+        html += '   </div>'        
 	<?php } ?>
 	html += '  </td>';
 	html += '  <td class="text-right"><input type="text" name="filter[' + filter_row + '][sort_order]" value="" value="" placeholder="<?php echo $entry_sort_order; ?>" id="input-sort-order" class="form-control" /></td>';
