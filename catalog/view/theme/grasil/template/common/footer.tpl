@@ -70,8 +70,9 @@
             <?php echo $powered; ?><br />
             Phiên bản thử nghiệm - Sản phẩm trên ASACA.VN chỉ để tham khảo chưa thực sự bán hàng
         </p>        
-    </div>
+    </div>    
 </footer>
+<div class="move-to-top">TOP</div>
 <!--script type="text/javascript" src="https://mylivechat.com/chatinline.aspx?hccid=72189449"></script-->
 <div id="fb-root"></div>
 <script>

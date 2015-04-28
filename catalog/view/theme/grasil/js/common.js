@@ -14,6 +14,7 @@ var cart = {
 
                 if (json['redirect']) {
                     location = json['redirect'];
+                    _asaca.reset();
                     return;
                 }
 
@@ -412,5 +413,18 @@ $(document).ready(function () {
         {
             cart.add($(this).attr('prdid'), true);
         }
+    });
+    $(window).scroll(function(){
+        if($(document).scrollTop() > 100)
+        {
+            $('.move-to-top').show();
+        }
+        else
+        {
+            $('.move-to-top').hide();
+        }
+    });
+    $('.move-to-top').click(function(){
+        $('html, body').animate({ scrollTop: 0 }, 'slow');
     });
 });
