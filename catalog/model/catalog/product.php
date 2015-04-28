@@ -68,9 +68,15 @@ class ModelCatalogProduct extends Model {
     public function getProducts($data = array()) {
         $sql = "SELECT p.product_id, (SELECT AVG(rating) AS total FROM " . DB_PREFIX . "review r1 WHERE r1.product_id = p.product_id AND r1.status = '1' GROUP BY r1.product_id) AS rating, (SELECT price FROM " . DB_PREFIX . "product_discount pd2 WHERE pd2.product_id = p.product_id AND pd2.customer_group_id = '" . (int) $this->config->get('config_customer_group_id') . "' AND pd2.quantity = '1' AND ((pd2.date_start = '0000-00-00' OR pd2.date_start < NOW()) AND (pd2.date_end = '0000-00-00' OR pd2.date_end > NOW())) ORDER BY pd2.priority ASC, pd2.price ASC LIMIT 1) AS discount, (SELECT price FROM " . DB_PREFIX . "product_special ps WHERE ps.product_id = p.product_id AND ps.customer_group_id = '" . (int) $this->config->get('config_customer_group_id') . "' AND ((ps.date_start = '0000-00-00' OR ps.date_start < NOW()) AND (ps.date_end = '0000-00-00' OR ps.date_end > NOW())) ORDER BY ps.priority ASC, ps.price ASC LIMIT 1) AS special";
 
-        $sql .= ", SUM(op.quantity) AS 'purchased', p.viewed ";
+        $sql .= ", SUM(op.quantity) AS 'purchased', p.viewed, p.price ";
 
+        if (!empty($data['filter_filter'])) {
+            $sql .= ", (SELECT count(p.product_id)) AS 'occurrences' ";            
+            $occurrences = 0;
+        }
+        
         if (!empty($data['filter_category_id'])) {
+            
             if (!empty($data['filter_sub_category'])) {
                 $sql .= " FROM " . DB_PREFIX . "category_path cp LEFT JOIN " . DB_PREFIX . "product_to_category p2c ON (cp.category_id = p2c.category_id)";
             } else {
@@ -114,8 +120,24 @@ class ModelCatalogProduct extends Model {
                     $implode[] = (int) $filter_id;
                 }
 
-                //$sql .= " AND pf.filter_id IN (" . implode(',', $implode) . ")";
-                $sql .= " AND ovf.filter_id IN (" . implode(',', $implode) . ")";
+                //Hieu: The filter could be option values, or price ranges (Ex: >100 AND <200). Process case by case
+                $filterExpression = "";
+                $theFilters = $this->db->query("SELECT * FROM `".DB_PREFIX."filter_description` WHERE filter_id IN (" . implode(',', $implode) . ") AND filter_expression IS NOT null");
+                foreach($theFilters->rows as $theFilter){
+                    //Remove all Non-option filter, it use expression
+                    unset($implode[array_search((int)$theFilter['filter_id'], $implode)]);
+                    $tokens = explode('and', strtolower($theFilter['filter_expression']));
+                    $filterExpression .= " (IF(special > 0, special, p.price)) " . html_entity_decode($tokens[0]) .' ';
+                    if(sizeof($tokens) > 1 ){
+                        $filterExpression .= " AND (IF(special > 0, special, p.price)) " . html_entity_decode($tokens[1]) .' ';
+                    }   
+                }
+                $occurrences = sizeof($implode);
+                
+                if(sizeof($implode) > 0){
+                    $sql .= " AND ovf.filter_id IN (" . implode(',', $implode) . ")";    
+                }
+                //$sql .= $filterExpression;
             }
         }
 
@@ -166,6 +188,20 @@ class ModelCatalogProduct extends Model {
         }
 
         $sql .= " GROUP BY p.product_id";
+        
+        if (!empty($data['filter_filter'])) {
+            $sql .= (" HAVING (");    
+            if($occurrences > 0){
+                $sql .= (" occurrences >= " . $occurrences);    
+            }
+            if(!empty($filterExpression)){
+                if($occurrences > 0){
+                    $sql .= " AND ";
+                }    
+                $sql .= $filterExpression;
+            }
+            $sql .= (") ");
+        }
 
         $sort_data = array(
             'pd.name',
@@ -576,8 +612,24 @@ class ModelCatalogProduct extends Model {
      */
 
     public function getTotalProducts($data = array()) {
-        $sql = "SELECT COUNT(DISTINCT p.product_id) AS total";
+        
+        if (!empty($data['filter_filter'])) {
+            $sql =  "SELECT COUNT(*) AS total FROM (SELECT p.price";
+            $sql .= ", (SELECT price FROM oc_product_special ps WHERE ps.product_id = p.product_id AND ps.customer_group_id = '1' AND ((ps.date_start = '0000-00-00' OR ps.date_start < NOW()) AND (ps.date_end = '0000-00-00' OR ps.date_end > NOW())) ORDER BY ps.priority ASC, ps.price ASC LIMIT 1) AS special";
+            $sql .= ", (SELECT count(p.product_id)) AS 'occurrences' ";            
+            $occurrences = 0;
+        }
+        else{
+            $sql = "SELECT COUNT(DISTINCT p.product_id) AS total";
+        }
 
+        //if (!empty($data['filter_filter'])) {
+        //    $sql .= ", p.price";
+        //    $sql .= ", (SELECT price FROM oc_product_special ps WHERE ps.product_id = p.product_id AND ps.customer_group_id = '1' AND ((ps.date_start = '0000-00-00' OR ps.date_start < NOW()) AND (ps.date_end = '0000-00-00' OR ps.date_end > NOW())) ORDER BY ps.priority ASC, ps.price ASC LIMIT 1) AS special";
+        //    $sql .= ", (SELECT count(p.product_id)) AS 'occurrences' ";            
+        //    $occurrences = 0;
+        //}
+        
         if (!empty($data['filter_category_id'])) {
             if (!empty($data['filter_sub_category'])) {
                 $sql .= " FROM " . DB_PREFIX . "category_path cp LEFT JOIN " . DB_PREFIX . "product_to_category p2c ON (cp.category_id = p2c.category_id)";
@@ -586,9 +638,6 @@ class ModelCatalogProduct extends Model {
             }
 
             if (!empty($data['filter_filter'])) {
-                //Hieu: join with options of product, not join to product directly
-                //$sql .= " LEFT JOIN " . DB_PREFIX . "product_filter pf ON (p2c.product_id = pf.product_id) "
-                //        ."LEFT JOIN " . DB_PREFIX . "product p ON (pf.product_id = p.product_id)";
                 $sql .= " LEFT JOIN " . DB_PREFIX . "product p ON (p2c.product_id = p.product_id)"
                         . " LEFT JOIN " . DB_PREFIX . "product_option_value pov ON p.product_id = pov.product_id"
                         . " LEFT JOIN " . DB_PREFIX . "option_value_filter ovf ON pov.option_value_id = ovf.option_value_id ";
@@ -609,6 +658,7 @@ class ModelCatalogProduct extends Model {
             }
 
             if (!empty($data['filter_filter'])) {
+                
                 $implode = array();
 
                 $filters = explode(',', $data['filter_filter']);
@@ -617,8 +667,23 @@ class ModelCatalogProduct extends Model {
                     $implode[] = (int) $filter_id;
                 }
 
-                //$sql .= " AND pf.filter_id IN (" . implode(',', $implode) . ")";
-                $sql .= " AND ovf.filter_id IN (" . implode(',', $implode) . ")";
+                //Hieu: The filter could be option values, or price ranges (Ex: >100 AND <200). Process case by case
+                $filterExpression = "";
+                $theFilters = $this->db->query("SELECT * FROM `".DB_PREFIX."filter_description` WHERE filter_id IN (" . implode(',', $implode) . ") AND filter_expression IS NOT null");
+                foreach($theFilters->rows as $theFilter){
+                    //Remove all Non-option filter, it use expression
+                    unset($implode[array_search((int)$theFilter['filter_id'], $implode)]);
+                    $tokens = explode('and', strtolower($theFilter['filter_expression']));
+                    $filterExpression .= " (IF(special > 0, special, p.price)) " . html_entity_decode($tokens[0]) .' ';
+                    if(sizeof($tokens) > 1 ){
+                        $filterExpression .= " AND (IF(special > 0, special, p.price)) " . html_entity_decode($tokens[1]) .' ';
+                    }   
+                }
+                $occurrences = sizeof($implode);
+                
+                if(sizeof($implode) > 0){
+                    $sql .= " AND ovf.filter_id IN (" . implode(',', $implode) . ")";    
+                }
             }
         }
 
@@ -667,7 +732,27 @@ class ModelCatalogProduct extends Model {
         if (!empty($data['filter_manufacturer_id'])) {
             $sql .= " AND p.manufacturer_id = '" . (int) $data['filter_manufacturer_id'] . "'";
         }
-
+        
+        if (!empty($data['filter_filter'])) {
+            
+            $sql .= " GROUP BY p.product_id";
+            
+            $sql .= (" HAVING (");    
+            if($occurrences > 0){
+                $sql .= (" occurrences >= " . $occurrences);    
+            }
+            if(!empty($filterExpression)){
+                if($occurrences > 0){
+                    $sql .= " AND ";
+                }    
+                $sql .= $filterExpression;
+            }
+            $sql .= (") ");
+            
+            //End FROM clause
+            $sql .= ") AS temp_table";
+        }
+        
         $query = $this->db->query($sql);
 
         return $query->row['total'];
