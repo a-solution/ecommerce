@@ -122,7 +122,7 @@ class ModelCatalogProduct extends Model {
 
                 //Hieu: The filter could be option values, or price ranges (Ex: >100 AND <200). Process case by case
                 $filterExpression = "";
-                $theFilters = $this->db->query("SELECT * FROM `".DB_PREFIX."filter_description` WHERE filter_id IN (" . implode(',', $implode) . ") AND filter_expression IS NOT null");
+                $theFilters = $this->db->query("SELECT * FROM `".DB_PREFIX."filter_description` WHERE filter_id IN (" . implode(',', $implode) . ") AND (filter_expression IS NOT null) AND TRIM(filter_expression) <> ''");
                 foreach($theFilters->rows as $theFilter){
                     //Remove all Non-option filter, it use expression
                     unset($implode[array_search((int)$theFilter['filter_id'], $implode)]);
@@ -669,7 +669,7 @@ class ModelCatalogProduct extends Model {
 
                 //Hieu: The filter could be option values, or price ranges (Ex: >100 AND <200). Process case by case
                 $filterExpression = "";
-                $theFilters = $this->db->query("SELECT * FROM `".DB_PREFIX."filter_description` WHERE filter_id IN (" . implode(',', $implode) . ") AND filter_expression IS NOT null");
+                $theFilters = $this->db->query("SELECT * FROM `".DB_PREFIX."filter_description` WHERE filter_id IN (" . implode(',', $implode) . ") AND (filter_expression IS NOT null) AND TRIM(filter_expression) <> ''");
                 foreach($theFilters->rows as $theFilter){
                     //Remove all Non-option filter, it use expression
                     unset($implode[array_search((int)$theFilter['filter_id'], $implode)]);
