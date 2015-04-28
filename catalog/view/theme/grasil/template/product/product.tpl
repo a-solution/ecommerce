@@ -486,7 +486,7 @@
                 <?php } elseif ($column_left || $column_right) { ?>
                 <?php $class = 'col-lg-4 col-md-4 col-sm-6 col-xs-12'; ?>
                 <?php } else { ?>
-                <?php $class = 'col-lg-3 col-md-3 col-sm-6 col-xs-6'; ?>
+                <?php $class = 'col-lg-2 col-md-3 col-sm-6 col-xs-6'; ?>
                 <?php } ?>
                 <div class="<?php echo $class; ?>">
                     <div class="product-thumb transition">
