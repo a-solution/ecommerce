@@ -3,7 +3,7 @@
     <div class="container">        
         <div class="row footer-link">
             <?php if ($informations) { ?>
-            <div class="col-md-3 col-sm-6">
+            <div class="col-md-2 col-sm-6">
                 <h5><?php echo $text_information; ?></h5>
                 <ul class="list-unstyled">
                     <?php foreach ($informations as $information) { ?>
@@ -55,14 +55,14 @@
                 <p>Hiện tại chúng tôi hỗ trợ thanh toán qua chuyển khoản ngân hàng hoặc thanh toán khi nhận hàng (COD)</p>                
                 <div class="bank"></div>                
             </div>
-            <div class="col-md-3 col-sm-6">
+            <div class="col-md-4 col-sm-6">
                 <h5><?php echo $text_service; ?></h5>
                 <div class="sic">                    
                     <a target=_blank" class="fb" href="https://www.facebook.com/asaca.vn"></a>
                     <a target=_blank" class="tw" href="https://www.twitter.com/asaca.vn"></a>
                     <a target=_blank" class="yt" href="https://www.youtube.com/user/asaca.vn"></a>
                 </div>
-                <div class="fb-page" data-href="https://www.facebook.com/asaca.vn" data-width="280" data-height="300" data-hide-cover="false" data-show-facepile="true" data-show-posts="false"></div>
+                <div class="fb-page" data-href="https://www.facebook.com/asaca.vn" data-width="280" data-height="280" data-hide-cover="false" data-show-facepile="true" data-show-posts="false"></div>
             </div>
         </div>
         <hr>
@@ -72,25 +72,25 @@
         </p>        
     </div>    
 </footer>
-<div class="move-to-top">TOP</div>
+<div class="move-to-top"><i class="fa fa-angle-up"></i></div>
 <!--script type="text/javascript" src="https://mylivechat.com/chatinline.aspx?hccid=72189449"></script-->
 <div id="fb-root"></div>
-<script>
-    /*(function(d, s, id) {
+<script type="text/javascript">
+    (function(d, s, id) {
         var js, fjs = d.getElementsByTagName(s)[0];
         if (d.getElementById(id)) return;
         js = d.createElement(s); js.id = id;
         js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=357643941100377&version=v2.3";
         fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));*/
+    }(document, 'script', 'facebook-jssdk'));
 </script>
 <!--Start of Zopim Live Chat Script-->
 <script type="text/javascript">
-/*window.$zopim||(function(d,s){var z=$zopim=function(c){z._.push(c)},$=z.s=
+window.$zopim||(function(d,s){var z=$zopim=function(c){z._.push(c)},$=z.s=
 d.createElement(s),e=d.getElementsByTagName(s)[0];z.set=function(o){z.set.
 _.push(o)};z._=[];z.set._=[];$.async=!0;$.setAttribute("charset","utf-8");
 $.src="//v2.zopim.com/?2xmUaXEDgwgOGsqnZ35XMgRiU5ZeXctp";z.t=+new Date;$.
-type="text/javascript";e.parentNode.insertBefore($,e)})(document,"script");*/
+type="text/javascript";e.parentNode.insertBefore($,e)})(document,"script");
 </script>
 <!--End of Zopim Live Chat Script-->
 </body></html>

@@ -848,10 +848,8 @@ header #top {
 }
 
 
-.fb-page > span {
-    width: 212px !important;
-    overflow: hidden !important;
-    border: 1px solid #f2f2f2;
+.fb-page > span {    
+    overflow: hidden !important;    
 }
 
 
@@ -1244,7 +1242,7 @@ li.product-thumb {
 
 .basic-info hr {
     border-style: dashed;
-    margin: 10px 0;
+    margin: 13px 0;
 }
 .basic-info h3 {
     margin-top: 10px;
@@ -1383,13 +1381,39 @@ li.product-thumb {
 .basic-info .cbtn-buy ul li #button-cart.btn-primary:hover, .basic-info .cbtn-buy ul li #button-cart-checkout.btn-primary:hover {    
     background: #000 !important;
 }
+.support-buy {
+    background: #fff;
+    border: 3px dashed #66cc00;
+    margin-bottom: 20px;
+    margin-right: 0 !important;    
+}
+.sb-title {
+    font-size: 12pt;
+    padding: 5px 10px;
+    font-weight: bold;
+}
+.sb-info {
+    padding: 5px 10px;
+}
+.sb-info .hl {
+    color: #cc0000;
+    font-weight: bold;
+}
+.sb-info .code {
+    padding-left: 17px;
+}
 
 .more-info {
     margin-top: 20px;
-    min-height: 300px;
+    min-height: 300px;    
 }
 #tab-description img, #tab-review img, #tab-faq img{
     max-width: 100%;
+}
+#tab-review textarea, #tab-faq textarea {
+    min-height: 60px;
+    max-height: 150px;
+    resize: vertical;
 }
 
 /*Social & Support*/
@@ -1641,7 +1665,8 @@ table.order-total tr td.fee {
     border: 1px solid #ccc;
 }
 .checkout-group .cg-content textarea[name=comment] {
-    height: 60px;
+    min-height: 60px;
+    max-height: 60px;
     resize: none;
 }
 /*AGREE SECTION*/
@@ -1783,20 +1808,97 @@ table.order-total tr td.fee {
 }
 .move-to-top {
     position: fixed;
-    bottom: 10px;
+    bottom: 40px;
     right: 10px;
     background: #000;
     opacity: 0.1;
-    width: 40px;
-    height: 40px;
-    line-height: 40px;
+    width: 35px;
+    height: 35px;
+    line-height: 35px;
     text-align: center;
     display: none;
-    border-radius: 40px;
+    border-radius: 35px;
     cursor: pointer;
     transition: all linear 0.3s ;
     color: #fff;
+    font-size: 18pt;
 }
 .move-to-top:hover {
     opacity: 0.8;
+}
+#short-info {
+    background: #fff;
+    margin-top: 20px;
+    padding: 20px;    
+    position: fixed;
+    top: 0;
+    width: 270px;
+    display: none;
+    z-index: 2;
+    border: 3px solid #66cc00;
+}
+#short-info .show{
+    display: block;    
+}
+.si-title {
+    margin-top: 0px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+}
+.si-price {
+    font-size: 14pt;
+    color: #cc0000;
+}
+.si-price-old {
+    text-decoration: line-through;
+}
+.si-price-off {
+    font-size: 14pt;
+    color: green;
+}
+#short-info .btn {
+    color: #fff;
+    line-height: 40px;
+    margin-top:10px;
+    font-weight: bold;
+    font-size: 12pt;
+}
+#short-info .btn:hover {
+    background: #313131 !important;
+}
+#short-info .button-cart {
+    background: green !important;    
+}
+#short-info .button-cart-checkout {    
+    background: #cc0000 !important;
+}
+.filter-group {
+    margin-bottom: 15px;
+}
+.filter-group .filter-heading {
+    border: 1px solid #eee;
+    background: #f2f2f2;
+    padding: 0px 10px;
+}
+.table-filter {
+    width: 100%;
+    border-collapse: collapse;  
+    background: #fff;
+}
+.table-filter th {
+    width: 100px;
+    padding: 5px;
+    border: 1px solid #eee;
+    background: #f2f2f2;    
+}
+.table-filter td {    
+    padding: 5px;
+    border: 1px solid #eee;    
+}
+.table-filter td label {
+    display: block;
+    padding: 0;
+    margin: 0;
+    margin-right: 20px;
+    float: left;
 }
