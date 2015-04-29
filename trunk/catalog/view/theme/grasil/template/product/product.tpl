@@ -510,7 +510,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3">
+                <div class="col-lg-3 visible-lg">
                     <div id="short-info">
                         <div class="row">
                             <div class="col-lg-12">
