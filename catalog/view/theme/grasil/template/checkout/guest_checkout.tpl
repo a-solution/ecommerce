@@ -2,17 +2,17 @@
   <div class="col-sm-6">
     <fieldset id="account">            
       <div class="form-group required">
-        <label class="control-label" for="input-payment-email"><?php echo $entry_email; ?></label>
+        <label class="control-label hidden-xs" for="input-payment-email"><?php echo $entry_email; ?></label>
         <input type="text" name="email" value="<?php echo $email; ?>" placeholder="<?php echo $entry_email; ?>" id="input-payment-email" class="form-control" />
       </div>
       
       <div class="form-group required">
-        <label class="control-label" for="input-payment-lastname"><?php echo $entry_lastname; ?></label>
+        <label class="control-label hidden-xs" for="input-payment-lastname"><?php echo $entry_lastname; ?></label>
         <input type="text" name="lastname" value="<?php echo $lastname; ?>" placeholder="<?php echo $entry_lastname; ?>" id="input-payment-lastname" class="form-control" />
       </div>
       
       <div class="form-group required">
-        <label class="control-label" for="input-payment-firstname"><?php echo $entry_firstname; ?></label>
+        <label class="control-label hidden-xs" for="input-payment-firstname"><?php echo $entry_firstname; ?></label>
         <input type="text" name="firstname" value="<?php echo $firstname; ?>" placeholder="<?php echo $entry_firstname; ?>" id="input-payment-firstname" class="form-control" />
       </div>                  
     </fieldset>    
@@ -21,12 +21,12 @@
         <fieldset id="address">
             <!--legend><?php echo $text_your_address; ?></legend-->            
             <div class="form-group required">
-                <label class="control-label" for="input-payment-telephone"><?php echo $entry_telephone; ?></label>
+                <label class="control-label hidden-xs" for="input-payment-telephone"><?php echo $entry_telephone; ?></label>
                 <input type="text" name="telephone" value="<?php echo $telephone; ?>" placeholder="<?php echo $entry_telephone; ?>" id="input-payment-telephone" class="form-control" />
             </div>
             
             <div class="form-group required">
-                <label class="control-label" for="input-payment-address-1"><?php echo $entry_address_1; ?></label>
+                <label class="control-label hidden-xs" for="input-payment-address-1"><?php echo $entry_address_1; ?></label>
                 <input type="text" name="address_1" value="<?php echo $address_1; ?>" placeholder="<?php echo $entry_address_1; ?>" id="input-payment-address-1" class="form-control" />
             </div>
 
@@ -44,7 +44,7 @@
                 </select>
             </div>
             <div class="form-group required">
-                <label class="control-label" for="input-payment-zone"><?php echo $entry_zone; ?></label>
+                <label class="control-label hidden-xs" for="input-payment-zone"><?php echo $entry_zone; ?></label>
                 <select name="zone_id" id="input-payment-zone" class="form-control">
                 </select>
             </div>            

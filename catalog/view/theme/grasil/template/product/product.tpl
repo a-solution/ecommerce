@@ -24,7 +24,7 @@
                 <?php } ?>
                 <div class="<?php echo $class; ?>">
                     <?php if ($thumb || $images) { ?>
-                    <div class="row prd-media-box hidden-xs">                                                
+                    <div class="row prd-media-box hidden-md hidden-sm hidden-xs">                                                
                         <div class="col-sm-2 prd-more-image">
                             <div id="prd-other-image">
                                 <?php if ($images) { ?>
@@ -78,28 +78,37 @@
                                     return false;
                             });</script>
                     </div>
-                    <div class="row hidden-md hidden-sm hidden-lg">
-                        <div class="col-xs-12">
-                            <ul class="thumbnails">
+                    <div class="row hidden-lg">
+                        <div class="col-xs-12 prd-images">
+                            <ul class="bxslider">
                                 <?php if ($thumb) { ?>
-                                <li><a class="thumbnail" href="<?php echo $popup; ?>" title="<?php echo $heading_title; ?>"><img src="<?php echo $thumb; ?>" title="<?php echo $heading_title; ?>" alt="<?php echo $heading_title; ?>" /></a></li>
+                                <li><a href="<?php echo $popup; ?>" title="<?php echo $heading_title; ?>"><img class="img-responsive" src="<?php echo $thumb; ?>" title="<?php echo $heading_title; ?>" alt="<?php echo $heading_title; ?>" /></a></li>
                                 <?php } ?>
                                 <?php if ($images) { ?>
                                 <?php foreach ($images as $image) { ?>
-                                <li class="image-additional"><a class="thumbnail" href="<?php echo $image['popup']; ?>" title="<?php echo $heading_title; ?>"> <img src="<?php echo $image['thumb']; ?>" title="<?php echo $heading_title; ?>" alt="<?php echo $heading_title; ?>" /></a></li>
+                                <li><a href="<?php echo $image['popup']; ?>" title="<?php echo $heading_title; ?>"> <img src="<?php echo $image['popup']; ?>" title="<?php echo $heading_title; ?>" alt="<?php echo $heading_title; ?>" /></a></li>
                                 <?php } ?>
                                 <?php } ?>
                             </ul>
-                            <script type="text/javascript">
-                                        $(document).ready(function() {
-                                $('.thumbnails').magnificPopup({
-                                type:'image',
-                                        delegate: 'a',
-                                        gallery: {
-                                        enabled:true
-                                        }
+                            <script type="text/javascript">                                
+                                $(document).ready(function() {
+                                    $('.prd-images .bxslider').bxSlider({
+                                        minSlides: 1,
+                                        maxSlides: 1,  
+                                        pager: true,
+                                        auto: false,        
+                                        stopAuto: false,
+                                        infiniteLoop: false
+                                    });
+                                    $('.prd-images .bxslider').magnificPopup({
+                                    type:'image',
+                                            delegate: 'a',
+                                            gallery: {
+                                            enabled:true
+                                            }
+                                    });
                                 });
-                                });</script>
+                            </script>
                         </div>
                     </div>                    
                     <?php } ?>          
@@ -510,7 +519,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3 visible-lg">
+                <div class="col-lg-3 hidden-md hidden-sm hidden-xs">
                     <div id="short-info">
                         <div class="row">
                             <div class="col-lg-12">

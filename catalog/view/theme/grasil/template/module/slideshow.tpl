@@ -18,7 +18,6 @@
         slideWidth: '<?php echo $width;?>',
         pager: false,
         auto: true,
-        stopAuto: false,
-        preventDefaultSwipeY: true
+        stopAuto: false        
     });
 </script>
