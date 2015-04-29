@@ -111,6 +111,7 @@ var cart = {
 
                     // Highlight any found errors
                     $('.text-danger').parent().addClass('has-error');
+                    $('html, body').animate({ scrollTop: $('.has-error').offset().top }, 'slow');
                 }
 
                 if (json['success']) {
@@ -422,6 +423,14 @@ $(document).ready(function () {
         else
         {
             $('.move-to-top').hide();
+        }        
+        if($(document).scrollTop() >= $('.more-info').offset().top && ($(document).scrollTop() <= ($('.more-info').offset().top + $('.more-info').height() - $('#short-info').height())))
+        {
+            $('#short-info').addClass('show');
+        }
+        else
+        {
+            $('#short-info').removeClass('show');
         }
     });
     $('.move-to-top').click(function(){

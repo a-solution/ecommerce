@@ -60,22 +60,23 @@
                                             imageCrossfade: true,
                                             loadingIcon: 'catalog/view/theme/grasil/images/loading64.gif',
                                             zoomType: 'window',
-                                            zoomWindowHeight: 417,
+                                            zoomWindowHeight: 420,
+                                            zoomWindowWidth: 500,
                                             zoomWindowOffetx: 8,
                                             zoomWindowOffety: - 1,
                                             borderSize: 1,
                                             borderColour: '#ccc',
-                                            zoomWindowFadeIn: 500,
-                                            zoomWindowFadeOut: 500,
-                                            lensFadeIn: 500,
-                                            lensFadeOut: 500
+                                            zoomWindowFadeIn: 100,
+                                            zoomWindowFadeOut: 100,
+                                            lensFadeIn: true,
+                                            lensFadeOut: true
                                     });
                                     //pass the images to Fancybox
                                     $("#prd-single-image").bind("click", function(e) {
                             var ez = $('#prd-single-image').data('elevateZoom');
                                     $.fancybox(ez.getGalleryList());
                                     return false;
-                            });                        </script>
+                            });</script>
                     </div>
                     <div class="row hidden-md hidden-sm hidden-lg">
                         <div class="col-xs-12">
@@ -98,7 +99,7 @@
                                         enabled:true
                                         }
                                 });
-                                });                            </script>
+                                });</script>
                         </div>
                     </div>                    
                     <?php } ?>          
@@ -111,7 +112,7 @@
                 <?php $class = 'col-sm-5'; ?>
                 <?php } ?>
                 <div class="<?php echo $class; ?>">                    
-                    <h1><?php echo $heading_title; ?></h1>                    
+                    <h1><?php echo $heading_title; ?></h1>
                     <div class="viewed">
                         <span><?php echo $orderred; ?></span> lượt mua | <span><?php echo $viewed; ?></span> lượt xem
                         <div class="fb-like" data-href="<?php echo 'http://' . $_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']; ?>" data-layout="button_count" data-action="like" data-show-faces="false" data-share="true"></div>
@@ -158,11 +159,11 @@
                         <?php } ?>
                         <?php } ?>
                     </ul>
+                    <hr>
                     <?php } ?>                    
                     <div id="product">
-                        <?php if ($options) { ?>
-                        <hr>
-                        <h3><?php echo $text_option; ?></h3>
+                        <?php if ($options) { ?>                        
+                        <!--h3><?php echo $text_option; ?></h3-->
                         <?php foreach ($options as $option) { ?>
                         <?php if ($option['type'] == 'select') { ?>
                         <div class="form-group<?php echo ($option['required'] ? ' required' : ''); ?>">
@@ -178,6 +179,7 @@
                                 <?php } ?>
                             </select>
                         </div>
+                        <hr>
                         <?php } ?>
                         <?php if ($option['type'] == 'radio') { ?>
                         <div class="form-group<?php echo ($option['required'] ? ' required' : ''); ?>">
@@ -197,6 +199,7 @@
                                 <div style="clear: both"></div>
                             </div>
                         </div>
+                        <hr>
                         <?php } ?>
                         <?php if ($option['type'] == 'checkbox') { ?>
                         <div class="form-group<?php echo ($option['required'] ? ' required' : ''); ?>">
@@ -215,6 +218,7 @@
                                 <?php } ?>
                             </div>
                         </div>
+                        <hr>
                         <?php } ?>
                         <?php if ($option['type'] == 'image') { ?>
                         <div class="form-group<?php echo ($option['required'] ? ' required' : ''); ?>">
@@ -234,17 +238,18 @@
                                 <div style="clear: both"></div>
                             </div>
                         </div>
+                        <hr>
                         <?php } ?>
                         <?php if ($option['type'] == 'text') {
-                            if($option['required'])
-                            {
-                            ?>
-                                <div class="form-group required">
-                                    <label class="control-label" for="input-option<?php echo $option['product_option_id']; ?>"><?php echo $option['name']; ?></label>
-                                    <input type="text" name="option[<?php echo $option['product_option_id']; ?>]" value="<?php echo $option['value']; ?>" placeholder="<?php echo $option['name']; ?>" id="input-option<?php echo $option['product_option_id']; ?>" class="form-control" />
-                                </div>
-                            <?php
-                            }
+                        if($option['required'])
+                        {
+                        ?>
+                        <div class="form-group required">
+                            <label class="control-label" for="input-option<?php echo $option['product_option_id']; ?>"><?php echo $option['name']; ?></label>
+                            <input type="text" name="option[<?php echo $option['product_option_id']; ?>]" value="<?php echo $option['value']; ?>" placeholder="<?php echo $option['name']; ?>" id="input-option<?php echo $option['product_option_id']; ?>" class="form-control" />
+                        </div>
+                        <?php
+                        }
                         ?>
                         <?php } ?>
                         <?php if ($option['type'] == 'textarea') { ?>
@@ -252,6 +257,7 @@
                             <label class="control-label" for="input-option<?php echo $option['product_option_id']; ?>"><?php echo $option['name']; ?></label>
                             <textarea name="option[<?php echo $option['product_option_id']; ?>]" rows="5" placeholder="<?php echo $option['name']; ?>" id="input-option<?php echo $option['product_option_id']; ?>" class="form-control"><?php echo $option['value']; ?></textarea>
                         </div>
+                        <hr>
                         <?php } ?>
                         <?php if ($option['type'] == 'file') { ?>
                         <div class="form-group<?php echo ($option['required'] ? ' required' : ''); ?>">
@@ -259,6 +265,7 @@
                             <button type="button" id="button-upload<?php echo $option['product_option_id']; ?>" data-loading-text="<?php echo $text_loading; ?>" class="btn btn-default btn-block"><i class="fa fa-upload"></i> <?php echo $button_upload; ?></button>
                             <input type="hidden" name="option[<?php echo $option['product_option_id']; ?>]" value="" id="input-option<?php echo $option['product_option_id']; ?>" />
                         </div>
+                        <hr>
                         <?php } ?>
                         <?php if ($option['type'] == 'date') { ?>
                         <div class="form-group<?php echo ($option['required'] ? ' required' : ''); ?>">
@@ -269,6 +276,7 @@
                                     <button class="btn btn-default" type="button"><i class="fa fa-calendar"></i></button>
                                 </span></div>
                         </div>
+                        <hr>
                         <?php } ?>
                         <?php if ($option['type'] == 'datetime') { ?>
                         <div class="form-group<?php echo ($option['required'] ? ' required' : ''); ?>">
@@ -279,6 +287,7 @@
                                     <button type="button" class="btn btn-default"><i class="fa fa-calendar"></i></button>
                                 </span></div>
                         </div>
+                        <hr>
                         <?php } ?>
                         <?php if ($option['type'] == 'time') { ?>
                         <div class="form-group<?php echo ($option['required'] ? ' required' : ''); ?>">
@@ -289,11 +298,11 @@
                                     <button type="button" class="btn btn-default"><i class="fa fa-calendar"></i></button>
                                 </span></div>
                         </div>
-                        <?php } ?>
-                        <?php } ?>
-                        <?php } ?>
-                        <?php if ($recurrings) { ?>
                         <hr>
+                        <?php } ?>
+                        <?php } ?>
+                        <?php } ?>
+                        <?php if ($recurrings) { ?>                        
                         <h3><?php echo $text_payment_recurring ?></h3>
                         <div class="form-group required">
                             <select name="recurring_id" class="form-control">
@@ -304,35 +313,45 @@
                             </select>
                             <div class="help-block" id="recurring-description"></div>
                         </div>
-                        <?php } ?>
                         <hr>
-                        <div class="form-group quantity">
-                            <ul class="list-unstyled">                                
-                                <li>Số Lượng: </li>
-                                <li>                                                                        
-                                    <i class="fa fa-minus-square-o btn-step" onclick="_asaca.minusOne('#input-quantity');"></i>
-                                    <input type="text" name="quantity" value="<?php echo $minimum; ?>" size="2" maxlength="2" id="input-quantity" class="form-control" onkeyup="_asaca.handleNumber(this);" onmouseout="_asaca.handleNumber(this);" style="text-align: center" />                                    
-                                    <i class="fa fa-plus-square-o btn-step plus" onclick="_asaca.plusOne('#input-quantity');"></i>
-                                    <input type="hidden" name="product_id" value="<?php echo $product_id; ?>" />
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="form-group cbtn-buy">
-                            <ul class="list-unstyled">                                
-                                <li>
-                                    <button type="button" id="button-cart" data-loading-text="<?php echo $text_loading; ?>" class="btn btn-primary btn-lg btn-block"><i class="fa fa-shopping-cart"></i> Thêm vào giỏ hàng</button>
-                                </li>
-                                <li>
-                                    <button type="button" id="button-cart-checkout" data-loading-text="<?php echo $text_loading; ?>" class="btn btn-primary btn-lg btn-block"><i class="fa fa-check-square"></i> <?php echo $button_cart; ?></button>
-                                </li>
-                            </ul>
+                        <?php } ?>  
+                        <div class="qu-btn">
+                            <div class="form-group quantity">
+                                <ul class="list-unstyled">                                
+                                    <li>Số Lượng: </li>
+                                    <li>                                                                        
+                                        <i class="fa fa-minus-square-o btn-step" onclick="_asaca.minusOne('#input-quantity');"></i>
+                                        <input type="text" name="quantity" value="<?php echo $minimum; ?>" size="2" maxlength="2" id="input-quantity" class="form-control" onkeyup="_asaca.handleNumber(this);" onmouseout="_asaca.handleNumber(this);" style="text-align: center" />                                    
+                                        <i class="fa fa-plus-square-o btn-step plus" onclick="_asaca.plusOne('#input-quantity');"></i>
+                                        <input type="hidden" name="product_id" value="<?php echo $product_id; ?>" />
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="form-group cbtn-buy">
+                                <ul class="list-unstyled">                                
+                                    <li>
+                                        <button type="button" id="button-cart" data-loading-text="<?php echo $text_loading; ?>" class="btn btn-primary btn-lg btn-block"><i class="fa fa-shopping-cart"></i> Thêm vào giỏ hàng</button>
+                                    </li>
+                                    <li>
+                                        <button type="button" id="button-cart-checkout" data-loading-text="<?php echo $text_loading; ?>" class="btn btn-primary btn-lg btn-block"><i class="fa fa-check-square"></i> <?php echo $button_cart; ?></button>
+                                    </li>                                
+                                </ul>
+                            </div>
                         </div>
                         <?php if ($minimum > 1) { ?>
                         <div class="alert alert-info"><i class="fa fa-info-circle"></i> <?php echo $text_minimum; ?></div>
                         <?php } ?>
                     </div>                    
+                    
                 </div>
                 <div class="col-sm-2 col-xs-12">
+                    <div class="support-buy">
+                        <div class="sb-title">Hỗ trợ đặt hàng</div>
+                        <div class="sb-info">
+                            <div class="hl"><i class="fa fa-phone"></i> <script>document.write(HOLINE);</script></div>
+                            <div class="code">Mã Sp: <?php echo $model; ?></div>
+                        </div>
+                    </div>
                     <div class="btn-group addto-box">
                         <button type="button" class="btn" onclick="wishlist.add('<?php echo $product_id; ?>');"><i class="fa fa-heart"></i> <?php echo $button_wishlist; ?></button>
                         <button type="button" class="btn" onclick="compare.add('<?php echo $product_id; ?>');"><i class="fa fa-exchange"></i> <?php echo $button_compare; ?></button>
@@ -350,13 +369,13 @@
                             <?php } ?>
                             <?php } ?>
                         </p>
-                        <p><a href="" onclick="$('a[href=\'#tab-review\']').trigger('click'); _asaca.scrollTo('#tab-review'); return false;"><?php echo $reviews; ?></a></p>
+                        <p><a href="#" onclick="$('a[href=\'#tab-review\']').trigger('click'); _asaca.scrollTo('#tab-review'); return false;"><?php echo $reviews; ?></a></p>
                     </div>
-                    <?php } ?>
+                    <?php } ?>                    
                 </div>
             </div>
             <div class="row more-info">
-                <div class="col-sm-12">
+                <div class="col-lg-9">
                     <ul class="nav nav-tabs">
                         <li class="active"><a href="#tab-description" data-toggle="tab"><?php echo $tab_description; ?></a></li>
                         <?php if ($attribute_groups) { ?>
@@ -368,9 +387,11 @@
                         <li><a href="#tab-faq" data-toggle="tab">Hỏi đáp</a></li>
                     </ul>
                     <div class="tab-content">
-                        <div class="tab-pane active" id="tab-description"><?php echo $description; ?></div>
+                        <div class="tab-pane active" id="tab-description">
+                            <?php echo $description; ?>
+                        </div>
                         <?php if ($attribute_groups) { ?>
-                        <div class="tab-pane" id="tab-specification">
+                        <div class="tab-pane" id="tab-specification">                            
                             <table class="table table-bordered">
                                 <?php foreach ($attribute_groups as $attribute_group) { ?>
                                 <thead>
@@ -392,86 +413,150 @@
                         <?php } ?>
                         <?php if ($review_status) { ?>
                         <div class="tab-pane" id="tab-review">
-                            <form class="form-horizontal">
-                                <div id="review"></div>
-                                <h2><?php echo $text_write; ?></h2>
-                                <div class="form-group required">
-                                    <div class="col-sm-12">
-                                        <label class="control-label" for="input-name"><?php echo $entry_name; ?></label>
-                                        <input type="text" name="name" value="" id="input-name" class="form-control" />
-                                    </div>
+                            <div class="row">
+                                <div class="col-lg-6 col-md-6">
+                                    <form class="form-horizontal">                                
+                                        <h2><?php echo $text_write; ?></h2>
+                                        <div class="form-group required">
+                                            <div class="col-sm-12">
+                                                <label class="control-label" for="input-name"><?php echo $entry_name; ?></label>
+                                                <input type="text" name="name" value="" id="input-name" class="form-control" />
+                                            </div>
+                                        </div>
+                                        <div class="form-group required">
+                                            <div class="col-sm-12">
+                                                <label class="control-label" for="input-review"><?php echo $entry_review; ?></label>
+                                                <textarea name="text" rows="2" id="input-review" class="form-control"></textarea>
+                                                <div class="help-block"><?php echo $text_note; ?></div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group required">
+                                            <div class="col-sm-12">
+                                                <label class="control-label"><?php echo $entry_rating; ?></label>
+                                                &nbsp;&nbsp;&nbsp; <?php echo $entry_bad; ?>&nbsp;
+                                                <input type="radio" name="rating" value="1" />
+                                                &nbsp;
+                                                <input type="radio" name="rating" value="2" />
+                                                &nbsp;
+                                                <input type="radio" name="rating" value="3" />
+                                                &nbsp;
+                                                <input type="radio" name="rating" value="4" />
+                                                &nbsp;
+                                                <input type="radio" name="rating" value="5" />
+                                                &nbsp;<?php echo $entry_good; ?></div>
+                                        </div>
+                                        <div class="form-group required">
+                                            <div class="col-sm-12">
+                                                <label class="control-label" for="input-captcha"><?php echo $entry_captcha; ?></label>
+                                                <input type="text" name="captcha" value="" id="input-captcha" class="form-control" />
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-sm-12"> <img src="index.php?route=tool/captcha" alt="" id="captcha" /> </div>
+                                        </div>
+                                        <div class="buttons">
+                                            <div class="pull-right">
+                                                <button type="button" id="button-review" data-loading-text="<?php echo $text_loading; ?>" class="btn btn-primary"><?php echo $button_continue; ?></button>
+                                            </div>
+                                        </div>
+                                    </form>
                                 </div>
-                                <div class="form-group required">
-                                    <div class="col-sm-12">
-                                        <label class="control-label" for="input-review"><?php echo $entry_review; ?></label>
-                                        <textarea name="text" rows="5" id="input-review" class="form-control"></textarea>
-                                        <div class="help-block"><?php echo $text_note; ?></div>
-                                    </div>
+                                <div class="col-lg-6 col-md-6">
+                                    <h2>Nhận xét về sản phẩm</h2>
+                                    <div id="review"></div>
                                 </div>
-                                <div class="form-group required">
-                                    <div class="col-sm-12">
-                                        <label class="control-label"><?php echo $entry_rating; ?></label>
-                                        &nbsp;&nbsp;&nbsp; <?php echo $entry_bad; ?>&nbsp;
-                                        <input type="radio" name="rating" value="1" />
-                                        &nbsp;
-                                        <input type="radio" name="rating" value="2" />
-                                        &nbsp;
-                                        <input type="radio" name="rating" value="3" />
-                                        &nbsp;
-                                        <input type="radio" name="rating" value="4" />
-                                        &nbsp;
-                                        <input type="radio" name="rating" value="5" />
-                                        &nbsp;<?php echo $entry_good; ?></div>
-                                </div>
-                                <div class="form-group required">
-                                    <div class="col-sm-12">
-                                        <label class="control-label" for="input-captcha"><?php echo $entry_captcha; ?></label>
-                                        <input type="text" name="captcha" value="" id="input-captcha" class="form-control" />
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="col-sm-12"> <img src="index.php?route=tool/captcha" alt="" id="captcha" /> </div>
-                                </div>
-                                <div class="buttons">
-                                    <div class="pull-right">
-                                        <button type="button" id="button-review" data-loading-text="<?php echo $text_loading; ?>" class="btn btn-primary"><?php echo $button_continue; ?></button>
-                                    </div>
-                                </div>
-                            </form>
+                            </div>                            
                         </div>
                         <?php } ?>
-                        <div class="tab-pane" id="tab-faq">                            
-                            <form class="form-horizontal">
-                                <div id="faq"></div>
-                                <h2>Bạn có thể đặt câu hỏi tại đây</h2>
-                                <div class="form-group required">
-                                    <div class="col-sm-12">
-                                        <label class="control-label" for="input-name-faq"><?php echo $entry_name; ?></label>
-                                        <input type="text" name="name-faq" value="" id="input-name-faq" class="form-control" />
+                        <div class="tab-pane" id="tab-faq">
+                            <div class="row">
+                                <div class="col-lg-6 col-md-6">
+                                    <form class="form-horizontal">                                
+                                        <h2>Bạn có thể đặt câu hỏi tại đây</h2>
+                                        <div class="form-group required">
+                                            <div class="col-sm-12">
+                                                <label class="control-label" for="input-name-faq"><?php echo $entry_name; ?></label>
+                                                <input type="text" name="name-faq" value="" id="input-name-faq" class="form-control" />
+                                            </div>
+                                        </div>
+                                        <div class="form-group required">
+                                            <div class="col-sm-12">
+                                                <label class="control-label" for="input-review-faq">Câu hỏi</label>
+                                                <textarea name="text-faq" rows="2" id="input-review-faq" class="form-control"></textarea>
+                                                <div class="help-block"><?php echo $text_note; ?></div>
+                                            </div>
+                                        </div>                                
+                                        <div class="form-group required">
+                                            <div class="col-sm-12">
+                                                <label class="control-label" for="input-captcha-faq"><?php echo $entry_captcha; ?></label>
+                                                <input type="text" name="captcha-faq" value="" id="input-captcha-faq" class="form-control" />
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-sm-12"> <img src="index.php?route=tool/captcha" alt="" id="captcha-faq" /> </div>
+                                        </div>
+                                        <div class="buttons">
+                                            <div class="pull-right">
+                                                <button type="button" id="button-faq" data-loading-text="<?php echo $text_loading; ?>" class="btn btn-primary"><?php echo $button_continue; ?></button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="col-lg-6 col-md-6">
+                                    <h2>Hỏi & Đáp về sản phẩm</h2>
+                                    <div id="faq"></div>
+                                </div>
+                            </div>                            
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div id="short-info">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="support-buy">
+                                    <div class="sb-title">Hỗ trợ đặt hàng</div>
+                                    <div class="sb-info">
+                                        <div class="hl"><i class="fa fa-phone"></i> <script>document.write(HOLINE);</script></div>
+                                        <div class="code">Mã Sp: <?php echo $model; ?></div>
                                     </div>
                                 </div>
-                                <div class="form-group required">
-                                    <div class="col-sm-12">
-                                        <label class="control-label" for="input-review-faq">Câu hỏi</label>
-                                        <textarea name="text-faq" rows="5" id="input-review-faq" class="form-control"></textarea>
-                                        <div class="help-block"><?php echo $text_note; ?></div>
+                                <h4 class="si-title">Bạn muốn mua sản phẩm</h4>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-3">
+                                <img src="<?php echo $thumb; ?>" class="img-responsive" alt="" />
+                            </div>
+                            <div class="col-lg-9">
+                                <div class="pname"><?php echo $heading_title; ?></div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <hr>
+                                <?php if ($price) { ?>                                    
+                                    <?php if (!$special) { ?>
+                                    <h4 class="si-price">
+                                        <?php echo $price; ?>
+                                    </h4>                                        
+                                    <?php } else { ?>
+                                    <div class="si-price-has-saleoff">                                        
+                                        <span class="si-price-old"><?php echo $price; ?></span>
+                                        <span class="si-price-off">Giảm: <?php echo $saleoff ?>%</span>
                                     </div>
-                                </div>                                
-                                <div class="form-group required">
-                                    <div class="col-sm-12">
-                                        <label class="control-label" for="input-captcha-faq"><?php echo $entry_captcha; ?></label>
-                                        <input type="text" name="captcha-faq" value="" id="input-captcha-faq" class="form-control" />
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="col-sm-12"> <img src="index.php?route=tool/captcha" alt="" id="captcha-faq" /> </div>
-                                </div>
-                                <div class="buttons">
-                                    <div class="pull-right">
-                                        <button type="button" id="button-faq" data-loading-text="<?php echo $text_loading; ?>" class="btn btn-primary"><?php echo $button_continue; ?></button>
-                                    </div>
-                                </div>
-                            </form>
+                                    <h4 class="si-price">
+                                        <?php echo $special; ?>
+                                    </h4>                                    
+                                    <?php } ?>                                                                        
+                                <?php } ?>                                
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <button type="button" class="button-cart btn btn-block"><i class="fa fa-shopping-cart"></i> Thêm vào giỏ hàng</button>
+                                <button type="button" class="button-cart-checkout btn btn-block"><i class="fa fa-check-square"></i> <?php echo $button_cart; ?></button>                                
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -577,62 +662,12 @@ $('select[name=\'recurring_id\'], input[name="quantity"]').change(function(){
     });
 //--></script> 
 <script type="text/javascript">
-    $('#button-cart').on('click', function() {
+    $(document).delegate('#button-cart, .button-cart', 'click', function() {
         cart.addIntoCart();
     });
-    $('#button-cart-checkout').on('click', function() {
+    $(document).delegate('#button-cart-checkout, .button-cart-checkout', 'click', function() {
         cart.paymentCart();
-    });
-</script>
-<script type="text/javascript"><!--
-$('.date').datetimepicker({
-    pickTime: false
-    });
-            $('.datetime').datetimepicker({
-    pickDate: true,
-            pickTime: true
-    });
-            $('.time').datetimepicker({
-    pickDate: false
-    });
-            $('button[id^=\'button-upload\']').on('click', function() {
-    var node = this;
-            $('#form-upload').remove();
-            $('body').prepend('<form enctype="multipart/form-data" id="form-upload" style="display: none;"><input type="file" name="file" /></form>');
-            $('#form-upload input[name=\'file\']').trigger('click');
-            $('#form-upload input[name=\'file\']').on('change', function() {
-    $.ajax({
-    url: 'index.php?route=tool/upload',
-            type: 'post',
-            dataType: 'json',
-            data: new FormData($(this).parent()[0]),
-            cache: false,
-            contentType: false,
-            processData: false,
-            beforeSend: function() {
-            $(node).button('loading');
-            },
-            complete: function() {
-            $(node).button('reset');
-            },
-            success: function(json) {
-            $('.text-danger').remove();
-                    if (json['error']) {
-            $(node).parent().find('input').after('<div class="text-danger">' + json['error'] + '</div>');
-            }
-
-            if (json['success']) {
-            alert(json['success']);
-                    $(node).parent().find('input').attr('value', json['code']);
-            }
-            },
-            error: function(xhr, ajaxOptions, thrownError) {
-            alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
-            }
-    });
-    });
-    });
-//--></script> 
+    });</script> 
 <script type="text/javascript"><!--
 $('#review').delegate('.pagination a', 'click', function(e) {
     e.preventDefault();
@@ -705,33 +740,33 @@ $('#review').delegate('.pagination a', 'click', function(e) {
     });
 //--></script> 
 <script type="text/javascript">
-    function selectItem(obj)
-    {
-        $(obj).parent().parent().parent().find('.radio').each(function(){
+            function selectItem(obj)
+            {
+            $(obj).parent().parent().parent().find('.radio').each(function(){
             $(this).find('.img-thumbnail').removeClass('selected');
-        });
-        $(obj).addClass('selected');
-        $(obj).parent().find('input[type=radio]').prop('checked', true);
-    }
+            });
+                    $(obj).addClass('selected');
+                    $(obj).parent().find('input[type=radio]').prop('checked', true);
+            }
     function selectBorder(obj)
     {
-        $(obj).parent().parent().find('.radio').each(function(){
-            $(this).find('label').removeClass('selected');
-        });
-        $(obj).addClass('selected');
-        $(obj).find('input[type=radio]').prop('checked', true);
+    $(obj).parent().parent().find('.radio').each(function(){
+    $(this).find('label').removeClass('selected');
+    });
+            $(obj).addClass('selected');
+            $(obj).find('input[type=radio]').prop('checked', true);
     }
     $(document).ready(function(){
-        $('.form-group.required').each(function(){
-            if($(this).find('.border').length == 1)
-            {                
-                selectBorder($(this).find('label'));
-            }
-            if($(this).find('.image').length == 1)
-            {                
-                selectItem($(this).find('.image').find('.img-thumbnail'));
-            }
-        });
+    $('.form-group.required').each(function(){
+    if ($(this).find('.border').length == 1)
+    {
+    selectBorder($(this).find('label'));
+    }
+    if ($(this).find('.image').length == 1)
+    {
+    selectItem($(this).find('.image').find('.img-thumbnail'));
+    }
+    });
     });
 </script>
 <?php echo $footer; ?>

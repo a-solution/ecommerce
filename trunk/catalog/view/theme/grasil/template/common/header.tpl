@@ -33,9 +33,10 @@
         
         <script type="text/javascript">
             BASE_URL = '<?php echo $base; ?>';
+            HOLINE = '<?php echo $telephone;?>';
             <?php if($logged):?>
             LOGGED = true;
-            LINK_CHECKOUT = '<?php echo $checkout; ?>';
+            LINK_CHECKOUT = '<?php echo $checkout; ?>';            
             <?php endif;?>
         </script>
         
@@ -75,10 +76,10 @@
             <div id="top-line">
                 <div class="container">
                     <div class="left">
-                        <ul>
-                            <li class="visible-lg"><a href="">Hướng dẫn mua hàng</a></li>
-                            <li class="visible-lg"><a href="">Đơn hàng & Thanh toán</a></li>
-                            <li><a href="">Hỗ trợ khách hàng</a> <span class="hotline">0908433302</span></li>
+                        <ul>                            
+                            <li><a href="">Hỗ trợ khách hàng</a> <span class="hotline"><script>document.write(HOLINE);</script></span></li>
+                            <li class="sep visible-lg"><a href="/huong-dan-mua-hang">Hướng dẫn mua hàng</a></li>
+                            <li class="sep hidden-sm hidden-xs"><a href="">Giao hàng toàn quốc</a></li>                            
                             <li class="sep hidden-sm hidden-xs"><a href="">Giao hàng miễn phí</a></li>
                             <li class="sep hidden-sm hidden-xs"><a href="">Thanh toán khi nhận hàng</a></li>
                         </ul>
@@ -142,7 +143,7 @@
                                 <a class="favorite" href=""><?php echo $text_wishlist; ?></a>
                                 <span id="wishlist-total" class="bag"><?php echo $text_wishlist_items; ?></span>
                             </li>
-                            <li class="visible-lg"><a class="tip" href=""><?php echo $text_tip; ?></a></li>                            
+                            <li class="visible-lg"><a class="tip" href="/huong-dan-mua-hang"><?php echo $text_tip; ?></a></li>                            
                         </ul>
                     </div>
                     <div class="clearfix"></div>

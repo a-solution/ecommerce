@@ -4,7 +4,7 @@
   </div>
   <div id="collapse-voucher" class="panel-collapse collapse">
     <div class="panel-body">
-      <label class="col-sm-2 control-label" for="input-voucher"><?php echo $entry_voucher; ?></label>
+      <label class="col-sm-3 control-label" for="input-voucher"><?php echo $entry_voucher; ?></label>
       <div class="input-group">
         <input type="text" name="voucher" value="<?php echo $voucher; ?>" placeholder="<?php echo $entry_voucher; ?>" id="input-voucher" class="form-control" />
         <span class="input-group-btn">
